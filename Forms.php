@@ -8,8 +8,8 @@ class Forms{
 
 	public function Signup(){
 		return '<div class="container">
-                <h2>User Account Creation Form</h2>
-                <form method="POST" action="create_user.php">
+		<h2>User Account Creation Form</h2>
+	              <form method="POST">
                         <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -31,7 +31,7 @@ class Forms{
 	public function Login(){
 	return '<div class="container">
                 <h2>User Login Form</h2>
-                <form method="POST" action="create_user.php">
+                <form method="POST">
                         <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -45,6 +45,16 @@ class Forms{
         </div>';
 	
 	}
+
+	public function ServeSignup(){
+		return "ServeSignup function called..........";
+	}
+
+	public function ServeLogin(){
+		return "ServeLogin function called..........";
+	}
+
+
 
 }
 ?>
