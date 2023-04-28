@@ -5,15 +5,16 @@
 $(document).ready(function() {
 	alert("Document loaded.......");
   $.ajax({
-    url: "file.php",
+    url: "func.php",
     method: "POST",
-    //dataType: "json",
+    dataType: "json",
+    data: {function_name: "my_function"},
     success: function(response) {
       console.log(response);
-      //var data = response.data;
+      var data = response.data;
       //alert(response.cand);
-      //$("#target-div").html(data);
-      $("#target-div").html(response);
+      $("#target-div").html(data);
+      //$("#target-div").html(response);
     }
   });
 });

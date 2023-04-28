@@ -9,7 +9,7 @@ class Forms{
 	public function Signup(){
 		return '<div class="container">
 		<h2>User Account Creation Form</h2>
-	              <form method="POST">
+	              <form method="POST" id="signup" class="symposiaForms">
                         <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -22,7 +22,7 @@ class Forms{
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Create Account</button>
+                        <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
                 </form>
         </div>';
 	}
@@ -31,7 +31,7 @@ class Forms{
 	public function Login(){
 	return '<div class="container">
                 <h2>User Login Form</h2>
-                <form method="POST">
+                <form method="POST" id="login" class="symposiaForms">
                         <div class="form-group">
                                 <label for="username">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
@@ -40,20 +40,21 @@ class Forms{
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Create Account</button>
+                        <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
                 </form>
         </div>';
 	
 	}
 
+	
 	public function ServeSignup(){
-		return "ServeSignup function called..........";
+		return "<div>ServeSignup function called..........</div>";
 	}
 
 	public function ServeLogin(){
-		return "ServeLogin function called..........";
+		return "<div>ServeLogin function called..........</div>";
 	}
-
+       
 
 
 }
