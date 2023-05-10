@@ -10,6 +10,11 @@
 
 <script>
 $(document).ready(function(){
+$('.signupForm').each(function() {
+  //Perform operations on each element here
+	   console.log($(this).attr("id")); // Example operation: log the text content of each element
+ });
+			
 $('.symposiaForms').on('submit',function(event){
 	//alert('hahahaa');
 	alert($(this).attr('id'));
@@ -25,19 +30,28 @@ $('.sympFormSubmit').click(function(event){
 $('.symposiaForms').on('submit',function(event){
 	event.preventDefault();
 	var funcName="";
+	var data={};
 if($(this).attr('id')=="login"){
-funcName="ServeLogin";
+	funcName="ServeLogin";
+
 }
 if($(this).attr('id')=="signup"){
-funcName="ServeSignup";
-}
+	var funcName="ServeSignup";
+	data['function_name']=funcName;
+	$('.signupForm').each(function() {
+ 	//Perform operations on each element here
+		console.log($(this).val()); // Example operation: log the text content of each element
+		data[$(this).attr('id')]=$(this).val();
+});
 
+}
 $.ajax({
-    url: "TestAjax/func.php",
+    url: "../controller/func.php",
     method: "POST",
     //dataType: "json",
     //data: {function_name: "my_function"},
-    data: {function_name: funcName},
+    //data: {function_name: funcName},
+    data : data,
     success: function(response) {
       console.log(response);
       //var data = response.data;
@@ -57,7 +71,7 @@ $.ajax({
 
 require "../globals.php";
 require "../Symposia.php";
-require "../Forms.php";
+require "Forms.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
 

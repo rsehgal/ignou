@@ -12,25 +12,25 @@ class Forms{
 		      <form method="POST" id="signup" class="symposiaForms">
 			<div class="form-group">
                                 <label for="firstname">First Name:</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" required>
+                                <input type="text" class="form-control signupForm" id="firstname" name="firstname" required>
                         </div>
 			<div class="form-group">
                                 <label for="lastname">Last Name:</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                <input type="text" class="form-control signupForm" id="lastname" name="lastname" required>
                         </div>
 
 			<div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control signupForm" id="email" name="email" required>
                         </div>
 
                         <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control signupForm" id="username" name="username" required>
                         </div>
                                                <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control signupForm" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
                 </form>
