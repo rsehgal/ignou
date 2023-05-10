@@ -10,7 +10,7 @@ function ServeSignup(){
 }
 
 function ServeLogin(){
-               return "<div>ServeLogin function called..........</div>";
+               return "<div>ServeLogin function called..........</div><br/>".$_POST['username'];
 }
 
 if (isset($_POST['function_name'])) {

@@ -44,11 +44,11 @@ class Forms{
                 <form method="POST" id="login" class="symposiaForms">
                         <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control loginForm" id="username" name="username" required>
                         </div>
                         <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control loginForm" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
                 </form>

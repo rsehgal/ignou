@@ -31,19 +31,25 @@ $('.symposiaForms').on('submit',function(event){
 	event.preventDefault();
 	var funcName="";
 	var data={};
+	$('.signupForm').each(function() {
+		console.log($(this).val()); 
+		data[$(this).attr('id')]=$(this).val();
+	});
+	$('.loginForm').each(function() {
+		console.log($(this).val()); 
+		data[$(this).attr('id')]=$(this).val();
+	});
+
+
 if($(this).attr('id')=="login"){
 	funcName="ServeLogin";
+	data['function_name']=funcName;
 
 }
 if($(this).attr('id')=="signup"){
 	var funcName="ServeSignup";
 	data['function_name']=funcName;
-	$('.signupForm').each(function() {
- 	//Perform operations on each element here
-		console.log($(this).val()); // Example operation: log the text content of each element
-		data[$(this).attr('id')]=$(this).val();
-});
-
+	
 }
 $.ajax({
     url: "../controller/func.php",
