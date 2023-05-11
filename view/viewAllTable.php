@@ -50,10 +50,12 @@ $.ajax({
 
 </head>
 <body>
-<select name="cars" id="tablename" class="form-select">
+<!-- <select name="cars" id="tablename" class="form-select">
   <option value="user_credentials">user_credentials</option>
   <option value="testuser">testuser</option>
 </select>
+-->
+<div id='heading' class='text-center border bg-warning'><h2>Table Visualizer</h2></div>
 <table border="1" class="table">
 <tr>
 <td>
@@ -61,17 +63,6 @@ $.ajax({
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="parentDropDown">Select the table to view
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="#" class="tablename" id="testuser" value="testuser">testuser</a></li>
-      <li><a href="#" class="tablename" id="user_credentials" value="user_credentials">user_credentials</a></li>
-    </ul>
-  </div>
-</td>
-<td>
-<input type="text" id="selectedTable" readonly></input>
-</td>
-</tr>
-</table>
-<div id='result'/>
 <?php
 
 //ini_set('display_errors', 1);
@@ -79,6 +70,26 @@ $.ajax({
 error_reporting(E_ALL);
 
 include "../model/Symposia.php";
+$obj = new DB();
+$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+$obj->Connect();
+$query='show tables;';
+$result=$obj->GetQueryResult($query);
+$dbname='symposia';
+while ($row = $result->fetch_assoc()) {
+	//echo $row["Tables_in_" . $dbname] . "<br>";
+$tabname=$row["Tables_in_". $dbname]; 
+//echo $tabname."<br/>";
+echo '<li><a href="#" class="tablename" id='.$tabname.' value='.$tabname.'>'.$tabname.'</a></li>';
+}
+echo ' </ul></div></td>';
+echo '<td>
+<input type="text" id="selectedTable" readonly></input>
+</td>
+</tr>
+</table>
+<div id="result"/>'
+;
 
 ?>
 
