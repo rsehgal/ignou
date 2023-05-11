@@ -5,6 +5,15 @@ function my_function() {
   $data = array("Hello", "Ha ha aha d");
   return json_encode(array("data" => implode(" ", $data)));
 }
+
+function ShowTable(){
+	$tableName = $_POST['tablename'];
+	$obj = new DB();
+	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Connect();
+	return $obj->GetTableData($tableName);
+}
+
 function ServeSignup(){
 		$obj = new DB();
 		$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');

@@ -16,7 +16,8 @@ include "../Symposia.php";
 $obj = new DB();
 $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
 $obj->Connect();
-echo $obj->GetTableData('testuser');
+//echo $obj->GetTableData('testuser');
+echo $obj->GetTableData('user_credentials');
 ?>
 
 </body>
