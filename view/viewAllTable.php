@@ -9,6 +9,25 @@
 $(document).ready(function(){;
 
 var data={};
+$(document).on('click','.deleteEntry', function(){
+
+	//alert("DeleteEntry called....");
+	data['tablename']=$(this).attr('oftable');
+	data['username']=$(this).attr('id');
+	data["function_name"]="Delete";
+	console.log(data);
+	$.ajax({
+        	url: "../controller/func.php",
+                method: "POST",
+	        data : data,
+	        success: function(response) {
+		         console.log(response);
+		         $("#result").html(response);
+		         }
+	});      
+
+});
+
 $(".tablename").click(function(){
 	data["function_name"]="ShowTable";
 	//alert($(this).attr("value"));

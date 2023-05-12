@@ -6,6 +6,19 @@ function my_function() {
   return json_encode(array("data" => implode(" ", $data)));
 }
 
+function Delete(){
+	$username=$_POST['username'];
+	$tableName = $_POST['tablename'];
+	$function_name = $_POST['function_name'];	
+	$query = 'delete from '.$tableName.' where uname="'.$username.'"';
+	echo $query."<br/>";
+	$obj = new DB();
+	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Connect();
+	$obj->GetQueryResult($query);
+	return $obj->GetTableData($tableName);
+}
+
 function ShowTable(){
 	$tableName = $_POST['tablename'];
 	$obj = new DB();

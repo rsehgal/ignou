@@ -150,7 +150,7 @@ public function GetTableData($tableName){
 			//echo
 			$table.="<td>" . $row[$columnName] . "</td>";
 		}
-		$table.="<td><input type='button' id='".$row[$columnName]."' value='Delete'></input></td>";
+		$table.="<td><input type='button' class='deleteEntry' oftable='".$tableName."' id='".$row['uname']."' value='Delete'></input></td>";
 		//echo 
 		$table.="</tr>";
 	}
