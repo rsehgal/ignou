@@ -139,20 +139,22 @@ public function GetTableData($tableName){
 	        foreach ($columnNames as $columnName) {
 	//echo
 		$table.="<th >" . $columnName . "</th>";
-				            }
+		}
+		$table.="<td>Update</td>";
 	//echo
 	       $table.="</tr>";
 	while ($row = $result->fetch_assoc()) {
 		//echo 
 		$table.= "<tr>";
-			                foreach ($columnNames as $columnName) {
-						//echo
-						$table.="<td>" . $row[$columnName] . "</td>";
-								            }
+		foreach ($columnNames as $columnName) {
+			//echo
+			$table.="<td>" . $row[$columnName] . "</td>";
+		}
+		$table.="<td><input type='button' id='".$row[$columnName]."' value='Delete'></input></td>";
 		//echo 
 		$table.="</tr>";
-			            }
-		//echo
+	}
+			//echo
 	$table.="</table>";
 	return $table;
 }
