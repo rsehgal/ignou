@@ -20,10 +20,16 @@ class Components{
     public function RenderFileUpload(){
     	return '<div class="form-group">
 	        <input type="file" class="form-control-file border" name="file">
-        </div>
-	<button type="submit" class="btn btn-primary">Submit</button>';
+        </div>';//.$this->RenderButton();
     }
-  
+
+    public function RenderSubmitButton($id='submit',$name='submit',$class='submit',$value='Submit'){
+	return '<button type="submit" class="btn btn-primary '.$class.'">'.$value.'</button>';
+}
+  public function RenderButton(){
+	return '<button type="button" class="btn btn-primary">Submit</button>';
+}
+
 }
 
 ?>

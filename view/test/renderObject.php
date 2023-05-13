@@ -16,6 +16,7 @@ require "../../components/Components.php";
 
 $obj = new Components();
 echo $obj->RenderFileUpload();
+echo $obj->RenderSubmitButton("","","uploadForm","SubmitButton");
 ?>
 
 </body>
