@@ -6,6 +6,24 @@ function my_function() {
   return json_encode(array("data" => implode(" ", $data)));
 }
 
+function Upload(){
+	//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	echo $_FILES['file']."<br/>";
+	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
+			$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
+			echo $targetFilePath."<br/>";
+			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
+				echo 'File uploaded successfully.';
+			} else {
+			        echo 'Error uploading the file.';
+									        }
+	} else {
+		echo 'No file uploaded.';
+		}
+	//}
+}
+
 function Delete(){
 	$username=$_POST['username'];
 	$tableName = $_POST['tablename'];

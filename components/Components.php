@@ -17,10 +17,9 @@ class Components{
     }
    
      
-    public function RenderFileUpload(){
+  public function RenderFileUpload($id='uploadFile',$name='uploadFile',$class='uploadFile',$value='Upload',$loc='/var/www/html/Symposia/Uploads/'){
     	return '<div class="form-group">
-	        <input type="file" class="form-control-file border" name="file">
-        </div>';//.$this->RenderButton();
+	        <input type="file" id="'.$id.'" class="'.$class.'" form-control-file border" name="'.$name.'" value="'.$value.'" loc="'.$loc.'"></div>';//.$this->RenderButton();
     }
 
     public function RenderSubmitButton($id='submit',$name='submit',$class='submit',$value='Submit'){
