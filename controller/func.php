@@ -8,9 +8,13 @@ function my_function() {
 
 function Upload(){
 	//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	echo $_FILES['file']."<br/>";
+	//echo $_FILES['file']."<br/>";
+	echo $_FILES['file']['error']."<br/>";
+	return;
 	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
+			echo $targetDirectory."<br/>";
+			echo basename($_FILES['file']['name'])."<br/>";
 			$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
 			echo $targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
@@ -42,7 +46,7 @@ function ShowTable(){
 	$obj = new DB();
 	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
 	$obj->Connect();
-	return $obj->GetTableData($tableName);
+	return $obj->GetTableData($tableName,1,1);
 }
 
 function ServeSignup(){

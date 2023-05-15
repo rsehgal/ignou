@@ -76,7 +76,7 @@ $.ajax({
 <?php
 
 require "../globals.php";
-require "../Symposia.php";
+require "../model/Symposia.php";
 require "Forms.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
@@ -98,6 +98,13 @@ if (isset($_GET['function']) && $_GET['function'] == 'Login') {
 	// call the function
 	//$myClass->myFunction();
 	echo $forms->Login();
+	//GenJs();
+}
+if (isset($_GET['function']) && $_GET['function'] == 'Contact') {
+	$funcName='Login';
+	//echo $funcName."<br/>";
+	//$myClass->myFunction();
+	echo $forms->Contact();
 	//GenJs();
 }
 

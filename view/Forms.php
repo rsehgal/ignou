@@ -56,6 +56,22 @@ class Forms{
 	
 	}
 
+	public function Contact(){
+	$tableName='contactus';
+	$obj = new DB();
+        $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+        $obj->Connect();
+        return $obj->GetTableData($tableName);
+
+	/*return '<div class="container">
+		<div class="w-50 p-3" style="background-color: #eee;">
+		Raman Sehgal <br/>
+		Scientific Secretary <br/>
+		</div>		
+                        </div>';*/
+	
+	}
+
 	
 	public function ServeSignup(){
 		return "<div>ServeSignup function called..........</div>";

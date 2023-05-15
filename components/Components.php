@@ -4,6 +4,7 @@ class Components{
   public $fname;
   public $fclass;
   public $fvalue;
+  public $fuploadLoc;
 
   
     function __construct(){}
@@ -14,12 +15,14 @@ class Components{
     $this->fname = $name;
     $this->fclass = $class;
     $this->fvalue = $value;
+    $this->fuploadLoc = "";
     }
    
      
   public function RenderFileUpload($id='uploadFile',$name='uploadFile',$class='uploadFile',$value='Upload',$loc='/var/www/html/Symposia/Uploads/'){
+ 	$this->fuploadLoc = $loc;
     	return '<div class="form-group">
-	        <input type="file" id="'.$id.'" class="'.$class.'" form-control-file border" name="'.$name.'" value="'.$value.'" loc="'.$loc.'"></div>';//.$this->RenderButton();
+	        <input type="file" id="'.$id.'" class="'.$class.'" form-control-file border" name="'.$name.'" value="'.$value.'" loc="'.$this->fuploadLoc.'"></div>';//.$this->RenderButton();
     }
 
     public function RenderSubmitButton($id='submit',$name='submit',$class='submit',$value='Submit'){
