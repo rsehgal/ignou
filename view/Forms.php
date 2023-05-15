@@ -7,7 +7,7 @@ class Forms{
 	}
 
 	public function Signup(){
-		return '<div class="container">
+	return '<br/><div class="container">
 		<h2>User Account Creation Form</h2>
 		      <form method="POST" id="signup" class="symposiaForms">
 			<div class="form-group">
@@ -39,7 +39,7 @@ class Forms{
 
 
 	public function Login(){
-	return '<div class="container">
+	return '<br/><div class="container">
                 <h2>User Login Form</h2>
                 <form method="POST" id="login" class="symposiaForms">
                         <div class="form-group">
@@ -61,7 +61,8 @@ class Forms{
 	$obj = new DB();
         $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         $obj->Connect();
-        return $obj->GetTableData($tableName);
+	$result = "<h2><br/>Contact Us<br/></h2>";
+        return $result.$obj->GetTableData($tableName);
 
 	/*return '<div class="container">
 		<div class="w-50 p-3" style="background-color: #eee;">

@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: symposia
 -- ------------------------------------------------------
--- Server version	8.0.32-0ubuntu0.22.04.2
+-- Server version	8.0.32-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,65 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `contactus`
+--
+
+DROP TABLE IF EXISTS `contactus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `contactus` (
+  `uname` varchar(20) DEFAULT NULL,
+  `Post` varchar(255) DEFAULT NULL,
+  `Name` varchar(255) DEFAULT NULL,
+  `Email` varchar(150) DEFAULT NULL,
+  `ContactNumber` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contactus`
+--
+
+LOCK TABLES `contactus` WRITE;
+/*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
+INSERT INTO `contactus` VALUES ('conv','Convener','Raman Sehgal','sc.ramansehgal@gmail.com','+91-25593474'),('sec1','Secretary-1','Ayush Sehgal','ayush.sehgal@gmail.com','+91-9969476966');
+/*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `symposium`
+--
+
+DROP TABLE IF EXISTS `symposium`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `symposium` (
+  `uname` varchar(50) DEFAULT NULL,
+  `volume` int DEFAULT NULL,
+  `title` varchar(500) DEFAULT NULL,
+  `venue` varchar(500) DEFAULT NULL,
+  `datefrom` date DEFAULT NULL,
+  `dateto` date DEFAULT NULL,
+  `reg_start_date` date DEFAULT NULL,
+  `reg_end_date` date DEFAULT NULL,
+  `contrib_start_date` date DEFAULT NULL,
+  `contrib_end_date` date DEFAULT NULL,
+  `finsup_start_date` date DEFAULT NULL,
+  `finsup_end_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `symposium`
+--
+
+LOCK TABLES `symposium` WRITE;
+/*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
+INSERT INTO `symposium` VALUES ('admin',1,'Test Symposium on Nuclear Physics','Test Institute of Technology','2023-11-01','2023-11-06','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10');
+/*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `testuser`
@@ -62,8 +121,34 @@ CREATE TABLE `user_credentials` (
 
 LOCK TABLES `user_credentials` WRITE;
 /*!40000 ALTER TABLE `user_credentials` DISABLE KEYS */;
-INSERT INTO `user_credentials` VALUES ('ayush','dfjskdjfksdjf','Ayush','Sehgal','ayush.sehgal@gmail.com');
+INSERT INTO `user_credentials` VALUES ('ayush','dfjskdjfksdjf','Ayush','Sehgal','ayush.sehgal@gmail.com'),('helloraman','Ramsnsehgal','Raman','Sehgal','sc.ramansehgal@gmail.com');
 /*!40000 ALTER TABLE `user_credentials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `uname` varchar(20) NOT NULL,
+  `passwd` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`uname`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'rsehgal','Hsuya^123');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -75,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-15  7:33:47
+-- Dump completed on 2023-05-15 16:37:38

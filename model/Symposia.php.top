@@ -48,7 +48,7 @@ function Menu(){
 <nav class="navbar navbar-expand-lg navbar-light bg-warning justify-content-center">
     <a class="navbar-brand bg-warning" href="#" >
       <div class="text-center">
-      <h4 class="display-4 font-weight-bolder">'.
+      <h4 class="display-2 font-weight-bolder">'.
       $sympTitle.'
 	<h1>
 	<p  class="small text-center"><br/>'.$sympVenue.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
@@ -57,8 +57,18 @@ function Menu(){
 	</div>
    </a>
 </nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <a class="navbar-brand" href="#" >
+      <div>
+      <h4 class="display-2 font-weight-bolder">'.
+      $sympTitle.'
+	<h1>
+	<p  class="small text-center"><br/>'.$sympVenue.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
+	</h1>
+	</h4>
+	</div>
+   </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">

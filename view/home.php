@@ -80,7 +80,7 @@ require "../model/Symposia.php";
 require "Forms.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
-
+echo "<div id='container'>";
 echo "<div id='result'></div>";
 
 
@@ -94,7 +94,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'Signup') {
 }
 if (isset($_GET['function']) && $_GET['function'] == 'Login') {
 	$funcName='Login';
-	echo $funcName."<br/>";
+	//echo $funcName."<br/>";
 	// call the function
 	//$myClass->myFunction();
 	echo $forms->Login();
@@ -108,6 +108,7 @@ if (isset($_GET['function']) && $_GET['function'] == 'Contact') {
 	//GenJs();
 }
 
+echo "</div>";
 function GenJs(){ return "<script> alert('Hello Raman') </script>";}
 
 //require "FormServers.php";
