@@ -74,7 +74,8 @@ $.ajax({
 </head>
 <body>
 <?php
-
+session_start();
+$_SESSION['logged']=TRUE;
 require "../globals.php";
 require "../model/Symposia.php";
 require "Forms.php";

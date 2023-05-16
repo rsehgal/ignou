@@ -23,6 +23,13 @@ function __construct(){
 
 }
 
+function AddMenuEntry($entry){
+	return '<li class="nav-item">
+          <a class="nav-link" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>
+        </li>';
+
+}
+
 function Menu(){
 	$obj = new DB();
 	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
@@ -62,33 +69,16 @@ function Menu(){
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><h4>Home </h4><span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><h4>About</h4></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><h4>Services</h4></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?function=Contact"><h4>Contact</h4></a>
-	</li>
-	<li class="nav-item">
-          <a class="nav-link" href="?function=Signup"><h4>Signup</h4></a>
-	</li>
-	<li class="nav-item">
-          <a class="nav-link display-6" href="?function=Login">
+      <ul class="navbar-nav ml-auto">'.
+        $this->AddMenuEntry("Home").
+	$this->AddMenuEntry("About");
 
-      <h4>
-	Login
-	</h4>
-	</a>
-	</li>
-
-
-       
+	if(isset($_SESSION["logged"]))
+		$result.=$this->AddMenuEntry("Services");
+	$result.=
+	$this->AddMenuEntry("Signup").
+	$this->AddMenuEntry("Login").
+	$this->AddMenuEntry("Contact").'
       </ul>
     </div>
   </nav>
