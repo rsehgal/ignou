@@ -24,9 +24,33 @@ function __construct(){
 }
 
 function AddMenuEntry($entry){
-	return '<li class="nav-item">
-          <a class="nav-link" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>
-        </li>';
+	$menuEntry="";
+	if($entry=="About"){
+	$menuEntry= '<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+	$subentries=array("NASI","Topic","Venue");
+	$menuEntry.=$this->AddSubEntries($subentries);
+	}else{
+	$menuEntry= '<li class="nav-item">
+          <a class="nav-link" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+
+	}
+        $menuEntry.='</li>';
+	return $menuEntry;
+
+}
+function AddSubEntries($subEntries){
+	$subMenu='<div class="dropdown-menu">';
+	for($i= 0 ; $i < count($subEntries) ; $i++){
+
+
+        	$subMenu.='<a class="dropdown-item" href="#">'.$subEntries[$i].'</a>';
+	}
+	$subMenu.='</div>';
+	return $subMenu;
+}
+
+function DynamicMenu(){
 
 }
 
@@ -53,8 +77,8 @@ function Menu(){
 
 	$result = $title.'<br/>
 <div class="row bg-warning">
-  <div class="col-3">
- <img src="../images/barcLogo.png" alt="Logo">  
+  <div class="col-3 my-auto">
+ <img src="../images/barcLogo.png"  alt="Logo">  
 </div>
   <div class="col-6 text-center">
     <h4 class="display-4 font-weight-bolder">'.
@@ -64,9 +88,9 @@ function Menu(){
         </h1>
         </h4>
   </div>
-  <div class="col-3 justify-content-end">
+  <div class="col-3 my-auto">
 
- <img src="../images/barcLogo.png" class="float-right" alt="Logo">  
+ <img src="../images/nasiLogo.png" class="float-right" alt="Logo">  
 </div>
 </div>
 
