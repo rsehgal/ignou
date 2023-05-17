@@ -81,10 +81,10 @@ function Menu(){
 
 	$result = $title.'<br/>
 <div class="row bg-warning">
-  <div class="col-3 my-auto">
+  <div class="col-2 my-auto">
  <img src="../images/barcLogo.png"  alt="Logo">  
 </div>
-  <div class="col-6 text-center">
+  <div class="col-8 text-center">
     <h4 class="display-4 font-weight-bolder">'.
       $sympTitle.'
         <h1>
@@ -92,7 +92,7 @@ function Menu(){
         </h1>
         </h4>
   </div>
-  <div class="col-3 my-auto">
+  <div class="col-2 my-auto">
 
  <img src="../images/nasiLogo.png" class="float-right" alt="Logo">  
 </div>

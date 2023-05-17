@@ -60,7 +60,11 @@ CREATE TABLE `symposium` (
   `contrib_start_date` date DEFAULT NULL,
   `contrib_end_date` date DEFAULT NULL,
   `finsup_start_date` date DEFAULT NULL,
-  `finsup_end_date` date DEFAULT NULL
+  `finsup_end_date` date DEFAULT NULL,
+  `city` varchar(150) DEFAULT NULL,
+  `state` varchar(150) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `about` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -70,7 +74,7 @@ CREATE TABLE `symposium` (
 
 LOCK TABLES `symposium` WRITE;
 /*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
-INSERT INTO `symposium` VALUES ('admin',1,'Test Symposium on Nuclear Physics','Test Institute of Technology','2023-11-01','2023-11-06','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10');
+INSERT INTO `symposium` VALUES ('admin',1,'93<sup>rd</sup> Annual Session and Symposium of NASI 2023','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-10-01','2023-10-10','2023-09-01','2023-09-10','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL);
 /*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +125,7 @@ CREATE TABLE `user_credentials` (
 
 LOCK TABLES `user_credentials` WRITE;
 /*!40000 ALTER TABLE `user_credentials` DISABLE KEYS */;
-INSERT INTO `user_credentials` VALUES ('ayush','dfjskdjfksdjf','Ayush','Sehgal','ayush.sehgal@gmail.com'),('helloraman','Ramsnsehgal','Raman','Sehgal','sc.ramansehgal@gmail.com');
+INSERT INTO `user_credentials` VALUES ('ayush','dfjskdjfksdjf','Ayush','Sehgal','ayush.sehgal@gmail.com'),('rsehgal','rs','Raman','Sehgal','sc.ramansehgal@gmail.com');
 /*!40000 ALTER TABLE `user_credentials` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-15 16:37:38
+-- Dump completed on 2023-05-17 12:43:00
