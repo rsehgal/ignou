@@ -1,5 +1,22 @@
 <?php
 require "../model/Symposia.php";
+require "../view/Forms.php";
+
+
+function Contact(){
+$forms = new Forms();
+  return $forms->Contact();
+//return "Returned from Ajax Contat...";
+}
+function Login(){
+$forms = new Forms();
+  return $forms->Login();
+}
+function Signup(){
+$forms = new Forms();
+  return $forms->Signup();
+}
+
 function my_function() {
   // Your function logic here
   $data = array("Hello", "Ha ha aha d");

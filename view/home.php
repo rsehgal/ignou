@@ -4,10 +4,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap Menu Example</title>
   <!-- Bootstrap CSS -->
-<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+ <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -18,19 +18,46 @@ $('.signupForm').each(function() {
 	   console.log($(this).attr("id")); // Example operation: log the text content of each element
  });
 			
-$('.symposiaForms').on('submit',function(event){
+/*$('.symposiaForms').on('submit',function(event){
 	//alert('hahahaa');
 	alert($(this).attr('id'));
-});
+});*/
 /*
 $('.sympFormSubmit').click(function(event){
 	alert('hahahaa');
 	//alert($(this).attr('id'));
 });
  */
+$('.nasiMenu').on('click',function(event){
+	//alert("Nasi Menu clicked.......");
+	event.preventDefault();
+	var funcName="";
+	var data={};
+	var funcName=$(this).attr("id");
+	//alert(funcName);
+	data['function_name']=funcName;
 
+	$.ajax({
+	    url: "../controller/func.php",
+	    method: "POST",
+	    //dataType: "json",
+	    //data: {function_name: "my_function"},
+	    //data: {function_name: funcName},
+	    data : data,
+	    success: function(response) {
+	      console.log(response);
+	      //var data = response.data;
+	      //alert(response.cand);
+	      //$("#result").html(data);
+	      $("#result").html(response);
+	    }
+	  });
 
-$('.symposiaForms').on('submit',function(event){
+});
+
+//$('.symposiaForms').on('submit',function(event){
+$('.symposiaForms').click(function(event){
+	//alert("Submit of Signup clicke....");
 	event.preventDefault();
 	var funcName="";
 	var data={};
@@ -102,7 +129,7 @@ echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='result' ></div>";
 
-
+/*
 $forms = new Forms();
 
 if (isset($_GET['function']) && $_GET['function'] == 'Signup') {
@@ -118,14 +145,14 @@ if (isset($_GET['function']) && $_GET['function'] == 'Login') {
 	//$myClass->myFunction();
 	echo $forms->Login();
 	//GenJs();
-}
-if (isset($_GET['function']) && $_GET['function'] == 'Contact') {
-	$funcName='Login';
+}*/
+/*if (isset($_GET['function']) && $_GET['function'] == 'Contact') {
+	$funcName='Contact';
 	//echo $funcName."<br/>";
 	//$myClass->myFunction();
 	echo $forms->Contact();
 	//GenJs();
-}
+}*/
 
 echo "</div>";
 function GenJs(){ return "<script> alert('Hello Raman') </script>";}

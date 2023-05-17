@@ -30,9 +30,16 @@ function AddMenuEntry($entry){
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
 	$subentries=array("NASI","Poster","Topic","Venue");
 	$menuEntry.=$this->AddSubEntries($subentries);
+	}elseif($entry=="Committees"){
+	$menuEntry= '<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+        $subentries=array("Council_Officers","Council_Members","Organizing_Committee");
+        $menuEntry.=$this->AddSubEntries($subentries);
 	}else{
+	/*$menuEntry= '<li class="nav-item">
+          <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';*/
 	$menuEntry= '<li class="nav-item">
-          <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link nasiMenu symposiaForms" id="'.$entry.'" name="'.$entry.'" href="#"><h4>'.$entry.'</h4></a>';
 
 	}
         $menuEntry.='</li>';
@@ -78,6 +85,7 @@ function Menu(){
 	$sympDateTo = $obj->GetParameter(1,"dateto");
 	$parsed_date_from = date_parse($sympDateFrom);
 	$parsed_date_to = date_parse($sympDateTo);
+	$city = $obj->GetParameter(1,"city");
 
 	$result = $title.'<br/>
 <div class="row bg-warning">
@@ -88,7 +96,7 @@ function Menu(){
     <h4 class="display-4 font-weight-bolder">'.
       $sympTitle.'
         <h1>
-        <p  class="small"><br/>'.$sympVenue.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
+        <p  class="small"><br/>'.$sympVenue.', '.$city.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
         </h1>
         </h4>
   </div>
@@ -106,7 +114,8 @@ function Menu(){
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">'.
         $this->AddMenuEntry("Home").
-	$this->AddMenuEntry("About");
+	$this->AddMenuEntry("About").
+	$this->AddMenuEntry("Committees");
 
 	if(isset($_SESSION["logged"]))
 		$result.=$this->AddMenuEntry("Services");
