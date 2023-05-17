@@ -52,18 +52,25 @@ function Menu(){
 	$parsed_date_to = date_parse($sympDateTo);
 
 	$result = $title.'<br/>
-<nav class="navbar navbar-expand-lg navbar-light bg-warning justify-content-center">
-    <a class="navbar-brand bg-warning" href="#" >
-      <div class="text-center">
-      <h4 class="display-4 font-weight-bolder">'.
+<div class="row bg-warning">
+  <div class="col-3">
+ <img src="../images/barcLogo.png" alt="Logo">  
+</div>
+  <div class="col-6 text-center">
+    <h4 class="display-4 font-weight-bolder">'.
       $sympTitle.'
-	<h1>
-	<p  class="small text-center"><br/>'.$sympVenue.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
-	</h1>
-	</h4>
-	</div>
-   </a>
-</nav>
+        <h1>
+        <p  class="small"><br/>'.$sympVenue.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
+        </h1>
+        </h4>
+  </div>
+  <div class="col-3 justify-content-end">
+
+ <img src="../images/barcLogo.png" class="float-right" alt="Logo">  
+</div>
+</div>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
