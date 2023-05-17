@@ -86,6 +86,41 @@ function ServeLogin(){
                return "<div>ServeLogin function called..........</div><br/>".$_POST['username'];
 }
 
+function Council_Officers(){
+	//return "Council Officers...";
+	return "<h3 class='display text-primary'>Council Officers</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("CounOff")."</table>";
+}
+function Council_Members(){
+	//return "Council Officers...";
+	return "<h3 class='display text-primary'>Council Members</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("CounMem")."</table>";
+}
+function Organizing_Committee(){
+	//return "Council Officers...";
+	return "<h3 class='display text-primary'>Organizing Committee</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("OrgMem")."</table>";
+}
+
+function ShowCommittee($comm){
+
+	$obj = new DB();
+	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Connect();
+	$name = $comm."Name";
+	$affil = $comm."Affil";
+	$query = "select $name,$affil from committees";
+	$result = $obj->GetQueryResult($query);
+	$table="<tr class='bg-dark text-light'><th>Name</th><th>Affiliation</th></tr>";
+
+	while ($row = $result->fetch_assoc()) {
+		if($row[$name]==""){
+		}else{
+		 $table.= "<tr>";
+		 $table.="<td>" . $row[$name] . "</td>";
+		 $table.="<td>" . $row[$affil] . "</td>";
+		 $table.="</tr>";
+		}
+	}
+	return $table;
+}
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {

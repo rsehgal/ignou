@@ -29,12 +29,12 @@ function AddMenuEntry($entry){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
 	$subentries=array("NASI","Poster","Topic","Venue");
-	$menuEntry.=$this->AddSubEntries($subentries);
+	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         $subentries=array("Council_Officers","Council_Members","Organizing_Committee");
-        $menuEntry.=$this->AddSubEntries($subentries);
+        $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}else{
 	/*$menuEntry= '<li class="nav-item">
           <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';*/
@@ -46,7 +46,8 @@ function AddMenuEntry($entry){
 	return $menuEntry;
 
 }
-function AddSubEntries($subEntries){
+/*
+function AddSubEntries($subEntries){//,$mainEntry){
 	$subMenu='<div class="dropdown-menu">';
 	for($i= 0 ; $i < count($subEntries) ; $i++){
 
@@ -54,12 +55,28 @@ function AddSubEntries($subEntries){
         	$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
         	//$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="../docs/poster.pdf"'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
 		}else{
-        	$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="?function='.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
 }
 	}
 	$subMenu.='</div>';
 	return $subMenu;
 }
+ */
+function AddSubEntries($subEntries,$mainEntry){
+	$subMenu='<div class="dropdown-menu">';
+	for($i= 0 ; $i < count($subEntries) ; $i++){
+
+		if($subEntries[$i]=="Poster"){
+        	$subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	//$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="../docs/poster.pdf"'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+		}else{
+        	$subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+}
+	}
+	$subMenu.='</div>';
+	return $subMenu;
+}
+ 
 
 function DynamicMenu(){
 

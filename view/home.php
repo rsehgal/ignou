@@ -41,16 +41,30 @@ $('.nasiMenu').on('click',function(event){
 	$.ajax({
 	    url: "../controller/func.php",
 	    method: "POST",
-	    //dataType: "json",
-	    //data: {function_name: "my_function"},
-	    //data: {function_name: funcName},
 	    data : data,
 	    success: function(response) {
-	      //console.log(response);
-	      //var data = response.data;
-	      //alert(response.cand);
-	      //$("#result").html(data);
-	      $("#result").html(response);
+	    $("#result").html(response);
+	    }
+	  });
+
+});
+
+$('.Committees').on('click',function(event){
+	//alert("Committees Menu clicked.......");
+	event.preventDefault();
+	var funcName="";
+	var data={};
+	var funcName=$(this).attr("id");
+	//alert(funcName);
+	data['function_name']=funcName;
+	console.log(data);
+
+	$.ajax({
+	    url: "../controller/func.php",
+	    method: "POST",
+	    data : data,
+	    success: function(response) {
+	    $("#result").html(response);
 	    }
 	  });
 
