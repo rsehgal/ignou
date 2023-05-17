@@ -33,7 +33,38 @@ class Forms{
                                 <input type="password" class="form-control signupForm" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
-                </form>
+		</form>
+		<script>
+		$(".symposiaForms").on("submit",function(event){
+			alert("Finally called......");
+			event.preventDefault();
+			var funcName="";
+			var data={};
+		
+			$(".signupForm").each(function() {
+			console.log($(this).val());
+			data[$(this).attr("id")]=$(this).val();
+			var funcName="ServeSignup";
+			data["function_name"]=funcName;
+			});
+			console.log(data);
+
+
+			$.ajax({
+			    url: "../controller/func.php",
+			    method: "POST",
+			    data : data,
+			    success: function(response) {
+			      console.log(response);
+			      $("#result").html(response);
+			    }
+			});	
+		});
+
+
+		</script>
+
+
         </div>';
 	}
 
@@ -51,7 +82,24 @@ class Forms{
                                 <input type="password" class="form-control loginForm" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
-                </form>
+		</form>
+		<script>
+		$(".symposiaForms").on("submit",function(event){
+		alert("Finally called......");
+		event.preventDefault();
+        var funcName="";
+	var data={};
+	
+                $(".loginForm").each(function() {
+                console.log($(this).val());
+                data[$(this).attr("id")]=$(this).val();
+        });
+	console.log(data);
+	
+		});
+
+
+		</script>
         </div>';
 	
 	}

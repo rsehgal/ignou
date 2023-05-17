@@ -23,7 +23,8 @@ $('.signupForm').each(function() {
 	alert($(this).attr('id'));
 });*/
 /*
-$('.sympFormSubmit').click(function(event){
+$('.sympFormSubmit').on('submit',function(event){
+	console.log("jlkjkljkljkjkljkl");
 	alert('hahahaa');
 	//alert($(this).attr('id'));
 });
@@ -45,7 +46,7 @@ $('.nasiMenu').on('click',function(event){
 	    //data: {function_name: funcName},
 	    data : data,
 	    success: function(response) {
-	      console.log(response);
+	      //console.log(response);
 	      //var data = response.data;
 	      //alert(response.cand);
 	      //$("#result").html(data);
@@ -55,9 +56,8 @@ $('.nasiMenu').on('click',function(event){
 
 });
 
-//$('.symposiaForms').on('submit',function(event){
-$('.symposiaForms').click(function(event){
-	//alert("Submit of Signup clicke....");
+$('.symposiaForms').on('submit',function(event){
+	alert("Submit of Signup clicke....");
 	event.preventDefault();
 	var funcName="";
 	var data={};
@@ -84,15 +84,9 @@ if($(this).attr('id')=="signup"){
 $.ajax({
     url: "../controller/func.php",
     method: "POST",
-    //dataType: "json",
-    //data: {function_name: "my_function"},
-    //data: {function_name: funcName},
     data : data,
     success: function(response) {
       console.log(response);
-      //var data = response.data;
-      //alert(response.cand);
-      //$("#result").html(data);
       $("#result").html(response);
     }
   });
@@ -106,6 +100,7 @@ $('#Poster').click(function(){
 });
 
 });
+
 </script>
 
 <style>
