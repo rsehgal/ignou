@@ -27,12 +27,12 @@ function AddMenuEntry($entry){
 	$menuEntry="";
 	if($entry=="About"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-	$subentries=array("NASI","Topic","Venue");
+          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+	$subentries=array("NASI","Poster","Topic","Venue");
 	$menuEntry.=$this->AddSubEntries($subentries);
 	}else{
 	$menuEntry= '<li class="nav-item">
-          <a class="nav-link" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
 
 	}
         $menuEntry.='</li>';
@@ -43,8 +43,12 @@ function AddSubEntries($subEntries){
 	$subMenu='<div class="dropdown-menu">';
 	for($i= 0 ; $i < count($subEntries) ; $i++){
 
-
-        	$subMenu.='<a class="dropdown-item" href="#">'.$subEntries[$i].'</a>';
+		if($subEntries[$i]=="Poster"){
+        	$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	//$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="../docs/poster.pdf"'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+		}else{
+        	$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="?function='.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+}
 	}
 	$subMenu.='</div>';
 	return $subMenu;

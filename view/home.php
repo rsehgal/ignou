@@ -71,8 +71,23 @@ $.ajax({
   });
 });
 
+$('#Poster').click(function(){
+
+    var iframe = $('<iframe>');
+    iframe.attr('src','../docs/poster.pdf');
+    $('#result').html(iframe);
+});
+
 });
 </script>
+
+<style>
+    iframe{
+        width: 100%;
+	height: 100%;
+        border: 2px solid #ccc;
+    }
+</style>
 
 </head>
 <body>
@@ -85,7 +100,7 @@ require "Forms.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
-echo "<div id='result'></div>";
+echo "<div id='result' ></div>";
 
 
 $forms = new Forms();
