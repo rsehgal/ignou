@@ -87,16 +87,33 @@ class Forms{
 		$(".symposiaForms").on("submit",function(event){
 		alert("Finally called......");
 		event.preventDefault();
-        var funcName="";
-	var data={};
+		var funcName="";
+		var data={};
 	
-                $(".loginForm").each(function() {
+		$(".loginForm").each(function() {
+		alert($(this).val())
                 console.log($(this).val());
                 data[$(this).attr("id")]=$(this).val();
-        });
-	console.log(data);
+		});
+
+		var funcName="ServeLogin";
+                data["function_name"]=funcName;
+		console.log(data);
+		
+		$.ajax({
+                        url: "../controller/func.php",
+                        method: "POST",
+                        data : data,
+                        success: function(response) {
+                          console.log(response);
+                          $("#result").html(response);
+                        }
+		    });
+		
 	
 		});
+		
+
 
 
 		</script>

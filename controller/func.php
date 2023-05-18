@@ -83,7 +83,7 @@ function ServeSignup(){
 }
 
 function ServeLogin(){
-               return "<div>ServeLogin function called..........</div><br/>".$_POST['username'];
+               return "<div>ServeLogin function called..........</div><br/>";//.$_POST['username'];
 }
 
 function Council_Officers(){
