@@ -83,7 +83,25 @@ function ServeSignup(){
 }
 
 function ServeLogin(){
-               return "<div>ServeLogin function called..........</div><br/>";//.$_POST['username'];
+	$obj = new DB();
+	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Connect();
+	
+	$uname=$_POST["username"];
+	$passwd=$_POST["password"];
+
+	
+	$query = "select passwd from user_credentials where uname='".$uname."'";
+	//return $query;
+	$result = $obj->GetQueryResult($query);
+	
+	$row = $result->fetch_assoc();
+	//return "Hello Raman";
+	if($row["passwd"]==$passwd)
+		return "<div> Fetched Password : ".$row["passwd"]."<br/>";
+	else
+		return "<div> Authenication failure... <br/>";
+		
 }
 
 function Council_Officers(){

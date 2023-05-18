@@ -81,17 +81,17 @@ class Forms{
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control loginForm" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
+                        <button type="submit" class="btn btn-primary sympFormSubmit">Login</button>
 		</form>
 		<script>
 		$(".symposiaForms").on("submit",function(event){
-		alert("Finally called......");
+		//alert("Finally called......");
 		event.preventDefault();
 		var funcName="";
 		var data={};
 	
 		$(".loginForm").each(function() {
-		alert($(this).val())
+		//alert($(this).val())
                 console.log($(this).val());
                 data[$(this).attr("id")]=$(this).val();
 		});
