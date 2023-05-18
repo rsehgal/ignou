@@ -203,6 +203,23 @@ public function GetFieldNames($tableName){
 	}
 }
 
+public function GetColumnArray($tablename,$colname){
+	$valArray=[];
+	$query = "select $colname from $tablename";
+	
+	$result = $this->GetQueryResult($query);
+	$topicName="";
+	$i=0;
+        while ($row = $result->fetch_assoc()) {
+		$valArray[$i]=$row[$colname];
+		$topicName = $row[$colname];
+		$i++;
+	}
+	//return $topicName;
+	return $valArray;
+
+}
+
 public function GetParameter($volume,$fieldName){
 	$query = "select $fieldName from symposium where volume=".$volume;
 	//return $query;

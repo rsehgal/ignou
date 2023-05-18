@@ -146,16 +146,40 @@ function ShowCommittee($comm){
 }
 
 function Upload_Contribution(){
-session_start();
-$returnVal="";
-if(isset($_SESSION["loggedin"])){
-//return "Hello <br/>";
-return "<h3 class='alert alert-success' role='alert'>Welcome user : ".$_SESSION["username"]."</h3><br/>";
-//return "Dear $_SESSION["username"], Please upload your Contribution <br/>";
+	session_start();
+	$returnVal="";
+	if(isset($_SESSION["loggedin"])){
+		//return "Hello <br/>";
+		//return "<h3 class='alert alert-success' role='alert'>Welcome user : ".$_SESSION["username"]."</h3><br/>";
+		return NewSubmission();
+		//return "Dear $_SESSION["username"], Please upload your Contribution <br/>";
+	}
+	else{
+		return "<h3 class='alert alert-danger text-center' role='alert'>Please login before uploading.</h3><br/>";
+	}
 }
-else{
-return "<h3 class='alert alert-danger text-center' role='alert'>Please login before uploading.</h3><br/>";
+
+function NewSubmission(){
+	$obj = new DB();
+        $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+        $obj->Connect();
+	$fieldNames = $obj->GetFieldNames("contributions");
+	//return count($fieldNames);
+
+	$forms = new Forms();
+	return $forms->NewSubmission($fieldNames);
 }
+
+function FillCategory(){
+$tablename = $_POST["topic"];
+return GetDropDown($tablename,"category").'
+<script>
+$(".category").on("click",function(event){
+                        alert("Category Clicked...");
+			$("#categoryText").val($(this).attr("id"));
+                });
+</script>
+';
 }
 
 if (isset($_POST['function_name'])) {
