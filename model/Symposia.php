@@ -113,7 +113,8 @@ function Menu(){
     <h4 class="display-4 font-weight-bolder">'.
       $sympTitle.'
         <h1>
-        <p  class="small"><br/>'.$sympVenue.', '.$city.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
+        <p  class="small "><br/>'.$sympVenue.', '.$city.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
+
         </h1>
         </h4>
   </div>
@@ -139,6 +140,7 @@ function Menu(){
 	$result.=
 	$this->AddMenuEntry("Signup").
 	$this->AddMenuEntry("Login").
+	$this->AddMenuEntry("Upload_Contribution").
 	$this->AddMenuEntry("Contact").'
       </ul>
     </div>

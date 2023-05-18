@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -37,7 +40,7 @@ $('.nasiMenu').on('click',function(event){
 	var funcName=$(this).attr("id");
 	//alert(funcName);
 	data['function_name']=funcName;
-
+	console.log(data);
 	$.ajax({
 	    url: "../controller/func.php",
 	    method: "POST",
@@ -128,8 +131,10 @@ $('#Poster').click(function(){
 </head>
 <body>
 <?php
-session_start();
-$_SESSION['logged']=TRUE;
+//$_SESSION["loggedin"]=TRUE;
+//$_SESSION["username"]="ABCD";
+//session_write_close();
+//$_SESSION['logged']=TRUE;
 require "../globals.php";
 require "../model/Symposia.php";
 require "Forms.php";
@@ -137,7 +142,8 @@ $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='result' ></div>";
-
+//if($_SESSION["loggedin"])
+//echo "<br/><div id='sessionDiv'>user ".$_SESSION["username"]." already logged in.</div> <br/>";
 /*
 $forms = new Forms();
 

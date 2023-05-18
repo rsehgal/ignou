@@ -83,6 +83,7 @@ function ServeSignup(){
 }
 
 function ServeLogin(){
+	session_start();
 	$obj = new DB();
 	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
 	$obj->Connect();
@@ -97,10 +98,14 @@ function ServeLogin(){
 	
 	$row = $result->fetch_assoc();
 	//return "Hello Raman";
-	if($row["passwd"]==$passwd)
-		return "<div> Fetched Password : ".$row["passwd"]."<br/>";
+	if($row["passwd"]==$passwd){
+		$_SESSION["loggedin"]=TRUE;
+		$_SESSION["username"]=$uname;
+		return "<div><h3 class='alert alert-success' role='alert'> Welcome User : ".$uname."</h3><br/>";
+		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
+	}
 	else
-		return "<div> Authenication failure... <br/>";
+		return "<div><h3 class='alert alert-danger text-center' role='alert'> Authenication failure : Please check your credentials.</h3> <br/>";
 		
 }
 
@@ -139,6 +144,20 @@ function ShowCommittee($comm){
 	}
 	return $table;
 }
+
+function Upload_Contribution(){
+session_start();
+$returnVal="";
+if(isset($_SESSION["loggedin"])){
+//return "Hello <br/>";
+return "<h3 class='alert alert-success' role='alert'>Welcome user : ".$_SESSION["username"]."</h3><br/>";
+//return "Dear $_SESSION["username"], Please upload your Contribution <br/>";
+}
+else{
+return "<h3 class='alert alert-danger text-center' role='alert'>Please login before uploading.</h3><br/>";
+}
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {
