@@ -1,5 +1,6 @@
 <?php
 require "../controller/helpers.php";
+require "../components/Components.php";
 class Forms{
 
 
@@ -147,7 +148,7 @@ class Forms{
 	//return 
 		$formContent='<br/><div class="container">
                 <h2>Upload new contribution</h2>
-                <form method="POST" id="login" class="symposiaForms">';
+                <form method="POST" id="login" class="">';
 
 		for($i=0 ; $i<count($fieldNames) ; $i++){
 			if($fieldNames[$i]=="uname"){
@@ -162,16 +163,62 @@ class Forms{
 				$formContent.='<div id="Category"></div>';
 				$formContent.='<input type="text" id="categoryText" class="form-control"/>';
 			}
-			else
+			elseif($fieldNames[$i]=="Filename"){
+
+   $fileComponent='<div class="custom-file mb-3">
+      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="/var/www/html/Symposia/Uploads/" name="uploadFile">
+      <label class="custom-file-label" for="uploadFile">Choose file</label>
+    </div>';
+    $formContent.=$fileComponent;
+				//$uploadObj = new Components();
+				//$formContent.=$uploadObj->RenderFileUpload();
+			}else
 				$formContent.='
                                 <input type="text" class="form-control newSubmissionForm" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" required>
-                        </div>';
+                        </div>
+<div id="uploadStatus"></div>
+';
 }
 
 		}
-                 $formContent.='<button type="submit" class="btn btn-primary sympFormSubmit">Login</button>
+                 $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Login</button>
 		</form>
 		<script>
+
+		$(".custom-file-input").on("change",function(e){
+			//alert("file selected...");
+			var fileName = e.target.files[0].name;
+			//alert(fileName);
+			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+		});	
+	
+		var dataUp=new FormData();
+		$("#uploadFile").on("change",function(){
+		//alert("Symp for submit clicke....");
+		var fileInput = document.getElementById($(this).attr("id"));
+		alert(fileInput.files[0].name); 
+		console.log(fileInput);
+		dataUp.append("file",fileInput.files[0]);
+		dataUp.append("loc",$(this).attr("loc"));
+		dataUp.append("function_name","Upload");
+		});
+
+		$("#uploadAndSubmit").on("click",function(){
+			console.log(dataUp);
+
+			$.ajax({
+				url: "../controller/func.php",
+				method: "POST",
+				data : dataUp,
+				processData : false,
+				contentType : false,
+				success: function(response) {
+					$("#uploadStatus").html(response);
+				}
+			});
+
+		});
+	
 		$(".symposiaForms").on("submit",function(event){
 		//alert("Finally called......");
 		event.preventDefault();

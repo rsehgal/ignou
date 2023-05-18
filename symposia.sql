@@ -16,6 +16,129 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `Biology`
+--
+
+DROP TABLE IF EXISTS `Biology`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Biology` (
+  `uname` varchar(100) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Biology`
+--
+
+LOCK TABLES `Biology` WRITE;
+/*!40000 ALTER TABLE `Biology` DISABLE KEYS */;
+INSERT INTO `Biology` VALUES ('admin','Anatomy',1),('admin','Respiration',2),('admin','Pathology',3),('admin','Ortho',4),('admin','Dental',5),('admin','Cardiology',6),('admin','Neurology',7);
+/*!40000 ALTER TABLE `Biology` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Chemistry`
+--
+
+DROP TABLE IF EXISTS `Chemistry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Chemistry` (
+  `uname` varchar(100) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Chemistry`
+--
+
+LOCK TABLES `Chemistry` WRITE;
+/*!40000 ALTER TABLE `Chemistry` DISABLE KEYS */;
+INSERT INTO `Chemistry` VALUES ('admin','Organic Chemistry',1),('admin','Inorganic Chemistry',2),('admin','Quantum Chemistry',3);
+/*!40000 ALTER TABLE `Chemistry` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Mathematics`
+--
+
+DROP TABLE IF EXISTS `Mathematics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Mathematics` (
+  `uname` varchar(100) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Mathematics`
+--
+
+LOCK TABLES `Mathematics` WRITE;
+/*!40000 ALTER TABLE `Mathematics` DISABLE KEYS */;
+INSERT INTO `Mathematics` VALUES ('admin','Geometry',1),('admin','Trigonometry',2),('admin','Calculus',3),('admin','Mensuration',4);
+/*!40000 ALTER TABLE `Mathematics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Physics`
+--
+
+DROP TABLE IF EXISTS `Physics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Physics` (
+  `uname` varchar(100) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Physics`
+--
+
+LOCK TABLES `Physics` WRITE;
+/*!40000 ALTER TABLE `Physics` DISABLE KEYS */;
+INSERT INTO `Physics` VALUES ('admin','Nuclear Physics',1),('admin','Atomic Physics',2),('admin','Solid State Physics',3),('admin','Particle Physics',4);
+/*!40000 ALTER TABLE `Physics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `assoc_array`
+--
+
+DROP TABLE IF EXISTS `assoc_array`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `assoc_array` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `array` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `assoc_array`
+--
+
+LOCK TABLES `assoc_array` WRITE;
+/*!40000 ALTER TABLE `assoc_array` DISABLE KEYS */;
+/*!40000 ALTER TABLE `assoc_array` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `committees`
 --
 
@@ -65,8 +188,34 @@ CREATE TABLE `contactus` (
 
 LOCK TABLES `contactus` WRITE;
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-INSERT INTO `contactus` VALUES ('conv','Convener','Raman Sehgal','sc.ramansehgal@gmail.com','+91-25593474'),('sec1','Secretary-1','Ayush Sehgal','ayush.sehgal@gmail.com','+91-9969476966');
+INSERT INTO `contactus` VALUES ('admin','Convener','S. M. Yusuf','smyusuf@barc.gov.in','022-000000'),('admin','Member','L. M. Pant','lmpant@barc.gov.in','022-111111'),('admin','Member','D. V. Udupa','dudupa@barc.gov.in','022-222222'),('admin','Member','A. K. Gupta','anit@barc.gov.in','022-333333'),('admin','Member','K. K. Yadav','kkyadav@barc.gov.in','022-444444'),('admin','Member','T Sakuntala','sakuntl@barc.gov.in','022-555555');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contributions`
+--
+
+DROP TABLE IF EXISTS `contributions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `contributions` (
+  `uname` varchar(100) DEFAULT NULL,
+  `Topic` varchar(255) DEFAULT NULL,
+  `Category` varchar(255) DEFAULT NULL,
+  `Title` varchar(500) DEFAULT NULL,
+  `Filename` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contributions`
+--
+
+LOCK TABLES `contributions` WRITE;
+/*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
+INSERT INTO `contributions` VALUES ('admin','','','','');
+/*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -131,6 +280,31 @@ INSERT INTO `testuser` VALUES (1,'Raman','Sehgal'),(2,'Ayush','Sehgal'),(2,'Shac
 UNLOCK TABLES;
 
 --
+-- Table structure for table `topics`
+--
+
+DROP TABLE IF EXISTS `topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `topics` (
+  `uname` varchar(100) DEFAULT NULL,
+  `Topic` varchar(255) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics`
+--
+
+LOCK TABLES `topics` WRITE;
+/*!40000 ALTER TABLE `topics` DISABLE KEYS */;
+INSERT INTO `topics` VALUES ('admin','Physics',1),('admin','Chemistry',2),('admin','Mathematics',3),('admin','Biology',4);
+/*!40000 ALTER TABLE `topics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_credentials`
 --
 
@@ -192,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-17 13:24:03
+-- Dump completed on 2023-05-18 18:56:04

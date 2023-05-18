@@ -26,8 +26,8 @@ function my_function() {
 function Upload(){
 	//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	//echo $_FILES['file']."<br/>";
-	echo $_FILES['file']['error']."<br/>";
-	return;
+	//echo $_FILES['file']['error']."<br/>";
+	//return;
 	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
 			echo $targetDirectory."<br/>";
