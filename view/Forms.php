@@ -174,7 +174,7 @@ class Forms{
 				//$formContent.=$uploadObj->RenderFileUpload();
 			}else
 				$formContent.='
-                                <input type="text" class="form-control newSubmissionForm" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" required>
+                                <input type="text" class="form-control" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" required >
                         </div>
 <div id="uploadStatus"></div>
 ';
@@ -203,9 +203,23 @@ class Forms{
 		dataUp.append("function_name","Upload");
 		});
 
-		$("#uploadAndSubmit").on("click",function(){
-			console.log(dataUp);
+		$("#uploadAndSubmit").on("click",function(e){
+			e.preventDefault();
+			if($("#Title").val()==""){
+				alert("Please fill the paper title.");
+				return;
+			}if($("#topicText").val()==""){
+				alert("Please select the paper topic.");
+				return;
+			}if($("#categoryText").val()==""){
+				alert("Please select the paper category.");
+				return;
+			}
 
+
+			dataUp.append("title",$("#Title").val());
+			alert("Upload and Submit clicked...");
+			console.log(dataUp);
 			$.ajax({
 				url: "../controller/func.php",
 				method: "POST",
@@ -219,37 +233,11 @@ class Forms{
 
 		});
 	
-		$(".symposiaForms").on("submit",function(event){
-		//alert("Finally called......");
-		event.preventDefault();
-		var funcName="";
-		var data={};
-	
-		$(".loginForm").each(function() {
-		//alert($(this).val())
-                console.log($(this).val());
-                data[$(this).attr("id")]=$(this).val();
-		});
-
-		var funcName="ServeLogin";
-                data["function_name"]=funcName;
-		console.log(data);
 		
-		$.ajax({
-                        url: "../controller/func.php",
-                        method: "POST",
-                        data : data,
-                        success: function(response) {
-                          console.log(response);
-                          $("#result").html(response);
-                        }
-		    });
-		});
-
-
 		$(".topic").on("click",function(event){
-		alert("Topic clicked.......");
+		//alert("Topic clicked.......");
 		$("#topicText").val($(this).attr("id"));
+		dataUp.append("topicid",$(this).attr("catid"));
 		event.preventDefault();
 		var funcName="FillCategory";
 		var data={};

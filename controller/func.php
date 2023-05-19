@@ -24,16 +24,21 @@ function my_function() {
 }
 
 function Upload(){
+	//return "FileUplaoded...";
 	//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	//echo $_FILES['file']."<br/>";
 	//echo $_FILES['file']['error']."<br/>";
 	//return;
 	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
+			$categoryId = $_POST['categoryid'];
+			$topicId = $_POST['topicid'];
 			echo $targetDirectory."<br/>";
 			echo basename($_FILES['file']['name'])."<br/>";
-			$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
-			echo $targetFilePath."<br/>";
+			$renamedFileName='paper_'.$topicId.'_'.$categoryId.'pdf';
+			//$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
+			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
+			echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				echo 'File uploaded successfully.';
 			} else {
@@ -175,8 +180,9 @@ $tablename = $_POST["topic"];
 return GetDropDown($tablename,"category").'
 <script>
 $(".category").on("click",function(event){
-                        alert("Category Clicked...");
+                        //alert("Category Clicked...");
 			$("#categoryText").val($(this).attr("id"));
+			dataUp.append("categoryid",$(this).attr("catid"));
                 });
 </script>
 ';
