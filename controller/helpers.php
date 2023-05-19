@@ -1,6 +1,8 @@
 <?php
- function AddSubEntries($subEntries,$mainEntry){
-
+ //function AddSubEntries($subEntries,$mainEntry){
+ function AddSubEntries($associativeSubEntries,$mainEntry){
+	$subEntries = $associativeSubEntries[$mainEntry];
+	$catEntries = $associativeSubEntries["code"];
         $main='<div class="dropdown">
     <button type="button" class="btn btn-primary dropdown-toggle" id="topicDropDown" data-toggle="dropdown">'.
       $mainEntry.'
@@ -8,7 +10,7 @@
         $subMenu='<div class="dropdown-menu">';
         for($i= 0 ; $i < count($subEntries) ; $i++){
            
-           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
 }
         
         $subMenu.='</div>';
@@ -21,7 +23,9 @@
                 $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
                 $obj->Connect();
                 //$valArray = $obj->GetColumnArray("topics","Topic");     
-                $valArray = $obj->GetColumnArray($tablename,$mainEntry);     
+                //$valArray = $obj->GetColumnArray($tablename,$mainEntry);     
+                $valArray = $obj->GetAssociativeArray($tablename);     
+                //return AddSubEntries($valArray[$mainEntry],$mainEntry);
                 return AddSubEntries($valArray,$mainEntry);
                 //return $valArray[0];
         }

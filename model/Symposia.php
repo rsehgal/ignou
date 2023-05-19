@@ -203,6 +203,15 @@ public function GetFieldNames($tableName){
 	}
 }
 
+public function GetAssociativeArray($tablename){
+	$fieldNames = $this->GetFieldNames($tablename);
+	$assArr = array();
+	for($i=0; $i<count($fieldNames) ; $i++){
+		$assArr[$fieldNames[$i]] = $this->GetColumnArray($tablename,$fieldNames[$i]);
+	}
+	return $assArr;
+}
+
 public function GetColumnArray($tablename,$colname){
 	$valArray=[];
 	$query = "select $colname from $tablename";
