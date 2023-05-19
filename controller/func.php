@@ -36,18 +36,25 @@ function Upload(){
 			$topicId = $_POST['topicid'];
 			echo $targetDirectory."<br/>";
 			echo basename($_FILES['file']['name'])."<br/>";
-			$renamedFileName='paper_'.$topicId.'_'.$categoryId.'pdf';
+			//select count(*) as count from contributions where Filename like '%paper_3_1%'			
+				$obj = new DB();
+		                $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+                		$obj->Connect();
+
+			$query='select count(*) as count from contributions where Filename like "%paper_'.$topicId.'_'.$categoryId.'%"';
+				$result=$obj->GetQueryResult($query);
+				$row = $result->fetch_assoc();
+				$count=$row["count"];
+				$count++;
+			$renamedFileName='paper_'.$topicId.'_'.$categoryId.'_'.$count.'.pdf';
 			//$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
 			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
 			echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				echo 'File uploaded successfully.<br/>';
 				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'")';
-				echo $query."<br/>";
-				$obj = new DB();
-		                $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
-                		$obj->Connect();
-				$obj->GetQueryResult($query);
+				//echo $query."<br/>";
+								$obj->GetQueryResult($query);
 			} else {
 			        echo 'Error uploading the file.';
 									        }

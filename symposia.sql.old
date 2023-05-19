@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `Biology`;
 CREATE TABLE `Biology` (
   `uname` varchar(100) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `Biology` (
 
 LOCK TABLES `Biology` WRITE;
 /*!40000 ALTER TABLE `Biology` DISABLE KEYS */;
-INSERT INTO `Biology` VALUES ('admin','Anatomy','a'),('admin','Respiration','b'),('admin','Pathology','c'),('admin','Ortho','d'),('admin','Dental','e'),('admin','Cardiology','f'),('admin','Neurology','g');
+INSERT INTO `Biology` VALUES ('admin','Anatomy',1),('admin','Respiration',2),('admin','Pathology',3),('admin','Ortho',4),('admin','Dental',5),('admin','Cardiology',6),('admin','Neurology',7);
 /*!40000 ALTER TABLE `Biology` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,9 +50,9 @@ DROP TABLE IF EXISTS `Chemistry`;
 CREATE TABLE `Chemistry` (
   `uname` varchar(100) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `Chemistry` (
 
 LOCK TABLES `Chemistry` WRITE;
 /*!40000 ALTER TABLE `Chemistry` DISABLE KEYS */;
-INSERT INTO `Chemistry` VALUES ('admin','Organic Chemistry','a'),('admin','Inorganic Chemistry','b'),('admin','Quantum Chemistry','c');
+INSERT INTO `Chemistry` VALUES ('admin','Organic Chemistry',1),('admin','Inorganic Chemistry',2),('admin','Quantum Chemistry',3);
 /*!40000 ALTER TABLE `Chemistry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,9 +75,9 @@ DROP TABLE IF EXISTS `Mathematics`;
 CREATE TABLE `Mathematics` (
   `uname` varchar(100) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `Mathematics` (
 
 LOCK TABLES `Mathematics` WRITE;
 /*!40000 ALTER TABLE `Mathematics` DISABLE KEYS */;
-INSERT INTO `Mathematics` VALUES ('admin','Geometry','a'),('admin','Trigonometry','b'),('admin','Calculus','c'),('admin','Mensuration','d');
+INSERT INTO `Mathematics` VALUES ('admin','Geometry',1),('admin','Trigonometry',2),('admin','Calculus',3),('admin','Mensuration',4);
 /*!40000 ALTER TABLE `Mathematics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,9 +100,9 @@ DROP TABLE IF EXISTS `Physics`;
 CREATE TABLE `Physics` (
   `uname` varchar(100) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `Physics` (
 
 LOCK TABLES `Physics` WRITE;
 /*!40000 ALTER TABLE `Physics` DISABLE KEYS */;
-INSERT INTO `Physics` VALUES ('admin','Nuclear Physics','a'),('admin','Atomic Physics','b'),('admin','Solid State Physics','c'),('admin','Particle Physics','d');
+INSERT INTO `Physics` VALUES ('admin','Nuclear Physics',1),('admin','Atomic Physics',2),('admin','Solid State Physics',3),('admin','Particle Physics',4);
 /*!40000 ALTER TABLE `Physics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,7 +214,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin','','','',''),('rsehgal','4','6','Test from Cardio in Bio','paper_4_6_1.pdf'),('rsehgal','4','6','Test from Cardio in Bio again','paper_4_6_2.pdf'),('rsehgal','1','4','Test from Particle in physics','paper_1_4_1.pdf'),('rsehgal','D','f','Test from Cadio in Bio','paper_D_f_1.pdf'),('rsehgal','D','f','Test from Cadio in Bio again','paper_D_f_2.pdf');
+INSERT INTO `contributions` VALUES ('admin','','','','');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,9 +289,9 @@ DROP TABLE IF EXISTS `topics`;
 CREATE TABLE `topics` (
   `uname` varchar(100) DEFAULT NULL,
   `Topic` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
+  `code` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,7 +300,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES ('admin','Physics','A'),('admin','Chemistry','B'),('admin','Mathematics','C'),('admin','Biology','D');
+INSERT INTO `topics` VALUES ('admin','Physics',1),('admin','Chemistry',2),('admin','Mathematics',3),('admin','Biology',4);
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-19 13:18:18
+-- Dump completed on 2023-05-18 18:56:04
