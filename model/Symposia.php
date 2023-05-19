@@ -112,10 +112,11 @@ function Menu(){
   <div class="col-8 text-center">
     <h4 class="display-4 font-weight-bolder">'.
       $sympTitle.'
-        <h1>
-        <p  class="small "><br/>'.$sympVenue.', '.$city.'<br/>'.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>
+       <h1> 
+        <p  class="small "><br/>'.$sympVenue.', '.$city.'<br/>';
+//.$parsed_date_from["day"].' '.(new DateTime($sympDateFrom))->format("F").'-'.$parsed_date_to["day"]." ".(new DateTime($sympDateTo))->format("F").", ".$parsed_date_to["year"].'</p>;
 
-        </h1>
+        $result.='</h1>
         </h4>
   </div>
   <div class="col-2 my-auto">
