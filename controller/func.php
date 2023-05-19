@@ -24,6 +24,7 @@ function my_function() {
 }
 
 function Upload(){
+	session_start();
 	//return "FileUplaoded...";
 	//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	//echo $_FILES['file']."<br/>";
@@ -40,7 +41,13 @@ function Upload(){
 			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
 			echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
-				echo 'File uploaded successfully.';
+				echo 'File uploaded successfully.<br/>';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'")';
+				echo $query."<br/>";
+				$obj = new DB();
+		                $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+                		$obj->Connect();
+				$obj->GetQueryResult($query);
 			} else {
 			        echo 'Error uploading the file.';
 									        }
