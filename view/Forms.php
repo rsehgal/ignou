@@ -151,7 +151,7 @@ class Forms{
                 <form method="POST" id="login" class="">';
 
 		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname"){
+			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status"){
 			}else{
 			$formContent.='<div class="form-group">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';

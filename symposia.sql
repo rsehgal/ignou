@@ -204,7 +204,8 @@ CREATE TABLE `contributions` (
   `Topic` varchar(255) DEFAULT NULL,
   `Category` varchar(255) DEFAULT NULL,
   `Title` varchar(500) DEFAULT NULL,
-  `Filename` varchar(255) DEFAULT NULL
+  `Filename` varchar(255) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -214,7 +215,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin','','','',''),('rsehgal','4','6','Test from Cardio in Bio','paper_4_6_1.pdf'),('rsehgal','4','6','Test from Cardio in Bio again','paper_4_6_2.pdf'),('rsehgal','1','4','Test from Particle in physics','paper_1_4_1.pdf'),('rsehgal','D','f','Test from Cadio in Bio','paper_D_f_1.pdf'),('rsehgal','D','f','Test from Cadio in Bio again','paper_D_f_2.pdf');
+INSERT INTO `contributions` VALUES ('admin','','','','',NULL),('rsehgal','A','d','Hello from paritcles in physics','rsehgal_paper_A_d_1.pdf','submitted');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,4 +367,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-19 13:18:18
+-- Dump completed on 2023-05-19 13:33:29

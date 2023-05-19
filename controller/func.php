@@ -46,13 +46,13 @@ function Upload(){
 				$row = $result->fetch_assoc();
 				$count=$row["count"];
 				$count++;
-			$renamedFileName='paper_'.$topicId.'_'.$categoryId.'_'.$count.'.pdf';
+			$renamedFileName=$_SESSION["username"].'_paper_'.$topicId.'_'.$categoryId.'_'.$count.'.pdf';
 			//$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
 			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
 			echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				echo 'File uploaded successfully.<br/>';
-				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'")';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted")';
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
 			} else {
