@@ -34,4 +34,27 @@ class Components{
 
 }
 
+function AuthorList(){
+	$authList = '<div id="original">
+			<table class="table">
+			<tr>
+			<td><input type="text"class="form-control" placeholder="Author Name"/></td>
+			<td><input type="email" class="form-control" placeholder="Author Email"/></td>
+		        <td><button id="remove" class="remove btn btn-danger">Remove</button></td>
+			</tr>
+			</table>
+		    </div>
+		    <button id="copy" class="btn btn-success">Add Author</button>';
+
+		   $authList.='<script>
+			$(document).ready(function() {
+				$("#copy").on("click", function() {
+					var copy = $("#original").clone();
+					copy.insertBefore("#copy");
+				});
+			});
+		    </script>';
+	return $authList;
+}
+
 ?>

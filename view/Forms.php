@@ -181,6 +181,8 @@ class Forms{
 }
 
 		}
+
+		 $formContent.=AuthorList().'<br/><hr/>'; 
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Login</button>
 		</form>
 		<script>
