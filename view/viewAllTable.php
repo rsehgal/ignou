@@ -90,7 +90,7 @@ error_reporting(E_ALL);
 
 include "../model/Symposia.php";
 $obj = new DB();
-$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 $obj->Connect();
 $query='show tables;';
 $result=$obj->GetQueryResult($query);

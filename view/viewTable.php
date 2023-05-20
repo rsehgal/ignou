@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 include "../Symposia.php";
 
 $obj = new DB();
-$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 $obj->Connect();
 //echo $obj->GetTableData('testuser');
 echo $obj->GetTableData('user_credentials');

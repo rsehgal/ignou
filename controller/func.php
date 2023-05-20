@@ -38,7 +38,7 @@ function Upload(){
 			echo basename($_FILES['file']['name'])."<br/>";
 			//select count(*) as count from contributions where Filename like '%paper_3_1%'			
 				$obj = new DB();
-		                $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+		                $obj->Set('localhost','sympadmin','sympadmin@123','symposia');
                 		$obj->Connect();
 
 			$query='select count(*) as count from contributions where Filename like "%paper_'.$topicId.'_'.$categoryId.'%"';
@@ -71,7 +71,7 @@ function Delete(){
 	$query = 'delete from '.$tableName.' where uname="'.$username.'"';
 	echo $query."<br/>";
 	$obj = new DB();
-	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 	$obj->Connect();
 	$obj->GetQueryResult($query);
 	return $obj->GetTableData($tableName);
@@ -80,14 +80,14 @@ function Delete(){
 function ShowTable(){
 	$tableName = $_POST['tablename'];
 	$obj = new DB();
-	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 	$obj->Connect();
 	return $obj->GetTableData($tableName,1,1);
 }
 
 function ServeSignup(){
 		$obj = new DB();
-		$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+		$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 		$obj->Connect();	
  		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
@@ -104,7 +104,7 @@ function ServeSignup(){
 function ServeLogin(){
 	session_start();
 	$obj = new DB();
-	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 	$obj->Connect();
 	
 	$uname=$_POST["username"];
@@ -144,7 +144,7 @@ function Organizing_Committee(){
 function ShowCommittee($comm){
 
 	$obj = new DB();
-	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
 	$obj->Connect();
 	$name = $comm."Name";
 	$affil = $comm."Affil";
@@ -180,7 +180,7 @@ function Upload_Contribution(){
 
 function NewSubmission(){
 	$obj = new DB();
-        $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+        $obj->Set('localhost','sympadmin','sympadmin@123','symposia');
         $obj->Connect();
 	$fieldNames = $obj->GetFieldNames("contributions");
 	//return count($fieldNames);

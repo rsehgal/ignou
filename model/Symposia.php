@@ -84,7 +84,7 @@ function DynamicMenu(){
 
 function Menu(){
 	$obj = new DB();
-	$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
         $obj->Connect();
 	
 
@@ -165,7 +165,7 @@ function __construct() {
   //echo "Constructor called...........<br/>";
   $this->sname='localhost';
   $this->uname='sympadmin';
-  $this->passwd='sympadmin';
+  $this->passwd='sympadmin@123';
   $this->dbname='symposia';    
 }
 

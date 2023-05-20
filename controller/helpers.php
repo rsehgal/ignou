@@ -20,7 +20,7 @@
  function GetDropDown($tablename,$mainEntry){
                 //return "Hello Raman";
                 $obj = new DB();
-                $obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+                $obj->Set('localhost','sympadmin','sympadmin@123','symposia');
                 $obj->Connect();
                 //$valArray = $obj->GetColumnArray("topics","Topic");     
                 //$valArray = $obj->GetColumnArray($tablename,$mainEntry);     
