@@ -37,22 +37,47 @@ class Components{
 function AuthorList(){
 	$authList = '<div id="original">
 			<table class="table">
-			<tr>
+			<tr id="troriginal">
 			<td><input type="text"class="form-control" placeholder="Author Name"/></td>
 			<td><input type="email" class="form-control" placeholder="Author Email"/></td>
-		        <td><button id="remove" class="remove btn btn-danger">Remove</button></td>
+		        <td><button id="0" class="remove btn btn-danger">Remove</button></td>
 			</tr>
 			</table>
 		    </div>
 		    <button id="copy" class="btn btn-success">Add Author</button>';
 
-		   $authList.='<script>
-			$(document).ready(function() {
-				$("#copy").on("click", function() {
-					var copy = $("#original").clone();
-					copy.insertBefore("#copy");
+	$authList.='<script>
+				$(function(){
+				var counter=0;
+				    $(".remove").click(function(e){
+					//alert("My ID : "+$(this).attr("id"));
+					//alert($(this).closest("tr").attr("id"));
+					var parId = $(this).closest("tr").attr("id");
+					var actId = "troriginal";
+					//if((parId.localeCompare(actId))){
+					if((parId===actId)){
+						alert("Cannot remove the first Author.");
+					}else{
+					$(this).closest("tr").remove();
+					}
 				});
+				
+				$("#copy").click( function() {
+                                        counter++;
+                                        alert("Counter : "+counter);
+					var copy = $("#troriginal").clone(true);
+					copy.attr("id",counter);
+                                        copy.insertAfter("#troriginal");
+                                });
+				});
+
+				
+			$(document).ready(function() {
+
+								
+				
 			});
+			
 		    </script>';
 	return $authList;
 }
