@@ -34,6 +34,8 @@ function Upload(){
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
 			$categoryId = $_POST['categoryid'];
 			$topicId = $_POST['topicid'];
+			$authorNamesList=$_POST['authornameslist'];
+			$authorEmailsList=$_POST['authoremailslist'];
 			echo $targetDirectory."<br/>";
 			echo basename($_FILES['file']['name'])."<br/>";
 			//select count(*) as count from contributions where Filename like '%paper_3_1%'			
@@ -52,7 +54,7 @@ function Upload(){
 			echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				echo 'File uploaded successfully.<br/>';
-				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted")';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'")';
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
 			} else {

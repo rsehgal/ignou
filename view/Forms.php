@@ -151,7 +151,7 @@ class Forms{
                 <form method="POST" id="login" class="">';
 
 		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status"){
+			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="author_names_list" ||$fieldNames[$i]=="author_emails_list"){
 			}else{
 			$formContent.='<div class="form-group">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
@@ -183,7 +183,7 @@ class Forms{
 		}
 
 		 $formContent.=AuthorList().'<br/><hr/>'; 
-                 $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Login</button>
+                 $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Submit</button>
 		</form>
 		<script>
 
@@ -206,7 +206,23 @@ class Forms{
 		});
 
 		$("#uploadAndSubmit").on("click",function(e){
+
 			e.preventDefault();
+
+		//Lets try to get the author names and email list.
+		//$("#testUploadAndSubmit").click(function(e){
+                                var authorNameTextBoxValues = $(".authorName").map(function() {
+                                return $(this).val();
+                                }).get();
+                                var authorEmailTextBoxValues = $(".authorEmail").map(function() {
+                                return $(this).val();
+                                }).get();
+				dataUp.append("authornameslist",authorNameTextBoxValues);
+				dataUp.append("authoremailslist",authorEmailTextBoxValues);
+                               alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
+                 //});
+
+
 			if($("#Title").val()==""){
 				alert("Please fill the paper title.");
 				return;

@@ -38,13 +38,14 @@ function AuthorList(){
 	$authList = '<div id="original">
 			<table class="table">
 			<tr id="troriginal">
-			<td><input type="text"class="form-control" placeholder="Author Name"/></td>
-			<td><input type="email" class="form-control" placeholder="Author Email"/></td>
+			<td><input type="text"class="form-control authorname" placeholder="Author Name"/></td>
+			<td><input type="email" class="form-control authoremail" placeholder="Author Email"/></td>
 		        <td><button id="0" class="remove btn btn-danger">Remove</button></td>
 			</tr>
 			</table>
 		    </div>
 		    <button id="copy" class="btn btn-success">Add Author</button>';
+	//$authList.='<button id="testUploadAndSubmit" class="btn btn-warning">Get Author List</button>';
 
 	$authList.='<script>
 				$(function(){
@@ -62,16 +63,28 @@ function AuthorList(){
 					}
 				});
 				
-				$("#copy").click( function() {
+				$("#copy").click( function(e) {
+					e.preventDefault();
                                         counter++;
                                         alert("Counter : "+counter);
 					var copy = $("#troriginal").clone(true);
 					copy.attr("id",counter);
                                         copy.insertAfter("#troriginal");
-                                });
+				});
+				$("#testUploadAndSubmit").click(function(e){
+					e.preventDefault();
+					var authorNameTextBoxValues = $(".authorName").map(function() {
+  					return $(this).val();
+					}).get();
+					var authorEmailTextBoxValues = $(".authorEmail").map(function() {
+  					return $(this).val();
+					}).get();
+
+					alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
+				});	
 				});
 
-				
+					
 			$(document).ready(function() {
 
 								
