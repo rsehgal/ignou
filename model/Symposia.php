@@ -1,4 +1,5 @@
 <?php
+require "../globals.php";
 class Symposium {
   public $variable1;
   private $variable2;
@@ -84,8 +85,8 @@ function DynamicMenu(){
 
 function Menu(){
 	$obj = new DB();
-	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-        $obj->Connect();
+	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+        //$obj->Connect();
 	
 
 	$title='';
@@ -163,10 +164,11 @@ private $conn;
 
 function __construct() {
   //echo "Constructor called...........<br/>";
-  $this->sname='localhost';
+  $this->sname='127.0.0.1';//$DBADDRESS;
   $this->uname='sympadmin';
-  $this->passwd='sympadmin@123';
-  $this->dbname='symposia';    
+  $this->passwd='sympadmin';//$DBPASSWD;
+  $this->dbname='symposia'; 
+  $this->Connect();  
 }
 
 public function Set($servName,$userName,$passWord,$databaseName){

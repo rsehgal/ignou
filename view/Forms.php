@@ -270,8 +270,8 @@ class Forms{
 	public function Contact(){
 	$tableName='contactus';
 	$obj = new DB();
-        $obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-        $obj->Connect();
+        //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+        //$obj->Connect();
 	$result = "<h2><br/>Contact Us<br/></h2>";
         return $result.$obj->GetTableData($tableName);
 

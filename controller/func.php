@@ -38,8 +38,8 @@ function Upload(){
 			echo basename($_FILES['file']['name'])."<br/>";
 			//select count(*) as count from contributions where Filename like '%paper_3_1%'			
 				$obj = new DB();
-		                $obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-                		$obj->Connect();
+		                //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+                		//$obj->Connect();
 
 			$query='select count(*) as count from contributions where Filename like "%paper_'.$topicId.'_'.$categoryId.'%"';
 				$result=$obj->GetQueryResult($query);
@@ -71,8 +71,8 @@ function Delete(){
 	$query = 'delete from '.$tableName.' where uname="'.$username.'"';
 	echo $query."<br/>";
 	$obj = new DB();
-	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-	$obj->Connect();
+	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	//$obj->Connect();
 	$obj->GetQueryResult($query);
 	return $obj->GetTableData($tableName);
 }
@@ -80,15 +80,15 @@ function Delete(){
 function ShowTable(){
 	$tableName = $_POST['tablename'];
 	$obj = new DB();
-	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-	$obj->Connect();
+	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	//$obj->Connect();
 	return $obj->GetTableData($tableName,1,1);
 }
 
 function ServeSignup(){
 		$obj = new DB();
-		$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-		$obj->Connect();	
+		//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+		//$obj->Connect();	
  		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$email=$_POST['email'];
@@ -104,8 +104,8 @@ function ServeSignup(){
 function ServeLogin(){
 	session_start();
 	$obj = new DB();
-	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-	$obj->Connect();
+	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	//$obj->Connect();
 	
 	$uname=$_POST["username"];
 	$passwd=$_POST["password"];
@@ -144,8 +144,8 @@ function Organizing_Committee(){
 function ShowCommittee($comm){
 
 	$obj = new DB();
-	$obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-	$obj->Connect();
+	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+	//$obj->Connect();
 	$name = $comm."Name";
 	$affil = $comm."Affil";
 	$query = "select $name,$affil from committees";
@@ -180,8 +180,8 @@ function Upload_Contribution(){
 
 function NewSubmission(){
 	$obj = new DB();
-        $obj->Set('localhost','sympadmin','sympadmin@123','symposia');
-        $obj->Connect();
+        //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+        //$obj->Connect();
 	$fieldNames = $obj->GetFieldNames("contributions");
 	//return count($fieldNames);
 
