@@ -138,7 +138,7 @@ $('#Poster').click(function(){
 });
 
 });
-
+var dataUp=new FormData();
 </script>
 
 <style>
