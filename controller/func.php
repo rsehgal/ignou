@@ -357,6 +357,10 @@ function Home(){
 return NASI();
 }
 
+function Accommodation(){
+return Message("Will be available soon.","alert-warning");
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {

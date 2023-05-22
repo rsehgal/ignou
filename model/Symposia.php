@@ -153,6 +153,7 @@ function Menu(){
 	$this->AddMenuEntry("Signup").
 	$this->AddMenuEntry("Login").
 	$this->AddMenuEntry("Submissions").
+	$this->AddMenuEntry("Accommodation").
 	//$this->AddMenuEntry("Upload_Contribution").
 	$this->AddMenuEntry("Contact").'
       </ul>
