@@ -52,6 +52,27 @@ $('.nasiMenu').on('click',function(event){
 
 });
 
+$('.Submissions').on('click',function(event){
+	//alert("Committees Menu clicked.......");
+	event.preventDefault();
+	var funcName="";
+	var data={};
+	var funcName=$(this).attr("id");
+	//alert(funcName);
+	data['function_name']=funcName;
+	console.log(data);
+
+	$.ajax({
+	    url: "../controller/func.php",
+	    method: "POST",
+	    data : data,
+	    success: function(response) {
+	    $("#result").html(response);
+	    }
+	  });
+
+});
+
 $('.Committees').on('click',function(event){
 	//alert("Committees Menu clicked.......");
 	event.preventDefault();

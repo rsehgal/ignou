@@ -203,6 +203,55 @@ $(".category").on("click",function(event){
 </script>
 ';
 }
+/*
+function View_Contribution(){
+return "Returned from View_Contribution...";
+}
+ */
+function View_Contribution(){
+	session_start();
+	$query = 'select * from contributions where uname="'.$_SESSION["username"].'"';
+ 	//return $query;	
+	$obj = new DB();
+	$result = $obj->GetQueryResult($query);
+	//return $query;
+	
+	$retValue="";
+	while($row = $result->fetch_assoc()){
+		//$retValue.=$row["Topic"]." : ".$row["Category"]."<br/>";
+		//$retValue.="Hello <br/>";
+		$queryTopic=$row["Topic"];
+		$queryCategory=$row["Category"];
+		//$retValue.=GetTopic($queryTopic)." : ";
+		//$retValue.=GetCategory($queryTopic,$queryCategory);
+		$selectedTopic=GetTopic($queryTopic);
+		$retValue.=$selectedTopic." : ";
+		$retValue.=GetCategory($selectedTopic,$queryCategory);
+		$retValue.="<br/>";
+	}
+	return $retValue;
+	
+}
+
+function GetTopic($topic){
+	$query='select topic from topics where code="'.$topic.'"';
+	$obj = new DB();
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	return $row["topic"];
+}
+
+function GetCategory($topic,$category){
+	$query='select category from '.$topic.' where code="'.$category.'"';
+	//return $query;
+	
+	$obj = new DB();
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	return $row["category"];
+	
+
+}
 
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];

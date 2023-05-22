@@ -186,7 +186,7 @@ class Forms{
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Submit</button>
 		</form>
 		<script>
-
+		$(function(){
 		$(".custom-file-input").on("change",function(e){
 			//alert("file selected...");
 			var fileName = e.target.files[0].name;
@@ -194,15 +194,17 @@ class Forms{
 			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 		});	
 	
-		var dataUp=new FormData();
+		//var dataUp=new FormData();
 		$("#uploadFile").on("change",function(){
 		//alert("Symp for submit clicke....");
 		var fileInput = document.getElementById($(this).attr("id"));
 		alert(fileInput.files[0].name); 
-		console.log(fileInput);
+		//console.log(fileInput);
 		dataUp.append("file",fileInput.files[0]);
 		dataUp.append("loc",$(this).attr("loc"));
 		dataUp.append("function_name","Upload");
+		console.log("-----------------");
+		console.log(dataUp);
 		});
 
 		$("#uploadAndSubmit").on("click",function(e){
@@ -251,7 +253,6 @@ class Forms{
 
 		});
 	
-		
 		$(".topic").on("click",function(event){
 		//alert("Topic clicked.......");
 		$("#topicText").val($(this).attr("id"));
@@ -275,6 +276,8 @@ class Forms{
 
 		
 });
+
+});		
 		</script>
         </div><br/>';
 
