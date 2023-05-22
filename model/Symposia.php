@@ -1,5 +1,6 @@
 <?php
 require "../globals.php";
+//require "../controller/helpers.php";
 class Symposium {
   public $variable1;
   private $variable2;
@@ -29,7 +30,7 @@ function AddMenuEntry($entry){
 	if($entry=="About"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-	$subentries=array("NASI","Poster","Topic","Venue");
+	$subentries=array("Poster","Topic","Venue"); //NASI //removed entry
 	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
@@ -158,6 +159,7 @@ function Menu(){
     </div>
   </nav>
 ';
+//$result.=HomeNASI();
 
 return $result;
 }

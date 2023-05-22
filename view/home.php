@@ -16,6 +16,20 @@ session_start();
 
 <script>
 $(document).ready(function(){
+//--------------------------------------------------
+//this block is just to read the home text using ajax
+var dataHome={};
+dataHome['function_name']="NASI";
+$.ajax({
+            url: "../controller/func.php",
+            method: "POST",
+            data : dataHome,
+            success: function(response) {
+            $("#result").html(response);
+            }
+          });
+//-------------------------------------------------
+
 $('.signupForm').each(function() {
   //Perform operations on each element here
 	   console.log($(this).attr("id")); // Example operation: log the text content of each element
@@ -32,6 +46,8 @@ $('.sympFormSubmit').on('submit',function(event){
 	//alert($(this).attr('id'));
 });
  */
+
+
 $('.nasiMenu').on('click',function(event){
 	//alert("Nasi Menu clicked.......");
 	event.preventDefault();
@@ -153,6 +169,7 @@ var dataUp=new FormData();
 </head>
 <body>
 <?php
+//require_once "../controller/helpers.php";
 //$_SESSION["loggedin"]=TRUE;
 //$_SESSION["username"]="ABCD";
 //session_write_close();
@@ -164,6 +181,22 @@ $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='result' ></div>";
+//echo HomeNASI();
+
+
+/*echo "<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+<h3>The <raman class='text-primary font-weight-bold'>National Academy of Sciences, India </raman> (initially called “The Academy of Sciences of United Provinces of Agra and Oudh”) was founded in the year 1930, with the objectives to provide a national forum for the publication of research work carried out by Indian scientists and to provide opportunities for exchange of views among them. 
+<br/><br/><p><raman class='text-primary font-weight-bold'>93<sup>rd</sup></raman> Annual Session  along with the scientific sessions on Physical and Biological sciences will be held from <raman class='text-primary font-weight-bold'>03 Dec. to 05 Dec 2023</raman> at  
+<raman class='font-weight-bold'>DAE Convention Centre, Bhabha Atomic Research Centre, Mumbai.</raman>
+<br/>
+<br/>
+The Scientific Sessions will be held in two sections. The scientific papers are presented by selected researchers/scientists in scientific sessions, for which prior submission of the Abstract(s)/Paper(s) is necessary .
+</h3>
+</div></div>
+";
+*/
+
 //if($_SESSION["loggedin"])
 //echo "<br/><div id='sessionDiv'>user ".$_SESSION["username"]." already logged in.</div> <br/>";
 /*

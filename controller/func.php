@@ -1,7 +1,7 @@
 <?php
 require "../model/Symposia.php";
 require "../view/Forms.php";
-
+require_once "helpers.php";
 
 function Contact(){
 $forms = new Forms();
@@ -337,7 +337,7 @@ function NASI(){
 //return "<div class='d-flex justify-content-center'>
 //	<div class='w-75 p-3 bg-success'>
 
-return "<hr/><br/><div class='align-items-center justify-content-center'>
+/*return "<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 <h3>The <raman class='text-primary font-weight-bold'>National Academy of Sciences, India </raman> (initially called “The Academy of Sciences of United Provinces of Agra and Oudh”) was founded in the year 1930, with the objectives to provide a national forum for the publication of research work carried out by Indian scientists and to provide opportunities for exchange of views among them. 
 <br/><br/><p><raman class='text-primary font-weight-bold'>93<sup>rd</sup></raman> Annual Session  along with the scientific sessions on Physical and Biological sciences will be held from <raman class='text-primary font-weight-bold'>03 Dec. to 05 Dec 2023</raman> at  
@@ -348,6 +348,13 @@ The Scientific Sessions will be held in two sections. The scientific papers are 
 </h3>
 </div></div>
 ";
+*/
+return HomeNASI();
+//return "Hello";
+}
+
+function Home(){
+return NASI();
 }
 
 if (isset($_POST['function_name'])) {
