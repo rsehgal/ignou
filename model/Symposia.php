@@ -73,10 +73,10 @@ function AddSubEntries($subEntries,$mainEntry){
 	for($i= 0 ; $i < count($subEntries) ; $i++){
 
 		if($subEntries[$i]=="Poster"){
-        	$subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	$subMenu.='<a class="dropdown-item menuCommon '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
         	//$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="../docs/poster.pdf"'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
 		}else{
-        	$subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	$subMenu.='<a class="dropdown-item menuCommon '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
 }
 	}
 	$subMenu.='</div>';
@@ -89,6 +89,7 @@ function DynamicMenu(){
 }
 
 function Menu(){
+	session_start();
 	$obj = new DB();
 	//$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         //$obj->Connect();
@@ -109,6 +110,9 @@ function Menu(){
 	$parsed_date_from = date_parse($sympDateFrom);
 	$parsed_date_to = date_parse($sympDateTo);
 	$city = $obj->GetParameter(1,"city");
+	$uploadFolder = $obj->GetParameter(1,"UploadLocation");
+	$_SESSION["uploadlocation"]=$uploadFolder;
+	
 
 	$result = $title.'<br/>
 <div class="row bg-warning">

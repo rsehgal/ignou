@@ -202,12 +202,12 @@ class Forms{
 		//console.log(fileInput);
 		dataUp.append("file",fileInput.files[0]);
 		dataUp.append("loc",$(this).attr("loc"));
-		dataUp.append("function_name","Upload");
 		console.log("-----------------");
 		console.log(dataUp);
 		});
 
 		$("#uploadAndSubmit").on("click",function(e){
+		dataUp.append("function_name","Upload");
 
 			e.preventDefault();
 
@@ -221,7 +221,7 @@ class Forms{
                                 }).get();
 				dataUp.append("authornameslist",authorNameTextBoxValues);
 				dataUp.append("authoremailslist",authorEmailTextBoxValues);
-                               alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
+                               //alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
                  //});
 
 
@@ -238,7 +238,7 @@ class Forms{
 
 
 			dataUp.append("title",$("#Title").val());
-			alert("Upload and Submit clicked...");
+			//alert("Upload and Submit clicked...");
 			console.log(dataUp);
 			$.ajax({
 				url: "../controller/func.php",
@@ -247,7 +247,8 @@ class Forms{
 				processData : false,
 				contentType : false,
 				success: function(response) {
-					$("#uploadStatus").html(response);
+					//$("#uploadStatus").html(response);
+					$("#result").html(response);
 				}
 			});
 

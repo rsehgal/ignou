@@ -52,7 +52,8 @@ $('.nasiMenu').on('click',function(event){
 
 });
 
-$('.Submissions').on('click',function(event){
+//$('.Submissions').on('click',function(event){
+$('.menuCommon').on('click',function(event){
 	//alert("Committees Menu clicked.......");
 	event.preventDefault();
 	var funcName="";
@@ -130,12 +131,12 @@ $.ajax({
   });
 });
 
-$('#Poster').click(function(){
+/*$('#Poster').click(function(){
 
     var iframe = $('<iframe>');
     iframe.attr('src','../docs/poster.pdf');
     $('#result').html(iframe);
-});
+});*/
 
 });
 var dataUp=new FormData();
