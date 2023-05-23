@@ -183,6 +183,7 @@ require "Forms.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
+echo "<div id='refereeUpdateStatus' ></div>";
 echo "<div id='result' ></div>";
 //echo HomeNASI();
 

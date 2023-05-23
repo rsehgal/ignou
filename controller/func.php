@@ -24,6 +24,16 @@ function my_function() {
   $data = array("Hello", "Ha ha aha d");
   return json_encode(array("data" => implode(" ", $data)));
 }
+function UpdateStatus(){
+	$obj = new DB();
+	$remarks=$_POST["remarks"];
+	$status=$_POST["decision"];
+	$filename=$_POST["filename"];
+	$query = "update contributions set remarks='".$remarks."', status='".$status."' where Filename='".$filename."'";
+	$result = $obj->GetQueryResult($query);
+	return MessageAutoClose("Status updated....","alert-warning");
+}
+
 
 function Upload(){
 	session_start();
@@ -57,7 +67,7 @@ function Upload(){
 			//echo "Taget file path :".$targetFilePath."<br/>";
 			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
 				//echo 'File uploaded successfully.<br/>';
-				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'")';
+				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","","")';
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -141,7 +151,12 @@ function ServeLogin(){
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
+		if($_SESSION["logintype"]=="Author")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
+
+		if($_SESSION["logintype"]=="Referee")
+		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
+
 		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
 	}
 	else
@@ -205,6 +220,14 @@ function Message($message,$colorClass="alert-danger"){
 return "<h3 class='alert ".$colorClass." text-center' role='alert'>".$message."</h3><br/>";
 
 }
+
+function MessageAutoClose($message,$colorClass="alert-danger"){
+return "<h3 class='alert auto-close ".$colorClass." text-center' role='alert'>".$message."</h3><br/>
+<script>$('.alert-autoclose').delay(3000).fadeOut('slow');</script>
+";
+
+}
+
 function NewSubmission(){
 	$obj = new DB();
         //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
@@ -255,7 +278,7 @@ function Resubmit_Contribution(){
 	return Message("Will be available soon.","alert-warning");
 }
 function View_Contribution(){
-	return Message("Will be available soon.","alert-warning");
+	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	if(isset($_SESSION["loggedin"])){
 	$submitterName = GetSubmitterName();
@@ -305,6 +328,118 @@ function View_Contribution(){
 	}
 	//return $retValue;
 	return $retTable;
+}else{
+
+		return Message("Please login to view your submissions.");
+}
+	
+}
+function Referee_UpdatePaperStatus(){
+	//return Message("Will be available soon.","alert-warning");
+	session_start();
+	if(isset($_SESSION["loggedin"])){
+	//$submitterName = GetSubmitterName();
+	$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+ 	//return $query;	
+	$obj = new DB();
+	$result = $obj->GetQueryResult($query);
+	//return $query;
+	
+	$retValue="";
+	$retTable='<table class="table table-striped table-bordered">';
+	$retTable.='<tr><td>uname</th>
+			<th>Name</th>
+			<th>Title</th>
+			<th>Topic</th>
+			<th>Category</th>
+			<th>Uploaded File</th>
+			<th>Referee Remarks</th>
+			<th>Referee Decision</th>
+			</tr>';
+	$decArray=array();
+	$decArray["Decision"]=array("Oral","Poster","Rejected");
+	while($row = $result->fetch_assoc()){
+		$retTable.='<tr>';
+		//$retValue.=$row["Topic"]." : ".$row["Category"]."<br/>";
+		//$retValue.="Hello <br/>";
+		$authorName=$row["uname"];
+		$paperTitle=$row["Title"];
+		$authorNamesList=$row["AuthorNamesList"];
+		$authorEmailsList=$row["AuthorEmailsList"];
+		$fileName=$row["Filename"];
+		$queryTopic=$row["Topic"];
+		$status=$row["status"];
+		$remarks=$row["remarks"];
+		$queryCategory=$row["Category"];
+
+		$updateButtonId=preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
+		
+
+		//$retValue.=GetTopic($queryTopic)." : ";
+		//$retValue.=GetCategory($queryTopic,$queryCategory);
+		$selectedTopic=GetTopic($queryTopic);
+		$retValue.=$selectedTopic." : ";
+		$selectedCategory=GetCategory($selectedTopic,$queryCategory);
+		$retValue.=$selectedCategory;
+		$retValue.="<br/>";
+		$retTable.='<td>'.$authorName.'</td>';
+		//$retTable.='<td>'.$submitterName.'</td>';
+		$retTable.='<td>'.$paperTitle.'</td>';
+		$retTable.='<td>'.$selectedTopic.'</td>';
+		$retTable.='<td>'.$selectedCategory.'</td>';
+		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
+		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId).'
+				<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
+		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
+		$retTable.='</tr>';
+	}
+
+	$associatedJs='<script> 
+			$(function(){
+				$(".alert-autoclose").delay(5000).fadeOut("slow");
+			});
+			var functionName="";
+			var data={};
+			$(".updateDecision").click(function(e){
+
+				
+				e.preventDefault();
+				//alert("MyID : "+$(this).attr("id"));
+				var decisionTextId = "#decisionText_"+$(this).attr("id");
+				var remarksTextId = "#remarks_"+$(this).attr("id");
+				//alert($(decisionTextId).val());
+				//alert($(remarksTextId).val());
+				functionName=$(this).attr("functionName");
+				data["function_name"]=functionName;
+				data["remarks"]=$(remarksTextId).val();
+				data["decision"]=$(decisionTextId).val();
+				data["filename"]=$(this).attr("id")+".pdf";
+
+				    $.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : data,
+				    success: function(response) {
+					//alert("response");
+				    	$("#refereeUpdateStatus").html(response);
+				    }
+				    });
+
+			});
+			$(".Decision").click(function(e){
+				e.preventDefault();
+				var textBoxId="#decisionText_"+$(this).attr("buttonid");
+				//alert(textBoxId);
+				$(textBoxId).val($(this).attr("value"));
+				$(textBoxId).attr("value",$(this).attr("value"));
+				
+			});
+
+			
+			</script>';
+	//return $retValue;
+	return $retTable.$associatedJs;
 }else{
 
 		return Message("Please login to view your submissions.");

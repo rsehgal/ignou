@@ -30,6 +30,22 @@
                 //return $valArray[0];
         }
 
+ function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId){
+	$subEntries = $associativeSubEntries[$mainEntry];
+	$catEntries = $associativeSubEntries["code"];
+        $main='<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" id="topicDropDown" data-toggle="dropdown">'.
+      $mainEntry.'
+    </button>';
+        $subMenu='<div class="dropdown-menu">';
+        for($i= 0 ; $i < count($subEntries) ; $i++){
+           
+           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'" value="'.$subEntries[$i].'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
+}
+        
+        $subMenu.='</div>';
+        return $main.$subMenu."</div>";
+}
 
 function HomeNASI(){
 
