@@ -8,9 +8,11 @@ $forms = new Forms();
   return $forms->Contact();
 //return "Returned from Ajax Contat...";
 }
-function Login(){
+function Login($loginType="Author"){
+session_start();
+$_SESSION["logintype"]=$loginType;
 $forms = new Forms();
-  return $forms->Login();
+  return $forms->Login($loginType);
 }
 function Signup(){
 $forms = new Forms();
@@ -104,6 +106,14 @@ function ServeSignup(){
 		echo "$username : $password : $firstname : $lastname : $email";	
                return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 }
+function AuthorLogin(){
+	//return "Author login";
+	return Login();		
+}
+
+function RefereeLogin(){
+	return Login("Referee");
+}
 
 function ServeLogin(){
 	session_start();
@@ -114,17 +124,24 @@ function ServeLogin(){
 	$uname=$_POST["username"];
 	$passwd=$_POST["password"];
 
-	
-	$query = "select passwd from user_credentials where uname='".$uname."'";
+        $tableToQuery="";
+	if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Author")	
+		$tableToQuery = "user_credentials";
+	if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Referee")	
+		$tableToQuery = "refereeList";
+
+	$query = "select passwd from ".$tableToQuery." where uname='".$uname."'";
 	//return $query;
+	//return $uname;
 	$result = $obj->GetQueryResult($query);
 	
 	$row = $result->fetch_assoc();
 	//return "Hello Raman";
+	//return $row["passwd"]." : ".$passwd;
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
-		return "<div><h3 class='alert alert-success' role='alert'> Welcome User : ".$uname."</h3><br/>";
+		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
 		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
 	}
 	else
@@ -169,7 +186,7 @@ function ShowCommittee($comm){
 }
 
 function Upload_Contribution(){
-	return Message("Will be available soon.","alert-warning");
+	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	$returnVal="";
 	if(isset($_SESSION["loggedin"])){

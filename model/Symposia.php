@@ -42,6 +42,11 @@ function AddMenuEntry($entry){
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         $subentries=array("Upload_Contribution", "Resubmit_Contribution", "View_Contribution");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
+	}elseif($entry=="Login"){
+	$menuEntry= '<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+        $subentries=array("AuthorLogin","RefereeLogin");
+        $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}else{
 	/*$menuEntry= '<li class="nav-item">
           <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';*/
@@ -197,7 +202,7 @@ public function Connect(){
 	//echo "$this->sname : $this->uname : $this->passwd : $this->dbname <br/>";
 	$this->conn = new mysqli($this->sname, $this->uname, $this->passwd, $this->dbname);
 	// Check for connection errors
-	if ($conn->connect_error) {
+	if ($this->conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
