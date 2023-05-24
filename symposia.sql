@@ -219,7 +219,7 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin','','','','',NULL,NULL,NULL,NULL,NULL),('rsehgal','A','d','Hello from paritcles in physics','rsehgal_paper_A_d_1.pdf','submitted',NULL,NULL,NULL,NULL),('rsehgal','C','c','Hello from Calculus in math','rsehgal_paper_C_c_1.pdf','Poster','Raman Sehgal,Shachi Sehgal,Ayush Sehgal','raman.sehgal@gmail.com,shachi.sehgal@gmail.com,ayush.sehgal@gmail.com','RSE','I thinks it is a very good work. Keep on doing like this'),('rsehgal','D','a','hello from ana in bio','rsehgal_paper_D_a_1.pdf','submitted','Raman Sehgal','raman.sehgal@gmail.com',NULL,NULL),('rsehgal','A','c','Hello from SSP ','rsehgal_paper_A_c_1.pdf','Rejected','Raman','raman.sehgal','RSE','Try to do it in a better way, and better luck next time');
+INSERT INTO `contributions` VALUES ('admin','','','','',NULL,NULL,NULL,NULL,NULL),('rsehgal','A','d','Hello from paritcles in physics','rsehgal_paper_A_d_1.pdf','submitted',NULL,NULL,NULL,NULL),('rsehgal','C','c','Hello from Calculus in math','rsehgal_paper_C_c_1.pdf','Rejected','Raman Sehgal,Shachi Sehgal,Ayush Sehgal','raman.sehgal@gmail.com,shachi.sehgal@gmail.com,ayush.sehgal@gmail.com','RSE','I thinks it is a very good work. Keep on doing like this'),('rsehgal','D','a','CHANGE TO CHANGE THE TITLE AND FILEhello from ana in bio','rsehgal_paper_D_a_1.pdf','submitted','AYUSH SEHGAL,ARYAN SEHGAL','AYUSH.SEHGAL@GMAIL.COM,ARYAN.SEHGAL@GMAIL.COM',NULL,NULL),('rsehgal','A','c','Hello from SSP ','rsehgal_paper_A_c_1.pdf','Rejected','Raman','raman.sehgal','RSE','Try to do it in a better way, and better luck next time');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,4 +397,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-23 18:09:43
+-- Dump completed on 2023-05-24 15:16:03

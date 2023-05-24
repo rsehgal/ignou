@@ -80,6 +80,57 @@ function Upload(){
 	//}
 }
 
+function ResubmitUpload(){
+	session_start();
+	//return "FileUplaoded...";
+	//if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	//echo $_FILES['file']."<br/>";
+	//echo $_FILES['file']['error']."<br/>";
+	//return;
+	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
+			$categoryId = $_POST['categoryid'];
+			$topicId = $_POST['topicid'];
+			$authorNamesList=$_POST['authornameslist'];
+			$authorEmailsList=$_POST['authoremailslist'];
+			$actualFileName = $_POST['filename'];
+			//echo $targetDirectory."<br/>";
+			//echo basename($_FILES['file']['name'])."<br/>";
+
+			//select count(*) as count from contributions where Filename like '%paper_3_1%'			
+				$obj = new DB();
+		                //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
+                		//$obj->Connect();
+
+			/*$query='select count(*) as count from contributions where Filename like "%paper_'.$topicId.'_'.$categoryId.'%"';
+				$result=$obj->GetQueryResult($query);
+				$row = $result->fetch_assoc();
+				$count=$row["count"];
+				$count++;*/
+			//$renamedFileName=$_SESSION["username"].'_paper_'.$topicId.'_'.$categoryId.'_'.$count.'.pdf';
+			//$targetFilePath = $targetDirectory . basename($_FILES['file']['name']); // Get the file path
+
+			$renamedFileName = $actualFileName;
+			$targetFilePath = $targetDirectory.$renamedFileName; // Get the file path
+			//echo "Taget file path :".$targetFilePath."<br/>";
+			if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFilePath)) {
+				//echo 'File uploaded successfully.<br/>';
+				//$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","","")';
+
+				$query = 'update contributions set Title="'.$_POST["title"].'" , AuthorNamesList="'.$authorNamesList.'" , AuthorEmailsList="'.$authorEmailsList.'" where FileName="'.$actualFileName.'"';
+				//echo $query."<br/>";
+				//return $query;
+								$obj->GetQueryResult($query);
+				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
+			} else {
+			        echo Message('Error uploading the file.','alert-danger');
+									        }
+	} else {
+		echo Message('No file uploaded.','alert-danger');
+		}
+	//}
+}
+
 function Delete(){
 	$username=$_POST['username'];
 	$tableName = $_POST['tablename'];
@@ -298,6 +349,7 @@ function View_Contribution(){
 			<th>Author names</th>
 			<th>Author Emails</th>
 			<th>Uploaded File</th>
+			<th>Update/Resubmit</th>
 			</tr>';
 	while($row = $result->fetch_assoc()){
 		$retTable.='<tr>';
@@ -324,10 +376,41 @@ function View_Contribution(){
 		$retTable.='<td>'.$authorNamesList.'</td>';
 		$retTable.='<td>'.$authorEmailsList.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
+		$retTable.='<td><input type="button" class="btn form-control resubmit btn-primary" value="Resubmit" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="PopulateResubmissionForm"/></td>';
 		$retTable.='</tr>';
+
+			
+		//	return $retTable;//.=$associatedJs;
+
 	}
+
+		$associatedJs='
+					<script>
+					$(".resubmit").on("click",function(event){
+			//alert("Nasi Menu clicked.......");
+			event.preventDefault();
+			var data={};
+			var funcName=$(this).attr("functionname");
+			//alert(funcName);
+			data["function_name"]=funcName;
+			data["filename"]=$(this).attr("filename");
+			data["uname"]=$(this).attr("uname");
+			//console.log(data);
+			$.ajax({
+			    url: "../controller/func.php",
+			    method: "POST",
+			    data : data,
+			    success: function(response) {
+			    $("#result").html(response);
+			    }
+			  });
+
+		     });
+			</script>
+			';		
+
 	//return $retValue;
-	return $retTable;
+	return $retTable.$associatedJs;
 }else{
 
 		return Message("Please login to view your submissions.");
@@ -348,13 +431,13 @@ function Referee_UpdatePaperStatus(){
 	$retValue="";
 	$retTable='<table class="table table-striped table-bordered">';
 	$retTable.='<tr><td>uname</th>
-			<th>Name</th>
 			<th>Title</th>
 			<th>Topic</th>
 			<th>Category</th>
 			<th>Uploaded File</th>
 			<th>Referee Remarks</th>
 			<th>Referee Decision</th>
+			<th>Update Status</th>
 			</tr>';
 	$decArray=array();
 	$decArray["Decision"]=array("Oral","Poster","Rejected");
@@ -511,6 +594,141 @@ return NASI();
 
 function Accommodation(){
 return Message("Will be available soon.","alert-warning");
+}
+
+function PopulateResubmissionForm(){
+$fileName = $_POST["filename"];
+$uname = $_POST["uname"];
+$query = 'select * from contributions where uname="'.$uname.'" and Filename="'.$fileName.'"';
+$obj = new DB();
+$result=$obj->GetQueryResult($query);
+$row=$result->fetch_assoc();
+
+//$loc="/home/nasiin/public_html/nasi2023/Uploads/";
+$loc="/var/www/html/Symposia/Uploads/";
+$filename=$row["Filename"];
+
+$selectedTopic=GetTopic($row["Topic"]);
+$selectedCategory=GetCategory($selectedTopic,$row["Category"]);
+//return $query;
+$fieldNames=array("Topic","Category","Title","Filename");
+
+$formContent='<br/><div class="container">
+                <h2>Resubmit your contribution</h2>
+                <form method="POST" id="login" class="">';
+
+for($i=0 ; $i<count($fieldNames) ; $i++){
+$formContent.='<div class="form-group">
+                                <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
+
+	if($fieldNames[$i]=="Filename"){
+		$fileComponent='<div class="custom-file mb-3">
+	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="/var/www/html/Symposia/Uploads/" name="uploadFile">
+      		<label class="custom-file-label" for="uploadFile">Choose file</label>
+    	</div>';
+	 $formContent.=$fileComponent;
+	}else{
+		$code="";
+		$value=$row[$fieldNames[$i]];
+		$code=$value;
+
+		if($fieldNames[$i]=="Topic")
+		$value=$selectedTopic;
+		
+		
+		if($fieldNames[$i]=="Category")
+		$value=$selectedCategory;
+
+
+		if($fieldNames[$i]=="Topic" || $fieldNames[$i]=="Category"){
+			
+			$formContent.='
+                                <input type="text" class="form-control" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$value.'" code="'.$code.'" required readonly>
+                        </div>
+			<div id="uploadStatus" ></div>
+';
+		}else{
+		$formContent.='
+                              
+                                <input type="text" class="form-control" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$value.'" required >
+                        </div><div id="uploadStatus"></div>
+';
+		}
+	}
+}
+
+		$formContent.=AuthorList().'<br/><hr/>';
+                 $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit" loc="'.$loc.'" filename="'.$filename.'">Submit</button>';
+
+
+	$associatedJs = '<script>
+			$(function(){
+			$(".custom-file-input").on("change",function(e){
+				//alert("file selected...");
+				var fileName = e.target.files[0].name;
+				//alert(fileName);
+				$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+			}); 
+			});
+
+			$("#uploadFile").on("change",function(){
+			//alert("Symp for submit clicke....");
+			var fileInput = document.getElementById($(this).attr("id"));
+			alert(fileInput.files[0].name); 
+			//console.log(fileInput);
+			dataUp.append("file",fileInput.files[0]);
+			//dataUp.append("loc",$(this).attr("loc"));
+			//console.log("-----------------");
+                	//console.log(dataUp);
+                	});
+
+
+			$("#uploadAndSubmit").on("click",function(e){
+	                dataUp.append("function_name","ResubmitUpload");
+			dataUp.append("topicid",$("#Topic").attr("code"));
+			dataUp.append("categoryid",$("#Category").attr("code"));
+			dataUp.append("loc",$(this).attr("loc"));
+			dataUp.append("filename",$(this).attr("filename"));
+
+                        e.preventDefault();
+
+               		//Lets try to get the author names and email list.
+                          var authorNameTextBoxValues = $(".authorName").map(function() {
+                          return $(this).val();
+                          }).get();
+                          var authorEmailTextBoxValues = $(".authorEmail").map(function() {
+                          return $(this).val();
+                          }).get();
+                          dataUp.append("authornameslist",authorNameTextBoxValues);
+                          dataUp.append("authoremailslist",authorEmailTextBoxValues);
+                         //alert(authorNameTextBoxValues+" : "+authorEmailTextBoxValues);
+
+
+                        if($("#Title").val()==""){
+                                alert("Please fill the paper title.");
+                                return;
+                        }
+
+                        dataUp.append("title",$("#Title").val());
+                        //alert("Upload and Submit clicked...");
+                        console.log(dataUp);
+                        $.ajax({
+                                url: "../controller/func.php",
+                                method: "POST",
+                                data : dataUp,
+                                processData : false,
+                                contentType : false,
+                                success: function(response) {
+                                        //$("#uploadStatus").html(response);
+                                        $("#result").html(response);
+                                }
+                        });
+
+                });
+
+		</script>';
+
+	return $formContent.$associatedJs;
 }
 
 if (isset($_POST['function_name'])) {

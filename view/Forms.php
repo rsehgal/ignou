@@ -151,7 +151,7 @@ class Forms{
                 <form method="POST" id="login" class="">';
 
 		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList"){
+			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
 			}else{
 			$formContent.='<div class="form-group">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
