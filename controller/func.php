@@ -731,6 +731,133 @@ $formContent.='<div class="form-group">
 	return $formContent.$associatedJs;
 }
 
+function DAECC(){
+//return "DAECC cCallec....";
+$retVal = Message("DAECC Guest House","alert-success");
+
+$images='<div class="container">
+  <div class="row">
+    <div class="col-md-6 px-0">
+	<img src="../images/daecc1.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 px-0">
+	<img src="../images/daecc2.png"  class="img-fluid"/>
+    </div>
+    </div>
+<div class="row">
+     <div class="col-md-6 px-0">
+	<img src="../images/daecc3.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-4 px-0">
+	<img src="../images/daecc4.png"  class="img-fluid"/>
+    </div>
+
+  </div>
+<div class="row">
+     <div class="col-md-6 px-0">
+	<img src="../images/daecc6.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 px-0">
+	<img src="../images/daecc7.png"  class="img-fluid"/>
+    </div>
+
+  </div>
+
+</div>';
+$retVal.=$images;
+return $retVal;
+}
+
+function PGHostel(){
+//return "PGHOstel..";
+$retVal = Message("Postgraduate Hostel","alert-success");
+
+$images='<div class="container">
+  <div class="row">
+    <div class="col-md-6 px-0">
+	<img src="../images/pg1.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 px-0">
+	<img src="../images/pg2.png"  class="img-fluid"/>
+    </div>
+    </div>';
+$retVal.=$images;
+return $retVal;
+
+}
+
+function Tunga(){
+//return "Tunga...";
+$retVal = Message("The Regenza by Tunga","alert-success");
+$details='<table class="table table-striped table-bordered">
+<tr>
+<td>Distance</td>		<td>~10 km from the Venue (DAECC)</td></tr>
+<tr>
+<td>Travel time</td> 			<td> 10 minutes, under normal traffic</td></tr>
+<tr>
+<td>Tariff	with Buffet Breakfast</td>	<td> Rs. 7,500/- + 12% Tax, Total Rs. 8,400/- per night, for Double Occupancy</td></tr>
+<td></td>
+				<td> Rs. 6,500/- + 12% Tax, Total Rs. 7,280/- per night, for Single Occupancy</td></tr>
+<tr></tr>
+<tr><td></td>
+	<td>50% Advance Payment to be made by next month</td></tr>
+ </table><br/>';
+
+$images='<div class="container">
+ <div class="row">
+    <div class="col-md-12 px-0">
+	<img src="../images/tunga1.png" class="img-fluid"/>
+    </div>
+    </div>
+  <div class="row">
+    <div class="col-md-6 px-0">
+	<img src="../images/tunga2.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 px-0">
+	<img src="../images/tunga3.png"  class="img-fluid"/>
+    </div>
+    </div>';
+$retVal.=$details.$images;
+return $retVal;
+
+}
+
+function JewelOfChembur(){
+//return "JewelOfChembur....";
+$retVal = Message("The Jewel of Chembur : 20 Rooms","alert-success");
+
+$details='<table class="table table-striped table-bordered">
+<tr>
+<td>Distance</td>			<td>~05 km from the Venue (DAECC)</td></tr>
+<tr>
+<td>Travel time</td> 			<td>~16 minutes, under normal traffic</td></tr>
+<tr>
+<td>Tariff	with Buffet Breakfast</td>	<td> Rs. 6,400/- + 12% Tax, Total Rs. 7,168/- per night, for Double Occupancy</td></tr>
+<tr>
+<td></td>
+				<td> 50% Advance Payment (Non Refundable) to be made by next month</td></tr></table><br/>';
+
+$images='<div class="container">
+  <div class="row">
+    <div class="col-md-6 px-0">
+	<img src="../images/jc1.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 px-0">
+	<img src="../images/jc2.png"  class="img-fluid"/>
+    </div>
+    </div>
+ <div class="row">
+    <div class="col-md-12 px-0">
+	<img src="../images/jc3.png" class="img-fluid"/>
+    </div>
+    </div>';
+
+$retVal.=$details.$images;
+return $retVal;
+
+
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {

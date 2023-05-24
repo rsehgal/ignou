@@ -70,11 +70,37 @@ $('.nasiMenu').on('click',function(event){
 
 //$('.Submissions').on('click',function(event){
 $('.menuCommon').on('click',function(event){
-	//alert("Committees Menu clicked.......");
+	//alert(" Menu clicked.......");
+	//alert($(this).attr("id"));
 	event.preventDefault();
 	var funcName="";
 	var data={};
 	var funcName=$(this).attr("id");
+
+	//alert(funcName);
+	data['function_name']=funcName;
+	console.log(data);
+
+	$.ajax({
+	    url: "../controller/func.php",
+	    method: "POST",
+	    data : data,
+	    success: function(response) {
+	    $("#result").html(response);
+	    }
+	  });
+
+});
+
+$('.Accommodation').on('click',function(event){
+	//alert(" Menu clicked.......");
+	//alert($(this).attr("id"));
+	
+	event.preventDefault();
+	var funcName="";
+	var data={};
+	var funcName=$(this).attr("functionName");
+
 	//alert(funcName);
 	data['function_name']=funcName;
 	console.log(data);

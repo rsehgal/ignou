@@ -47,6 +47,24 @@ function AddMenuEntry($entry){
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         $subentries=array("AuthorLogin","RefereeLogin");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
+	}elseif($entry=="Accommodation"){
+
+	$obj = new DB();
+	$query = 'select * from accommodation';
+	$result = $obj->GetQueryResult($query);
+	$subentries=array();
+	$functionSubEntries=array();
+	$counter=0;
+	while($row = $result->fetch_assoc()){
+		$subentries[$counter]=$row["Name"];
+		$functionSubEntries[$counter]=$row["FunctionName"];
+		$counter++;
+	}
+	$menuEntry= '<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+        //$subentries=array("DAECC Guest house", "Postgraduate Hostel", "Hotel : The Regenza by Tunga","Hotel : The Jewel of Chembur");
+        //$menuEntry.=$this->AddSubEntries($subentries,$entry);
+        $menuEntry.=$this->AddSubEntries2($subentries,$functionSubEntries,$entry);
 	}else{
 	/*$menuEntry= '<li class="nav-item">
           <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';*/
@@ -88,7 +106,16 @@ function AddSubEntries($subEntries,$mainEntry){
 	$subMenu.='</div>';
 	return $subMenu;
 }
- 
+function AddSubEntries2($subEntries,$functNames,$mainEntry){
+	$subMenu='<div class="dropdown-menu">';
+	for($i= 0 ; $i < count($subEntries) ; $i++){
+
+		        	$subMenu.='<a class="dropdown-item menuCommon '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" functionName="'.$functNames[$i].'">'.$subEntries[$i].'</a>';
+}
+	$subMenu.='</div>';
+	return $subMenu;
+}
+
 
 function DynamicMenu(){
 
