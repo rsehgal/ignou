@@ -736,28 +736,28 @@ function DAECC(){
 $retVal = Message("DAECC Guest House","alert-success");
 
 $images='<div class="container">
-  <div class="row">
-    <div class="col-md-6 px-0">
+  <div class="row py-3">
+    <div class="col-md-6 px-3">
 	<img src="../images/daecc1.png" class="img-fluid"/>
     </div>
-    <div class="col-md-6 px-0">
+    <div class="col-md-6 px-3">
 	<img src="../images/daecc2.png"  class="img-fluid"/>
     </div>
     </div>
-<div class="row">
-     <div class="col-md-6 px-0">
+<div class="row py-3">
+     <div class="col-md-6 px-3">
 	<img src="../images/daecc3.png" class="img-fluid"/>
     </div>
-    <div class="col-md-4 px-0">
+    <div class="col-md-4 px-3">
 	<img src="../images/daecc4.png"  class="img-fluid"/>
     </div>
 
   </div>
-<div class="row">
-     <div class="col-md-6 px-0">
+<div class="row py-3">
+     <div class="col-md-6 px-3">
 	<img src="../images/daecc6.png" class="img-fluid"/>
     </div>
-    <div class="col-md-6 px-0">
+    <div class="col-md-6 px-3">
 	<img src="../images/daecc7.png"  class="img-fluid"/>
     </div>
 
@@ -773,11 +773,11 @@ function PGHostel(){
 $retVal = Message("Postgraduate Hostel","alert-success");
 
 $images='<div class="container">
-  <div class="row">
-    <div class="col-md-6 px-0">
+  <div class="row py-3">
+    <div class="col-md-6 px-3">
 	<img src="../images/pg1.png" class="img-fluid"/>
     </div>
-    <div class="col-md-6 px-0">
+    <div class="col-md-6 px-3">
 	<img src="../images/pg2.png"  class="img-fluid"/>
     </div>
     </div>';
@@ -804,16 +804,16 @@ $details='<table class="table table-striped table-bordered">
  </table><br/>';
 
 $images='<div class="container">
- <div class="row">
-    <div class="col-md-12 px-0">
+ <div class="row py-3">
+    <div class="col-md-12 px-3">
 	<img src="../images/tunga1.png" class="img-fluid"/>
     </div>
     </div>
-  <div class="row">
-    <div class="col-md-6 px-0">
+  <div class="row py-3">
+    <div class="col-md-6 px-3">
 	<img src="../images/tunga2.png" class="img-fluid"/>
     </div>
-    <div class="col-md-6 px-0">
+    <div class="col-md-6 px-3">
 	<img src="../images/tunga3.png"  class="img-fluid"/>
     </div>
     </div>';
@@ -838,16 +838,16 @@ $details='<table class="table table-striped table-bordered">
 				<td> 50% Advance Payment (Non Refundable) to be made by next month</td></tr></table><br/>';
 
 $images='<div class="container">
-  <div class="row">
-    <div class="col-md-6 px-0">
+  <div class="row py-3" >
+    <div class="col-md-6 px-3">
 	<img src="../images/jc1.png" class="img-fluid"/>
     </div>
-    <div class="col-md-6 px-0">
+    <div class="col-md-6 px-3">
 	<img src="../images/jc2.png"  class="img-fluid"/>
     </div>
     </div>
- <div class="row">
-    <div class="col-md-12 px-0">
+ <div class="row px-3">
+    <div class="col-md-12 py-3">
 	<img src="../images/jc3.png" class="img-fluid"/>
     </div>
     </div>';
