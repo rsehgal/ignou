@@ -10,6 +10,7 @@ $forms = new Forms();
 //return "Returned from Ajax Contat...";
 }
 function Login($loginType="Author"){
+return Message("Will be available soon","alert-warning");
 session_start();
 $_SESSION["logintype"]=$loginType;
 $forms = new Forms();
@@ -18,7 +19,6 @@ $forms = new Forms();
 function Signup(){
 if(!EnableMenuItem("Signup"))
 return Message("Will be available soon.","alert-warning");
-
 $forms = new Forms();
   return $forms->Signup();
 }
@@ -264,8 +264,6 @@ function ShowCommittee($comm){
 function Upload_Contribution(){
 if(!EnableMenuItem("Upload_Contribution"))
 return Message("Will be available soon.","alert-warning");
-
-	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	$returnVal="";
 	if(isset($_SESSION["loggedin"])){
@@ -348,7 +346,6 @@ function View_Contribution(){
 if(!EnableMenuItem("View_Contribution"))
 return Message("Will be available soon.","alert-warning");
 
-	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	if(isset($_SESSION["loggedin"])){
 	$submitterName = GetSubmitterName();
