@@ -187,6 +187,7 @@ function Menu(){
 	$this->AddMenuEntry("Submissions").
 	$this->AddMenuEntry("Accommodation").
 	//$this->AddMenuEntry("Upload_Contribution").
+	$this->AddMenuEntry("HowToReach").
 	$this->AddMenuEntry("Contact").'
       </ul>
     </div>

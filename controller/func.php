@@ -902,6 +902,26 @@ return $retVal;
 
 }
 
+function HowToReach(){
+	//return "How to reach....";
+	$query='select How_To_Reach from HowToReach';
+	$result = GetQueryResult($query);
+	$tableData='<table class="table">';
+	while($row=$result->fetch_assoc()){
+	$tableData.='<tr><td class="text-center">'.$row["How_To_Reach"].'</td></tr>';
+	}
+	$tableData.='</table>';
+	return $tableData;
+
+}
+
+function GetQueryResult($query){
+
+$obj = new DB();
+$result = $obj->GetQueryResult($query);
+return $result;
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {
