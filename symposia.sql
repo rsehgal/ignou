@@ -434,6 +434,8 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'rsehgal','Hsuya^123');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
+UNLOCK TABLES;
+
 DROP TABLE IF EXISTS `HowToReach`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
