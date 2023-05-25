@@ -27,7 +27,7 @@ CREATE TABLE `Biology` (
   `category` varchar(255) DEFAULT NULL,
   `code` varchar(2) DEFAULT NULL,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE `Chemistry` (
   `category` varchar(255) DEFAULT NULL,
   `code` varchar(2) DEFAULT NULL,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `Mathematics` (
   `category` varchar(255) DEFAULT NULL,
   `code` varchar(2) DEFAULT NULL,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `Physics` (
   `category` varchar(255) DEFAULT NULL,
   `code` varchar(2) DEFAULT NULL,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `accommodation` (
   `uname` varchar(100) DEFAULT NULL,
   `Name` varchar(255) DEFAULT NULL,
   `FunctionName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `assoc_array` (
   `id` int NOT NULL AUTO_INCREMENT,
   `array` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `committees` (
   `CounMemAffil` varchar(255) DEFAULT NULL,
   `OrgMemName` varchar(100) DEFAULT NULL,
   `OrgMemAffil` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +203,7 @@ CREATE TABLE `contactus` (
   `Name` varchar(255) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
   `ContactNumber` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `contactus` (
 
 LOCK TABLES `contactus` WRITE;
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-INSERT INTO `contactus` VALUES ('admin','Convener','S. M. Yusuf','smyusuf@barc.gov.in','022-000000'),('admin','Member','L. M. Pant','lmpant@barc.gov.in','022-111111'),('admin','Member','D. V. Udupa','dudupa@barc.gov.in','022-222222'),('admin','Member','A. K. Gupta','anit@barc.gov.in','022-333333'),('admin','Member','K. K. Yadav','kkyadav@barc.gov.in','022-444444'),('admin','Member','T Sakuntala','sakuntl@barc.gov.in','022-555555');
+INSERT INTO `contactus` VALUES ('admin','Convener','S. M. Yusuf','smyusuf@barc.gov.in',''),('admin','Member','L. M. Pant','lmpant@barc.gov.in',''),('admin','Member','D. V. Udupa','dudupa@barc.gov.in',''),('admin','Member','A. K. Gupta','anit@barc.gov.in',''),('admin','Member','K. K. Yadav','kkyadav@barc.gov.in',''),('admin','Member','T Sakuntala','sakuntl@barc.gov.in','');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `contributions` (
   `AuthorEmailsList` varchar(1000) DEFAULT NULL,
   `refereeName` varchar(4) DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,8 +243,31 @@ CREATE TABLE `contributions` (
 
 LOCK TABLES `contributions` WRITE;
 /*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
-INSERT INTO `contributions` VALUES ('admin','','','','',NULL,NULL,NULL,NULL,NULL),('rsehgal','A','d','Hello from paritcles in physics','rsehgal_paper_A_d_1.pdf','submitted',NULL,NULL,NULL,NULL),('rsehgal','C','c','Hello from Calculus in math','rsehgal_paper_C_c_1.pdf','Rejected','Raman Sehgal,Shachi Sehgal,Ayush Sehgal','raman.sehgal@gmail.com,shachi.sehgal@gmail.com,ayush.sehgal@gmail.com','RSE','I thinks it is a very good work. Keep on doing like this'),('rsehgal','D','a','CHANGE TO CHANGE THE TITLE AND FILEhello from ana in bio','rsehgal_paper_D_a_1.pdf','submitted','AYUSH SEHGAL,ARYAN SEHGAL','AYUSH.SEHGAL@GMAIL.COM,ARYAN.SEHGAL@GMAIL.COM',NULL,NULL),('rsehgal','A','c','Hello from SSP ','rsehgal_paper_A_c_1.pdf','Rejected','dfdsfdsf','fdsfdsfds','RSE','Try to do it in a better way, and better luck next time');
+INSERT INTO `contributions` VALUES ('admin','','','','',NULL,NULL,NULL,NULL,NULL),('rsehgal','A','d','Title is now change : Hello from paritcles in physics','rsehgal_paper_A_d_1.pdf','submitted','Ayush Sehgal','ayush.sehgal',NULL,NULL),('rsehgal','C','c','Hello from Calculus in math','rsehgal_paper_C_c_1.pdf','Poster','Raman Sehgal,Shachi Sehgal,Ayush Sehgal','raman.sehgal@gmail.com,shachi.sehgal@gmail.com,ayush.sehgal@gmail.com','RSE','I thinks it is a very good work. Keep on doing like this'),('rsehgal','D','a','CHANGE TO CHANGE THE TITLE AND FILEhello from ana in bio','rsehgal_paper_D_a_1.pdf','submitted','AYUSH SEHGAL,ARYAN SEHGAL','AYUSH.SEHGAL@GMAIL.COM,ARYAN.SEHGAL@GMAIL.COM',NULL,NULL),('rsehgal','A','c','Hello from SSP ','rsehgal_paper_A_c_1.pdf','Rejected','dfdsfdsf','fdsfdsfds','RSE','Try to do it in a better way, and better luck next time');
 /*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menuitems`
+--
+
+DROP TABLE IF EXISTS `menuitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `menuitems` (
+  `item` varchar(255) DEFAULT NULL,
+  `value` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menuitems`
+--
+
+LOCK TABLES `menuitems` WRITE;
+/*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
+INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',0),('Login',1),('Submissions',1),('Accommodation',1),('Contact',1),('Upload_Contribution',0),('Resubmit_Contribution',0),('View_Contribution',0),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',0),('RefereeLogin',0),('Topic',0),('Venue',1),('Poster',0);
+/*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -259,7 +282,7 @@ CREATE TABLE `refereeList` (
   `passwd` varchar(255) DEFAULT NULL,
   `refereeEmail` varchar(255) DEFAULT NULL,
   `refereeName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,7 +320,7 @@ CREATE TABLE `symposium` (
   `country` varchar(100) DEFAULT NULL,
   `about` longtext,
   `UploadLocation` varchar(254) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +344,7 @@ CREATE TABLE `testuser` (
   `id` int DEFAULT NULL,
   `FirstName` varchar(255) DEFAULT NULL,
   `LastName` varchar(244) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +369,7 @@ CREATE TABLE `topics` (
   `Topic` varchar(255) DEFAULT NULL,
   `code` varchar(2) DEFAULT NULL,
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -373,7 +396,7 @@ CREATE TABLE `user_credentials` (
   `lastname` varchar(150) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`uname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +422,7 @@ CREATE TABLE `users` (
   `passwd` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`uname`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-24 17:59:55
+-- Dump completed on 2023-05-25 13:16:35

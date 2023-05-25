@@ -1,6 +1,7 @@
 <?php
-require "../model/Symposia.php";
-require "../view/Forms.php";
+require_once "../model/Symposia.php";
+require_once "../view/Forms.php";
+require_once "menu.php";
 require_once "helpers.php";
 
 function Contact(){
@@ -15,6 +16,9 @@ $forms = new Forms();
   return $forms->Login($loginType);
 }
 function Signup(){
+if(!EnableMenuItem("Signup"))
+return Message("Will be available soon.","alert-warning");
+
 $forms = new Forms();
   return $forms->Signup();
 }
@@ -168,11 +172,17 @@ function ServeSignup(){
                return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 }
 function AuthorLogin(){
+if(!EnableMenuItem("AuthorLogin"))
+return Message("Will be available soon.","alert-warning");
+
 	//return "Author login";
 	return Login();		
 }
 
 function RefereeLogin(){
+if(!EnableMenuItem("RefereeLogin"))
+return Message("Will be available soon.","alert-warning");
+
 	return Login("Referee");
 }
 
@@ -252,6 +262,9 @@ function ShowCommittee($comm){
 }
 
 function Upload_Contribution(){
+if(!EnableMenuItem("Upload_Contribution"))
+return Message("Will be available soon.","alert-warning");
+
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	$returnVal="";
@@ -326,9 +339,15 @@ function GetUploadFolderName($volume){
 }
 
 function Resubmit_Contribution(){
+if(!EnableMenuItem("Resubmit_Contribution"))
+return Message("Will be available soon.","alert-warning");
+
 	return Message("Will be available soon.","alert-warning");
 }
 function View_Contribution(){
+if(!EnableMenuItem("View_Contribution"))
+return Message("Will be available soon.","alert-warning");
+
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	if(isset($_SESSION["loggedin"])){
@@ -555,14 +574,22 @@ function Poster(){
     iframe.attr('src','../docs/poster.pdf');
     return iframe;
     //$('#result').html(iframe);*/
+if(!EnableMenuItem("Poster"))
+return Message("Will be available soon.","alert-warning");
+
     echo '<iframe src="../docs/poster.pdf"></iframe>';
 }
 
 function Topic(){
+if(!EnableMenuItem("Topic"))
+return Message("Will be available soon.","alert-warning");
+
 return Message("Will be Available soon.","alert-warning");
 }
 
 function Venue(){
+if(!EnableMenuItem("Venue"))
+return Message("Will be available soon.","alert-warning");
 
 return '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.7182437572383!2d72.92505781147418!3d19.0321333532724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c5c3527b0327%3A0x8a63274e6c3dbdc0!2sD.A.E%20Convention%20Center!5e0!3m2!1sen!2sin!4v1684738238291!5m2!1sen!2sin" width="300" height="225" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
 }
@@ -590,10 +617,17 @@ return HomeNASI();
 
 function Home(){
 return NASI();
+if(EnableMenuItem("Home"))
+return NASI();
+else
+return Message("Will be available soon.","alert-warning");
 }
 
 function Accommodation(){
+
+if(EnableMenuItem("Home")){}else{
 return Message("Will be available soon.","alert-warning");
+}
 }
 
 function PopulateResubmissionForm(){
@@ -733,6 +767,9 @@ $formContent.='<div class="form-group">
 
 function DAECC(){
 //return "DAECC cCallec....";
+if(!EnableMenuItem("DAECC"))
+return Message("Will be available soon.","alert-warning");
+
 $retVal = Message("DAECC Guest House","alert-success");
 
 $images='<div class="container">
@@ -770,6 +807,9 @@ return $retVal;
 
 function PGHostel(){
 //return "PGHOstel..";
+if(!EnableMenuItem("PGHostel"))
+return Message("Will be available soon.","alert-warning");
+
 $retVal = Message("Postgraduate Hostel","alert-success");
 
 $images='<div class="container">
@@ -788,6 +828,8 @@ return $retVal;
 
 function Tunga(){
 //return "Tunga...";
+if(!EnableMenuItem("Tunga"))
+return Message("Will be available soon.","alert-warning");
 $retVal = Message("The Regenza by Tunga","alert-success");
 $details='<table class="table table-striped table-bordered">
 <tr>
@@ -823,6 +865,8 @@ return $retVal;
 }
 
 function JewelOfChembur(){
+if(!EnableMenuItem("JewelOfChembur"))
+return Message("Will be available soon.","alert-warning");
 //return "JewelOfChembur....";
 $retVal = Message("The Jewel of Chembur : 20 Rooms","alert-success");
 
