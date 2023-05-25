@@ -210,9 +210,9 @@ private $conn;
 
 function __construct() {
   //echo "Constructor called...........<br/>";
-  $this->sname='localhost';//$DBADDRESS;
+  $this->sname='127.0.0.1';//$DBADDRESS;
   $this->uname='sympadmin';
-  $this->passwd='sympadmin@123';//$DBPASSWD;
+  $this->passwd='sympadmin';//$DBPASSWD;
   $this->dbname='symposia'; 
   $this->Connect();  
 }
