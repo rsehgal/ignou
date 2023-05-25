@@ -433,6 +433,24 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'rsehgal','Hsuya^123');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+DROP TABLE IF EXISTS `HowToReach`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `HowToReach` (
+  `id` int DEFAULT NULL,
+  `How_To_Reach` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `HowToReach`
+--
+
+LOCK TABLES `HowToReach` WRITE;
+/*!40000 ALTER TABLE `HowToReach` DISABLE KEYS */;
+INSERT INTO `HowToReach` VALUES (1,'<h2 class=\"text-danger\"><b>Airports in Mumbai (15 km from the Venue / Accommodation)</b></h2>'),(11,'<h3 class=\"text-primary\">Chhatrapati Shivaji Maharaj International Airport, Sahar (Terminal 2 : Domestic and International Flights) </h3>'),(12,'<h3 class=\"text-primary\">Mumbai Domestic Airport, Santa Cruz (Terminal 1 : Only Domestic Flights) </h3>'),(NULL,NULL),(NULL,NULL),(2,'<h2 class=\"text-danger\"><b>Main Railway Stations in Mumbai (from 7 km to 13 km from the Venue/Accommodation) </b></h2>'),(21,'<h3 class=\"text-primary\">Chhatrapati Shivaji Terminus, Station code: CST </h3>'),(22,'<h3 class=\"text-primary\">Dadar Railway Station, Station code: DR, DDR </h3>'),(23,'<h3 class=\"text-primary\">Lokmanya Tilak Terminus, Station code: LTT </h3>'),(24,'<h3 class=\"text-primary\">Mumbai Central Railway Station, Station Code : MMTC </h3>'),(25,'<h3 class=\"text-primary\">Panvel Railway Station, Station Code: PL (suburban)/PNVL (mainline) </h3>'),(10000,''),(10000,''),(3,'<h3 class=\"text-dark\"><b>The nearest local train station to Anushaktinagar is Mankhurd, on the harbour line </b></h3>'),(NULL,NULL),(NULL,NULL);
+
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
