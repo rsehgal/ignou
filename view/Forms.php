@@ -71,6 +71,21 @@ class Forms{
 	}
 
 
+	public function ForgotPassword(){
+	
+		$formContent='<br/><div class="container">
+                <h2> Reset Password </h2>
+                <form method="POST" id="reset" >
+                        <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control resetForm" id="email" name="email" required>
+                        </div>
+                        <button type="submit" id="submitforgot" class="btn btn-primary btn-primary" >Submit</button>
+                </form>';
+
+		return $formContent;
+	}
+
 	public function Login($loginType){
 	return '<br/><div class="container">
                 <h2>'.$loginType.' Login Form</h2>
@@ -84,6 +99,7 @@ class Forms{
                                 <input type="password" class="form-control loginForm" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary sympFormSubmit">Login</button>
+                        <button type="button" id="forgot" class="btn btn-primary btn-warning" value="Forgot Password">Fogot Password</button>
 		</form>
 		<script>
 		$(".symposiaForms").on("submit",function(event){
@@ -114,6 +130,22 @@ class Forms{
                           $("#result").html("");
                         }
 		    });
+		});
+
+		var dataForgot={};
+		$("#forgot").on("click",function(event){
+			dataForgot["function_name"]="LoadForgotPasswordForm";
+
+			$.ajax({
+                        url: "../controller/func.php",
+                        method: "POST",
+			data:dataForgot,
+
+			success: function(response) {
+				$("#result").html(response);
+			}
+
+			});
 		});
 		</script>
         </div>';

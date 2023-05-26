@@ -969,6 +969,12 @@ unset($_SESSION["username"]);
 return Message("You have successfully logged out.","alert-success");
 }
 
+
+function LoadForgotPasswordForm(){
+$forms = new Forms();
+return $forms->ForgotPassword(); 
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {
