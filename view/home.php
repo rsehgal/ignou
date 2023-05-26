@@ -185,7 +185,7 @@ $.ajax({
 });*/
 $("#logout").on("click",function(e){
       //e.preventDefault();
-      alert("logout");
+      //alert("logout");
 	var data={};
 	data["function_name"]="Logout";
         $.ajax({
