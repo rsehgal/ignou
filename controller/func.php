@@ -10,7 +10,8 @@ $forms = new Forms();
 //return "Returned from Ajax Contat...";
 }
 function Login($loginType="Author"){
-return Message("Will be available soon","alert-warning");
+//return Message("Will be available soon","alert-warning");
+//return "Hello";
 session_start();
 $_SESSION["logintype"]=$loginType;
 $forms = new Forms();
@@ -165,6 +166,17 @@ function ServeSignup(){
 		$email=$_POST['email'];
 		$username=$_POST['username'];
 		$password=$_POST['password'];
+		$query='select uname from user_credentials where uname="'.$username.'"';
+		//$fetchedUname=GetQueryResult($query)->fetch_assoc()["uname"];
+		//echo "Fetch uname : ".$fetchedUname."<br/>";
+		if(GetQueryResult($query)->fetch_assoc()["uname"] == $username)
+			return Message("Username : $username already exist.","alert-danger");
+		
+		$query='select email from user_credentials where email="'.$email.'"';
+		if(GetQueryResult($query)->fetch_assoc()["email"] == $email)
+			return Message("Email : $email already registered.","alert-danger");
+
+
 		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email')";
 		echo $query."<br/>";
 		$obj->GetQueryResult($query);
@@ -172,6 +184,7 @@ function ServeSignup(){
                return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 }
 function AuthorLogin(){
+//return EnableMenuItem("AuthorLogin");
 if(!EnableMenuItem("AuthorLogin"))
 return Message("Will be available soon.","alert-warning");
 
