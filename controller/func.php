@@ -223,11 +223,39 @@ function ServeLogin(){
 	$row = $result->fetch_assoc();
 	//return "Hello Raman";
 	//return $row["passwd"]." : ".$passwd;
+
+	/*$js='<script>
+                        var data={};
+                        $("#logout").on("click","function(e){
+                                e.preventDefault();
+				alert("logout");
+			});
+		 </script>';*/
+	$js='<script>
+			var data={};
+			$("#logout").click(function(e){
+				e.preventDefault();
+				data["function_name"]="Logout";
+				$.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : data,
+				    success: function(response) {
+				    $("#loginstatus").html(response);
+				    $("#result").html("");
+				    //$("#result").html("You have logged out successfully.");
+					
+				    }
+				  });
+					
+			});
+		</script>';
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
 		if($_SESSION["logintype"]=="Author")
-		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
+		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
+		return '<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>'.$js ;
 
 		if($_SESSION["logintype"]=="Referee")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
@@ -931,6 +959,14 @@ function GetQueryResult($query){
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
 return $result;
+}
+
+function Logout(){
+session_start();
+//$_SESSION["loggedin"]="";
+unset($_SESSION["loggedin"]);
+unset($_SESSION["username"]);
+return Message("You have successfully logged out.","alert-success");
 }
 
 if (isset($_POST['function_name'])) {

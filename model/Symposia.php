@@ -172,7 +172,15 @@ function Menu(){
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button>';
+
+if(isset($_SESSION["loggedin"]) && isset($_SESSION["username"])){
+   $result.='<div id="loginstatus"><h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4> </div>';
+}else{
+   $result.='<div id="loginstatus"> </div>';
+	}
+
+$result.='
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">'.
         $this->AddMenuEntry("Home").

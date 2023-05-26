@@ -108,7 +108,10 @@ class Forms{
                         data : data,
                         success: function(response) {
                           console.log(response);
-                          $("#result").html(response);
+			  /*$("#loginstatus").html("Logged in as : "+data["username"]);
+                          $("#result").html(response);*/
+			  $("#loginstatus").html(response);
+                          $("#result").html("");
                         }
 		    });
 		});

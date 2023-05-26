@@ -13,7 +13,11 @@ session_start();
  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<style>
+.btn-custom {
+  font-size: 24px;
+}
+</style>
 <script>
 $(document).ready(function(){
 //--------------------------------------------------
@@ -179,9 +183,25 @@ $.ajax({
     iframe.attr('src','../docs/poster.pdf');
     $('#result').html(iframe);
 });*/
+$("#logout").on("click",function(e){
+      //e.preventDefault();
+      alert("logout");
+	var data={};
+	data["function_name"]="Logout";
+        $.ajax({
+            url: "../controller/func.php",
+            method: "POST",
+            data : data,
+            success: function(response) {
+            $("#loginstatus").html(response);
+            }
+          });
+
+});
 
 });
 var dataUp=new FormData();
+                        //var data={};
 </script>
 
 <style>
