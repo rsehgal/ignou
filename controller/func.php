@@ -178,10 +178,11 @@ function ServeSignup(){
 
 
 		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email')";
-		echo $query."<br/>";
+		//echo $query."<br/>";
 		$obj->GetQueryResult($query);
-		echo "$username : $password : $firstname : $lastname : $email";	
-               return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
+		//echo "$username : $password : $firstname : $lastname : $email";	
+               //return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
+		return Message("User account creation successful.","alert-success");
 }
 function AuthorLogin(){
 //return EnableMenuItem("AuthorLogin");
