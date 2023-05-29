@@ -465,7 +465,7 @@ return Message("Will be available soon.","alert-warning");
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td>'.$authorNamesList.'</td>';
 		$retTable.='<td>'.$authorEmailsList.'</td>';
-		$retTable.='<td><a href="'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
+		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		$retTable.='<td><input type="button" class="btn form-control resubmit btn-primary" value="Resubmit" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="PopulateResubmissionForm"/></td>';
 		$retTable.='</tr>';
 
