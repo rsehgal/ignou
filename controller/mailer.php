@@ -1,5 +1,5 @@
 <?php
-function SendMail($from,$to,$subject,$body){
+function SendMail($user,$to,$subject,$body){
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -15,9 +15,9 @@ require_once "Mail.php";
 //$body = "Hello , this is just a text msg";//$Msg;
 
 
-$from.="@nasi2023.in";
 $host = "mail.nasi2023.in";
-$username = $from;//"admin@nasi2023.in";
+$username = $user."@nasi2023.in";//"admin@nasi2023.in";
+$from="ADMIN <".$user."@nasi2023.in>";
 $password = "nasi123by!#*";
 
 
