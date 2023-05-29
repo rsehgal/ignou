@@ -75,6 +75,15 @@ function Upload(){
 				$query='insert into contributions values("'.$_SESSION["username"].'","'.$topicId.'","'.$categoryId.'","'.$_POST["title"].'","'.$renamedFileName.'","submitted","'.$authorNamesList.'","'.$authorEmailsList.'","","")';
 				//echo $query."<br/>";
 								$obj->GetQueryResult($query);
+$body="Dear ".$_SESSION["username"].", 
+
+Your have successfully submitted your paper $renamedFileName 
+You can view your paper in View_Contribution link.";
+
+
+                SendMail("submission",$_SESSION["email"],"Contribution submitted",$body);
+
+
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
 			        echo Message('Error uploading the file.','alert-danger');
@@ -129,12 +138,12 @@ function ResubmitUpload(){
 $body="Dear ".$_SESSION["username"].", 
 
 Your have successfully resubmitted your paper $renamedFileName 
-You can view your update paper in View_Contribution link.";
+You can view your updated paper in View_Contribution link.";
 
 
 		SendMail("resubmission",$_SESSION["email"],"Contribution resubmitted",$body);
 
-				return $_SESSION["email"]." : ".Message("File uploaded successfully with name : $renamedFileName","alert-success");
+				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
 			        echo Message('Error uploading the file.','alert-danger');
 									        }
