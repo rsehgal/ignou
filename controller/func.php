@@ -183,8 +183,14 @@ function ServeSignup(){
 		/*$from= "newaccount";
 		$to="sc.ramansehgal@gmail.com";
 		$subject="Mail from NASI 2023";*/
-		$body="Dear $firstname $lastname, <br/> Your Account is successfully created with following details:<br/> username : $username <br/> password : $password.<br/><br/>
-Your can use these credentials to do the registration and to upload your paper.<br/>";
+		$body="Dear $firstname $lastname, 
+
+Your Account is successfully created with following details:
+
+username : $username 
+password : $password
+
+Your can use these credentials to do the registration and to upload your paper.";
 		//SendMail($from,$to,$subject,$body);
 	 	SendMail("newaccount",$email,"Account Created",$body);	
 		//echo "$username : $password : $firstname : $lastname : $email";	
