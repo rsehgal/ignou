@@ -35,7 +35,7 @@ $mail = $smtp->send($to, $headers, $body);
 if (PEAR::isError($mail)) {
    echo("<p>" . $mail->getMessage() . "</p>");
   } else {
-   echo("<H3><p>Message successfully sent!</p></H3>");
+   //echo("<H3><p>Message successfully sent!</p></H3>");
   }
 
 }

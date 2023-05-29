@@ -126,6 +126,14 @@ function ResubmitUpload(){
 				//echo $query."<br/>";
 				//return $query;
 								$obj->GetQueryResult($query);
+$body="Dear ".$_SESSION["username"].", 
+
+Your have successfully resubmitted your paper $renamedFileName 
+You can view your update paper in View_Contribution link.";
+
+
+		SendMail("resubmission",$_SESSION["email"],"Contribution resubmitted",$body);
+
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
 			        echo Message('Error uploading the file.','alert-danger');
@@ -266,6 +274,8 @@ function ServeLogin(){
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
+		$_SESSION["email"]=$row["email"];
+
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
 		return '<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>'.$js ;
