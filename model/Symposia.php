@@ -222,7 +222,7 @@ function __construct() {
   $this->uname='sympadmin';
   $this->passwd='sympadmin@123';//$DBPASSWD;
   $this->dbname='symposia'; 
-  $this->Connect();  
+  //$this->Connect();  
 }
 
 public function Set($servName,$userName,$passWord,$databaseName){
@@ -296,7 +296,9 @@ public function GetParameter($volume,$fieldName){
 
 public function GetQueryResult($query){
 
+$this->Connect();  
 $result = $this->conn->query($query);
+$this->conn->close();
 return $result;
 }
 
