@@ -180,11 +180,17 @@ class Forms{
 	}
 */
 	public function NewSubmission($fieldNames){
-	//return 
+	//return
+		$obj=new DB();
+		$query="select UploadLocation from symposium";
+		$result = $obj->GetQueryResult($query); 
+		$row = $result->fetch_assoc();
+		$loc = $row["UploadLocation"];
+
 		$formContent='<br/><div class="container">
                 <h2>Upload new contribution</h2>
                 <form method="POST" id="login" class="">';
-
+		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
 			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
 			}else{
@@ -201,7 +207,7 @@ class Forms{
 			elseif($fieldNames[$i]=="Filename"){
 
    $fileComponent='<div class="custom-file mb-3">
-      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="/var/www/html/Symposia/Uploads/" name="uploadFile">
+      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="'.$loc.'" name="uploadFile">
       <label class="custom-file-label" for="uploadFile">Choose file</label>
     </div>';
     $formContent.=$fileComponent;

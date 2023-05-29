@@ -701,7 +701,14 @@ $result=$obj->GetQueryResult($query);
 $row=$result->fetch_assoc();
 
 //$loc="/home/nasiin/public_html/nasi2023/Uploads/";
-$loc="/var/www/html/Symposia/Uploads/";
+//$loc="/var/www/html/Symposia/Uploads/";
+
+$obj=new DB();
+$query="select UploadLocation from symposium";
+$result = $obj->GetQueryResult($query);
+$row = $result->fetch_assoc();
+$loc = $row["UploadLocation"];
+
 $filename=$row["Filename"];
 
 $selectedTopic=GetTopic($row["Topic"]);
@@ -719,7 +726,7 @@ $formContent.='<div class="form-group">
 
 	if($fieldNames[$i]=="Filename"){
 		$fileComponent='<div class="custom-file mb-3">
-	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="/var/www/html/Symposia/Uploads/" name="uploadFile">
+	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="'.$loc.'" name="uploadFile">
       		<label class="custom-file-label" for="uploadFile">Choose file</label>
     	</div>';
 	 $formContent.=$fileComponent;
