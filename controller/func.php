@@ -693,6 +693,13 @@ return Message("Will be available soon.","alert-warning");
 }
 
 function PopulateResubmissionForm(){
+
+$obj=new DB();
+$query="select UploadLocation from symposium";
+$result = $obj->GetQueryResult($query);
+$row = $result->fetch_assoc();
+$loc = $row["UploadLocation"];
+
 $fileName = $_POST["filename"];
 $uname = $_POST["uname"];
 $query = 'select * from contributions where uname="'.$uname.'" and Filename="'.$fileName.'"';
@@ -703,11 +710,6 @@ $row=$result->fetch_assoc();
 //$loc="/home/nasiin/public_html/nasi2023/Uploads/";
 //$loc="/var/www/html/Symposia/Uploads/";
 
-$obj=new DB();
-$query="select UploadLocation from symposium";
-$result = $obj->GetQueryResult($query);
-$row = $result->fetch_assoc();
-$loc = $row["UploadLocation"];
 
 $filename=$row["Filename"];
 
