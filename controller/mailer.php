@@ -17,7 +17,7 @@ require_once "Mail.php";
 
 $host = "mail.nasi2023.in";
 $username = $user."@nasi2023.in";//"admin@nasi2023.in";
-$from="ADMIN <".$user."@nasi2023.in>";
+$from=strtoupper($user)." <".$user."@nasi2023.in>";
 $password = "nasi123by!#*";
 
 
