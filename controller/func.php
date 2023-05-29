@@ -134,7 +134,7 @@ You can view your update paper in View_Contribution link.";
 
 		SendMail("resubmission",$_SESSION["email"],"Contribution resubmitted",$body);
 
-				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
+				return $_SESSION["email"]." : ".Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
 			        echo Message('Error uploading the file.','alert-danger');
 									        }
@@ -236,7 +236,7 @@ function ServeLogin(){
 	if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Referee")	
 		$tableToQuery = "refereeList";
 
-	$query = "select passwd from ".$tableToQuery." where uname='".$uname."'";
+	$query = "select * from ".$tableToQuery." where uname='".$uname."'";
 	//return $query;
 	//return $uname;
 	$result = $obj->GetQueryResult($query);
