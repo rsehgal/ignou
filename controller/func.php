@@ -1027,11 +1027,11 @@ $uname=$row["uname"];
 $passwd=$row["passwd"];
 $fname=$row["firstname"];
 $lname=$row["lastname"];
-$body='Dear user '.$fname.' '.$lname.',
+$body='Dear '.$fname.' '.$lname.',
 
-We have received you request to recover you credentials for NASI-2023.
+We have received a request to recover your credentials for NASI-2023.
 
-Please find below you require credentials
+Please find below the required credentials
 
 username : '.$uname.'
 password : '.$passwd.'
@@ -1041,9 +1041,9 @@ NASI-2023
 ';
 
 //return $body;
-SendMail("admin",$email,"NASI Credentials",$body);
+SendMail("admin",$email,"NASI 2023 : Credentials",$body);
 
-return Message("Login credential sent to your email ID","alert-info");
+return Message("Login credentials sent to email : ".$email,"alert-info");
 }
 
 if (isset($_POST['function_name'])) {
