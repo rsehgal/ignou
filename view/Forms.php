@@ -207,7 +207,7 @@ class Forms{
 			elseif($fieldNames[$i]=="Filename"){
 
    $fileComponent='<div class="custom-file mb-3">
-      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="'.$loc.'" name="uploadFile">
+      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile">
       <label class="custom-file-label" for="uploadFile">Choose file</label>
     </div>';
     $formContent.=$fileComponent;
