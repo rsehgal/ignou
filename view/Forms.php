@@ -209,7 +209,7 @@ class Forms{
 
 		$formContent='<br/><div class="container">
                 <h2>Upload new contribution</h2>
-                <form method="POST" id="login" class="">';
+                <form method="POST" id="login" enctype="multipart/form-data" class="">';
 		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
 			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
@@ -270,6 +270,7 @@ class Forms{
 		$("#uploadAndSubmit").on("click",function(e){
 			//e.preventDefault();
 		dataUp.append("function_name","Upload");
+			e.preventDefault();
 
 
 		//Lets try to get the author names and email list.
@@ -287,13 +288,13 @@ class Forms{
 
 
 			if($("#Title").val()==""){
-				//alert("Please fill the paper title.");
+				alert("Please fill the paper title.");
 				return;
 			}if($("#topicText").val()==""){
-				//alert("Please select the paper topic.");
+				alert("Please select the paper topic.");
 				return;
 			}if($("#categoryText").val()==""){
-				//alert("Please select the paper category.");
+				alert("Please select the paper category.");
 				return;
 			}
 
@@ -303,7 +304,7 @@ class Forms{
 				if($(this).val()==""){
          			   //$(this).css("background", "yellow");
 				   returnVar=1;
-				   //alert("Please fill the author details : "+returnVar);
+				   alert("Please fill the Author Name : "+returnVar);
         			}
 			});
 			$(".authorEmail").each(function(){
@@ -311,7 +312,7 @@ class Forms{
 				if($(this).val()==""){
          			   //$(this).css("background", "yellow");
 				   returnVar=1;
-				   //alert("Please fill the author details : "+returnVar);
+				   alert("Please fill the Author Email : "+returnVar);
         			}
 			});
 
@@ -319,7 +320,7 @@ class Forms{
 			if(returnVar==1){
 			return;
 			}
-			alert("Should not reach here....");
+			//alert("Should not reach here....");
 
 			dataUp.append("title",$("#Title").val());
 			//alert("Upload and Submit clicked...");
