@@ -287,35 +287,47 @@ class Forms{
                  //});
 
 
-			if($("#Title").val()==""){
-				alert("Please fill the paper title.");
-				return;
-			}if($("#topicText").val()==""){
+			if($("#topicText").val()==""){
 				alert("Please select the paper topic.");
 				return;
 			}if($("#categoryText").val()==""){
 				alert("Please select the paper category.");
 				return;
+			}if($("#Title").val()==""){
+				alert("Please fill the paper title.");
+				return;
 			}
 
 			var returnVar=0;
+			//if($("#uploadFile").is(":empty")){
+			if($("#uploadFile").val()==""){
+				returnVar=1;	
+         			$("#uploadFile").css("background", "yellow");
+				alert("Please select a file to upload.");
+				return;
+			}
+
 			$(".authorName").each(function(){
 				//if($(this).is(":empty")){
 				if($(this).val()==""){
-         			   //$(this).css("background", "yellow");
+         			   $(this).css("background", "yellow");
 				   returnVar=1;
 				   alert("Please fill the Author Name : "+returnVar);
         			}
 			});
+			if(returnVar==1){
+			return;
+			}
+
 			$(".authorEmail").each(function(){
 				//if($(this).is(":empty")){
 				if($(this).val()==""){
-         			   //$(this).css("background", "yellow");
+         			   $(this).css("background", "yellow");
 				   returnVar=1;
 				   alert("Please fill the Author Email : "+returnVar);
         			}
 			});
-
+			
 
 			if(returnVar==1){
 			return;
