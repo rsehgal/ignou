@@ -781,11 +781,25 @@ $formContent.='<div class="form-group">
 				//alert("file selected...");
 				var fileName = e.target.files[0].name;
 				//alert(fileName);
+
+			if(e.target.files[0].size > 1048576){
+
+                                alert("File size exceeds the allowed size of 1 MB");
+                                const form = document.querySelector("form");
+                                form.reset();
+                                $(this).siblings(".custom-file-label").removeClass("selected").html("Choose file");
+                                return;
+
+                        }
+                        dataUp.append("file",e.target.files[0]);
+                        dataUp.append("loc",$(this).attr("loc"));
+
+
 				$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 			}); 
 			});
 
-			$("#uploadFile").on("change",function(){
+			/*$("#uploadFile").on("change",function(){
 			//alert("Symp for submit clicke....");
 			var fileInput = document.getElementById($(this).attr("id"));
 			alert(fileInput.files[0].name); 
@@ -794,7 +808,7 @@ $formContent.='<div class="form-group">
 			//dataUp.append("loc",$(this).attr("loc"));
 			//console.log("-----------------");
                 	//console.log(dataUp);
-                	});
+                	});*/
 
 
 			$("#uploadAndSubmit").on("click",function(e){
