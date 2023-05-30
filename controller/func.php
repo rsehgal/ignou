@@ -1043,7 +1043,7 @@ NASI-2023
 //return $body;
 SendMail("admin",$email,"NASI Credentials",$body);
 
-return "Login credential sent to your email ID";
+return Message("Login credential sent to your email ID","alert-info");
 }
 
 if (isset($_POST['function_name'])) {
