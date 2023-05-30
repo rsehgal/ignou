@@ -1016,6 +1016,35 @@ $forms = new Forms();
 return $forms->ForgotPassword(); 
 }
 
+//Ajax called
+function ServeForgotPassword(){
+$email = $_POST["email"];
+$obj=new DB();
+$query = 'select * from user_credentials where email="'.$email.'"';
+$result = $obj->GetQueryResult($query);
+$row=$result->fetch_assoc();
+$uname=$row["uname"];
+$passwd=$row["passwd"];
+$fname=$row["firstname"];
+$lname=$row["lastname"];
+$body='Dear user '.fname.' '.$lname.',
+
+We have received you request to recover you credentials for NASI-2023.
+
+Please find below you require credentials
+
+username : '.$uname.'
+password : '.$passwd.'
+
+With Regards,
+NASI-2023
+';
+
+SendMail("admin",$email,"NASI Credentials",$body);
+
+return "Login credential sent to your email ID";
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {

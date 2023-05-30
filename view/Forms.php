@@ -74,16 +74,36 @@ class Forms{
 	public function ForgotPassword(){
 	
 		$formContent='<br/><div class="container">
-                <h2> Reset Password </h2>
+                <h2> Recover Password </h2>
                 <form method="POST" id="reset" >
                         <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control resetForm" id="email" name="email" required>
+                                <input type="email" class="form-control resetForm" id="emailResetForm" name="emailResetForm" required>
                         </div>
                         <button type="submit" id="submitforgot" class="btn btn-primary btn-primary" >Submit</button>
                 </form>';
 
-		return $formContent;
+		$associateJs = '<script>
+				$("#submitforgot").on("click",function(e){
+					e.preventDefault();
+					var data={};
+					data["function_name"]="ServeForgotPassword";
+					data["email"]=$("#emailResetForm").val();
+					$.ajax({
+						    url: "../controller/func.php",
+						    method: "POST",
+						    data : data,
+						    success: function(response) {
+						    $("#result").html(response);
+						    }
+						  });
+
+					
+				});
+	
+				</script>';
+
+		return $formContent.$associateJs;
 	}
 
 	public function Login($loginType){
