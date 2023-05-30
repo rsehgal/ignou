@@ -737,7 +737,7 @@ $formContent.='<div class="form-group">
 
 	if($fieldNames[$i]=="Filename"){
 		$fileComponent='<div class="custom-file mb-3">
-	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile">
+	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile" required>
       		<label class="custom-file-label" for="uploadFile">Choose file</label>
     	</div>';
 	 $formContent.=$fileComponent;
@@ -798,6 +798,41 @@ $formContent.='<div class="form-group">
 
 
 			$("#uploadAndSubmit").on("click",function(e){
+
+
+			var returnVar=0;
+                        if($("#uploadFile").val()==""){
+                                returnVar=1;    
+                                $("#uploadFile").css("background", "yellow");
+                                alert("Please select a file to upload.");
+                                return;
+                        }
+
+                        $(".authorName").each(function(){
+                                if($(this).val()==""){
+                                   $(this).css("background", "yellow");
+                                   returnVar=1;
+                                   alert("Please fill the Author Name : "+returnVar);
+                                }
+                        });
+                        if(returnVar==1){
+                        return;
+                        }
+
+                        $(".authorEmail").each(function(){
+                                if($(this).val()==""){
+                                   $(this).css("background", "yellow");
+                                   returnVar=1;
+                                   alert("Please fill the Author Email : "+returnVar);
+                                }
+                        });
+                        
+
+                        if(returnVar==1){
+                        return;
+                        }
+
+
 	                dataUp.append("function_name","ResubmitUpload");
 			dataUp.append("topicid",$("#Topic").attr("code"));
 			dataUp.append("categoryid",$("#Category").attr("code"));
