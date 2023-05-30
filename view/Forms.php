@@ -218,16 +218,16 @@ class Forms{
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
 			if($fieldNames[$i]=="Topic"){
 				$formContent.=GetDropDown("topics","Topic");
-				$formContent.='<input type="text" id="topicText" class="form-control"/>';
+				$formContent.='<input type="text" id="topicText" class="form-control" required/>';
 			}
 			elseif($fieldNames[$i]=="Category"){
 				$formContent.='<div id="Category"></div>';
-				$formContent.='<input type="text" id="categoryText" class="form-control"/>';
+				$formContent.='<input type="text" id="categoryText" class="form-control" required/>';
 			}
 			elseif($fieldNames[$i]=="Filename"){
 
    $fileComponent='<div class="custom-file mb-3">
-      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile">
+      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile" required>
       <label class="custom-file-label" for="uploadFile">Choose file</label>
     </div>';
     $formContent.=$fileComponent;
@@ -268,9 +268,9 @@ class Forms{
 		});
 
 		$("#uploadAndSubmit").on("click",function(e){
+			//e.preventDefault();
 		dataUp.append("function_name","Upload");
 
-			e.preventDefault();
 
 		//Lets try to get the author names and email list.
 		//$("#testUploadAndSubmit").click(function(e){
@@ -287,16 +287,39 @@ class Forms{
 
 
 			if($("#Title").val()==""){
-				alert("Please fill the paper title.");
+				//alert("Please fill the paper title.");
 				return;
 			}if($("#topicText").val()==""){
-				alert("Please select the paper topic.");
+				//alert("Please select the paper topic.");
 				return;
 			}if($("#categoryText").val()==""){
-				alert("Please select the paper category.");
+				//alert("Please select the paper category.");
 				return;
 			}
 
+			var returnVar=0;
+			$(".authorName").each(function(){
+				//if($(this).is(":empty")){
+				if($(this).val()==""){
+         			   //$(this).css("background", "yellow");
+				   returnVar=1;
+				   //alert("Please fill the author details : "+returnVar);
+        			}
+			});
+			$(".authorEmail").each(function(){
+				//if($(this).is(":empty")){
+				if($(this).val()==""){
+         			   //$(this).css("background", "yellow");
+				   returnVar=1;
+				   //alert("Please fill the author details : "+returnVar);
+        			}
+			});
+
+
+			if(returnVar==1){
+			return;
+			}
+			alert("Should not reach here....");
 
 			dataUp.append("title",$("#Title").val());
 			//alert("Upload and Submit clicked...");
