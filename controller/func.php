@@ -1027,7 +1027,7 @@ $uname=$row["uname"];
 $passwd=$row["passwd"];
 $fname=$row["firstname"];
 $lname=$row["lastname"];
-$body='Dear user '.fname.' '.$lname.',
+$body='Dear user '.$fname.' '.$lname.',
 
 We have received you request to recover you credentials for NASI-2023.
 
@@ -1040,6 +1040,7 @@ With Regards,
 NASI-2023
 ';
 
+//return $body;
 SendMail("admin",$email,"NASI Credentials",$body);
 
 return "Login credential sent to your email ID";
