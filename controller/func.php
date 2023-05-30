@@ -737,7 +737,7 @@ $formContent.='<div class="form-group">
 
 	if($fieldNames[$i]=="Filename"){
 		$fileComponent='<div class="custom-file mb-3">
-	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="'.$loc.'" name="uploadFile">
+	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile">
       		<label class="custom-file-label" for="uploadFile">Choose file</label>
     	</div>';
 	 $formContent.=$fileComponent;
@@ -772,7 +772,7 @@ $formContent.='<div class="form-group">
 }
 
 		$formContent.=AuthorList().'<br/><hr/>';
-                 $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit" loc="'.$loc.'" filename="'.$filename.'">Submit</button>';
+                 $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit" loc="../'.$loc.'" filename="'.$filename.'">Submit</button>';
 
 
 	$associatedJs = '<script>
