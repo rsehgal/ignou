@@ -227,7 +227,7 @@ class Forms{
 			elseif($fieldNames[$i]=="Filename"){
 
    $fileComponent='<div class="custom-file mb-3">
-      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile" required>
+      <input type="file" class="custom-file-input uploadFile form-control" id="uploadFile" loc="../'.$loc.'" name="uploadFile" required>
       <label class="custom-file-label" for="uploadFile">Choose file</label>
     </div>';
     $formContent.=$fileComponent;
@@ -252,20 +252,43 @@ class Forms{
 			//alert("file selected...");
 			var fileName = e.target.files[0].name;
 			//alert(fileName);
+
+			if(e.target.files[0].size > 1048576){
+
+				alert("File size exceeds the allowed size of 1 MB");
+				const form = document.querySelector("form");
+				form.reset();
+				$(this).siblings(".custom-file-label").removeClass("selected").html("Choose file");
+				return;
+
+			}
+			dataUp.append("file",e.target.files[0]);
+			dataUp.append("loc",$(this).attr("loc"));
+
+
 			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 		});	
-	
+
+		//---------- This whole block is NOT required-------	
 		//var dataUp=new FormData();
-		$("#uploadFile").on("change",function(){
+		/*$("#uploadFile").on("change",function(){
 		//alert("Symp for submit clicke....");
 		var fileInput = document.getElementById($(this).attr("id"));
 		alert(fileInput.files[0].name); 
+		if(fileInput.files[0].size > 1048576){
+			alert("File size exceeds the allowed size of 1 MB");
+			//$("#uploadFile").val(""); 
+			return;
+		}
+		
+
 		//console.log(fileInput);
 		dataUp.append("file",fileInput.files[0]);
 		dataUp.append("loc",$(this).attr("loc"));
 		console.log("-----------------");
 		console.log(dataUp);
-		});
+		});*/
+		//-----------------------------------------------------
 
 		$("#uploadAndSubmit").on("click",function(e){
 			//e.preventDefault();
@@ -299,7 +322,6 @@ class Forms{
 			}
 
 			var returnVar=0;
-			//if($("#uploadFile").is(":empty")){
 			if($("#uploadFile").val()==""){
 				returnVar=1;	
          			$("#uploadFile").css("background", "yellow");
@@ -308,7 +330,6 @@ class Forms{
 			}
 
 			$(".authorName").each(function(){
-				//if($(this).is(":empty")){
 				if($(this).val()==""){
          			   $(this).css("background", "yellow");
 				   returnVar=1;
@@ -320,7 +341,6 @@ class Forms{
 			}
 
 			$(".authorEmail").each(function(){
-				//if($(this).is(":empty")){
 				if($(this).val()==""){
          			   $(this).css("background", "yellow");
 				   returnVar=1;
