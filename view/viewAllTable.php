@@ -30,6 +30,7 @@ $(document).on('click','.deleteEntry', function(){
 
 $(".tablename").click(function(){
 	data["function_name"]="ShowTable";
+	//alert($(this).attr("class"));
 	//alert($(this).attr("value"));
 	data[$(this).attr('class')]=$(this).attr("value");//val();
 	$("#parentDropDown").prop('value',$(this).attr("value"));

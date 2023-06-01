@@ -30,7 +30,7 @@ function AddMenuEntry($entry){
 	if($entry=="About"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-	$subentries=array("Poster","Topic","Venue"); //NASI //removed entry
+	$subentries=array("Poster","Topic","Venue","Important_Dates"); //NASI //removed entry
 	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
@@ -317,7 +317,8 @@ public function GetTableData($tableName,$showUname=0,$allowDeletion=0){
 	$table="<table border='1' class='table table-striped'>";
 	$columnNames = $this->GetFieldNames($tableName);
 	$query = "SELECT * FROM $tableName";
-	$result = $this->conn->query($query);
+	//$result = $this->conn->query($query);
+	$result = $this->GetQueryResult($query);
 	//echo
 	$table.="<tr class='table-warning'>";
 	        foreach ($columnNames as $columnName) {

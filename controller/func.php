@@ -1095,6 +1095,30 @@ SendMail("admin",$email,"NASI 2023 : Credentials",$body);
 return Message("Login credentials sent to email : ".$email,"alert-info");
 }
 
+function Important_Dates(){
+
+if(!EnableMenuItem("ImportantDates"))
+return Message("Will be available soon.","alert-warning");
+
+//return Message("Dates available","alert-danger");
+$query='select reg_end_date,contrib_end_date from symposium';
+$obj = new DB();
+$result = $obj->GetQueryResult($query);
+$retVal = Message("Important Dates","alert-info");
+$retVal .= '<table class="table table-striped table-bordered">';
+
+$row=$result->fetch_assoc();
+//For more info. keep on adding a line below
+$regDate = date("d F Y", strtotime($row["reg_end_date"]));
+$retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
+$contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
+$retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
+$retVal.='</table>';
+
+return $retVal;
+
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {
