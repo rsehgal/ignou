@@ -423,7 +423,7 @@ return Message("Will be available soon.","alert-warning");
 	session_start();
 	if(isset($_SESSION["loggedin"])){
 	$submitterName = GetSubmitterName();
-	$query = 'select * from contributions where uname="'.$_SESSION["username"].'"';
+	$query = 'select * from contributions where uname="'.$_SESSION["username"].'" and status NOT IN ("Deleted")';
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
