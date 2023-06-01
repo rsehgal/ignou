@@ -440,6 +440,7 @@ return Message("Will be available soon.","alert-warning");
 			<th>Author Emails</th>
 			<th>Uploaded File</th>
 			<th>Update/Resubmit</th>
+			<th>Withdraw</th>
 			</tr>';
 	while($row = $result->fetch_assoc()){
 		$retTable.='<tr>';
@@ -467,6 +468,8 @@ return Message("Will be available soon.","alert-warning");
 		$retTable.='<td>'.$authorEmailsList.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		$retTable.='<td><input type="button" class="btn form-control resubmit btn-primary" value="Resubmit" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="PopulateResubmissionForm"/></td>';
+		$retTable.='<td><input type="button" id="delete" class="btn form-control withdraw btn-primary" value="Withdraw" uname="'.$_SESSION["username"].'" filename="'.$fileName.'" functionname="WithdrawContribution"/></td>';
+
 		$retTable.='</tr>';
 
 			
@@ -475,10 +478,11 @@ return Message("Will be available soon.","alert-warning");
 	}
 
 		$associatedJs='
-					<script>
-					$(".resubmit").on("click",function(event){
+			<script>
+			$(".resubmit, .withdraw").on("click",function(event){
 			//alert("Nasi Menu clicked.......");
 			event.preventDefault();
+			//alert($(this).attr("class"));
 			var data={};
 			var funcName=$(this).attr("functionname");
 			//alert(funcName);
@@ -486,6 +490,10 @@ return Message("Will be available soon.","alert-warning");
 			data["filename"]=$(this).attr("filename");
 			data["uname"]=$(this).attr("uname");
 			//console.log(data);
+			var okornot=true;
+			if($(this).attr("id")=="delete")
+				okornot = confirm("Are you sure you want to withdraw the paper.");
+			if(okornot){
 			$.ajax({
 			    url: "../controller/func.php",
 			    method: "POST",
@@ -494,9 +502,12 @@ return Message("Will be available soon.","alert-warning");
 			    $("#result").html(response);
 			    }
 			  });
+			}
 
 		     });
-			</script>
+
+
+		</script>
 			';		
 
 	//return $retValue;
@@ -506,6 +517,15 @@ return Message("Will be available soon.","alert-warning");
 		return Message("Please login to view your submissions.");
 }
 	
+}
+
+
+function WithdrawContribution(){
+	$fileName=$_POST["filename"];
+	$query = 'update contributions set status="Deleted" where Filename="'.$fileName.'"';
+	$obj = new DB();
+	$obj->GetQueryResult($query);	
+	return Message("Your paper is withdrawn.","alert-info");
 }
 function Referee_UpdatePaperStatus(){
 	//return Message("Will be available soon.","alert-warning");
