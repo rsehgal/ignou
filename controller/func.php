@@ -1169,19 +1169,39 @@ return $retVal;
 function PopulateAllotment(){
 $retVal="";
 if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Admin"){
-$retVal='<input type="button" class="btn btn-primary allotment" id="adminAllotment" value="AllotCoordinator"/>
-<input type="button" class="btn btn-primary allotment" id="adminAllotment" value="AllotReferee"/>
+$retVal='<input type="button" class="btn btn-primary allotment" id="AllotCoordinator" value="Allot Coordinators"/>
+<input type="button" class="btn btn-primary allotment" id="AllotReferee" value="Allot Referees"/>
 ';
 }
 if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Coordinator"){
-$retVal='<input type="button" class="btn btn-primary allotment" id="coordinatorAllotment" value="AllotReferee"/>
+$retVal='<input type="button" class="btn btn-warning allotment" id="AllotReferee" value="Allot Referees"/>
 ';
 }
-return $retVal;
+
+$associatedJs='<script>
+		var data={};
+		$(".allotment").click(function(e){
+		e.preventDefault();
+		data["function_name"]="Allot";
+		data["allotmentType"]=$(this).attr("id");
+		$.ajax({
+	            url: "../controller/func.php",
+        	    method: "POST",
+	            data : data,
+        	    success: function(response) {
+	            $("#result").html(response);
+        	    }
+          	});
+	}):
+
+
+		</script>';
+return $retVal.$associatedJs;
 }
 
-function AllotCoordinator(){
-
+function Allot(){
+$allotmentType = $_POST["allotmentType"];
+return $allotmentType;
 }
 
 if (isset($_POST['function_name'])) {
