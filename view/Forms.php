@@ -246,7 +246,7 @@ class Forms{
 		 $formContent.=AuthorList().'<br/><hr/>'; 
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Submit</button>
 		</form>
-		<img id="loadingGif" src="../images/loading.gif" style="display: none;" alt="Loading...">
+		<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">
 		<script>
 		$(function(){
 		$("#loadingGif").hide();
