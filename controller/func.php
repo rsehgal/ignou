@@ -1213,61 +1213,9 @@ function Allot(){
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
-	//return $query;
+	return $query;
 	
-	$retValue="";
-	$retTable='<table class="table table-striped table-bordered">';
-	$retTable.='<tr><th>uname</th>
-			<th>Title</th>
-			<th>Topic</th>
-			<th>Category</th>
-			<th>Uploaded File</th>
-			<th>Referee Remarks</th>
-			<th>Referee Decision</th>
-			<th>Update Status</th>
-			</tr>';
-	$decArray=array();
-	$decArray["Decision"]=array("Oral","Poster","Rejected");
-	while($row = $result->fetch_assoc()){
-		$retTable.='<tr>';
-		//$retValue.=$row["Topic"]." : ".$row["Category"]."<br/>";
-		//$retValue.="Hello <br/>";
-		$authorName=$row["uname"];
-		$paperTitle=$row["Title"];
-		$authorNamesList=$row["AuthorNamesList"];
-		$authorEmailsList=$row["AuthorEmailsList"];
-		$fileName=$row["Filename"];
-		$queryTopic=$row["Topic"];
-		$status=$row["status"];
-		$remarks=$row["remarks"];
-		$queryCategory=$row["Category"];
-
-		$updateButtonId=preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
-		
-
-		//$retValue.=GetTopic($queryTopic)." : ";
-		//$retValue.=GetCategory($queryTopic,$queryCategory);
-		$selectedTopic=GetTopic($queryTopic);
-		$retValue.=$selectedTopic." : ";
-		$selectedCategory=GetCategory($selectedTopic,$queryCategory);
-		$retValue.=$selectedCategory;
-		$retValue.="<br/>";
-		$retTable.='<td>'.$authorName.'</td>';
-		//$retTable.='<td>'.$submitterName.'</td>';
-		$retTable.='<td>'.$paperTitle.'</td>';
-		$retTable.='<td>'.$selectedTopic.'</td>';
-		$retTable.='<td>'.$selectedCategory.'</td>';
-		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
-		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId).'
-				<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
-		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
-		$retTable.='</tr>';
-	}
-
-	//return $retValue;
-	return $retTable;//.$associatedJs;
-}else{
+	}else{
 
 		return Message("Please login to view your submissions.");
 }
