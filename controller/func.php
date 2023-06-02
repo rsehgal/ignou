@@ -1217,7 +1217,7 @@ function Allot(){
 	
 	$retValue="";
 	$retTable='<table class="table table-striped table-bordered">';
-	$retTable.='<tr><td>uname</th>
+	$retTable.='<tr><th>uname</th>
 			<th>Title</th>
 			<th>Topic</th>
 			<th>Category</th>
@@ -1265,49 +1265,6 @@ function Allot(){
 		$retTable.='</tr>';
 	}
 
-	$associatedJs='<script> 
-			$(function(){
-				$(".alert-autoclose").delay(5000).fadeOut("slow");
-			});
-			var functionName="";
-			var data={};
-			$(".updateDecision").click(function(e){
-
-				
-				e.preventDefault();
-				//alert("MyID : "+$(this).attr("id"));
-				var decisionTextId = "#decisionText_"+$(this).attr("id");
-				var remarksTextId = "#remarks_"+$(this).attr("id");
-				//alert($(decisionTextId).val());
-				//alert($(remarksTextId).val());
-				functionName=$(this).attr("functionName");
-				data["function_name"]=functionName;
-				data["remarks"]=$(remarksTextId).val();
-				data["decision"]=$(decisionTextId).val();
-				data["filename"]=$(this).attr("id")+".pdf";
-
-				    $.ajax({
-				    url: "../controller/func.php",
-				    method: "POST",
-				    data : data,
-				    success: function(response) {
-					//alert("response");
-				    	$("#refereeUpdateStatus").html(response);
-				    }
-				    });
-
-			});
-			$(".Decision").click(function(e){
-				e.preventDefault();
-				var textBoxId="#decisionText_"+$(this).attr("buttonid");
-				//alert(textBoxId);
-				$(textBoxId).val($(this).attr("value"));
-				$(textBoxId).attr("value",$(this).attr("value"));
-				
-			});
-
-			
-			</script>';
 	//return $retValue;
 	return $retTable;//.$associatedJs;
 }else{
