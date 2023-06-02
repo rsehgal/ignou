@@ -371,8 +371,8 @@ class Forms{
 				success: function(response) {
 					//$("#uploadStatus").html(response);
 					$("#loadingGif").hide();
-                                        //$("#newsubmission input").prop("disabled", false); 
-					$("#uploadAndSubmit").delay(3000).prop("disabled",false);
+                                        $("#newsubmission input").prop("disabled", false); 
+					$("#uploadAndSubmit").prop("disabled",false);
 					$("#result").html(response);
 				}
 			});
