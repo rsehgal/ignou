@@ -45,7 +45,7 @@ function AddMenuEntry($entry){
 	}elseif($entry=="Login"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-        $subentries=array("AuthorLogin","RefereeLogin");
+        $subentries=array("AuthorLogin","RefereeLogin","AdminLogin","CoordinatorLogin");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Accommodation"){
 

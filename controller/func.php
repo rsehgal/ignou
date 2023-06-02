@@ -231,14 +231,14 @@ return Message("Will be available soon.","alert-warning");
 }
 
 function AdminLogin(){
-if(!EnableMenuItem("AdminLogin"))
-return Message("Will be available soon.","alert-warning");
+//if(!EnableMenuItem("AdminLogin"))
+//return Message("Will be available soon.","alert-warning");
 
 	return Login("Admin");
 }
 function CoordinatorLogin(){
-if(!EnableMenuItem("CoordinatorLogin"))
-return Message("Will be available soon.","alert-warning");
+//if(!EnableMenuItem("CoordinatorLogin"))
+//return Message("Will be available soon.","alert-warning");
 
 	return Login("Coordinator");
 }
@@ -1164,6 +1164,7 @@ $retVal.='</table>';
 return $retVal;
 
 }
+
 
 function PopulateAllotment(){
 $retVal="";
