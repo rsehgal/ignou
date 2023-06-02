@@ -209,7 +209,7 @@ class Forms{
 
 		$formContent='<br/><div class="container">
                 <h2>Upload new contribution</h2>
-                <form method="POST" id="login" enctype="multipart/form-data" class="">';
+                <form method="POST" id="newsubmisson" enctype="multipart/form-data" class="">';
 		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
 			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
@@ -246,8 +246,10 @@ class Forms{
 		 $formContent.=AuthorList().'<br/><hr/>'; 
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit">Submit</button>
 		</form>
+		<img id="loadingGif" src="../images/loading.gif" style="display: none;" alt="Loading...">
 		<script>
 		$(function(){
+		$("#loadingGif").hide();
 		$(".custom-file-input").on("change",function(e){
 			//alert("file selected...");
 			var fileName = e.target.files[0].name;
@@ -295,6 +297,8 @@ class Forms{
 		dataUp.append("function_name","Upload");
 			e.preventDefault();
 
+		$("#loadingGif").show();
+                $("#newsubmission input").prop("disabled", true);
 
 		//Lets try to get the author names and email list.
 		//$("#testUploadAndSubmit").click(function(e){
@@ -365,6 +369,8 @@ class Forms{
 				contentType : false,
 				success: function(response) {
 					//$("#uploadStatus").html(response);
+					$("#loadingGif").hide();
+                                        $("#newsubmission input").prop("disabled", false);  
 					$("#result").html(response);
 				}
 			});
