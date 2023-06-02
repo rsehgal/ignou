@@ -299,6 +299,7 @@ class Forms{
 
 		$("#loadingGif").show();
                 $("#newsubmission input").prop("disabled", true);
+		$(this).prop("disabled",true);
 
 		//Lets try to get the author names and email list.
 		//$("#testUploadAndSubmit").click(function(e){
