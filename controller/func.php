@@ -230,6 +230,19 @@ return Message("Will be available soon.","alert-warning");
 	return Login("Referee");
 }
 
+function AdminLogin(){
+if(!EnableMenuItem("AdminLogin"))
+return Message("Will be available soon.","alert-warning");
+
+	return Login("Admin");
+}
+function CoordinatorLogin(){
+if(!EnableMenuItem("CoordinatorLogin"))
+return Message("Will be available soon.","alert-warning");
+
+	return Login("Coordinator");
+}
+
 function ServeLogin(){
 	session_start();
 	$obj = new DB();
@@ -244,6 +257,10 @@ function ServeLogin(){
 		$tableToQuery = "user_credentials";
 	if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Referee")	
 		$tableToQuery = "refereeList";
+	if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Admin")	
+		$tableToQuery = "admin_credentials";
+	if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Coordinator")	
+		$tableToQuery = "coordinatorList";
 
 	$query = "select * from ".$tableToQuery." where uname='".$uname."'";
 	//return $query;
@@ -291,6 +308,8 @@ function ServeLogin(){
 
 		if($_SESSION["logintype"]=="Referee")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
+		if($_SESSION["logintype"]=="Admin")
+		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment();
 
 		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
 	}
@@ -1143,6 +1162,24 @@ $retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td>
 $retVal.='</table>';
 
 return $retVal;
+
+}
+
+function PopulateAllotment(){
+$retVal="";
+if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Admin"){
+$retVal='<input type="button" class="btn btn-primary allotment" id="adminAllotment" value="AllotCoordinator"/>
+<input type="button" class="btn btn-primary allotment" id="adminAllotment" value="AllotReferee"/>
+';
+}
+if(isset($_SESSION["logintype"]) && $_SESSION["logintype"]=="Coordinator"){
+$retVal='<input type="button" class="btn btn-primary allotment" id="coordinatorAllotment" value="AllotReferee"/>
+';
+}
+return $retVal;
+}
+
+function AllotCoordinator(){
 
 }
 
