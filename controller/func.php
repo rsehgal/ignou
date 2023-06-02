@@ -793,10 +793,12 @@ $formContent.='<div class="form-group">
 
 		$formContent.=AuthorList().'<br/><hr/>';
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit" loc="../'.$loc.'" filename="'.$filename.'">Submit</button>';
+		$formContent.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 
 
 	$associatedJs = '<script>
 			$(function(){
+			$("#loadingGif").hide();
 			$(".custom-file-input").on("change",function(e){
 				//alert("file selected...");
 				var fileName = e.target.files[0].name;
@@ -875,6 +877,9 @@ $formContent.='<div class="form-group">
 
                         e.preventDefault();
 
+			$("#loadingGif").show();
+        	        $(this).prop("disabled",true);
+
                		//Lets try to get the author names and email list.
                           var authorNameTextBoxValues = $(".authorName").map(function() {
                           return $(this).val();
@@ -903,6 +908,8 @@ $formContent.='<div class="form-group">
                                 contentType : false,
                                 success: function(response) {
                                         //$("#uploadStatus").html(response);
+					$("#loadingGif").hide();
+                                        $("#uploadAndSubmit").prop("disabled",false);
                                         $("#result").html(response);
                                 }
                         });
