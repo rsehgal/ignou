@@ -19,6 +19,14 @@ The National Academy of Sciences, India, NASI-2023.
 .btn-custom {
   font-size: 24px;
 }
+
+#loadingGif {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Add any additional styling you need */
+}
 </style>
 <script>
 $(document).ready(function(){
