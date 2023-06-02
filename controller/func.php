@@ -1192,7 +1192,7 @@ $associatedJs='<script>
 	            $("#result").html(response);
         	    }
           	});
-	}):
+	});
 
 
 		</script>';
