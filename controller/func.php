@@ -1226,7 +1226,7 @@ function Allot(){
 	session_start();
 	if(isset($_SESSION["loggedin"])){
 	//$submitterName = GetSubmitterName();
-	$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+	$query = 'select * from contributions';//where refereeName="'.$_SESSION["username"].'"';
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
@@ -1234,7 +1234,7 @@ function Allot(){
 	
 	$retValue="";
 	$retTable='<table class="table table-striped table-bordered">';
-	$retTable.='<tr><td>uname</th>
+	$retTable.='<tr><th>uname</th>
 			<th>Title</th>
 			<th>Topic</th>
 			<th>Category</th>
