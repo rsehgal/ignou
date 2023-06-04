@@ -1285,7 +1285,7 @@ function Allot(){
 		$retTable.='</tr>';
 	}
 
-	/*
+	
 	$associatedJs='<script> 
 			$(function(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
@@ -1329,9 +1329,9 @@ function Allot(){
 
 			
 			</script>';
-	 */
+	 
 	//return $retValue;
-	return $retTable;//.$associatedJs;
+	return $retTable.$associatedJs;
 }else{
 
 		return Message("Please login to view your submissions.");
