@@ -1291,9 +1291,9 @@ function Allot(){
 			</tr>';
 	$decArray=array();
 	if($allotmentType=="AllotReferee")
-	$decArray["Referee"]=array("RSE","BRB","SLV","ABE");
+	$decArray["Referee"]=GetArray("Referee");//array("RSE","BRB","SLV","ABE");
 	elseif($allotmentType=="AllotCoordinator"){
-	$decArray["Coordinator"]=GetCoordinatorsArray();//array("RSE","BRB","SLV","ABE");
+	$decArray["Coordinator"]=GetArray("Coordinator");//array("RSE","BRB","SLV","ABE");
 	}
 	else
 	$decArray["Decision"]=array("RSE","BRB","SLV","ABE");

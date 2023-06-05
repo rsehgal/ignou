@@ -56,9 +56,15 @@
         //return $main.$subMenu."</div>";
 }
 
-function GetCoordinatorsArray(){
+function GetArray($allotmenType){
 $obj=new DB();
+$query="";
+if($allotmenType=="Referee")
+$query='select * from refereeList where 1';
+
+if($allotmenType=="Coordinator")
 $query='select * from coordinatorList where 1';
+
 $result = $obj->GetQueryResult($query);
 
 $coordinatorsArray = array();
