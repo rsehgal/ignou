@@ -1348,7 +1348,7 @@ function Allot(){
 			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status1,1).'</td>
 			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status2,2).'</td>
 			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status3,3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$statu4,4).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status4,4).'</td>
 			   </tr>
 			   </table>';	
 
