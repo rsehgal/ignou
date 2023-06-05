@@ -1341,16 +1341,16 @@ function Allot(){
 				
 				e.preventDefault();
 				//alert("MyID : "+$(this).attr("id"));
-				var decisionTextId = "#decisionText_"+$(this).attr("id");
+				var decisionTextId = "#decisionText_"+$(this).attr("id")+"_0";
 				//var remarksTextId = "#remarks_"+$(this).attr("id");
 				//alert($(decisionTextId).val());
 				//alert($(remarksTextId).val());
 				functionName=$(this).attr("functionName");
 				data["function_name"]=functionName;
 				//data["remarks"]=$(remarksTextId).val();
-				//data["decision"]=$(decisionTextId).val();
-				data["decision"]="decisionText_"+$(this).attr("id")+"_0";
-				alert(data["decision"]);
+				data["decision"]=$(decisionTextId).val();
+				//data["decision"]="decisionText_"+$(this).attr("id")+"_0";
+				//alert(data["decision"]);
 				data["filename"]=$(this).attr("id")+".pdf";
 
 				    $.ajax({
