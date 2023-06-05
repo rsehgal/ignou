@@ -1230,6 +1230,14 @@ function AllotCoordinator(){
 	$result = $obj->GetQueryResult($query);
 	return MessageAutoClose("Status updated....","alert-warning");
 }
+function AllotReferee(){
+	$obj = new DB();
+	$status=$_POST["decision"];
+	$filename=$_POST["filename"];
+	$query = "update contributions set refereeName='".$status."' where Filename='".$filename."'";
+	$result = $obj->GetQueryResult($query);
+	return MessageAutoClose("Status updated....","alert-warning");
+}
 
 function Allot(){
 	//return Message("Will be available soon.","alert-warning");
@@ -1296,8 +1304,19 @@ function Allot(){
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		//$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
-		if($allotmentType=="AllotReferee")
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId);
+		if($allotmentType=="AllotReferee"){
+		$referees='<table class="table">
+			   <tr>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
+			   </tr>
+			   </table>';	
+
+		$retTable.=$referees;//'<td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId);
+
+		}
 		elseif($allotmentType=="AllotCoordinator")
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId);
 		else
