@@ -1369,10 +1369,10 @@ function Allot(){
 				//data["remarks"]=$(remarksTextId).val();
 				data["decision"]=$(decisionTextId).val();
 
-				data["ref1"]="#decisionText_"+$(this).attr("id")+"_1";
-				data["ref2"]="#decisionText_"+$(this).attr("id")+"_2";
-				data["ref3"]="#decisionText_"+$(this).attr("id")+"_3";
-				data["ref4"]="#decisionText_"+$(this).attr("id")+"_4";
+				data["ref1"]=$("#decisionText_"+$(this).attr("id")+"_1").val();
+				data["ref2"]=$("#decisionText_"+$(this).attr("id")+"_2").val();
+				data["ref3"]=$("#decisionText_"+$(this).attr("id")+"_3").val();
+				data["ref4"]=$("#decisionText_"+$(this).attr("id")+"_4").val();
 
 				//data["decision"]="decisionText_"+$(this).attr("id")+"_0";
 				//alert(data["decision"]);
