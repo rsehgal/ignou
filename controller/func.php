@@ -547,6 +547,10 @@ function WithdrawContribution(){
 	return Message("Your paper is withdrawn.","alert-info");
 }
 function Referee_UpdatePaperStatus(){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
 	if(isset($_SESSION["loggedin"])){
