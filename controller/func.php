@@ -372,7 +372,7 @@ return Message("Will be available soon.","alert-warning");
 }
 
 function Message($message,$colorClass="alert-danger"){
-return "<h3 class='alert ".$colorClass." text-center' role='alert'>".$message."</h3><br/>";
+return "<h3 class='alert alert-dismissible fade show ".$colorClass." text-center' role='alert'>".$message."</h3><br/>";
 
 }
 
