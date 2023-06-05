@@ -1325,20 +1325,20 @@ function Allot(){
 		//$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
 		if($allotmentType=="AllotReferee"){
 		$query='select * from refereeAllotment where Filename="'.$fileName.'"';
-		$result=$obj->GetQueryResult($query);
+		$result_coord=$obj->GetQueryResult($query);
 
 		if($result){
-		$row=$result->fetch_assoc();
-		$status1=$row["refereeName"];
+		$row_coord=$result_coord->fetch_assoc();
+		$status1=$row_coord["refereeName"];
 
-		$row=$result->fetch_assoc();
-		$status2=$row["refereeName"];
+		$row_coord=$result_coord->fetch_assoc();
+		$status2=$row_coord["refereeName"];
 
-		$row=$result->fetch_assoc();
-		$status3=$row["refereeName"];
+		$row_coord=$result_coord->fetch_assoc();
+		$status3=$row_coord["refereeName"];
 
-		$row=$result->fetch_assoc();
-		$status4=$row["refereeName"];
+		$row_coord=$result_coord->fetch_assoc();
+		$status4=$row_coord["refereeName"];
 		}
 
 
