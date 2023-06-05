@@ -33,6 +33,9 @@
  function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId){
 	$subEntries = $associativeSubEntries[$mainEntry];
 	$catEntries = $associativeSubEntries["code"];
+	$str='<table class="table">
+		<tr>
+		<td>';
         $main='<div class="dropdown">
     <button type="button" class="btn btn-primary dropdown-toggle" id="topicDropDown" data-toggle="dropdown">'.
       $mainEntry.'
@@ -44,7 +47,13 @@
 }
         
         $subMenu.='</div>';
-        return $main.$subMenu."</div>";
+
+	$str.=$main.$subMenu.'</td></tr>';
+	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'" value="'.$status.'" class="form-control"/></td></tr>';
+	$str.='</table>';
+
+	return $str;
+        //return $main.$subMenu."</div>";
 }
 
 function HomeNASI(){
