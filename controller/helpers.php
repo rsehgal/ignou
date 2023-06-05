@@ -30,7 +30,7 @@
                 //return $valArray[0];
         }
 
- function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId){
+ function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId,$id){
 	$subEntries = $associativeSubEntries[$mainEntry];
 	$catEntries = $associativeSubEntries["code"];
 	$str='<table class="table">
@@ -43,13 +43,13 @@
         $subMenu='<div class="dropdown-menu">';
         for($i= 0 ; $i < count($subEntries) ; $i++){
            
-           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'" value="'.$subEntries[$i].'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
+           $subMenu.='<a class="dropdown-item '.$mainEntry.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'" value="'.$subEntries[$i].'" refid="'.$id.'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
 }
         
         $subMenu.='</div>';
 
 	$str.=$main.$subMenu.'</td></tr>';
-	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'" value="'.$status.'" class="form-control"/></td></tr>';
+	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control"/></td></tr>';
 	$str.='</table>';
 
 	return $str;
