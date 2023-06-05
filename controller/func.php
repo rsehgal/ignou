@@ -1324,12 +1324,31 @@ function Allot(){
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		//$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
 		if($allotmentType=="AllotReferee"){
+		$query='select * from refereeAllotment where Filename="'.$fileName.'"';
+		$result=$obj->GetQueryResult($query);
+
+		if($result){
+		$row=result->fetch_assoc();
+		$status1=$row["refereeName"];
+
+		$row=result->fetch_assoc();
+		$status2=$row["refereeName"];
+
+		$row=result->fetch_assoc();
+		$status3=$row["refereeName"];
+
+		$row=result->fetch_assoc();
+		$status4=$row["refereeName"];
+		}
+
+
+
 		$referees='<td><table class="table">
-			   <tr>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,1).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,2).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,4).'</td>
+			   <tr>				
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status1,1).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status2,2).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status3,3).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$statu4,4).'</td>
 			   </tr>
 			   </table>';	
 
