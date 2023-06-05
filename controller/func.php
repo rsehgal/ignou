@@ -1292,8 +1292,9 @@ function Allot(){
 	$decArray=array();
 	if($allotmentType=="AllotReferee")
 	$decArray["Referee"]=array("RSE","BRB","SLV","ABE");
-	elseif($allotmentType=="AllotCoordinator")
-	$decArray["Coordinator"]=array("RSE","BRB","SLV","ABE");
+	elseif($allotmentType=="AllotCoordinator"){
+	$decArray["Coordinator"]=GetCoordinatorsArray();//array("RSE","BRB","SLV","ABE");
+	}
 	else
 	$decArray["Decision"]=array("RSE","BRB","SLV","ABE");
 	while($row = $result->fetch_assoc()){

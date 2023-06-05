@@ -56,6 +56,20 @@
         //return $main.$subMenu."</div>";
 }
 
+function GetCoordinatorsArray(){
+$obj=new DB();
+$query='select * from coordinatorList where 1';
+$result = $obj->GetQueryResult($query);
+
+$coordinatorsArray = array();
+$counter=0;
+while($row = $result->fetch_assoc()){
+ $coordinatorsArray[$counter]=$row["uname"];
+ $counter++;
+}
+return coordinatorsArray;
+}
+
 function HomeNASI(){
 
 return "<hr/><br/><div class='align-items-center justify-content-center'>
