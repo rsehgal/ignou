@@ -1267,7 +1267,7 @@ function Allot(){
 		$authorEmailsList=$row["AuthorEmailsList"];
 		$fileName=$row["Filename"];
 		$queryTopic=$row["Topic"];
-		$status=$row["status"];
+		$status=$row["refereeName"];
 		$remarks=$row["remarks"];
 		$queryCategory=$row["Category"];
 
