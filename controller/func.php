@@ -1234,8 +1234,21 @@ function AllotReferee(){
 	$obj = new DB();
 	$status=$_POST["decision"];
 	$filename=$_POST["filename"];
-	$query = "update contributions set refereeName='".$status."' where Filename='".$filename."'";
+	$query='delete from refereeAllotment where Filename="'.$filename.'"';
 	$result = $obj->GetQueryResult($query);
+
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref1.'")';
+	$result = $obj->GetQueryResult($query);
+
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref2.'")';
+	$result = $obj->GetQueryResult($query);
+	
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref3.'")';
+	$result = $obj->GetQueryResult($query);
+
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref4.'")';
+	$result = $obj->GetQueryResult($query);
+
 	return MessageAutoClose("Status updated....","alert-warning");
 }
 
@@ -1349,6 +1362,12 @@ function Allot(){
 				data["function_name"]=functionName;
 				//data["remarks"]=$(remarksTextId).val();
 				data["decision"]=$(decisionTextId).val();
+
+				data["ref1"]="#decisionText_"+$(this).attr("id")+"_1";
+				data["ref2"]="#decisionText_"+$(this).attr("id")+"_2";
+				data["ref3"]="#decisionText_"+$(this).attr("id")+"_3";
+				data["ref4"]="#decisionText_"+$(this).attr("id")+"_4";
+
 				//data["decision"]="decisionText_"+$(this).attr("id")+"_0";
 				//alert(data["decision"]);
 				data["filename"]=$(this).attr("id")+".pdf";
