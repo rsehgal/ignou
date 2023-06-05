@@ -30,6 +30,10 @@ The National Academy of Sciences, India, NASI-2023.
 </style>
 <script>
 $(document).ready(function(){
+
+	setTimeout(function(){
+	$("refereeUpdateStatus").alert("close");
+	},2000);
 //--------------------------------------------------
 //this block is just to read the home text using ajax
 var dataHome={};
@@ -239,7 +243,7 @@ require "Forms.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
-echo "<div id='refereeUpdateStatus' ></div>";
+echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
 echo "<div id='result' ></div>";
 //echo HomeNASI();
 
