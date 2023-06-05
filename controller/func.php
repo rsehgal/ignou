@@ -1348,7 +1348,8 @@ function Allot(){
 				functionName=$(this).attr("functionName");
 				data["function_name"]=functionName;
 				//data["remarks"]=$(remarksTextId).val();
-				data["decision"]=$(decisionTextId).val();
+				//data["decision"]=$(decisionTextId).val();
+				data["decision"]="decisionText_"+$(this).attr("id")+"_0";
 				data["filename"]=$(this).attr("id")+".pdf";
 
 				    $.ajax({
