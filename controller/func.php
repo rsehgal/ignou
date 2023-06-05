@@ -1328,16 +1328,16 @@ function Allot(){
 		$result=$obj->GetQueryResult($query);
 
 		if($result){
-		$row=result->fetch_assoc();
+		$row=$result->fetch_assoc();
 		$status1=$row["refereeName"];
 
-		$row=result->fetch_assoc();
+		$row=$result->fetch_assoc();
 		$status2=$row["refereeName"];
 
-		$row=result->fetch_assoc();
+		$row=$result->fetch_assoc();
 		$status3=$row["refereeName"];
 
-		$row=result->fetch_assoc();
+		$row=$result->fetch_assoc();
 		$status4=$row["refereeName"];
 		}
 
