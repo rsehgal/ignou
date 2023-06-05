@@ -1233,9 +1233,9 @@ function AllotCoordinator(){
 
 function Allot(){
 	//return Message("Will be available soon.","alert-warning");
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 	session_start();
 	if(isset($_SESSION["loggedin"])){
  	$allotmentType = $_POST["allotmentType"];
@@ -1259,6 +1259,11 @@ function Allot(){
 			<th>Update Status</th>
 			</tr>';
 	$decArray=array();
+	if($allotmentType=="AllotReferee")
+	$decArray["Referee"]=array("RSE","BRB","SLV","ABE");
+	elseif($allotmentType=="AllotCoordinator")
+	$decArray["Coordinator"]=array("RSE","BRB","SLV","ABE");
+	else
 	$decArray["Decision"]=array("RSE","BRB","SLV","ABE");
 	while($row = $result->fetch_assoc()){
 		$retTable.='<tr>';
