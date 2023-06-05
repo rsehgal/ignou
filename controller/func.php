@@ -1234,6 +1234,12 @@ function AllotReferee(){
 	$obj = new DB();
 	$status=$_POST["decision"];
 	$filename=$_POST["filename"];
+
+	$ref1=$_POST["ref1"];
+	$ref2=$_POST["ref2"];
+	$ref3=$_POST["ref3"];
+	$ref4=$_POST["ref4"];
+
 	$query='delete from refereeAllotment where Filename="'.$filename.'"';
 	$result = $obj->GetQueryResult($query);
 
