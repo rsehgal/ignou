@@ -1238,13 +1238,16 @@ function Allot(){
 	//error_reporting(E_ALL);
 	session_start();
 	if(isset($_SESSION["loggedin"])){
-	//$submitterName = GetSubmitterName();
+ 	$allotmentType = $_POST["allotmentType"];
+	$query="";
+	if($allotmentType=="AllotReferee")	
+	$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+	else	
 	$query = 'select * from contributions where 1';//refereeName="'.$_SESSION["username"].'"';
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
 	//return $query;
- 	$allotmentType = $_POST["allotmentType"];	
 	$retValue="";
 	$retTable='<table class="table table-striped table-bordered">';
 	$retTable.='<tr><th>uname</th>
