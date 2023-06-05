@@ -1291,6 +1291,11 @@ function Allot(){
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		//$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
+		if($allotmentType=="AllotReferee")
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId);
+		elseif($allotmentType=="AllotCoordinator")
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId);
+		else
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId);
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
