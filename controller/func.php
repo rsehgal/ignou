@@ -1305,7 +1305,7 @@ function Allot(){
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		//$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
 		if($allotmentType=="AllotReferee"){
-		$referees='<table class="table">
+		$referees='<td><table class="table">
 			   <tr>
 			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
 			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
