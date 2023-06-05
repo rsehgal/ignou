@@ -30,7 +30,7 @@
                 //return $valArray[0];
         }
 
- function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId,$id){
+ function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId,$id=0){
 	$subEntries = $associativeSubEntries[$mainEntry];
 	$catEntries = $associativeSubEntries["code"];
 	$str='<table class="table">

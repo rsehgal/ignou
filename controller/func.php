@@ -1307,10 +1307,10 @@ function Allot(){
 		if($allotmentType=="AllotReferee"){
 		$referees='<td><table class="table">
 			   <tr>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,1).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,2).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,3).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,4).'</td>
 			   </tr>
 			   </table>';	
 
