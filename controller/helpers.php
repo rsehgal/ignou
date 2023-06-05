@@ -67,7 +67,7 @@ while($row = $result->fetch_assoc()){
  $coordinatorsArray[$counter]=$row["uname"];
  $counter++;
 }
-return coordinatorsArray;
+return $coordinatorsArray;
 }
 
 function HomeNASI(){
