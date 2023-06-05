@@ -1343,7 +1343,7 @@ function Allot(){
 				    });
 
 			});
-			$(".Decision").click(function(e){
+			$(".Decision,.Referee,.Coordinator").click(function(e){
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
