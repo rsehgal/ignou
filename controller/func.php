@@ -1350,6 +1350,7 @@ function Allot(){
 				//data["remarks"]=$(remarksTextId).val();
 				//data["decision"]=$(decisionTextId).val();
 				data["decision"]="decisionText_"+$(this).attr("id")+"_0";
+				alert(data["decision"]);
 				data["filename"]=$(this).attr("id")+".pdf";
 
 				    $.ajax({
