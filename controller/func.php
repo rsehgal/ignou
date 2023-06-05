@@ -1307,10 +1307,10 @@ function Allot(){
 		if($allotmentType=="AllotReferee"){
 		$referees='<td><table class="table">
 			   <tr>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,1).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,2).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,4).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,1).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,2).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,3).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status,4).'</td>
 			   </tr>
 			   </table>';	
 
@@ -1318,9 +1318,9 @@ function Allot(){
 
 		}
 		elseif($allotmentType=="AllotCoordinator")
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId);
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status);
 		else
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId);
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status);
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
 		else
