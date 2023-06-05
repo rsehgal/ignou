@@ -308,7 +308,7 @@ function ServeLogin(){
 
 		if($_SESSION["logintype"]=="Referee")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
-		if($_SESSION["logintype"]=="Admin")
+		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment();
 
 		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
