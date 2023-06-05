@@ -1221,6 +1221,16 @@ function Allottt(){
 }
 	
 }
+
+function AllotCoordinator(){
+	$obj = new DB();
+	$status=$_POST["decision"];
+	$filename=$_POST["filename"];
+	$query = "update contributions set refereeName='".$status."' where Filename='".$filename."'";
+	$result = $obj->GetQueryResult($query);
+	return MessageAutoClose("Status updated....","alert-warning");
+}
+
 function Allot(){
 	//return Message("Will be available soon.","alert-warning");
 	//ini_set('display_errors', 1);
@@ -1234,7 +1244,7 @@ function Allot(){
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
 	//return $query;
-	
+ 	$allotmentType = $_POST["allotmentType"];	
 	$retValue="";
 	$retTable='<table class="table table-striped table-bordered">';
 	$retTable.='<tr><th>uname</th>
@@ -1242,12 +1252,11 @@ function Allot(){
 			<th>Topic</th>
 			<th>Category</th>
 			<th>Uploaded File</th>
-			<th>Referee Remarks</th>
-			<th>Referee Decision</th>
+			<th>'.$allotmentType.'</th>
 			<th>Update Status</th>
 			</tr>';
 	$decArray=array();
-	$decArray["Decision"]=array("Oral","Poster","Rejected");
+	$decArray["Decision"]=array("RSE","BRB","SLV","ABE");
 	while($row = $result->fetch_assoc()){
 		$retTable.='<tr>';
 		//$retValue.=$row["Topic"]." : ".$row["Category"]."<br/>";
@@ -1278,10 +1287,10 @@ function Allot(){
 		$retTable.='<td>'.$selectedTopic.'</td>';
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
-		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
+		//$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId).'
 				<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
-		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
+		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="'.$allotmentType.'"/></td>';
 		$retTable.='</tr>';
 	}
 
@@ -1298,12 +1307,12 @@ function Allot(){
 				e.preventDefault();
 				//alert("MyID : "+$(this).attr("id"));
 				var decisionTextId = "#decisionText_"+$(this).attr("id");
-				var remarksTextId = "#remarks_"+$(this).attr("id");
+				//var remarksTextId = "#remarks_"+$(this).attr("id");
 				//alert($(decisionTextId).val());
 				//alert($(remarksTextId).val());
 				functionName=$(this).attr("functionName");
 				data["function_name"]=functionName;
-				data["remarks"]=$(remarksTextId).val();
+				//data["remarks"]=$(remarksTextId).val();
 				data["decision"]=$(decisionTextId).val();
 				data["filename"]=$(this).attr("id")+".pdf";
 
