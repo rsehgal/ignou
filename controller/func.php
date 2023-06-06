@@ -1572,6 +1572,7 @@ function Allot(){
 					
 					if(response > 7){
 						alert("Oral");
+						$(scoreTextId).addClass("bg-success");
 					}
 					/*var status="";
 					var class="";
