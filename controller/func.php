@@ -38,6 +38,15 @@ function UpdateStatus(){
 	$result = $obj->GetQueryResult($query);
 	return MessageAutoClose("Status updated....","alert-warning");
 }
+function UpdateStatus_Old(){
+	$obj = new DB();
+	$remarks=$_POST["remarks"];
+	$status=$_POST["decision"];
+	$filename=$_POST["filename"];
+	$query = "update contributions set remarks='".$remarks."', status='".$status."' where Filename='".$filename."'";
+	$result = $obj->GetQueryResult($query);
+	return MessageAutoClose("Status updated....","alert-warning");
+}
 
 
 function Upload(){
@@ -552,7 +561,7 @@ function WithdrawContribution(){
 	$obj->GetQueryResult($query);	
 	return Message("Your paper is withdrawn.","alert-info");
 }
-function Referee_UpdatePaperStatus(){
+function Referee_UpdatePaperStatus_Old(){
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
@@ -614,6 +623,123 @@ function Referee_UpdatePaperStatus(){
 		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status).'
 				<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
+		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
+		$retTable.='</tr>';
+	}
+
+	$associatedJs='<script> 
+			$(function(){
+				$(".alert-autoclose").delay(5000).fadeOut("slow");
+			});
+			var functionName="";
+			var data={};
+			$(".updateDecision").click(function(e){
+
+				
+				e.preventDefault();
+				//alert("MyID : "+$(this).attr("id"));
+				var decisionTextId = "#decisionText_"+$(this).attr("id");
+				var remarksTextId = "#remarks_"+$(this).attr("id");
+				//alert($(decisionTextId).val());
+				//alert($(remarksTextId).val());
+				functionName=$(this).attr("functionName");
+				data["function_name"]=functionName;
+				data["remarks"]=$(remarksTextId).val();
+				data["decision"]=$(decisionTextId).val();
+				data["filename"]=$(this).attr("id")+".pdf";
+
+				    $.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : data,
+				    success: function(response) {
+					//alert("response");
+				    	$("#refereeUpdateStatus").html(response);
+				    }
+				    });
+
+			});
+			$(".Decision").click(function(e){
+				e.preventDefault();
+				var textBoxId="#decisionText_"+$(this).attr("buttonid");
+				//alert(textBoxId);
+				$(textBoxId).val($(this).attr("value"));
+				$(textBoxId).attr("value",$(this).attr("value"));
+				
+			});
+
+			
+			</script>';
+	//return $retValue;
+	return $retTable.$associatedJs;
+}else{
+
+		return Message("Please login to view your submissions.");
+}
+	
+}
+
+function Referee_UpdatePaperStatus(){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	//return Message("Will be available soon.","alert-warning");
+	session_start();
+	if(isset($_SESSION["loggedin"])){
+	//$submitterName = GetSubmitterName();
+	//$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+	$query = 'select * from contributions where Filename in ( select Filename from refereeAllotment where refereeName="'.$_SESSION["username"].'")';
+ 	//return $query;	
+	$obj = new DB();
+	$result = $obj->GetQueryResult($query);
+	//return $query;
+	
+	$retValue="";
+	$retTable='<table class="table table-striped table-bordered">';
+	$retTable.='<tr><th>uname</th>
+			<th>Title</th>
+			<th>Topic</th>
+			<th>Category</th>
+			<th>Uploaded File</th>
+			<th>Referee Remarks</th>
+			<th>Marks out of 10</th>
+			<th>Update Status</th>
+			</tr>';
+	$decArray=array();
+	$decArray["Decision"]=array("Oral","Poster","Rejected");
+	while($row = $result->fetch_assoc()){
+		$retTable.='<tr>';
+		//$retValue.=$row["Topic"]." : ".$row["Category"]."<br/>";
+		//$retValue.="Hello <br/>";
+		$authorName=$row["uname"];
+		$paperTitle=$row["Title"];
+		$authorNamesList=$row["AuthorNamesList"];
+		$authorEmailsList=$row["AuthorEmailsList"];
+		$fileName=$row["Filename"];
+		$queryTopic=$row["Topic"];
+		$status=$row["status"];
+		$remarks=$row["remarks"];
+		$queryCategory=$row["Category"];
+
+		$updateButtonId=preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
+		
+
+		//$retValue.=GetTopic($queryTopic)." : ";
+		//$retValue.=GetCategory($queryTopic,$queryCategory);
+		$selectedTopic=GetTopic($queryTopic);
+		$retValue.=$selectedTopic." : ";
+		$selectedCategory=GetCategory($selectedTopic,$queryCategory);
+		$retValue.=$selectedCategory;
+		$retValue.="<br/>";
+		$retTable.='<td>'.$authorName.'</td>';
+		//$retTable.='<td>'.$submitterName.'</td>';
+		$retTable.='<td>'.$paperTitle.'</td>';
+		$retTable.='<td>'.$selectedTopic.'</td>';
+		$retTable.='<td>'.$selectedCategory.'</td>';
+		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
+		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
+		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
 		$retTable.='</tr>';
 	}
