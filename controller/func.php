@@ -703,7 +703,7 @@ function Referee_UpdatePaperStatus(){
 			<th>Category</th>
 			<th>Uploaded File</th>
 			<th>Referee Remarks</th>
-			<th>Marks out of 10</th>
+			<th>Marks</th>
 			<th>Update Status</th>
 			</tr>';
 	$decArray=array();
@@ -739,7 +739,7 @@ function Referee_UpdatePaperStatus(){
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
-		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
+		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control" placeholder="Out of 10"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
 		$retTable.='</tr>';
 	}
