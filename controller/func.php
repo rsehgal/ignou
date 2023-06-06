@@ -1572,7 +1572,7 @@ function Allot(){
 					var class="";
 					if(response > 7){
 						status="Oral";
-						class="bg-success"
+						class="bg-success";
 					}
 					$(scoreTextId).val(response+" : "+status);
 					$(scoreTextId).addClass(class);
