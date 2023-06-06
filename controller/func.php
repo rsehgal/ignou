@@ -695,7 +695,8 @@ function Referee_UpdatePaperStatus(){
 	//$submitterName = GetSubmitterName();
 	//$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
 	//$query = 'select * from contributions where Filename in ( select Filename from refereeAllotment where refereeName="'.$_SESSION["username"].'")';
-	$query = 'select contributions.uname, contributions.Title, contributions.Topic, contributions.Category,contributions.Filename, refereeAllotment.marks, refereeAllotment.remarks from contributions INNER JOIN refereeAllotment ON contributions.Filename=refereeAllotment.Filename where refereeAllotment.refereeName="'.$SESSION["username"].'"';  	//return $query;	
+	$query = 'select contributions.uname, contributions.Title, contributions.Topic, contributions.Category,contributions.Filename, refereeAllotment.marks, refereeAllotment.remarks from contributions INNER JOIN refereeAllotment ON contributions.Filename=refereeAllotment.Filename where refereeAllotment.refereeName="'.$SESSION["username"].'"';  	
+return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
 	//return $query;
