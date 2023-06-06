@@ -1565,14 +1565,14 @@ function Allot(){
 					//alert("response");
 					if(functionName=="GetScore"){
 					var scoreTextId = "#score_"+btnID;
-					alert(scoreTextId);
-					alert(response);
+					//alert(scoreTextId);
+					//alert(response);
 
 					
 					if(response >= 7){
 						$(scoreTextId).val(response+" : Oral");
 						//alert("Oral");
-						$(scoreTextId).addClass("bg-success");
+						$(scoreTextId).addClass("bg-info");
 					}
 					if(response >= 4 && response < 7){
 						$(scoreTextId).val(response+" : Poster");
