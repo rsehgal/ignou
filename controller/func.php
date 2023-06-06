@@ -1599,8 +1599,13 @@ function Allot(){
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
-				
+				var prevValue = $(textBoxId).val();		
 				$(textBoxId).val($(this).attr("value"));
+				var newValue = $(textBoxId).val();		
+				if(prevValue!=newValue){
+					alert("Attention : Your are changing a referee.");
+				}
+				
 				//$(textBoxId).attr("value",$(this).attr("value"));
 				
 			});
