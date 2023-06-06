@@ -694,8 +694,8 @@ function Referee_UpdatePaperStatus(){
 	if(isset($_SESSION["loggedin"])){
 	//$submitterName = GetSubmitterName();
 	//$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
-	$query = 'select * from contributions where Filename in ( select Filename from refereeAllotment where refereeName="'.$_SESSION["username"].'")';
- 	//return $query;	
+	//$query = 'select * from contributions where Filename in ( select Filename from refereeAllotment where refereeName="'.$_SESSION["username"].'")';
+	$query = 'select contributions.uname, contributions.Title, contributions.Topic, contributions.Category,contributions.Filename, refereeAllotment.marks, refereeAllotment.remarks from contributions INNER JOIN refereeAllotment ON contributions.Filename=refereeAllotment.Filename where refereeAllotment.refereeName="'.$SESSION["username"].'"';  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
 	//return $query;
@@ -719,11 +719,9 @@ function Referee_UpdatePaperStatus(){
 		//$retValue.="Hello <br/>";
 		$authorName=$row["uname"];
 		$paperTitle=$row["Title"];
-		$authorNamesList=$row["AuthorNamesList"];
-		$authorEmailsList=$row["AuthorEmailsList"];
 		$fileName=$row["Filename"];
 		$queryTopic=$row["Topic"];
-		$status=$row["status"];
+		$status=$row["marks"];
 		$remarks=$row["remarks"];
 		$queryCategory=$row["Category"];
 
