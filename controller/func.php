@@ -1532,7 +1532,7 @@ function Allot(){
 			});
 
 			$(".decisionText").on("change",function(e){
-
+				e.preventDefault();
 				alert($(this).attr("id"));
 			});
 
