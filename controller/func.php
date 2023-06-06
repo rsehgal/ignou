@@ -626,7 +626,7 @@ function Referee_UpdatePaperStatus_Old(){
 		$retTable.='<td>'.$selectedCategory.'</td>';
 		$retTable.='<td><a href="../'.$_SESSION["uploadlocation"].'/'.$fileName.'">'.$fileName.'</a></td>';
 		$retTable.='<td><textarea class="form-control" id="remarks_'.$updateButtonId.'">'.$remarks.'</textarea></td>';
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status).'
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName).'
 				<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
 		$retTable.='</tr>';
@@ -1492,10 +1492,10 @@ function Allot(){
 
 		$referees='<td><table class="table">
 			   <tr>				
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref1"],1).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref2"],2).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref3"],3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref4"],4).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref1"],$fileName,1).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref2"],$fileName,2).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref3"],$fileName,3).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref4"],$fileName,4).'</td>
 			   </tr>
 			   </table>';	
 
@@ -1505,7 +1505,7 @@ function Allot(){
 		elseif($allotmentType=="AllotCoordinator")
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status);
 		else
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status);
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName);
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
 		else
@@ -1599,12 +1599,23 @@ function Allot(){
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
+				dataRef={};
+
+				dataRef["prevValue"]=prevValue;
+				dataRef["newValue"]=newValue;
+				dataRef["filename"]=$(this).attr("filename")";
+				dataRef["refnum"]=$(this).attr("refnum")";
+
+				alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
+
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
 				var okornot=false;
 				if(prevValue!=newValue){
 					//alert("Attention : Your are changing a referee.");
 					okornot = confirm("Are you sure you want to change the referee. \n You will lose the work done by previous referee.");
+
+					
 				}
 				if(!okornot)
 					return;
