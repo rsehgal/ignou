@@ -53,7 +53,7 @@
 	$str.='</table>';
 
 	$associatedJs = '<script>
-			$(".decisionText").on("change",function(){
+			$(".decisionText").click(function(){
 				alert($(this).attr("id"));
 			});
 			 </script>
