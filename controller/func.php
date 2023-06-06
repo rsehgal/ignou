@@ -1385,16 +1385,16 @@ function AllotReferee(){
 	$query='delete from refereeAllotment where Filename="'.$filename.'"';
 	$result = $obj->GetQueryResult($query);
 
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref1.'","ref1")';
+	$query='insert into refereeAllotment (Filename,refereeName,refnum) values("'.$filename.'","'.$ref1.'","ref1")';
 	$result = $obj->GetQueryResult($query);
 
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref2.'","ref2")';
+	$query='insert into refereeAllotment (Filename,refereeName,refnum) values("'.$filename.'","'.$ref2.'","ref2")';
 	$result = $obj->GetQueryResult($query);
 	
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref3.'","ref3")';
+	$query='insert into refereeAllotment (Filename,refereeName,refnum) values("'.$filename.'","'.$ref3.'","ref3")';
 	$result = $obj->GetQueryResult($query);
 
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref4.'","ref4")';
+	$query='insert into refereeAllotment (Filename,refereeName,refnum) values("'.$filename.'","'.$ref4.'","ref4")';
 	$result = $obj->GetQueryResult($query);
 
 	return MessageAutoClose("Status updated....","alert-warning");
