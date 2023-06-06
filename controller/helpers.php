@@ -49,7 +49,7 @@
         $subMenu.='</div>';
 
 	$str.=$main.$subMenu.'</td></tr>';
-	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control"/></td></tr>';
+	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
 	$str.='</table>';
 
 	return $str;
