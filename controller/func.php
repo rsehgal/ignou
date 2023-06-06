@@ -1531,8 +1531,7 @@ function Allot(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
 			});
 
-			$(".decisionText").on("change",function(e){
-				e.preventDefault();
+			$(".decisionText").on("change",function(){
 				alert($(this).attr("id"));
 			});
 
