@@ -1545,6 +1545,7 @@ function Allot(){
 				data["function_name"]=functionName;
 				//data["remarks"]=$(remarksTextId).val();
 				data["decision"]=$(decisionTextId).val();
+				var btnID = $(this).attr("id");
 
 				data["ref1"]=$("#decisionText_"+$(this).attr("id")+"_1").val();
 				data["ref2"]=$("#decisionText_"+$(this).attr("id")+"_2").val();
@@ -1563,7 +1564,7 @@ function Allot(){
 				    success: function(response) {
 					//alert("response");
 					if(functionName=="GetScore"){
-					var scoreTextId = "#score_"+$(this).attr("id");
+					var scoreTextId = "#score_"+btnID;
 					alert(scoreTextId);
 					alert(response);
 					$(scoreTextId).val(response);
