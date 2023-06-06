@@ -1602,11 +1602,11 @@ function Allot(){
 				var dataRef={};
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
-				/*	
+					
 				dataRef["prevValue"]=prevValue;
 				dataRef["newValue"]=newValue;
-				dataRef["filename"]=$(this).attr("filename")";
-				dataRef["refnum"]=$(this).attr("refnum")";*/
+				dataRef["filename"]=$(this).attr("filename");
+				dataRef["refnum"]=$(this).attr("refnum");
 
 				//alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
 
