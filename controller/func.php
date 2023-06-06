@@ -1509,7 +1509,7 @@ function Allot(){
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
 		else
-				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
+				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control refereeText"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="'.$allotmentType.'"/></td>';
 		
 
@@ -1530,6 +1530,12 @@ function Allot(){
 			$(function(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
 			});
+
+			$(".refereeText").on("change",function(e){
+
+				alert($(this).attr("id"));
+			});
+
 			var functionName="";
 			var data={};
 			$(".updateDecision, .updateScore").click(function(e){
