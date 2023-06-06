@@ -1575,7 +1575,7 @@ function Allot(){
 						class="bg-success";
 					}
 					$(scoreTextId).val(response+" : "+status);
-					$(scoreTextId).addClass(class);
+					//$(scoreTextId).addClass(class);
 					}
 					else
 				    	$("#refereeUpdateStatus").html(response);
