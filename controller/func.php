@@ -1515,7 +1515,7 @@ function Allot(){
 
 		$innerTab='<table class="table">';
 		//$retTable.=
-		$innerTab.='<tr><td><input type="text" id="'.$updateButtonId.'" class="btn btn-primary"/></td></tr>';
+		$innerTab.='<tr><td><input type="text" id="score_'.$updateButtonId.'" class="scoreText"/></td></tr>';
 		$innerTab.='<tr><td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateScore" value="GetScore" functionName="GetScore"/></td></tr>';
 
 		$innerTab.='</table>';
@@ -1562,6 +1562,9 @@ function Allot(){
 				    data : data,
 				    success: function(response) {
 					//alert("response");
+					if(functionName=="GetScore")
+					$("#score_"+$(this).attr("id")).val(response);
+					else
 				    	$("#refereeUpdateStatus").html(response);
 				    }
 				    });
