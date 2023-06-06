@@ -1568,10 +1568,10 @@ function Allot(){
 					alert(scoreTextId);
 					alert(response);
 
-					$(scoreTextId).val(response);
 					
 					if(response > 7){
-						alert("Oral");
+						$(scoreTextId).val(responsei+" : Oral");
+						//alert("Oral");
 						$(scoreTextId).addClass("bg-success");
 					}
 					/*var status="";
