@@ -1553,7 +1553,7 @@ function Allot(){
 				data["ref3"]=$("#decisionText_"+$(this).attr("id")+"_3").val();
 				data["ref4"]=$("#decisionText_"+$(this).attr("id")+"_4").val();
 
-				//alert(data["ref1"]+" : "+data["ref2"]+" : "+data["ref3"]+" : "+data["ref4"]);
+				alert(data["ref1"]+" : "+data["ref2"]+" : "+data["ref3"]+" : "+data["ref4"]);
 				//data["decision"]="decisionText_"+$(this).attr("id")+"_0";
 				//alert(data["decision"]);
 				data["filename"]=$(this).attr("id")+".pdf";
