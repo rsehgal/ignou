@@ -1531,10 +1531,6 @@ function Allot(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
 			});
 
-			$(".decisionText").on("input",function(){
-				alert($(this).attr("id"));
-			});
-
 			var functionName="";
 			var data={};
 			$(".updateDecision, .updateScore").click(function(e){

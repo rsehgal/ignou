@@ -52,7 +52,14 @@
 	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
 	$str.='</table>';
 
-	return $str;
+	$associatedJs = '<script>
+			$(".decisionText").on("change",function(){
+				alert($(this).attr("id"));
+			});
+			 </script>
+			';
+
+	return $str.$associatedJs;
         //return $main.$subMenu."</div>";
 }
 
