@@ -1569,19 +1569,24 @@ function Allot(){
 					alert(response);
 
 					
-					if(response > 7){
+					if(response >= 7){
 						$(scoreTextId).val(response+" : Oral");
 						//alert("Oral");
 						$(scoreTextId).addClass("bg-success");
 					}
-					/*var status="";
-					var class="";
-					if(response > 7){
-						var status="Oral";
-						var class="bg-success";
-						$(scoreTextId).val(response+" : "+status);
-						$(scoreTextId).addClass(class);
-					}*/
+					if(response >= 4 && response < 7){
+						$(scoreTextId).val(response+" : Poster");
+						//alert("Oral");
+						$(scoreTextId).addClass("bg-warning");
+					}
+					if(response < 4){
+						$(scoreTextId).val(response+" : Rejected");
+						//alert("Oral");
+						$(scoreTextId).addClass("bg-danger");
+					}
+
+
+					
 					}
 					else
 				    	$("#refereeUpdateStatus").html(response);
