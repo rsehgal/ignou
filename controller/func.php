@@ -1603,7 +1603,9 @@ function Allot(){
 				
 			});
 
-			
+			$(".updateScore").each(function(){
+				$(this).click();
+			});		
 			</script>';
 	 
 	//return $retValue;
