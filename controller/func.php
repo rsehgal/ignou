@@ -1604,6 +1604,10 @@ function Allot(){
 				
 			});
 
+			$(".decisionText").on("change",function(){
+				alert("hellooooo");
+			});
+
 			$(".updateScore").each(function(){
 				$(this).click();
 			});		
