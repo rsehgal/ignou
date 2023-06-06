@@ -1569,7 +1569,10 @@ function Allot(){
 					alert(response);
 
 					$(scoreTextId).val(response);
-
+					
+					if(response > 7){
+						alert("Oral");
+					}
 					/*var status="";
 					var class="";
 					if(response > 7){
