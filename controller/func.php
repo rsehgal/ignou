@@ -372,8 +372,12 @@ return Message("Will be available soon.","alert-warning");
 }
 
 function Message($message,$colorClass="alert-danger"){
-return "<h3 class='alert alert-dismissible fade show ".$colorClass." text-center' role='alert'>".$message."</h3><br/>";
-
+$msg="<h3 class='alert alert-dismissible fade show ".$colorClass." text-center' role='alert'>".$message."</h3><br/>";
+$associatedJs = 'setTimeout(function(){
+        $("refereeUpdateStatus").alert("close");
+        },2000);
+	';
+return $msg.$associatedJs;
 }
 
 function MessageAutoClose($message,$colorClass="alert-danger"){
