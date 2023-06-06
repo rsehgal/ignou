@@ -1503,7 +1503,7 @@ function Allot(){
 
 		}
 		elseif($allotmentType=="AllotCoordinator")
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status);
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status,$fileName);
 		else
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName);
 		if($status=="")
