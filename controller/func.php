@@ -1602,7 +1602,9 @@ function Allot(){
 				var dataRef={};
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
-					
+				var functionName = "AllotReferee_V2";	
+				dataRef["function_name"]=functionName;
+
 				dataRef["prevValue"]=prevValue;
 				dataRef["newValue"]=newValue;
 				dataRef["filename"]=$(this).attr("filename");
@@ -1615,6 +1617,16 @@ function Allot(){
 					//alert("Attention : Your are changing a referee.");
 					okornot = confirm("Are you sure you want to change the referee. \n You will lose the work done by previous referee.");
 
+				$.ajax({
+				    url: "../controller/func.php",
+				    method: "POST",
+				    data : dataRef,
+				    success: function(response) {
+				    
+					}
+				    });
+
+					
 					
 				}
 				if(!okornot)
@@ -1641,6 +1653,23 @@ function Allot(){
 		return Message("Please login to view your submissions.");
 }
 	
+}
+
+function AllotReferee_V2(){
+$filename=$_POST["filename"];
+$refnum=$_POST["refnum"];
+$prevValue=$_POST["prevValue"];
+$newValue=$_POST["newValue"];
+
+$obj = new DB();
+$query="";
+
+if($prevValue=="")
+$query='insert into refereeAllotment (Filename, refereeName,refnum) values("'.$filename.'","'.$newValue.'","'.$refnum.'")';
+else
+$query='update refereeAllotment set Filename="'.$filename.'",refereeName="'.$newValue.'",refnum="'.$refnum.'",marks=0,remarks="" where Filename="'.$filename.'" and refereeName="'.$prevValue.'" and refnum="'.$refnum.'" ';
+
+$obj->GetQueryResult($query);
 }
 
 if (isset($_POST['function_name'])) {
