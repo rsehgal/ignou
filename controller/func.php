@@ -1601,10 +1601,14 @@ function Allot(){
 				//alert(textBoxId);
 				var prevValue = $(textBoxId).val();		
 				$(textBoxId).val($(this).attr("value"));
-				var newValue = $(textBoxId).val();		
+				var newValue = $(textBoxId).val();	
+				var okornot=false;
 				if(prevValue!=newValue){
-					alert("Attention : Your are changing a referee.");
+					//alert("Attention : Your are changing a referee.");
+					okornot = confirm("Are you sure you want to change the referee. You will the work done by previous referee");
 				}
+				if(!okornot)
+					return;
 				
 				//$(textBoxId).attr("value",$(this).attr("value"));
 				
