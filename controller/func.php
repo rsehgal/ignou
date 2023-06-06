@@ -1599,8 +1599,9 @@ function Allot(){
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
+				
 				$(textBoxId).val($(this).attr("value"));
-				$(textBoxId).attr("value",$(this).attr("value"));
+				//$(textBoxId).attr("value",$(this).attr("value"));
 				
 			});
 
