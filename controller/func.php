@@ -1600,6 +1600,8 @@ function Allot(){
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
 				dataRef={};
+				var prevValue = $(textBoxId).val();		
+				var newValue = $(this).attr("value");	
 
 				dataRef["prevValue"]=prevValue;
 				dataRef["newValue"]=newValue;
@@ -1608,9 +1610,7 @@ function Allot(){
 
 				//alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
 
-				var prevValue = $(textBoxId).val();		
-				var newValue = $(this).attr("value");	
-				var okornot=false;
+								var okornot=false;
 				if(prevValue!=newValue){
 					//alert("Attention : Your are changing a referee.");
 					okornot = confirm("Are you sure you want to change the referee. \n You will lose the work done by previous referee.");
