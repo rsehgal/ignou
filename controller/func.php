@@ -30,6 +30,7 @@ function my_function() {
   return json_encode(array("data" => implode(" ", $data)));
 }
 function UpdateStatus(){
+	session_start();
 	$obj = new DB();
 	$remarks=$_POST["remarks"];
 	$status=$_POST["decision"];
