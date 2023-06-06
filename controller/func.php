@@ -1571,11 +1571,11 @@ function Allot(){
 					var status="";
 					var class="";
 					if(response > 7){
-						status="Oral";
-						class="bg-success";
+						var status="Oral";
+						var class="bg-success";
+						$(scoreTextId).val(response+" : "+status);
+						$(scoreTextId).addClass(class);
 					}
-					$(scoreTextId).val(response+" : "+status);
-					//$(scoreTextId).addClass(class);
 					}
 					else
 				    	$("#refereeUpdateStatus").html(response);
