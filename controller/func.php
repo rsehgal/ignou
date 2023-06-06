@@ -1600,8 +1600,7 @@ function Allot(){
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
 				var prevValue = $(textBoxId).val();		
-				$(textBoxId).val($(this).attr("value"));
-				var newValue = $(textBoxId).val();	
+				var newValue = $(this).attr("value");	
 				var okornot=false;
 				if(prevValue!=newValue){
 					//alert("Attention : Your are changing a referee.");
@@ -1610,6 +1609,7 @@ function Allot(){
 				if(!okornot)
 					return;
 				
+				$(textBoxId).val($(this).attr("value"));
 				//$(textBoxId).attr("value",$(this).attr("value"));
 				
 			});
