@@ -1563,8 +1563,9 @@ function Allot(){
 				    success: function(response) {
 					//alert("response");
 					if(functionName=="GetScore"){
-					alert(response);
-					$("#score_"+$(this).attr("id")).val(response);
+					var scoreTextId = "#score_"+$(this).attr("id");
+					alert(scoreTextId);
+					$(scoreTextId).val(response);
 					}
 					else
 				    	$("#refereeUpdateStatus").html(response);
