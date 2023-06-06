@@ -1251,16 +1251,16 @@ function AllotReferee(){
 	$query='delete from refereeAllotment where Filename="'.$filename.'"';
 	$result = $obj->GetQueryResult($query);
 
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref1.'")';
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref1.'","ref1")';
 	$result = $obj->GetQueryResult($query);
 
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref2.'")';
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref2.'","ref2")';
 	$result = $obj->GetQueryResult($query);
 	
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref3.'")';
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref3.'","ref3")';
 	$result = $obj->GetQueryResult($query);
 
-	$query='insert into refereeAllotment values("'.$filename.'","'.$ref4.'")';
+	$query='insert into refereeAllotment values("'.$filename.'","'.$ref4.'","ref4")';
 	$result = $obj->GetQueryResult($query);
 
 	return MessageAutoClose("Status updated....","alert-warning");
@@ -1336,7 +1336,12 @@ function Allot(){
 		$query='select * from refereeAllotment where Filename="'.$fileName.'"';
 		$result_coord=$obj->GetQueryResult($query);
 
-		if($result){
+		$refArray = array();
+		while($row=$result_coord->fetch_assoc()){
+			$refArray[$row["refnum"]]=$row["refereeName"];
+		}
+
+		/*if($result){
 		$row_coord=$result_coord->fetch_assoc();
 		$status1=$row_coord["refereeName"];
 
@@ -1348,16 +1353,16 @@ function Allot(){
 
 		$row_coord=$result_coord->fetch_assoc();
 		$status4=$row_coord["refereeName"];
-		}
+		}*/
 
 
 
 		$referees='<td><table class="table">
 			   <tr>				
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status1,1).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status2,2).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status3,3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$status4,4).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref1"],1).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref2"],2).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref3"],3).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref4"],4).'</td>
 			   </tr>
 			   </table>';	
 
