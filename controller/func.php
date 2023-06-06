@@ -1599,7 +1599,7 @@ function Allot(){
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				//alert(textBoxId);
-				dataRef={};
+				var dataRef={};
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
 
