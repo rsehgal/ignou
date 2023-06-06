@@ -1511,8 +1511,16 @@ function Allot(){
 		else
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="'.$allotmentType.'"/></td>';
+		
 
-		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateScore" value="GetScore" functionName="GetScore"/></td>';
+		$innerTab='<table class="table">'
+		//$retTable.=
+		$innerTab.='<tr><td><input type="text" id="'.$updateButtonId.'" class="btn btn-primary"/></td></tr>';
+		$innerTab.='<tr><td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateScore" value="GetScore" functionName="GetScore"/></td></tr>';
+
+		$innerTab.=</table>
+
+		$retTable.='<td>'.$innerTab.'</td>';
 
 		$retTable.='</tr>';
 	}
