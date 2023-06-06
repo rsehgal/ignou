@@ -1604,7 +1604,7 @@ function Allot(){
 				var okornot=false;
 				if(prevValue!=newValue){
 					//alert("Attention : Your are changing a referee.");
-					okornot = confirm("Are you sure you want to change the referee. You will the work done by previous referee");
+					okornot = confirm("Are you sure you want to change the referee. \n You will lose the work done by previous referee.");
 				}
 				if(!okornot)
 					return;
