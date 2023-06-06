@@ -1511,6 +1511,9 @@ function Allot(){
 		else
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="'.$allotmentType.'"/></td>';
+
+		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateScore" value="GetScore" functionName="GetScore"/></td>';
+
 		$retTable.='</tr>';
 	}
 
@@ -1521,7 +1524,7 @@ function Allot(){
 			});
 			var functionName="";
 			var data={};
-			$(".updateDecision").click(function(e){
+			$(".updateDecision, .updateScore").click(function(e){
 
 				
 				e.preventDefault();

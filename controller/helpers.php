@@ -76,6 +76,24 @@ while($row = $result->fetch_assoc()){
 return $coordinatorsArray;
 }
 
+
+function GetScore(){
+	$fileName = $_POST["filename"];
+	$obj = new DB();
+	$query = 'select sum(marks) as total from refereeAllotment where Filename="'.$fileName.'"';
+	$result = $obj->GetQueryResult($query);
+	$row=$result->fetch_assoc();
+	$total = $row["total"];
+
+	$query = 'select count(marks) as num from refereeAllotment where Filename="'.$fileName.'" and marks <> 0';
+	$result = $obj->GetQueryResult($query);
+	$row=$result->fetch_assoc();
+	$num = $row["num"];
+
+	return ($total/$num);
+
+}
+
 function HomeNASI(){
 
 return "<hr/><br/><div class='align-items-center justify-content-center'>
