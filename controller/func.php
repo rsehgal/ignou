@@ -561,7 +561,8 @@ function Referee_UpdatePaperStatus(){
 	session_start();
 	if(isset($_SESSION["loggedin"])){
 	//$submitterName = GetSubmitterName();
-	$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+	//$query = 'select * from contributions where refereeName="'.$_SESSION["username"].'"';
+	$query = 'select * from contributions where Filename in ( select Filename from refereeAllotment where refereeName="'.$_SESSION["username"].'")';
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
