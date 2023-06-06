@@ -34,7 +34,9 @@ function UpdateStatus(){
 	$remarks=$_POST["remarks"];
 	$status=$_POST["decision"];
 	$filename=$_POST["filename"];
-	$query = "update contributions set remarks='".$remarks."', status='".$status."' where Filename='".$filename."'";
+	$uname=$_SESSION["username"];
+	//$query = "update contributions set remarks='".$remarks."', status='".$status."' where Filename='".$filename."'";
+	$query = "update refereeAllotment set remarks='".$remarks."', marks='".$status."' where Filename='".$filename."' and refereeName='".$uname."'";
 	$result = $obj->GetQueryResult($query);
 	return MessageAutoClose("Status updated....","alert-warning");
 }
