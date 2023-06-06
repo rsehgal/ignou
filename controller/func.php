@@ -1606,7 +1606,7 @@ function Allot(){
 				dataRef["filename"]=$(this).attr("filename")";
 				dataRef["refnum"]=$(this).attr("refnum")";
 
-				alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
+				//alert(dataRef["prevValue"]+" : "+dataRef["newValue"]+" : "+dataRef["filename"]+" : "+dataRef["refnum"]);
 
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
