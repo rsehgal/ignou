@@ -1570,7 +1570,7 @@ function Allot(){
 
 					
 					if(response > 7){
-						$(scoreTextId).val(responsei+" : Oral");
+						$(scoreTextId).val(response+" : Oral");
 						//alert("Oral");
 						$(scoreTextId).addClass("bg-success");
 					}
