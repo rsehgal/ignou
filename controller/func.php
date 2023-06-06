@@ -1565,6 +1565,7 @@ function Allot(){
 					if(functionName=="GetScore"){
 					var scoreTextId = "#score_"+$(this).attr("id");
 					alert(scoreTextId);
+					alert(response);
 					$(scoreTextId).val(response);
 					}
 					else
