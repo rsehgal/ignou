@@ -1567,7 +1567,15 @@ function Allot(){
 					var scoreTextId = "#score_"+btnID;
 					alert(scoreTextId);
 					alert(response);
-					$(scoreTextId).val(response);
+
+					var status="";
+					var class="";
+					if(response > 7){
+						status="Oral";
+						class="bg-success"
+					}
+					$(scoreTextId).val(response+" : "+status);
+					$(scoreTextId).addClass(class);
 					}
 					else
 				    	$("#refereeUpdateStatus").html(response);
