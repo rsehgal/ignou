@@ -37,6 +37,8 @@ function UpdateStatus(){
 	$uname=$_SESSION["username"];
 	//$query = "update contributions set remarks='".$remarks."', status='".$status."' where Filename='".$filename."'";
 	$query = "update refereeAllotment set remarks='".$remarks."', marks='".$status."' where Filename='".$filename."' and refereeName='".$uname."'";
+
+	return $query;
 	$result = $obj->GetQueryResult($query);
 	return MessageAutoClose("Status updated....","alert-warning");
 }
