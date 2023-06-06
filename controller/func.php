@@ -1568,14 +1568,16 @@ function Allot(){
 					alert(scoreTextId);
 					alert(response);
 
-					var status="";
+					$(scoreTextId).val(response);
+
+					/*var status="";
 					var class="";
 					if(response > 7){
 						var status="Oral";
 						var class="bg-success";
 						$(scoreTextId).val(response+" : "+status);
 						$(scoreTextId).addClass(class);
-					}
+					}*/
 					}
 					else
 				    	$("#refereeUpdateStatus").html(response);
