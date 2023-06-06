@@ -1623,6 +1623,7 @@ function Allot(){
 				    data : dataRef,
 				    success: function(response) {
 				    
+				    	$("#refereeUpdateStatus").html(response);
 					}
 				    });
 
@@ -1670,6 +1671,7 @@ else
 $query='update refereeAllotment set Filename="'.$filename.'",refereeName="'.$newValue.'",refnum="'.$refnum.'",marks=0,remarks="" where Filename="'.$filename.'" and refereeName="'.$prevValue.'" and refnum="'.$refnum.'" ';
 
 $obj->GetQueryResult($query);
+return Message("From V2","alert-danger");
 }
 
 if (isset($_POST['function_name'])) {
