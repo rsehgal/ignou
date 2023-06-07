@@ -50,6 +50,8 @@
 
 	$str.=$main.$subMenu.'</td></tr>';
 	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
+	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.b$buttonId.'_'.$id.'"></textarea></td></tr>';
+	$str.=$remarksArea;
 	$str.='</table>';
 
 	$associatedJs = '<script>
