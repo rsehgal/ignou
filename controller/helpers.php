@@ -50,8 +50,18 @@
 
 	$str.=$main.$subMenu.'</td></tr>';
 	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
-	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.$buttonId.'_'.$id.'">Hello Raman</textarea></td></tr>';
+
+	if($allotmenType=="AllotReferee"){
+	$obj = new DB();
+	$query = 'select marks, remarks from refereeAllotment where refereeName="'.$status.'"';
+	$result = $obj->GetQueryResult($query);
+	if($result){
+	$row=$result->fetch_assoc();
+	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.$buttonId.'_'.$id.'">'.$row["remarks"].'</textarea></td></tr>';
 	$str.=$remarksArea;
+	}
+
+	}
 	$str.='</table>';
 
 	$associatedJs = '<script>
