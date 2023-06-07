@@ -51,7 +51,7 @@
 	$str.=$main.$subMenu.'</td></tr>';
 	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
 
-	/*if($allotmenType=="AllotReferee"){
+	if($allotmenType=="AllotReferee"){
 	$obj = new DB();
 	$query = 'select marks, remarks from refereeAllotment where refereeName="'.$status.'"';
 	$result = $obj->GetQueryResult($query);
@@ -61,7 +61,7 @@
 	$str.=$remarksArea;
 	}
 
-	}*/
+	}
 	$str.='</table>';
 
 	$associatedJs = '<script>
