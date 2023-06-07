@@ -53,7 +53,7 @@
 
 	if($allotmenType=="AllotReferee"){
 	$obj = new DB();
-	$query = 'select marks, remarks from refereeAllotment where refereeName="'.$status.'"';
+	$query = 'select marks, remarks from refereeAllotment where refereeName="'.$status.'" and Filename="'.$filename.'"';
 	$result = $obj->GetQueryResult($query);
 	if($result){
 	$row=$result->fetch_assoc();
