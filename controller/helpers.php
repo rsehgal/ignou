@@ -50,7 +50,7 @@
 
 	$str.=$main.$subMenu.'</td></tr>';
 	$str.='<tr></td><input type="text" id="decisionText_'.$buttonId.'_'.$id.'" value="'.$status.'" class="form-control decisionText"/></td></tr>';
-	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.$buttonId.'_'.$id.'"></textarea></td></tr>';
+	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.$buttonId.'_'.$id.'">Hello Raman</textarea></td></tr>';
 	$str.=$remarksArea;
 	$str.='</table>';
 
