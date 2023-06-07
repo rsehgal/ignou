@@ -30,7 +30,8 @@ function AddMenuEntry($entry){
 	if($entry=="About"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-	$subentries=array("Poster","Topic","Venue","Important_Dates"); //NASI //removed entry
+	$subentries=array("Topic","Venue","Important_Dates"); //NASI //removed entry
+	//$subentries=array("Poster","Topic","Venue","Important_Dates"); //NASI //removed entry
 	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
@@ -184,6 +185,7 @@ $result.='
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">'.
         $this->AddMenuEntry("Home").
+        $this->AddMenuEntry("Poster").
 	$this->AddMenuEntry("About").
 	$this->AddMenuEntry("Committees");
 
