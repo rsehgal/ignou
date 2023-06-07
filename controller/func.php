@@ -1598,7 +1598,7 @@ function Allot(){
 			$(".Decision,.Referee,.Coordinator").click(function(e){
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
-				//alert(textBoxId);
+				alert(textBoxId);
 				var dataRef={};
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
