@@ -1363,7 +1363,7 @@ function Allottt(){
 	
 }
 
-function AllotCoordinator(){
+function AllotCoordinator_Old(){
 	$obj = new DB();
 	$status=$_POST["decision"];
 	$filename=$_POST["filename"];
@@ -1371,7 +1371,7 @@ function AllotCoordinator(){
 	$result = $obj->GetQueryResult($query);
 	return MessageAutoClose("Status updated....","alert-warning");
 }
-function AllotReferee(){
+function AllotReferee_Old(){
 	$obj = new DB();
 	$status=$_POST["decision"];
 	$filename=$_POST["filename"];
@@ -1492,10 +1492,10 @@ function Allot(){
 
 		$referees='<td><table class="table">
 			   <tr>				
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref1"],$fileName,1).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref2"],$fileName,2).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref3"],$fileName,3).'</td>
-			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref4"],$fileName,4).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref1"],$fileName,$allotmentType,1).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref2"],$fileName,$allotmentType,2).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref3"],$fileName,$allotmentType,3).'</td>
+			   <td>'.AddDecisionEntries($decArray,"Referee",$updateButtonId,$refArray["ref4"],$fileName,$allotmentType,4).'</td>
 			   </tr>
 			   </table>';	
 
@@ -1503,9 +1503,9 @@ function Allot(){
 
 		}
 		elseif($allotmentType=="AllotCoordinator")
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status,$fileName);
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Coordinator",$updateButtonId,$status,$fileName,$allotmentType);
 		else
-		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName);
+		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName,$allotmentType);
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
 	//	else
@@ -1602,7 +1602,7 @@ function Allot(){
 				var dataRef={};
 				var prevValue = $(textBoxId).val();		
 				var newValue = $(this).attr("value");	
-				var functionName = "AllotReferee_V2";	
+				var functionName = $(this).attr("functionName");// "AllotReferee_V2";	
 				dataRef["function_name"]=functionName;
 
 				dataRef["prevValue"]=prevValue;
@@ -1655,8 +1655,21 @@ function Allot(){
 }
 	
 }
+function AllotCoordinator(){
+	$obj = new DB();
+	//$status=$_POST["decision"];
+	//$filename=$_POST["filename"];
 
-function AllotReferee_V2(){
+	$filename=$_POST["filename"];
+	$refnum=$_POST["refnum"];
+	$prevValue=$_POST["prevValue"];
+	$newValue=$_POST["newValue"];
+	$query = "update contributions set refereeName='".$newValue."' where Filename='".$filename."'";
+	$result = $obj->GetQueryResult($query);
+	return MessageAutoClose("Coordinator updated....","alert-warning");
+}
+
+function AllotReferee(){
 $filename=$_POST["filename"];
 $refnum=$_POST["refnum"];
 $prevValue=$_POST["prevValue"];
@@ -1671,7 +1684,7 @@ else
 $query='update refereeAllotment set Filename="'.$filename.'",refereeName="'.$newValue.'",refnum="'.$refnum.'",marks=0,remarks="" where Filename="'.$filename.'" and refereeName="'.$prevValue.'" and refnum="'.$refnum.'" ';
 
 $obj->GetQueryResult($query);
-return Message("From V2","alert-danger");
+return Message("Referee Updated","alert-success");
 }
 
 if (isset($_POST['function_name'])) {

@@ -30,7 +30,7 @@
                 //return $valArray[0];
         }
 
- function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId,$status,$filename,$id=0){
+ function AddDecisionEntries($associativeSubEntries,$mainEntry,$buttonId,$status,$filename,$allotmenType,$id=0){
 	$subEntries = $associativeSubEntries[$mainEntry];
 	$catEntries = $associativeSubEntries["code"];
 	$str='<table class="table">
@@ -43,7 +43,7 @@
         $subMenu='<div class="dropdown-menu">';
         for($i= 0 ; $i < count($subEntries) ; $i++){
            
-           $subMenu.='<a class="dropdown-item '.$mainEntry.'" filename="'.$filename.'" refnum="ref'.$id.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'_'.$id.'" value="'.$subEntries[$i].'" refid="'.$id.'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
+           $subMenu.='<a class="dropdown-item '.$mainEntry.'" functionName="'.$allotmenType.'" filename="'.$filename.'" refnum="ref'.$id.'" id="'.$subEntries[$i].'" buttonid="'.$buttonId.'_'.$id.'" value="'.$subEntries[$i].'" refid="'.$id.'" name="'.$subEntries[$i].'" catid="'.$catEntries[$i].'">'.$subEntries[$i].'</a>';
 }
         
         $subMenu.='</div>';
