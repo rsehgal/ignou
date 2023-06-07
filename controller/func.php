@@ -1401,9 +1401,9 @@ function AllotReferee(){
 
 function Allot(){
 	//return Message("Will be available soon.","alert-warning");
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 	session_start();
 	if(isset($_SESSION["loggedin"])){
  	$allotmentType = $_POST["allotmentType"];
@@ -1508,9 +1508,9 @@ function Allot(){
 		$retTable.='<td>'.AddDecisionEntries($decArray,"Decision",$updateButtonId,$status,$fileName);
 		if($status=="")
 				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control bg-warning"/></td>';
-		else
-				$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control refereeText"/></td>';
-		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="'.$allotmentType.'"/></td>';
+	//	else
+	//			$retTable.='<input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control refereeText"/></td>';
+	//	$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="'.$allotmentType.'"/></td>';
 		
 
 		$innerTab='<table class="table">';
