@@ -797,7 +797,7 @@ function Referee_UpdatePaperStatus(){
 			$(".updateDecision").click(function(e){
 
 				
-				$("#loadingGif").show();
+				//$("#loadingGif").show();
 				e.preventDefault();
 				//alert("MyID : "+$(this).attr("id"));
 				var decisionTextId = "#decisionText_"+$(this).attr("id");
