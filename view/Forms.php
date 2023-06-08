@@ -149,8 +149,8 @@ class Forms{
                           $("#result").html(response);*/
 			  $("#loadingGif").show();
 			  //$("#loginstatus").html(response);
-			  $("#loadingGif").delay(1000).fadeOut();
                           $("#result").html(response);
+			  $("#loadingGif").delay(1000).fadeOut();
                         }
 		    });
 		});
