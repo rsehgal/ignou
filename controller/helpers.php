@@ -57,7 +57,7 @@
 	$result = $obj->GetQueryResult($query);
 	if($result){
 	$row=$result->fetch_assoc();
-	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.$buttonId.'_'.$id.'">'.$row["marks"].'.$row["remarks"].'</textarea></td></tr>';
+	$remarksArea='<tr><td> <textarea class="form-control" id="remarks_'.$buttonId.'_'.$id.'">'.$row["marks"].$row["remarks"].'</textarea></td></tr>';
 	$str.=$remarksArea;
 	}
 
