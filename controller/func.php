@@ -323,7 +323,7 @@ function ServeLogin(){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
 		$_SESSION["email"]=$row["email"];
-		$row->free();
+		$result->free();
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
 		return '<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>'.$js ;
