@@ -148,9 +148,9 @@ class Forms{
 			  /*$("#loginstatus").html("Logged in as : "+data["username"]);
                           $("#result").html(response);*/
 			  $("#loadingGif").show();
-			  $("#loginstatus").html(response);
+			  //$("#loginstatus").html(response);
 			  $("#loadingGif").delay(1000).fadeOut();
-                          $("#result").html("");
+                          $("#result").html(response);
                         }
 		    });
 		});
