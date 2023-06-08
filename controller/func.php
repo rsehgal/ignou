@@ -41,6 +41,10 @@ function UpdateStatus(){
 
 	//return $query;
 	$result = $obj->GetQueryResult($query);
+	if($result === false){
+	return MessageAutoClose("Update failed....","alert-danger");
+	}
+	$result->free();
 	return MessageAutoClose("Status updated....","alert-warning");
 }
 function UpdateStatus_Old(){
@@ -77,6 +81,8 @@ function Upload(){
 
 			$query='select count(*) as count from contributions where Filename like "%paper_'.$topicId.'_'.$categoryId.'%"';
 				$result=$obj->GetQueryResult($query);
+				if($result===false)
+				return Message("Query execution fails","alert-danger");
 				$row = $result->fetch_assoc();
 				$count=$row["count"];
 				$count++;
@@ -97,7 +103,7 @@ You can view your paper in View_Contribution link.";
 
                 SendMail("submission",$_SESSION["email"],"NASI 2023 : Contribution submitted",$body);
 
-
+				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
 			        echo Message('Error uploading the file.','alert-danger');
@@ -105,6 +111,7 @@ You can view your paper in View_Contribution link.";
 	} else {
 		echo Message('No file uploaded.','alert-danger');
 		}
+
 	//}
 }
 
@@ -280,7 +287,8 @@ function ServeLogin(){
 	//return $query;
 	//return $uname;
 	$result = $obj->GetQueryResult($query);
-	
+	if($result===false)
+            return Message("Query execution fails","alert-danger");	
 	$row = $result->fetch_assoc();
 	//return "Hello Raman";
 	//return $row["passwd"]." : ".$passwd;
@@ -315,7 +323,7 @@ function ServeLogin(){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
 		$_SESSION["email"]=$row["email"];
-
+		$row->free();
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
 		return '<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>'.$js ;
@@ -363,6 +371,8 @@ function ShowCommittee($comm){
 	$affil = $comm."Affil";
 	$query = "select $name,$affil from committees";
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
 	$table="<tr class='bg-dark text-light'><th>Name</th><th>Affiliation</th></tr>";
 
 	while ($row = $result->fetch_assoc()) {
@@ -374,6 +384,7 @@ function ShowCommittee($comm){
 		 $table.="</tr>";
 		}
 	}
+	$result->free();
 	return $table;
 }
 
@@ -446,7 +457,10 @@ function GetSubmitterName(){
 	$obj = new DB();
 	$query='select firstname,lastname from user_credentials where uname="'.$_SESSION["username"].'"';
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
 	$row=$result->fetch_assoc();
+	$result->free();
 	return $row["firstname"]." ".$row["lastname"];
 }
 function GetUploadFolderName($volume){
@@ -454,7 +468,10 @@ function GetUploadFolderName($volume){
 	$obj = new DB();
 	$query='select UploadLocation from symposium where volume='.$volume;
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
 	$row=$result->fetch_assoc();
+	$result->free();
 	return $row["UploadLocation"];
 }
 
@@ -475,6 +492,8 @@ return Message("Will be available soon.","alert-warning");
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
 	//return $query;
 	
 	$retValue="";
@@ -524,6 +543,8 @@ return Message("Will be available soon.","alert-warning");
 		//	return $retTable;//.=$associatedJs;
 
 	}
+	
+	$result->free();
 
 		$associatedJs='
 			<script>
@@ -589,6 +610,9 @@ function Referee_UpdatePaperStatus_Old(){
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
+if($result===false)
+                                return Message("Query execution fails","alert-danger");
+	
 	//return $query;
 	
 	$retValue="";
@@ -640,7 +664,7 @@ function Referee_UpdatePaperStatus_Old(){
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
 		$retTable.='</tr>';
 	}
-
+$result->free();
 	$associatedJs='<script> 
 			$(function(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
@@ -708,6 +732,9 @@ function Referee_UpdatePaperStatus(){
 //return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 	//return $query;
 	
 	$retValue="";
@@ -759,6 +786,7 @@ function Referee_UpdatePaperStatus(){
 
 	}
 
+	$result->free();
 	$associatedJs='<script> 
 			$(function(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
@@ -819,7 +847,11 @@ function GetTopic($topic){
 	$query='select topic from topics where code="'.$topic.'"';
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 	$row = $result->fetch_assoc();
+	$result->free();
 	return $row["topic"];
 }
 
@@ -829,7 +861,11 @@ function GetCategory($topic,$category){
 	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 	$row = $result->fetch_assoc();
+	$result->free();
 	return $row["category"];
 	
 
@@ -901,6 +937,9 @@ function PopulateResubmissionForm(){
 $obj=new DB();
 $query="select UploadLocation from symposium";
 $result = $obj->GetQueryResult($query);
+if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 $row = $result->fetch_assoc();
 $loc = $row["UploadLocation"];
 
@@ -970,6 +1009,7 @@ $formContent.='<div class="form-group">
                  $formContent.='<button type="submit" class="btn btn-primary" id="uploadAndSubmit" loc="../'.$loc.'" filename="'.$filename.'">Submit</button>';
 		$formContent.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 
+$result->free();
 
 	$associatedJs = '<script>
 			$(function(){
@@ -1237,10 +1277,14 @@ function HowToReach(){
 	//return "How to reach....";
 	$query='select How_To_Reach from HowToReach';
 	$result = GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 	$tableData='<table class="table">';
 	while($row=$result->fetch_assoc()){
 	$tableData.='<tr><td class="text-center">'.$row["How_To_Reach"].'</td></tr>';
 	}
+	$result->free();
 	$tableData.='</table>';
 	return $tableData;
 
@@ -1250,6 +1294,9 @@ function GetQueryResult($query){
 
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
+if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 return $result;
 }
 
@@ -1273,6 +1320,9 @@ $email = $_POST["email"];
 $obj=new DB();
 $query = 'select * from user_credentials where email="'.$email.'"';
 $result = $obj->GetQueryResult($query);
+if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 $row=$result->fetch_assoc();
 $uname=$row["uname"];
 $passwd=$row["passwd"];
@@ -1293,7 +1343,7 @@ NASI-2023
 
 //return $body;
 SendMail("admin",$email,"NASI 2023 : Credentials",$body);
-
+$result->free();
 return Message("Login credentials sent to email : ".$email,"alert-info");
 }
 
@@ -1306,6 +1356,9 @@ return Message("Will be available soon.","alert-warning");
 $query='select reg_end_date,contrib_end_date from symposium';
 $obj = new DB();
 $result = $obj->GetQueryResult($query);
+if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 $retVal = Message("Important Dates","alert-info");
 $retVal .= '<table class="table table-striped table-bordered">';
 
@@ -1316,7 +1369,7 @@ $retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
 $contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
 $retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
 $retVal.='</table>';
-
+$result->free();
 return $retVal;
 
 }
@@ -1430,6 +1483,9 @@ function Allot(){
  	//return $query;	
 	$obj = new DB();
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
 	//return $query;
 	$retValue="";
 	$retTable='<table class="table table-striped table-bordered">';
@@ -1540,6 +1596,7 @@ function Allot(){
 		$retTable.='</tr>';
 	}
 
+$result->free();
 	
 	$associatedJs='<script> 
 			$(function(){
@@ -1684,6 +1741,10 @@ function AllotCoordinator(){
 	$newValue=$_POST["newValue"];
 	$query = "update contributions set refereeName='".$newValue."' where Filename='".$filename."'";
 	$result = $obj->GetQueryResult($query);
+	if($result===false)
+                                return Message("Query execution fails","alert-danger");
+
+	$result->free();
 	return MessageAutoClose("Coordinator updated....","alert-warning");
 }
 
