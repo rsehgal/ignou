@@ -816,7 +816,7 @@ function Referee_UpdatePaperStatus(){
 				    data : data,
 				    success: function(response) {
 					//alert("response");
-					$("#loadingGif").hide();
+					//$("#loadingGif").hide();
 				    	$("#refereeUpdateStatus").html(response);
 					$("#refereeUpdateStatus").delay(800).fadeOut();
 				    }
