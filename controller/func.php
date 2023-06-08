@@ -746,7 +746,7 @@ function Referee_UpdatePaperStatus(){
 		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control" placeholder="Out of 10"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
 		$retTable.='</tr>';
-		$retTable.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
+		//$retTable.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 
 	}
 
