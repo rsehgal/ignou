@@ -329,7 +329,7 @@ function ServeLogin(){
 				$_SESSION["username"].'")});</script>';
 				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
-		return $localJs." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
+		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
 		}
 		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment();
