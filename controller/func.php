@@ -781,6 +781,7 @@ function Referee_UpdatePaperStatus(){
 					//alert("response");
 					$("#loadingGif").hide();
 				    	$("#refereeUpdateStatus").html(response);
+					$("#refereeUpdateStatus").delay(800).fadeOut();
 				    }
 				    });
 
