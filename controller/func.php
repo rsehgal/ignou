@@ -322,14 +322,13 @@ function ServeLogin(){
 
 		if($_SESSION["logintype"]=="Referee"){
 
-		$loginStatusMsg="Hello Raman";
-//'<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
+		$loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
 		$localJs = '<script>
 				$(function(){
-				$("#loginstatus").html("'.$loginStatusMsg.'")});
+				$("#loginstatus").html("'.'HELLO'.'")});
 				</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
-		return $localJs." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
+		return $localJs." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
 		}
 		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment();
