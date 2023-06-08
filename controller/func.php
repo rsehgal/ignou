@@ -322,17 +322,12 @@ function ServeLogin(){
 
 		if($_SESSION["logintype"]=="Referee"){
 
-		
-		return "<script>
+		$loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
+		$localJs = '<script>
 				$(function(){
-					$('#loginstatus').html('
-
-<h4><mark >Logged in as : '.$_SESSION['username'].'</mark> <input type='button' class='btn btn-custom btn-danger' id='logout' value='Logout'/></h4>
-
-');
-				});
-			</script>
-			<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
+				$("#loginstatus").html('.$loginStatusMsg.')});
+				</script>';	
+		return $localJs." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".Referee_UpdatePaperStatus();
 		}
 		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator")
 		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment();
