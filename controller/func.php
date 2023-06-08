@@ -41,10 +41,10 @@ function UpdateStatus(){
 
 	//return $query;
 	$result = $obj->GetQueryResult($query);
-	if($result === false){
+	/*if($result === false){
 	return MessageAutoClose("Update failed....","alert-danger");
 	}
-	$result->free();
+	$result->free();*/
 	return MessageAutoClose("Status updated....","alert-warning");
 }
 function UpdateStatus_Old(){
