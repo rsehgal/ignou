@@ -746,17 +746,21 @@ function Referee_UpdatePaperStatus(){
 		$retTable.='<td><input type="text" id="decisionText_'.$updateButtonId.'" value="'.$status.'" class="form-control" placeholder="Out of 10"/></td>';
 		$retTable.='<td><input type="button" id="'.$updateButtonId.'" class="btn btn-primary updateDecision" value="Update" functionName="UpdateStatus"/></td>';
 		$retTable.='</tr>';
+		$retTable.='<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
+
 	}
 
 	$associatedJs='<script> 
 			$(function(){
 				$(".alert-autoclose").delay(5000).fadeOut("slow");
+				$("#loadingGif").hide();
 			});
 			var functionName="";
 			var data={};
 			$(".updateDecision").click(function(e){
 
 				
+				$("#loadingGif").show();
 				e.preventDefault();
 				//alert("MyID : "+$(this).attr("id"));
 				var decisionTextId = "#decisionText_"+$(this).attr("id");
@@ -775,6 +779,7 @@ function Referee_UpdatePaperStatus(){
 				    data : data,
 				    success: function(response) {
 					//alert("response");
+					$("#loadingGif").hide();
 				    	$("#refereeUpdateStatus").html(response);
 				    }
 				    });
