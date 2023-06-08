@@ -326,8 +326,8 @@ function ServeLogin(){
 		$localJs = '<script>
 				$(function(){
 				$("#loginstatus").html("<h4><mark>Logged in as : '.
-				$_SESSION["username"].
-				'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
+				$_SESSION["username"].'")});</script>';
+				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
 		return $localJs." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
 		}
