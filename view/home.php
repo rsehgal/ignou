@@ -245,6 +245,7 @@ echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
 echo "<div id='result' ></div>";
+echo '<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 //echo HomeNASI();
 
 

@@ -123,6 +123,7 @@ class Forms{
 		</form>
 		<script>
 		$(".symposiaForms").on("submit",function(event){
+		$("loadingGif").show();
 		//alert("Finally called......");
 		event.preventDefault();
 		var funcName="";
@@ -146,7 +147,9 @@ class Forms{
                           console.log(response);
 			  /*$("#loginstatus").html("Logged in as : "+data["username"]);
                           $("#result").html(response);*/
+			  $("#loadingGif").show();
 			  $("#loginstatus").html(response);
+			  $("#loadingGif").delay(1000).fadeOut();
                           $("#result").html("");
                         }
 		    });
