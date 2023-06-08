@@ -322,7 +322,8 @@ function ServeLogin(){
 
 		if($_SESSION["logintype"]=="Referee"){
 
-		$loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
+		$loginStatusMsg="Hello Raman";
+//'<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
 		$localJs = '<script>
 				$(function(){
 				$("#loginstatus").html("'.$loginStatusMsg.'")});
