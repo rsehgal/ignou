@@ -1602,6 +1602,7 @@ function Allot(){
 
 			});
 			$(".Decision,.Referee,.Coordinator").click(function(e){
+				$("#loadingGif").show();
 				e.preventDefault();
 				var textBoxId="#decisionText_"+$(this).attr("buttonid");
 				alert(textBoxId);
@@ -1628,8 +1629,10 @@ function Allot(){
 				    method: "POST",
 				    data : dataRef,
 				    success: function(response) {
-				    
+				   	 
 				    	$("#refereeUpdateStatus").html(response);
+					$("#loadingGif").hide();
+					$("#refereeUpdateStatus").delay(800).fadeOut();
 					}
 				    });
 
