@@ -193,9 +193,10 @@ $result.='
 		$result.=$this->AddMenuEntry("Services");
 	$result.=
 	$this->AddMenuEntry("Signup").
-	$this->AddMenuEntry("Login").
-	$this->AddMenuEntry("Submissions").
-	$this->AddMenuEntry("Accommodation").
+	$this->AddMenuEntry("Login");//.
+ 	$result.=$this->AddMenuEntry("Register");
+	$result.=$this->AddMenuEntry("Submissions");
+	$result.=$this->AddMenuEntry("Accommodation").
 	//$this->AddMenuEntry("Upload_Contribution").
 	$this->AddMenuEntry("HowToReach").
 	$this->AddMenuEntry("Contact").'

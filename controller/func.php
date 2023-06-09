@@ -322,7 +322,9 @@ function ServeLogin(){
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
-		$_SESSION["email"]=$row["email"];
+		$_SESSION["FirstName"]=$row["firstname"];
+		$_SESSION["LastName"]=$row["lastname"];
+		$_SESSION["Email"]=$row["email"];
 		$result->free();
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
@@ -334,7 +336,8 @@ function ServeLogin(){
 		$localJs = '<script>
 				$(function(){
 				$("#loginstatus").html("<h4><mark>Logged in as : '.
-				$_SESSION["username"].'")});</script>';
+				$_SESSION["username"].'");
+				});</script>';
 				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
 		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
@@ -422,6 +425,8 @@ return "<h3 class='alert auto-close ".$colorClass." text-center' role='alert'>".
 ";
 
 }
+
+
 
 function NewSubmission(){
 	$obj = new DB();
@@ -797,7 +802,7 @@ function Referee_UpdatePaperStatus(){
 			$(".updateDecision").click(function(e){
 
 				
-				//$("#loadingGif").show();
+				$("#loadingGif").show();
 				e.preventDefault();
 				//alert("MyID : "+$(this).attr("id"));
 				var decisionTextId = "#decisionText_"+$(this).attr("id");
@@ -816,7 +821,7 @@ function Referee_UpdatePaperStatus(){
 				    data : data,
 				    success: function(response) {
 					//alert("response");
-					//$("#loadingGif").hide();
+					$("#loadingGif").hide();
 				    	$("#refereeUpdateStatus").html(response);
 					$("#refereeUpdateStatus").delay(800).fadeOut();
 				    }
@@ -1764,6 +1769,74 @@ $query='update refereeAllotment set Filename="'.$filename.'",refereeName="'.$new
 
 $obj->GetQueryResult($query);
 return Message("Referee Updated","alert-success");
+}
+
+function UpdateRegistration(){
+
+	//return Message("Registration data updated","alert-success");
+	session_start();
+	$firstname = trim($_POST["FirstName"]);
+	$lastname=trim($_POST["LastName"]);
+	$uname=trim($_POST["uname"]);
+	$mobile=trim($_POST["Mobile"]);
+	$email = trim($_POST["Email"]);
+	$affil = trim($_POST["Affiliation"]);
+	$desig = trim($_POST["Designation"]);
+	$nationality = trim($_POST["Nationality"]);
+	$accommReq=trim($_POST["Accommodation_Required"]);
+	$accommPref=trim($_POST["Accommodation_Preference"]);
+	$accommType=trim($_POST["Accommodation_Type"]);
+	$checkinDate=trim($_POST["Checkin_Date"]);
+	$checkoutDate=trim($_POST["Checkout_Date"]);
+
+
+	$obj = new DB();
+
+	$query = 'select uname, count(*) as counter from registration where uname="'.$_SESSION["username"].'"';
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$counter = $row["counter"];
+
+	//return $counter;
+
+	if($counter==0)
+		$query = 'insert into registration (FirstName,LastName,Email,Affiliation,Designation,Nationality,Mobile,uname) values("'.$firstname.'","'.$lastname.'","'.$email.'
+	","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$uname.'")';
+	else
+		$query = 'update registration set FirstName="'.$firstname.'
+				 ",LastName="'.$lastname.'
+				 ",Email="'.$email.'
+				 ",Affiliation="'.$affil.'
+				 ",Designation="'.$desig.'
+				 ",Nationality="'.$nationality.'
+				 ",Mobile="'.$mobile.'
+				 ",Accommodation_Required="'.$accommReq.'
+				 ",Accommodation_Preference="'.$accommPref.'
+				 ",Accommodation_Type="'.$accommType.'
+				 ",Checkin_Date="'.$checkinDate.'
+				 ",Checkout_Date="'.$checkoutDate.'" where uname="'.$_SESSION["username"].'"';
+//return $query;
+
+		$obj->GetQueryResult($query);
+
+	return Message("Registration data updated","alert-success");
+
+
+}
+
+function Register(){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	if(!EnableMenuItem("Register"))
+	return Message("Will be available soon.","alert-warning");
+
+	$obj = new DB();
+	//return "REgitration fucntion called...";
+	$fieldNames = $obj->GetFieldNames("registration");
+	$forms = new Forms();
+	  return $forms->Register($fieldNames);
 }
 
 if (isset($_POST['function_name'])) {

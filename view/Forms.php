@@ -202,6 +202,106 @@ class Forms{
 		//return $valArray[0];
 	}
 */
+
+public function Register($fieldNames){
+
+	//return "Register function called of Forms class";
+	session_start();
+	if(isset($_SESSION["loggedin"])){
+	$obj = new DB();
+	$query = 'select * from registration where uname="'.$_SESSION["username"].'"';
+	$result = $obj->GetQueryResult($query);
+	$row=$result->fetch_assoc();
+	$result->free();
+
+	$formContent='<br/><div class="container">
+                <h2>Participant Registration</h2>
+                <form method="POST" id="register" enctype="multipart/form-data" class="">';
+		
+		for($i=0 ; $i<count($fieldNames) ; $i++){
+			if($fieldNames[$i]=="uname"){
+				$formContent.='<input type="hidden" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION["username"].'" readonly > </div>';
+			}else{
+			$formContent.='<div class="form-group">
+                                <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
+				
+				if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email")
+				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION[$fieldNames[$i]].'" readonly > </div>';
+				elseif($fieldNames[$i]=="Mobile")
+				$formContent.='<input type="tel" class="form-control registration" placeholder="10 digit mobile number" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'"  pattern="[0-9]{10}" value="'.$row[$fieldNames[$i]].'" required>';
+				elseif($fieldNames[$i]=="Checkin_Date" || $fieldNames[$i]=="Checkout_Date")
+				$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.date("YYYY-MM-DD",strtotime($row[$fieldNames[$i]])).'" required> </div>';
+				elseif($fieldNames[$i]=="Accommodation_Required")
+				$formContent.='<select class="form-control accommodation registration" id="Accommodation_Required">
+								<option></option>
+								<option>Yes</option>
+								<option>No</option>
+							   </select>';
+				elseif($fieldNames[$i]=="Accommodation_Preference")
+				$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Preference" >
+								<option></option>
+								<option>DAECC Guest House</option>
+								<option>Postgraduate Hostel</option>
+								<option>Hotel: The Regenza by Tunga</option>
+								<option>Hotel: The Jewel Of Chembur</option>
+							   </select>';
+				elseif($fieldNames[$i]=="Accommodation_Type")
+				$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Type">
+								<option></option>
+								<option>Single Occupancy</option>
+								<option>Double Occupancy</option>
+							   </select>';
+				else
+				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$row[$fieldNames[$i]].'" required> </div>';
+				
+		}
+		
+
+		}
+
+		$formContent.="</form></div>";
+		$formContent.='<input type="submit" value="Submit" id="updateRegistration"  functionName="UpdateRegistration"/>';
+		$associateJs = '<script>
+					
+						$(".accommodation").on("change",function(){
+							//alert($(this).attr("id")+" : "+$(this).val());
+						});
+
+						$("#updateRegistration").click(function(e){
+						//	$("#register").on("submit",function(e){
+							e.preventDefault();
+							$("loadingGif").show();
+							var data={};
+							data["function_name"]=$(this).attr("functionName");
+							//alert(data["function_name"]);
+							$(".registration").each(function(){
+								data[$(this).attr("id")]=$(this).val();
+								//alert($(this).attr("id")+" : "+data[$(this).attr("id")])
+								//if($(this).attr("id")=="Checkin_Date")
+								//alert($(this).val());
+							});
+
+							$.ajax({
+								url: "../controller/func.php",
+								method: "POST",
+								data : data,
+								success: function(response) {
+									
+									$("#loadingGif").hide();
+									//$("#newsubmission input").prop("disabled", false); 
+									//$("#uploadAndSubmit").prop("disabled",false);
+									$("#result").html(response);
+								}
+							});
+						});
+					
+						</script>';
+
+		return $formContent.$associateJs;
+	}else{
+		return Message("Please login before proceeding for regisration.","alert-danger"); 
+	}
+}
 	public function NewSubmission($fieldNames){
 	//return
 		$obj=new DB();
