@@ -395,6 +395,26 @@ function Upload_Contribution(){
 if(!EnableMenuItem("Upload_Contribution"))
 return Message("Will be available soon.","alert-warning");
 	session_start();
+
+	$obj = new DB();
+	$query = "select contrib_start_date,contrib_end_date from symposium";
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$start_date = $row["contrib_start_date"];
+	$end_date = $row["contrib_end_date"];
+
+	$now = time();
+	$start_time = GetStartTime($start_date);
+	$end_time = GetEndTime($end_date);
+
+	//return "Start time : $start_time : End Time : $end_time <br/>";
+
+	if($now < $start_time)
+	return Message("Contribution submission will start on ".date("d-M-Y",strtotime($start_date)), "alert-info");
+
+	if($now > $end_time)
+	return Message("Contribution submission Deadline crossed on ".date("d-M-Y",strtotime($end_date)).", Kindly contact Convener.", "alert-danger");
+	
 	$returnVal="";
 	if(isset($_SESSION["loggedin"])){
 		//return "Hello <br/>";
