@@ -231,26 +231,57 @@ public function Register($fieldNames){
 				$formContent.='<input type="tel" class="form-control registration" placeholder="10 digit mobile number" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'"  pattern="[0-9]{10}" value="'.$row[$fieldNames[$i]].'" required></div>';
 				elseif($fieldNames[$i]=="Checkin_Date" || $fieldNames[$i]=="Checkout_Date")
 				$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.date('Y-m-d', strtotime($row[$fieldNames[$i]])).'" required> </div>';
-				elseif($fieldNames[$i]=="Accommodation_Required")
-				$formContent.='<select class="form-control accommodation registration" id="Accommodation_Required">
+				elseif($fieldNames[$i]=="Accommodation_Required"){
+					$options = array(' ', 'Yes', 'No'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control accommodation registration" id="Accommodation_Required">';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+				/*$formContent.='<select class="form-control accommodation registration" id="Accommodation_Required">
 								<option></option>
 								<option>Yes</option>
 								<option>No</option>
-							   </select></div>';
-				elseif($fieldNames[$i]=="Accommodation_Preference")
-				$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Preference" >
+							   </select></div>';*/
+				}
+				elseif($fieldNames[$i]=="Accommodation_Preference"){
+					$options = array(' ', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Preference" >';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+
+				}
+				/*$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Preference" >
 								<option></option>
 								<option>DAECC Guest House</option>
 								<option>Postgraduate Hostel</option>
 								<option>Hotel: The Regenza by Tunga</option>
 								<option>Hotel: The Jewel Of Chembur</option>
-							   </select></div>';
-				elseif($fieldNames[$i]=="Accommodation_Type")
-				$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Type">
+							   </select></div>';*/
+				elseif($fieldNames[$i]=="Accommodation_Type"){
+					$options = array(' ', 'Single Occupancy', 'Double Occupancy'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Type">';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+				}
+				/*$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Type">
 								<option></option>
 								<option>Single Occupancy</option>
 								<option>Double Occupancy</option>
-							   </select></div>';
+							   </select></div>';*/
 				else
 				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$row[$fieldNames[$i]].'" required> </div>';
 				
@@ -259,10 +290,23 @@ public function Register($fieldNames){
 
 		}
 
+		$formContent.='<center><input type="submit" class="btn btn-primary form-group" value="Submit" id="updateRegistration"  functionName="UpdateRegistration"></input></center>';
 		$formContent.="</form></div>";
-		$formContent.='<input type="submit" value="Submit" id="updateRegistration"  functionName="UpdateRegistration"/>';
 		$associateJs = '<script>
 					
+						var data={};
+
+						$(function(){
+							if($("#Accommodation_Required").val()=="No"){
+								$("#Accommodation_Preference").val("");
+								$("#Accommodation_Type").val("");
+								$("#group_Accommodation_Preference").hide();
+								$("#group_Accommodation_Type").hide();
+								data["Accommodation_Type"]="";
+								data["Accommodation_Preference"]="";
+								
+							}
+						});
 
 						$(".accommodation").on("change",function(){
 							//alert($(this).attr("id")+" : "+$(this).val());
@@ -284,7 +328,7 @@ public function Register($fieldNames){
 						//	$("#register").on("submit",function(e){
 							e.preventDefault();
 							$("loadingGif").show();
-							var data={};
+							
 							data["function_name"]=$(this).attr("functionName");
 							//alert(data["function_name"]);
 							$(".registration").each(function(){

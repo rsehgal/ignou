@@ -128,4 +128,22 @@ The Scientific Sessions will be held in two sections. The scientific papers are 
 ";
 }
 
+
+function GetTime($timestr,$start=1){
+
+	if($start==1){
+		return strtotime($timestr);
+	}else{
+		return strtotime($timestr)+(24*60*60);
+	}
+
+}
+
+function GetStartTime($timestr){
+	return GetTime($timestr,1);
+}
+
+function GetEndTime($timestr){
+	return GetTime($timestr,0);
+}
 ?>

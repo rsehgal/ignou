@@ -1833,6 +1833,22 @@ function Register(){
 	return Message("Will be available soon.","alert-warning");
 
 	$obj = new DB();
+	$query = "select reg_start_date,reg_end_date from symposium";
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$reg_start_date = $row["reg_start_date"];
+	$reg_end_date = $row["reg_end_date"];
+
+	$now = time();
+	$reg_start_time = GetStartTime($reg_start_date);
+	$reg_end_time = GetEndTime($reg_end_date);
+
+	if($now < $reg_start_time)
+		return Message("Registration will start on ".date("d-M-Y",strtotime($reg_start_date)), "alert-info");
+
+	if($now > $reg_end_time)
+		return Message("Registration Deadline crossed on ".date("d-M-Y",strtotime($reg_end_date)).", Kindly contact Convener.", "alert-danger");
+
 	//return "REgitration fucntion called...";
 	$fieldNames = $obj->GetFieldNames("registration");
 	$forms = new Forms();
