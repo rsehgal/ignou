@@ -1875,6 +1875,40 @@ function Register(){
 	  return $forms->Register($fieldNames);
 }
 
+function Submission_Guidelines(){
+$guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+";
+$guidelines.="<h3>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
+<br/><br/>
+You will need to create a ‘user account’ at the symposium website to submit a paper. Please download template file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
+<br/><br/>
+Please note that papers given in the proper format only will be considered for review.
+<br/><br/>
+Maximum allowed file size is 1 MB.
+<br/><br/>
+Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
+<br/><br/>
+The Paper submission gateway will be closed on <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.";
+
+$guidelines.="</h3></div></div>";
+
+return $guidelines;
+}
+
+function Templates(){
+$templates="<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+";
+$templates.="<h2>Abstract Templates</h2> <br/><table class='table table-bordered table-striped'>";
+$templates.="<tr><td>Word templates for abstracts</td><td><a href='../docs/word_template.zip'>Download</a></td>";
+$templates.="<tr><td>Latex templates for abstracts</td><td><a href='../docs/latex_template.zip'>Download</a></td>";
+$templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/pdflatex_template.zip'>Download</a></td>";
+
+$templates.="</table></h3></div></div>";
+return $templates;
+}
+
 if (isset($_POST['function_name'])) {
   $function_name = $_POST['function_name'];
   if (function_exists($function_name)) {

@@ -146,4 +146,24 @@ function GetStartTime($timestr){
 function GetEndTime($timestr){
 	return GetTime($timestr,0);
 }
+
+function GetLastDate($type="reg"){
+	$obj = new DB();
+	$queryField=$type."_end_date";
+        $query = "select ".$queryField." from symposium";
+        $result = $obj->GetQueryResult($query);
+        $row = $result->fetch_assoc();
+        $end_date = $row[$queryField];
+	return date("d-M-Y",strtotime($end_date));
+}
+function GetStartDate($type="reg"){
+	$obj = new DB();
+	$queryField=$type."_start_date";
+        $query = "select ".$queryField." from symposium";
+        $result = $obj->GetQueryResult($query);
+        $row = $result->fetch_assoc();
+        $start_date = $row[$queryField];
+	return date("d-M-Y",strtotime($start_date));
+}
+
 ?>

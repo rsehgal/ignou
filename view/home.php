@@ -30,6 +30,14 @@ The National Academy of Sciences, India, NASI-2023.
 </style>
 <script>
 $(document).ready(function(){
+	//This block control the hover color of drop down menus
+	$(".dropdown-item").hover(function(){
+		$(".dropdown-item").each(function(){
+			$(this).css("background-color","white");
+		});
+		$(this).css("background-color","ffaf33");
+	});
+	//-----------------------------------------------------
 
 	setTimeout(function(){
 	$("refereeUpdateStatus").alert("close");
