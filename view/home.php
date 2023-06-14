@@ -321,6 +321,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $funcName=='Login') {
 }
  */
 //echo $forms->Signup();
+
+echo "<br/><hr/>";
+echo '<footer class="footer bg-light">
+    <div class="container text-center">
+      <span class="text-muted">NASI 2023.</span>
+    </div>
+  </footer>';
 ?>
 
 </body>
