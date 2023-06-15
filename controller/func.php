@@ -1891,6 +1891,9 @@ function Register(){
 }
 
 function Submission_Guidelines(){
+if(!EnableMenuItem("Submission_Guidelines"))
+return Message("Will be available soon.","alert-warning");
+
 $guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
@@ -1912,6 +1915,9 @@ return $guidelines;
 }
 
 function Templates(){
+if(!EnableMenuItem("Templates"))
+return Message("Will be available soon.","alert-warning");
+
 $templates="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
