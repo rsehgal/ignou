@@ -248,6 +248,7 @@ var dataUp=new FormData();
 require "../globals.php";
 require "../model/Symposia.php";
 require "Forms.php";
+require "footer.php";
 $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
@@ -322,12 +323,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $funcName=='Login') {
  */
 //echo $forms->Signup();
 
-echo "<br/><hr/>";
-echo '<footer class="footer bg-light">
-    <div class="container text-center">
-      <span class="text-muted">NASI 2023.</span>
-    </div>
-  </footer>';
+echo DisplayFooter();
 ?>
 
 </body>
