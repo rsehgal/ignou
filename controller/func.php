@@ -216,7 +216,7 @@ function ServeSignup(){
 
 
 		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email',NOW())";
-return $query;
+//return $query;
 		//echo $query."<br/>";
 		$obj->GetQueryResult($query);
 		/*$from= "newaccount";
