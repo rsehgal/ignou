@@ -41,7 +41,7 @@ function AddMenuEntry($entry){
 	}elseif($entry=="Submissions"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-        $subentries=array("Upload_Contribution", "Resubmit_Contribution", "View_Contribution");
+        $subentries=array("Submission_Guidelines","Templates","Upload_Contribution", "Resubmit_Contribution", "View_Contribution");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Login"){
 	$menuEntry= '<li class="nav-item dropdown">
@@ -193,9 +193,10 @@ $result.='
 		$result.=$this->AddMenuEntry("Services");
 	$result.=
 	$this->AddMenuEntry("Signup").
-	$this->AddMenuEntry("Login").
-	$this->AddMenuEntry("Submissions").
-	$this->AddMenuEntry("Accommodation").
+	$this->AddMenuEntry("Login");//.
+ 	$result.=$this->AddMenuEntry("Register");
+	$result.=$this->AddMenuEntry("Submissions");
+	$result.=$this->AddMenuEntry("Accommodation").
 	//$this->AddMenuEntry("Upload_Contribution").
 	$this->AddMenuEntry("HowToReach").
 	$this->AddMenuEntry("Contact").'

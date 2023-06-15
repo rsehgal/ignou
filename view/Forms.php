@@ -202,6 +202,190 @@ class Forms{
 		//return $valArray[0];
 	}
 */
+
+public function Register($fieldNames){
+
+	//return "Register function called of Forms class";
+	session_start();
+	if(isset($_SESSION["loggedin"])){
+	$obj = new DB();
+	$query = 'select uname, count(*) as counter from registration where uname="'.$_SESSION["username"].'"';
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$counter = $row["counter"];
+
+	$query = 'select * from registration where uname="'.$_SESSION["username"].'"';
+	$result = $obj->GetQueryResult($query);
+	$row=$result->fetch_assoc();
+	$result->free();
+
+	$formContent='<br/><div class="container">
+                <h2>Participant Registration</h2>
+                <form method="POST" id="register" enctype="multipart/form-data" class="">';
+		
+		for($i=0 ; $i<count($fieldNames) ; $i++){
+			if($fieldNames[$i]=="uname"){
+				$formContent.='<input type="hidden" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION["username"].'" readonly >';
+			}else{
+				
+			$formContent.='<div class="form-group" id="group_'.$fieldNames[$i].'">
+                                <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
+				
+				if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email")
+				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION[$fieldNames[$i]].'" readonly > </div>';
+				elseif($fieldNames[$i]=="Initials"){
+					$options = array('None', 'Dr.', 'Ms.', 'Mrs.','Mr.','Prof.','Kum.'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control initials registration" id="Initials" required>';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						if($counter==0)
+						$selAccReq.='<option value="' . $option . '" >' . $option . '</option>';
+						else
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;	
+				}elseif($fieldNames[$i]=="Gender"){
+					$options = array('None', 'Female', 'Male'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control gender registration" id="Gender" required>';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+ 				}
+				elseif($fieldNames[$i]=="Mobile")
+				$formContent.='<input type="tel" class="form-control registration" placeholder="10 digit mobile number" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'"  pattern="[0-9]{10}" value="'.$row[$fieldNames[$i]].'" required></div>';
+				//elseif($fieldNames[$i]=="Checkin_Date" || $fieldNames[$i]=="Checkout_Date")
+				elseif($fieldNames[$i]=="Arrival_Date" || $fieldNames[$i]=="Departure_Date"){
+					if($counter==0)
+					$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" required> </div>';	
+					else
+					$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.date('Y-m-d', strtotime($row[$fieldNames[$i]])).'" required> </div>';
+				}
+				elseif($fieldNames[$i]=="Accommodation_Required"){
+					$options = array('None', 'Yes', 'No'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control accommodation registration" id="Accommodation_Required">';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+				}
+				elseif($fieldNames[$i]=="Accommodation_Preference"){
+					$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Preference" >';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+
+				}
+				elseif($fieldNames[$i]=="Accommodation_Type"){
+					$options = array('None', 'Single Occupancy', 'Double Occupancy'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Type">';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+				}
+				else
+				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$row[$fieldNames[$i]].'" required> </div>';
+				
+		}
+		
+
+		}
+
+		$formContent.='<center><input type="submit" class="btn btn-primary form-group" value="Submit" id="updateRegistration"  functionName="UpdateRegistration"></input></center>';
+		$formContent.="</form></div>";
+		$associateJs = '<script>
+					
+						var data={};
+
+						$(function(){
+							if($("#Accommodation_Required").val()=="No"){
+								$("#Accommodation_Preference").val("");
+								$("#Accommodation_Type").val("");
+								$("#group_Accommodation_Preference").hide();
+								$("#group_Accommodation_Type").hide();
+								data["Accommodation_Type"]="";
+								data["Accommodation_Preference"]="";
+								
+							}
+						});
+
+						$(".accommodation").on("change",function(){
+							//alert($(this).attr("id")+" : "+$(this).val());
+						});
+
+						$("#Accommodation_Required").on("change",function(){
+							if($("#Accommodation_Required").val()=="No"){
+								$("#Accommodation_Preference").val("No");
+								$("#Accommodation_Type").val("No");
+								$("#group_Accommodation_Preference").hide();
+								$("#group_Accommodation_Type").hide();
+							}
+							if($("#Accommodation_Required").val()=="Yes"){
+								$("#Accommodation_Preference").val("None");
+								$("#Accommodation_Type").val("None");
+								$("#group_Accommodation_Preference").show();
+								$("#group_Accommodation_Type").show();
+							}
+
+						});
+
+						$("#updateRegistration").click(function(e){
+						//	$("#register").on("submit",function(e){
+						//$("#updateRegistration").on("submit",function(e){
+							e.preventDefault();
+							$("loadingGif").show();
+							
+							data["function_name"]=$(this).attr("functionName");
+							//alert(data["function_name"]);
+							$(".registration").each(function(){
+								if($(this).val()=="None" || $(this).val()=="" ){
+									alert("Please fill "+$(this).attr("id"));
+									exit;
+								}
+								data[$(this).attr("id")]=$(this).val();
+								//alert($(this).attr("id")+" : "+data[$(this).attr("id")])
+								//if($(this).attr("id")=="Checkin_Date")
+								//alert($(this).val());
+							});
+
+							$.ajax({
+								url: "../controller/func.php",
+								method: "POST",
+								data : data,
+								success: function(response) {
+									
+									$("#loadingGif").hide();
+									//$("#newsubmission input").prop("disabled", false); 
+									//$("#uploadAndSubmit").prop("disabled",false);
+									$("#result").html(response);
+								}
+							});
+						});
+					
+						</script>';
+
+		return $formContent.$associateJs;
+	}else{
+		return Message("Please login before proceeding for regisration.","alert-danger"); 
+	}
+}
 	public function NewSubmission($fieldNames){
 	//return
 		$obj=new DB();

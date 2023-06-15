@@ -30,6 +30,14 @@ The National Academy of Sciences, India, NASI-2023.
 </style>
 <script>
 $(document).ready(function(){
+	//This block control the hover color of drop down menus
+	$(".dropdown-item").hover(function(){
+		$(".dropdown-item").each(function(){
+			$(this).css("background-color","white");
+		});
+		$(this).css("background-color","ffaf33");
+	});
+	//-----------------------------------------------------
 
 	setTimeout(function(){
 	$("refereeUpdateStatus").alert("close");
@@ -244,7 +252,9 @@ $objSympo = new Symposia();
 echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
+
 echo "<div id='result' ></div>";
+echo "<div id='loginstatus' ></div>";
 echo '<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
 //echo HomeNASI();
 
@@ -311,6 +321,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $funcName=='Login') {
 }
  */
 //echo $forms->Signup();
+
+echo "<br/><hr/>";
+echo '<footer class="footer bg-light">
+    <div class="container text-center">
+      <span class="text-muted">NASI 2023.</span>
+    </div>
+  </footer>';
 ?>
 
 </body>

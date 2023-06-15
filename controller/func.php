@@ -322,7 +322,9 @@ function ServeLogin(){
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
-		$_SESSION["email"]=$row["email"];
+		$_SESSION["FirstName"]=$row["firstname"];
+		$_SESSION["LastName"]=$row["lastname"];
+		$_SESSION["Email"]=$row["email"];
 		$result->free();
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
@@ -334,7 +336,8 @@ function ServeLogin(){
 		$localJs = '<script>
 				$(function(){
 				$("#loginstatus").html("<h4><mark>Logged in as : '.
-				$_SESSION["username"].'")});</script>';
+				$_SESSION["username"].'");
+				});</script>';
 				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
 		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
@@ -392,6 +395,26 @@ function Upload_Contribution(){
 if(!EnableMenuItem("Upload_Contribution"))
 return Message("Will be available soon.","alert-warning");
 	session_start();
+
+	$obj = new DB();
+	$query = "select contrib_start_date,contrib_end_date from symposium";
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$start_date = $row["contrib_start_date"];
+	$end_date = $row["contrib_end_date"];
+
+	$now = time();
+	$start_time = GetStartTime($start_date);
+	$end_time = GetEndTime($end_date);
+
+	//return "Start time : $start_time : End Time : $end_time <br/>";
+
+	if($now < $start_time)
+	return Message("Contribution submission will start on ".date("d-M-Y",strtotime($start_date)), "alert-info");
+
+	if($now > $end_time)
+	return Message("Contribution submission Deadline crossed on ".date("d-M-Y",strtotime($end_date)).", Kindly contact Convener.", "alert-danger");
+	
 	$returnVal="";
 	if(isset($_SESSION["loggedin"])){
 		//return "Hello <br/>";
@@ -422,6 +445,8 @@ return "<h3 class='alert auto-close ".$colorClass." text-center' role='alert'>".
 ";
 
 }
+
+
 
 function NewSubmission(){
 	$obj = new DB();
@@ -597,9 +622,9 @@ function WithdrawContribution(){
 	return Message("Your paper is withdrawn.","alert-info");
 }
 function Referee_UpdatePaperStatus_Old(){
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
@@ -718,9 +743,9 @@ $result->free();
 }
 
 function Referee_UpdatePaperStatus(){
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
@@ -797,7 +822,7 @@ function Referee_UpdatePaperStatus(){
 			$(".updateDecision").click(function(e){
 
 				
-				//$("#loadingGif").show();
+				$("#loadingGif").show();
 				e.preventDefault();
 				//alert("MyID : "+$(this).attr("id"));
 				var decisionTextId = "#decisionText_"+$(this).attr("id");
@@ -816,7 +841,7 @@ function Referee_UpdatePaperStatus(){
 				    data : data,
 				    success: function(response) {
 					//alert("response");
-					//$("#loadingGif").hide();
+					$("#loadingGif").hide();
 				    	$("#refereeUpdateStatus").html(response);
 					$("#refereeUpdateStatus").delay(800).fadeOut();
 				    }
@@ -1764,6 +1789,139 @@ $query='update refereeAllotment set Filename="'.$filename.'",refereeName="'.$new
 
 $obj->GetQueryResult($query);
 return Message("Referee Updated","alert-success");
+}
+
+function UpdateRegistration(){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	//return Message("Registration data updated","alert-success");
+	session_start();
+	$uname=trim($_POST["uname"]);
+	$initials=trim($_POST["Initials"]);
+	$firstname = trim($_POST["FirstName"]);
+	$lastname=trim($_POST["LastName"]);
+	$gender=trim($_POST["Gender"]);
+	$email = trim($_POST["Email"]);
+	$mobile=trim($_POST["Mobile"]);
+	$affil = trim($_POST["Affiliation"]);
+	$desig = trim($_POST["Designation"]);
+	$nationality = trim($_POST["Nationality"]);
+	$accommReq=trim($_POST["Accommodation_Required"]);
+	$accommPref=trim($_POST["Accommodation_Preference"]);
+	$accommType=trim($_POST["Accommodation_Type"]);
+	$checkinDate=trim($_POST["Arrival_Date"]);
+	$checkoutDate=trim($_POST["Departure_Date"]);
+
+
+	$obj = new DB();
+
+	$query = 'select uname, count(*) as counter from registration where uname="'.$_SESSION["username"].'"';
+	//return $query;
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$counter = $row["counter"];
+
+	//return $counter;
+
+	if($counter==0){
+		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
+	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
+	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
+			,"'.$checkinDate.'","'.$checkoutDate.'")';
+			//return $query;
+	}
+
+	else
+		$query = 'update registration set FirstName="'.$firstname.'
+				 ",Initials="'.$initials.'
+				 ",Gender="'.$gender.'
+				 ",LastName="'.$lastname.'
+				 ",Email="'.$email.'
+				 ",Affiliation="'.$affil.'
+				 ",Designation="'.$desig.'
+				 ",Nationality="'.$nationality.'
+				 ",Mobile="'.$mobile.'
+				 ",Accommodation_Required="'.$accommReq.'
+				 ",Accommodation_Preference="'.$accommPref.'
+				 ",Accommodation_Type="'.$accommType.'
+				 ",Arrival_Date="'.$checkinDate.'
+				 ",Departure_Date="'.$checkoutDate.'" where uname="'.$_SESSION["username"].'"';
+//return $query;
+
+		$obj->GetQueryResult($query);
+
+	return Message("Registration data updated","alert-success");
+
+
+}
+
+function Register(){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	if(!EnableMenuItem("Register"))
+	return Message("Will be available soon.","alert-warning");
+
+	$obj = new DB();
+	$query = "select reg_start_date,reg_end_date from symposium";
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$reg_start_date = $row["reg_start_date"];
+	$reg_end_date = $row["reg_end_date"];
+
+	$now = time();
+	$reg_start_time = GetStartTime($reg_start_date);
+	$reg_end_time = GetEndTime($reg_end_date);
+
+	if($now < $reg_start_time)
+		return Message("Registration will start on ".date("d-M-Y",strtotime($reg_start_date)), "alert-info");
+
+	if($now > $reg_end_time)
+		return Message("Registration Deadline crossed on ".date("d-M-Y",strtotime($reg_end_date)).", Kindly contact Convener.", "alert-danger");
+
+	//return "REgitration fucntion called...";
+	$fieldNames = $obj->GetFieldNames("registration");
+	$forms = new Forms();
+	  return $forms->Register($fieldNames);
+}
+
+function Submission_Guidelines(){
+$guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+";
+$guidelines.="<h3>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
+<br/><br/>
+You will need to create a ‘user account’ at the symposium website to submit a paper. Please download template file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
+<br/><br/>
+Please note that papers given in the proper format only will be considered for review.
+<br/><br/>
+Maximum allowed file size is 1 MB.
+<br/><br/>
+Users would be able to edit/modify the submitted papers via resubmission till <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
+<br/><br/>
+The Paper submission gateway will be closed on <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.";
+
+$guidelines.="</h3></div></div>";
+
+return $guidelines;
+}
+
+function Templates(){
+$templates="<hr/><br/><div class='align-items-center justify-content-center'>
+<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
+";
+$templates.="<h2>Abstract Templates</h2> <br/><table class='table table-bordered table-striped'>";
+$templates.="<tr><td>Word templates for abstracts</td><td><a href='../docs/word_template.zip'>Download</a></td>";
+$templates.="<tr><td>Latex templates for abstracts</td><td><a href='../docs/latex_template.zip'>Download</a></td>";
+$templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/pdflatex_template.zip'>Download</a></td>";
+
+$templates.="</table></h3></div></div>";
+return $templates;
 }
 
 if (isset($_POST['function_name'])) {
