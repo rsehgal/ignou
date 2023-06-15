@@ -38,7 +38,7 @@ class Forms{
 		</form>
 		<script>
 		$(".symposiaForms").on("submit",function(event){
-			alert("Finally called......");
+			//alert("Finally called......");
 			event.preventDefault();
 			var funcName="";
 			var data={};
