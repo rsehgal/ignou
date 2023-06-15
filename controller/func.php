@@ -1793,9 +1793,9 @@ return Message("Referee Updated","alert-success");
 }
 
 function UpdateRegistration(){
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 
 	//return Message("Registration data updated","alert-success");
 	session_start();
@@ -1861,9 +1861,9 @@ function UpdateRegistration(){
 }
 
 function Register(){
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 
 	if(!EnableMenuItem("Register"))
 	return Message("Will be available soon.","alert-warning");
