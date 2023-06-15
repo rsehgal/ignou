@@ -622,9 +622,9 @@ function WithdrawContribution(){
 	return Message("Your paper is withdrawn.","alert-info");
 }
 function Referee_UpdatePaperStatus_Old(){
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
@@ -743,9 +743,9 @@ $result->free();
 }
 
 function Referee_UpdatePaperStatus(){
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 
 	//return Message("Will be available soon.","alert-warning");
 	session_start();
@@ -1792,38 +1792,53 @@ return Message("Referee Updated","alert-success");
 }
 
 function UpdateRegistration(){
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 
 	//return Message("Registration data updated","alert-success");
 	session_start();
+	$uname=trim($_POST["uname"]);
+	$initials=trim($_POST["Initials"]);
 	$firstname = trim($_POST["FirstName"]);
 	$lastname=trim($_POST["LastName"]);
-	$uname=trim($_POST["uname"]);
-	$mobile=trim($_POST["Mobile"]);
+	$gender=trim($_POST["Gender"]);
 	$email = trim($_POST["Email"]);
+	$mobile=trim($_POST["Mobile"]);
 	$affil = trim($_POST["Affiliation"]);
 	$desig = trim($_POST["Designation"]);
 	$nationality = trim($_POST["Nationality"]);
 	$accommReq=trim($_POST["Accommodation_Required"]);
 	$accommPref=trim($_POST["Accommodation_Preference"]);
 	$accommType=trim($_POST["Accommodation_Type"]);
-	$checkinDate=trim($_POST["Checkin_Date"]);
-	$checkoutDate=trim($_POST["Checkout_Date"]);
+	$checkinDate=trim($_POST["Arrival_Date"]);
+	$checkoutDate=trim($_POST["Departure_Date"]);
 
 
 	$obj = new DB();
 
 	$query = 'select uname, count(*) as counter from registration where uname="'.$_SESSION["username"].'"';
+	//return $query;
 	$result = $obj->GetQueryResult($query);
 	$row = $result->fetch_assoc();
 	$counter = $row["counter"];
 
 	//return $counter;
 
-	if($counter==0)
-		$query = 'insert into registration (FirstName,LastName,Email,Affiliation,Designation,Nationality,Mobile,uname) values("'.$firstname.'","'.$lastname.'","'.$email.'
-	","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$uname.'")';
+	if($counter==0){
+		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
+	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
+	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
+			,"'.$checkinDate.'","'.$checkoutDate.'")';
+			//return $query;
+	}
+
 	else
 		$query = 'update registration set FirstName="'.$firstname.'
+				 ",Initials="'.$initials.'
+				 ",Gender="'.$gender.'
 				 ",LastName="'.$lastname.'
 				 ",Email="'.$email.'
 				 ",Affiliation="'.$affil.'
@@ -1833,8 +1848,8 @@ function UpdateRegistration(){
 				 ",Accommodation_Required="'.$accommReq.'
 				 ",Accommodation_Preference="'.$accommPref.'
 				 ",Accommodation_Type="'.$accommType.'
-				 ",Checkin_Date="'.$checkinDate.'
-				 ",Checkout_Date="'.$checkoutDate.'" where uname="'.$_SESSION["username"].'"';
+				 ",Arrival_Date="'.$checkinDate.'
+				 ",Departure_Date="'.$checkoutDate.'" where uname="'.$_SESSION["username"].'"';
 //return $query;
 
 		$obj->GetQueryResult($query);

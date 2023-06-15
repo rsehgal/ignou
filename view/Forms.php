@@ -209,6 +209,11 @@ public function Register($fieldNames){
 	session_start();
 	if(isset($_SESSION["loggedin"])){
 	$obj = new DB();
+	$query = 'select uname, count(*) as counter from registration where uname="'.$_SESSION["username"].'"';
+	$result = $obj->GetQueryResult($query);
+	$row = $result->fetch_assoc();
+	$counter = $row["counter"];
+
 	$query = 'select * from registration where uname="'.$_SESSION["username"].'"';
 	$result = $obj->GetQueryResult($query);
 	$row=$result->fetch_assoc();
@@ -220,19 +225,49 @@ public function Register($fieldNames){
 		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
 			if($fieldNames[$i]=="uname"){
-				$formContent.='<input type="hidden" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION["username"].'" readonly > </div>';
+				$formContent.='<input type="hidden" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION["username"].'" readonly >';
 			}else{
+				
 			$formContent.='<div class="form-group" id="group_'.$fieldNames[$i].'">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
 				
 				if($fieldNames[$i]=="FirstName" || $fieldNames[$i]=="LastName" || $fieldNames[$i]=="Email")
 				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION[$fieldNames[$i]].'" readonly > </div>';
+				elseif($fieldNames[$i]=="Initials"){
+					$options = array('None', 'Dr.', 'Ms.', 'Mrs.','Mr.','Prof.','Kum.'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control initials registration" id="Initials" required>';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						if($counter==0)
+						$selAccReq.='<option value="' . $option . '" >' . $option . '</option>';
+						else
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;	
+				}elseif($fieldNames[$i]=="Gender"){
+					$options = array('None', 'Female', 'Male'); // The available options
+					$selectedOption=trim($row[$fieldNames[$i]]);
+					$selAccReq= '<select class="form-control gender registration" id="Gender" required>';
+					foreach ($options as $option) {
+						$selected = ($option == $selectedOption) ? 'selected' : '';
+						$selAccReq.='<option value="' . $option . '" ' . $selected . '>' . $option . '</option>';
+					}
+					$selAccReq.='</select></div>';	
+					$formContent.=$selAccReq;
+ 				}
 				elseif($fieldNames[$i]=="Mobile")
 				$formContent.='<input type="tel" class="form-control registration" placeholder="10 digit mobile number" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'"  pattern="[0-9]{10}" value="'.$row[$fieldNames[$i]].'" required></div>';
-				elseif($fieldNames[$i]=="Checkin_Date" || $fieldNames[$i]=="Checkout_Date")
-				$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.date('Y-m-d', strtotime($row[$fieldNames[$i]])).'" required> </div>';
+				//elseif($fieldNames[$i]=="Checkin_Date" || $fieldNames[$i]=="Checkout_Date")
+				elseif($fieldNames[$i]=="Arrival_Date" || $fieldNames[$i]=="Departure_Date"){
+					if($counter==0)
+					$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" required> </div>';	
+					else
+					$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.date('Y-m-d', strtotime($row[$fieldNames[$i]])).'" required> </div>';
+				}
 				elseif($fieldNames[$i]=="Accommodation_Required"){
-					$options = array(' ', 'Yes', 'No'); // The available options
+					$options = array('None', 'Yes', 'No'); // The available options
 					$selectedOption=trim($row[$fieldNames[$i]]);
 					$selAccReq= '<select class="form-control accommodation registration" id="Accommodation_Required">';
 					foreach ($options as $option) {
@@ -241,14 +276,9 @@ public function Register($fieldNames){
 					}
 					$selAccReq.='</select></div>';	
 					$formContent.=$selAccReq;
-				/*$formContent.='<select class="form-control accommodation registration" id="Accommodation_Required">
-								<option></option>
-								<option>Yes</option>
-								<option>No</option>
-							   </select></div>';*/
 				}
 				elseif($fieldNames[$i]=="Accommodation_Preference"){
-					$options = array(' ', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
+					$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
 					$selectedOption=trim($row[$fieldNames[$i]]);
 					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Preference" >';
 					foreach ($options as $option) {
@@ -259,15 +289,8 @@ public function Register($fieldNames){
 					$formContent.=$selAccReq;
 
 				}
-				/*$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Preference" >
-								<option></option>
-								<option>DAECC Guest House</option>
-								<option>Postgraduate Hostel</option>
-								<option>Hotel: The Regenza by Tunga</option>
-								<option>Hotel: The Jewel Of Chembur</option>
-							   </select></div>';*/
 				elseif($fieldNames[$i]=="Accommodation_Type"){
-					$options = array(' ', 'Single Occupancy', 'Double Occupancy'); // The available options
+					$options = array('None', 'Single Occupancy', 'Double Occupancy'); // The available options
 					$selectedOption=trim($row[$fieldNames[$i]]);
 					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Type">';
 					foreach ($options as $option) {
@@ -277,11 +300,6 @@ public function Register($fieldNames){
 					$selAccReq.='</select></div>';	
 					$formContent.=$selAccReq;
 				}
-				/*$formContent.='<select class="form-control  accommodation registration" id="Accommodation_Type">
-								<option></option>
-								<option>Single Occupancy</option>
-								<option>Double Occupancy</option>
-							   </select></div>';*/
 				else
 				$formContent.='<input type="text" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$row[$fieldNames[$i]].'" required> </div>';
 				
@@ -314,10 +332,14 @@ public function Register($fieldNames){
 
 						$("#Accommodation_Required").on("change",function(){
 							if($("#Accommodation_Required").val()=="No"){
+								$("#Accommodation_Preference").val("No");
+								$("#Accommodation_Type").val("No");
 								$("#group_Accommodation_Preference").hide();
 								$("#group_Accommodation_Type").hide();
 							}
 							if($("#Accommodation_Required").val()=="Yes"){
+								$("#Accommodation_Preference").val("None");
+								$("#Accommodation_Type").val("None");
 								$("#group_Accommodation_Preference").show();
 								$("#group_Accommodation_Type").show();
 							}
@@ -326,12 +348,17 @@ public function Register($fieldNames){
 
 						$("#updateRegistration").click(function(e){
 						//	$("#register").on("submit",function(e){
+						//$("#updateRegistration").on("submit",function(e){
 							e.preventDefault();
 							$("loadingGif").show();
 							
 							data["function_name"]=$(this).attr("functionName");
 							//alert(data["function_name"]);
 							$(".registration").each(function(){
+								if($(this).val()=="None" || $(this).val()=="" ){
+									alert("Please fill "+$(this).attr("id"));
+									exit;
+								}
 								data[$(this).attr("id")]=$(this).val();
 								//alert($(this).attr("id")+" : "+data[$(this).attr("id")])
 								//if($(this).attr("id")=="Checkin_Date")
