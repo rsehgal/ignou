@@ -34,7 +34,7 @@ class Forms{
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control signupForm" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary sympFormSubmit">Create Account</button>
+                        <button type="submit" class="btn btn-primary sympFormSubmit round-ended-btn">Create Account</button>
 		</form>
 		<script>
 		$(".symposiaForms").on("submit",function(event){

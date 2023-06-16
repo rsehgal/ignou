@@ -12,9 +12,11 @@ The National Academy of Sciences, India, NASI-2023.
 <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../CSS/cosmetic.css">
  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
 .btn-custom {
   font-size: 24px;
@@ -33,9 +35,10 @@ $(document).ready(function(){
 	//This block control the hover color of drop down menus
 	$(".dropdown-item").hover(function(){
 		$(".dropdown-item").each(function(){
-			$(this).css("background-color","white");
+			$(this).css("background-color","273746");
 		});
-		$(this).css("background-color","ffaf33");
+		//$(this).css("background-color","ffaf33");
+		$(this).css("background-color","b03a2e");
 	});
 	//-----------------------------------------------------
 
@@ -250,6 +253,50 @@ require "../model/Symposia.php";
 require "Forms.php";
 require "footer.php";
 $objSympo = new Symposia();
+echo "<div class='row'>";
+echo "<div class='col nasiheader'></div>";
+echo "</div>";
+
+//--------------------------------------------
+
+
+//--------------------------------------------
+
+echo "<div class='row'>";
+echo "<div class='col-1'></div>";
+echo "<div class='col maincontent'>";
+
+echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#mySlider" data-slide-to="0" class="active"></li>
+      <li data-target="#mySlider" data-slide-to="1"></li>
+      <li data-target="#mySlider" data-slide-to="2"></li>
+    </ol>
+  
+    <!-- Slides -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../images/header.png" class="d-block w-100" alt="Slide 1">
+      </div>
+       <!-- Add here more blocks to start slide show --> 
+     </div>
+  
+    <!-- Navigation Arrows -->
+    <a class="carousel-control-prev" href="#mySlider" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#mySlider" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+';
+
 echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
@@ -257,73 +304,15 @@ echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></
 echo "<div id='result' ></div>";
 echo "<div id='loginstatus' ></div>";
 echo '<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
-//echo HomeNASI();
-
-
-/*echo "<hr/><br/><div class='align-items-center justify-content-center'>
-<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
-<h3>The <raman class='text-primary font-weight-bold'>National Academy of Sciences, India </raman> (initially called “The Academy of Sciences of United Provinces of Agra and Oudh”) was founded in the year 1930, with the objectives to provide a national forum for the publication of research work carried out by Indian scientists and to provide opportunities for exchange of views among them. 
-<br/><br/><p><raman class='text-primary font-weight-bold'>93<sup>rd</sup></raman> Annual Session  along with the scientific sessions on Physical and Biological sciences will be held from <raman class='text-primary font-weight-bold'>03 Dec. to 05 Dec 2023</raman> at  
-<raman class='font-weight-bold'>DAE Convention Centre, Bhabha Atomic Research Centre, Mumbai.</raman>
-<br/>
-<br/>
-The Scientific Sessions will be held in two sections. The scientific papers are presented by selected researchers/scientists in scientific sessions, for which prior submission of the Abstract(s)/Paper(s) is necessary .
-</h3>
-</div></div>
-";
-*/
-
-//if($_SESSION["loggedin"])
-//echo "<br/><div id='sessionDiv'>user ".$_SESSION["username"]." already logged in.</div> <br/>";
-/*
-$forms = new Forms();
-
-if (isset($_GET['function']) && $_GET['function'] == 'Signup') {
-	$funcName='Signup';
-    // call the function
-	//$myClass->myFunction();
-	echo $forms->Signup();
-}
-if (isset($_GET['function']) && $_GET['function'] == 'Login') {
-	$funcName='Login';
-	//echo $funcName."<br/>";
-	// call the function
-	//$myClass->myFunction();
-	echo $forms->Login();
-	//GenJs();
-}*/
-/*if (isset($_GET['function']) && $_GET['function'] == 'Contact') {
-	$funcName='Contact';
-	//echo $funcName."<br/>";
-	//$myClass->myFunction();
-	echo $forms->Contact();
-	//GenJs();
-}*/
 
 echo "</div>";
+
 function GenJs(){ return "<script> alert('Hello Raman') </script>";}
 
-//require "FormServers.php";
-//echo $funcName;
-
-/*
- * For every form that needs to be processed at the backend
- * add a function in the Forms.php, and a correponding
- * block below
- */
-/*
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $funcName=='Signup') {
-                    // call the function to process the form data
-                    echo $forms->ServeSignup();
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $funcName=='Login') {
-                    // call the function to process the form data
-                    echo $forms->ServeLogin();
-}
- */
-//echo $forms->Signup();
-
 echo DisplayFooter();
+echo "</div>";
+echo "<div class='col-1'></div>";
+echo "</div>"; //row div
 ?>
 
 </body>

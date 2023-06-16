@@ -29,23 +29,23 @@ function AddMenuEntry($entry){
 	$menuEntry="";
 	if($entry=="About"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light " id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
 	$subentries=array("Topic","Venue","Important_Dates"); //NASI //removed entry
 	//$subentries=array("Poster","Topic","Venue","Important_Dates"); //NASI //removed entry
 	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         $subentries=array("Council_Officers","Council_Members","Organizing_Committee");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Submissions"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         $subentries=array("Submission_Guidelines","Templates","Upload_Contribution", "Resubmit_Contribution", "View_Contribution");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Login"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         $subentries=array("AuthorLogin","RefereeLogin","CoordinatorLogin","AdminLogin");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Accommodation"){
@@ -62,7 +62,7 @@ function AddMenuEntry($entry){
 		$counter++;
 	}
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
         //$subentries=array("DAECC Guest house", "Postgraduate Hostel", "Hotel : The Regenza by Tunga","Hotel : The Jewel of Chembur");
         //$menuEntry.=$this->AddSubEntries($subentries,$entry);
         $menuEntry.=$this->AddSubEntries2($subentries,$functionSubEntries,$entry);
@@ -70,7 +70,7 @@ function AddMenuEntry($entry){
 	/*$menuEntry= '<li class="nav-item">
           <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';*/
 	$menuEntry= '<li class="nav-item">
-          <a class="nav-link nasiMenu symposiaForms" id="'.$entry.'" name="'.$entry.'" href="#"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link nasiMenu symposiaForms text-light" id="'.$entry.'" name="'.$entry.'" href="#"><h4>'.$entry.'</h4></a>';
 
 	}
         $menuEntry.='</li>';
@@ -94,14 +94,14 @@ function AddSubEntries($subEntries){//,$mainEntry){
 }
  */
 function AddSubEntries($subEntries,$mainEntry){
-	$subMenu='<div class="dropdown-menu">';
+	$subMenu='<div class="dropdown-menu bg-dark">';
 	for($i= 0 ; $i < count($subEntries) ; $i++){
 
 		if($subEntries[$i]=="Poster"){
-        	$subMenu.='<a class="dropdown-item menuCommon '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	$subMenu.='<a class="dropdown-item menuCommon text-light'.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
         	//$subMenu.='<a class="dropdown-item" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" href="../docs/poster.pdf"'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
 		}else{
-        	$subMenu.='<a class="dropdown-item menuCommon '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
+        	$subMenu.='<a class="dropdown-item menuCommon text-light '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'">'.$subEntries[$i].'</a>';
 }
 	}
 	$subMenu.='</div>';
@@ -111,7 +111,7 @@ function AddSubEntries2($subEntries,$functNames,$mainEntry){
 	$subMenu='<div class="dropdown-menu">';
 	for($i= 0 ; $i < count($subEntries) ; $i++){
 
-		        	$subMenu.='<a class="dropdown-item menuCommon '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" functionName="'.$functNames[$i].'">'.$subEntries[$i].'</a>';
+		        	$subMenu.='<a class="dropdown-item menuCommon text-light '.$mainEntry.'" id="'.$subEntries[$i].'" name="'.$subEntries[$i].'" functionName="'.$functNames[$i].'">'.$subEntries[$i].'</a>';
 }
 	$subMenu.='</div>';
 	return $subMenu;
@@ -167,10 +167,10 @@ function Menu(){
 
  <img src="../images/nasiLogo.png" class="float-right" alt="Logo">  
 </div>
-</div>
+</div>';
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+$result='<nav class="navbar navbar-expand-lg navbar-light bg-dark">
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>';
