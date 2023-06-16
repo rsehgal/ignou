@@ -262,9 +262,9 @@ echo "</div>";
 
 //--------------------------------------------
 
-echo "<div class='row'>";
+echo "<div class='row' >";
 echo "<div class='col-1'></div>";
-echo "<div class='col maincontent'>";
+echo "<div class='col maincontent border border-dashed border-primary'>";
 
 echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
