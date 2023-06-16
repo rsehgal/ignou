@@ -27,6 +27,7 @@ The National Academy of Sciences, India, NASI-2023.
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display:none;
   /* Add any additional styling you need */
 }
 </style>
@@ -303,7 +304,7 @@ echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></
 
 echo "<div id='result' ></div>";
 echo "<div id='loginstatus' ></div>";
-echo '<img id="loadingGif" src="../images/loadingTransparent.gif" style="display: none;" alt="Loading...">';
+echo '<img id="loadingGif" src="../images/loadingTransparent.gif" alt="Loading...">';
 
 echo "</div>";
 

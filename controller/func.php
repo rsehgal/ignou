@@ -1723,8 +1723,10 @@ $result->free();
 				    success: function(response) {
 				   	 
 				    	$("#refereeUpdateStatus").html(response);
-					$("#loadingGif").hide();
-					$("#refereeUpdateStatus").delay(800).fadeOut();
+					$("#refereeUpdateStatus").show();
+					//$("#loadingGif").hide();
+					$("#refereeUpdateStatus").delay(800).fadeOut(); 
+					$("#loadingGif").delay(1000).fadeOut(); 
 					}
 				    });
 
@@ -1770,7 +1772,7 @@ function AllotCoordinator(){
 	if($result===false)
                                 return Message("Query execution fails","alert-danger");
 
-	$result->free();
+	//$result->free();
 	return MessageAutoClose("Coordinator updated....","alert-warning");
 }
 
