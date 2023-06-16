@@ -1898,7 +1898,7 @@ return Message("Will be available soon.","alert-warning");
 $guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
-$guidelines.="<h3>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
+$guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.
 <br/><br/>
 You will need to create a ‘user account’ at the symposium website to submit a paper. Please download template file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
 <br/><br/>
@@ -1910,7 +1910,7 @@ Users would be able to edit/modify the submitted papers via resubmission till <t
 <br/><br/>
 The Paper submission gateway will be closed on <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.";
 
-$guidelines.="</h3></div></div>";
+$guidelines.="</h5></div></div>";
 
 return $guidelines;
 }

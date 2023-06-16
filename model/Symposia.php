@@ -29,23 +29,24 @@ function AddMenuEntry($entry){
 	$menuEntry="";
 	if($entry=="About"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light " id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light " id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
 	$subentries=array("Topic","Venue","Important_Dates"); //NASI //removed entry
 	//$subentries=array("Poster","Topic","Venue","Important_Dates"); //NASI //removed entry
 	$menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
         $subentries=array("Council_Officers","Council_Members","Organizing_Committee");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Submissions"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
-        $subentries=array("Submission_Guidelines","Templates","Upload_Contribution", "Resubmit_Contribution", "View_Contribution");
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
+        //$subentries=array("Submission_Guidelines","Templates","Upload_Contribution", "Resubmit_Contribution", "View_Contribution");
+        $subentries=array("Submission_Guidelines","Templates","Upload_Contribution", "View_Contribution");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Login"){
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
         $subentries=array("AuthorLogin","RefereeLogin","CoordinatorLogin","AdminLogin");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Accommodation"){
@@ -62,7 +63,7 @@ function AddMenuEntry($entry){
 		$counter++;
 	}
 	$menuEntry= '<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link dropdown-toggle text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h5>'.$entry.'</h5></a>';
         //$subentries=array("DAECC Guest house", "Postgraduate Hostel", "Hotel : The Regenza by Tunga","Hotel : The Jewel of Chembur");
         //$menuEntry.=$this->AddSubEntries($subentries,$entry);
         $menuEntry.=$this->AddSubEntries2($subentries,$functionSubEntries,$entry);
@@ -70,7 +71,7 @@ function AddMenuEntry($entry){
 	/*$menuEntry= '<li class="nav-item">
           <a class="nav-link" id="'.$entry.'" name="'.$entry.'" href="?function='.$entry.'"><h4>'.$entry.'</h4></a>';*/
 	$menuEntry= '<li class="nav-item">
-          <a class="nav-link nasiMenu symposiaForms text-light" id="'.$entry.'" name="'.$entry.'" href="#"><h4>'.$entry.'</h4></a>';
+          <a class="nav-link nasiMenu symposiaForms text-light" id="'.$entry.'" name="'.$entry.'" href="#"><h5>'.$entry.'</h5></a>';
 
 	}
         $menuEntry.='</li>';

@@ -6,8 +6,8 @@
 }
 
 .maincontent {
-background-color: rgba(0, 0, 0, 0.2); /* Adjust the last value between 0 and 1 (0.5 = 50% transparency) */
-      background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url("../images/galaxy.jpg");
+background-color: rgba(0, 0, 0, 0.); /* Adjust the last value between 0 and 1 (0.5 = 50% transparency) */
+      background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("../images/spiral2.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-blend-mode: overlay;
