@@ -302,14 +302,14 @@ function ServeLogin(){
 			});
 		 </script>';*/
 	$js='<script>
-			alert("Raw loaded............");
+			/*//alert("Raw loaded............");
 			$(function(){
-				alert("JS loaded...");
-				if($("#hiddenInfo").attr("logintype")="Admin" &&
-				   $("#hiddenInfo").attr("loggedin")="TRUE"){
+			//	alert("JS loaded...");
+				//if($("#hiddenInfo").attr("logintype")="Admin" &&
+				if($("#hiddenInfo").attr("loggedin")="TRUE"){
 					$("#YourTasks").show();
 				}
-			});
+			});*/
 
 			var data={};
 			$("#logout").click(function(e){
@@ -330,6 +330,22 @@ function ServeLogin(){
 					
 			});
 		</script>';
+	$adCordJS = "<script>
+					$(function(){
+						//alert('Admin or Coorinator loggged in...');
+					//if($('#hiddenInfo').attr('logintype')=='Admin' &&
+					if( $('#hiddenInfo').attr('loggedin')=='1'){
+					//$('#YourTasks').show();
+					$('#YourTasks').removeClass('text-light');
+                			$('#YourTasks').addClass('text-warning');
+			                $('#YourTasks').addClass('text-bold');
+			                $('#YourTasks').show();
+
+				}
+
+					});
+				</script>";
+
 	if($row["passwd"]==$passwd){
 		$_SESSION["loggedin"]=TRUE;
 		$_SESSION["username"]=$uname;
@@ -337,7 +353,8 @@ function ServeLogin(){
 		$_SESSION["LastName"]=$row["lastname"];
 		$_SESSION["Email"]=$row["email"];
 		$result->free();
-		if($_SESSION["logintype"]=="Admin" && $_SESSION["loggedin"])
+		//if($_SESSION["logintype"]=="Admin" && $_SESSION["loggedin"])
+		if($_SESSION["loggedin"])
 		echo '<input type="hidden" id="hiddenInfo" logintype="'.$_SESSION["logintype"].'" loggedin="'.$_SESSION["loggedin"].'" />';
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
@@ -354,20 +371,10 @@ function ServeLogin(){
 				});</script>';
 				//'</mark><input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/> </h4>")});</script>';	
 				//$("#loginstatus").html('.$loginStatusMsg.')});
-		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
+		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus().$adCordJS;
 		}
 		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator"){
-		$adCordJS = "<script>
-					$(function(){
-						//alert('Admin or Coorinator loggged in...');
-					if($('#hiddenInfo').attr('logintype')=='Admin' &&
-				   $('#hiddenInfo').attr('loggedin')=='1'){
-					$('#YourTasks').show();
-				}
-
-					});
-				</script>";
-		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment().$adCordJS;
+				return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment().$adCordJS;
 		}
 
 		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
@@ -1947,7 +1954,10 @@ return $guidelines;
 
 function YourTasks(){
 session_start();
+if($_SESSION["logintype"]=="Admin" || $_SESSION["logintype"]=="Coordinator")
 return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$_SESSION["username"]."</h3><br/>".PopulateAllotment();
+if($_SESSION["logintype"]=="Referee")
+return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
 }
 
 function Templates(){

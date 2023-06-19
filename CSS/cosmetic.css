@@ -24,3 +24,8 @@ background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value between 0 and 1 (
 .navbar-nav {
       justify-content: center;
 }
+
+.text-bold {
+  font-weight: bold;
+}
+

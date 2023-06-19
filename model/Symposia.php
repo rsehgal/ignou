@@ -181,7 +181,8 @@ if(isset($_SESSION["loggedin"]) && isset($_SESSION["username"])){
 $js="<script>
 	$(function(){
 		$('#YourTasks').removeClass('text-light');
-		$('#YourTasks').addClass('font-weight-bold text-danger');
+		$('#YourTasks').addClass('text-warning');
+		$('#YourTasks').addClass('text-bold');
 		$('#YourTasks').show();
 	});
 </script>";
