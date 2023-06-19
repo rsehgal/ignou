@@ -178,6 +178,14 @@ $result='<nav class="navbar navbar-expand-lg navbar-light bg-dark">
 
 if(isset($_SESSION["loggedin"]) && isset($_SESSION["username"])){
    $result.='<div id="loginstatus"><h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4> </div>';
+$js="<script>
+	$(function(){
+		$('#YourTasks').removeClass('text-light');
+		$('#YourTasks').addClass('font-weight-bold text-danger');
+		$('#YourTasks').show();
+	});
+</script>";
+$result.=$js;
 }else{
    $result.='<div id="loginstatus"> </div>';
 	}
@@ -195,6 +203,7 @@ $result.='
 	$result.=
 	$this->AddMenuEntry("Signup").
 	$this->AddMenuEntry("Login");//.
+	$result.=$this->AddMenuEntry("YourTasks");//.
  	$result.=$this->AddMenuEntry("Register");
 	$result.=$this->AddMenuEntry("Submissions");
 	$result.=$this->AddMenuEntry("Accommodation").

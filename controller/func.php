@@ -302,8 +302,18 @@ function ServeLogin(){
 			});
 		 </script>';*/
 	$js='<script>
+			alert("Raw loaded............");
+			$(function(){
+				alert("JS loaded...");
+				if($("#hiddenInfo").attr("logintype")="Admin" &&
+				   $("#hiddenInfo").attr("loggedin")="TRUE"){
+					$("#YourTasks").show();
+				}
+			});
+
 			var data={};
 			$("#logout").click(function(e){
+				alert("You are loggin out....");
 				e.preventDefault();
 				data["function_name"]="Logout";
 				$.ajax({
@@ -327,6 +337,8 @@ function ServeLogin(){
 		$_SESSION["LastName"]=$row["lastname"];
 		$_SESSION["Email"]=$row["email"];
 		$result->free();
+		if($_SESSION["logintype"]=="Admin" && $_SESSION["loggedin"])
+		echo '<input type="hidden" id="hiddenInfo" logintype="'.$_SESSION["logintype"].'" loggedin="'.$_SESSION["loggedin"].'" />';
 		if($_SESSION["logintype"]=="Author")
 		//return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>";
 		return '<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>'.$js ;
@@ -336,6 +348,7 @@ function ServeLogin(){
 		$loginStatusMsg='<h4><mark >Logged in as : '.$_SESSION["username"].'</mark> <input type="button" class="btn btn-custom btn-danger" id="logout" value="Logout"/></h4>';
 		$localJs = '<script>
 				$(function(){
+
 				$("#loginstatus").html("<h4><mark>Logged in as : '.
 				$_SESSION["username"].'");
 				});</script>';
@@ -343,8 +356,19 @@ function ServeLogin(){
 				//$("#loginstatus").html('.$loginStatusMsg.')});
 		return $localJs.$js." <div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".$loginStatusMsg.'<br/>'.Referee_UpdatePaperStatus();
 		}
-		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator")
-		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment();
+		if($_SESSION["logintype"]=="Admin"|| $_SESSION["logintype"]=="Coordinator"){
+		$adCordJS = "<script>
+					$(function(){
+						//alert('Admin or Coorinator loggged in...');
+					if($('#hiddenInfo').attr('logintype')=='Admin' &&
+				   $('#hiddenInfo').attr('loggedin')=='1'){
+					$('#YourTasks').show();
+				}
+
+					});
+				</script>";
+		return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$uname."</h3><br/>".PopulateAllotment().$adCordJS;
+		}
 
 		//return "<div><h3 class='text-success'> Welcome User : ".$uname."</h3><br/>";
 	}
@@ -1331,7 +1355,11 @@ session_start();
 //$_SESSION["loggedin"]="";
 unset($_SESSION["loggedin"]);
 unset($_SESSION["username"]);
-return Message("You have successfully logged out.","alert-success");
+return Message("You have successfully logged out.
+		<script> 
+		$(function(){
+			$('#YourTasks').hide();
+		});</script>","alert-success");
 }
 
 
@@ -1915,6 +1943,11 @@ The Paper submission gateway will be closed on <textcolor class='text-primary'>"
 $guidelines.="</h5></div></div>";
 
 return $guidelines;
+}
+
+function YourTasks(){
+session_start();
+return "<div><h3 class='alert alert-success' role='alert'> Welcome ".$_SESSION["logintype"]." : ".$_SESSION["username"]."</h3><br/>".PopulateAllotment();
 }
 
 function Templates(){

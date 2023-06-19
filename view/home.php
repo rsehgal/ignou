@@ -43,6 +43,8 @@ $(document).ready(function(){
 	});
 	//-----------------------------------------------------
 
+	$("#YourTasks").hide();
+
 	setTimeout(function(){
 	$("refereeUpdateStatus").alert("close");
 	},2000);
