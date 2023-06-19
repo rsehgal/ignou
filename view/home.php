@@ -16,7 +16,7 @@ The National Academy of Sciences, India, NASI-2023.
  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 .btn-custom {
   font-size: 24px;
@@ -78,7 +78,7 @@ $('.sympFormSubmit').on('submit',function(event){
  */
 
 
-$('.nasiMenu').on('click',function(event){
+$('.nasiMenu,.menuCommon').on('click',function(event){
 	//alert("Nasi Menu clicked.......");
 	event.preventDefault();
 	var funcName="";
@@ -92,14 +92,17 @@ $('.nasiMenu').on('click',function(event){
 	    method: "POST",
 	    data : data,
 	    success: function(response) {
+	    $("#result").hide();
+	    //$("#result").delay(1000).fadeIn();
 	    $("#result").html(response);
+	    $("#result").fadeIn(1000);
 	    }
 	  });
 
 });
 
 //$('.Submissions').on('click',function(event){
-$('.menuCommon').on('click',function(event){
+/*$('.menuCommon').on('click',function(event){
 	//alert(" Menu clicked.......");
 	//alert($(this).attr("id"));
 	event.preventDefault();
@@ -121,7 +124,7 @@ $('.menuCommon').on('click',function(event){
 	  });
 
 });
-
+*/
 $('.Accommodation').on('click',function(event){
 	//alert(" Menu clicked.......");
 	//alert($(this).attr("id"));
@@ -302,7 +305,7 @@ echo $objSympo->Menu();
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
 
-echo "<div id='result' ></div>";
+echo "<div id='result' class='' ></div>";
 echo "<div id='loginstatus' ></div>";
 echo '<img id="loadingGif" src="../images/loadingTransparent.gif" alt="Loading...">';
 
