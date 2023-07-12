@@ -493,7 +493,8 @@ function NewSubmission(){
 
 function FillCategory(){
 $tablename = $_POST["topic"];
-return GetDropDown($tablename,"category").'
+//return GetDropDown($tablename,"category").'
+return GetDropDown("categories","category").'
 <script>
 $(".category").on("click",function(event){
                         //alert("Category Clicked...");
@@ -913,7 +914,8 @@ function GetTopic($topic){
 }
 
 function GetCategory($topic,$category){
-	$query='select category from '.$topic.' where code="'.$category.'"';
+	//$query='select category from '.$topic.' where code="'.$category.'"';
+	$query='select category from categories where code="'.$category.'"';
 	//return $query;
 	
 	$obj = new DB();
@@ -942,8 +944,28 @@ return Message("Will be available soon.","alert-warning");
 function Topic(){
 if(!EnableMenuItem("Topic"))
 return Message("Will be available soon.","alert-warning");
+$topicMsg='<div class="row">';
+$topicMsg.='<div class="col"></div>';
+$topicMsg.='<div class="col">';
+$topicMsg.='<table class="table table-striped table-bordered">';
+$topicMsg.='<tr class="text-center bg-primary text-light">
+	   <th>Category</th>
+	   <th>Title</th>
+	   </tr>';
+$obj = new DB();
+$query = "select * from categories";
+$result = $obj->GetQueryResult($query);
+while($row=$result->fetch_assoc()){
+$topicMsg.='<tr class="text-center"><td>'.$row["code"].'</td><td>'.$row["category"].'</td></tr>';
+}
 
-return Message("Will be Available soon.","alert-warning");
+$topicMsg.='</table>';
+$topicMsg.='</div>';
+$topicMsg.='<div class="col"></div>';
+$topicMsg.='</div>';
+return $topicMsg;
+
+//return Message("Will be Available soon.","alert-warning");
 }
 
 function Venue(){
@@ -1936,7 +1958,7 @@ $guidelines="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
 //$guidelines.="<h5>Submission of Abstracts can be made at this website from <textcolor class='text-primary'>".GetStartDate("contrib")."</textcolor> to <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.';
-$guidelines.="<h5>Last date of the Submission of Abstracts is <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>.';
+$guidelines.="<h5>Last date of the Submission of Abstracts is <textcolor class='text-primary'>".GetLastDate("contrib")."</textcolor>
 <br/><br/>
 You will need to create a ‘user account’ at the symposium website to submit a paper. Please download template file from the symposium website to prepare  abstracts, and kindly upload the PDF of the abstract before the due date.
 <br/><br/>
@@ -1969,9 +1991,10 @@ $templates="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
 $templates.="<h2>Abstract Templates</h2> <br/><table class='table table-bordered table-striped'>";
-$templates.="<tr><td>Word templates for abstracts</td><td><a href='../docs/word_template.zip'>Download</a></td>";
-$templates.="<tr><td>Latex templates for abstracts</td><td><a href='../docs/latex_template.zip'>Download</a></td>";
-$templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/pdflatex_template.zip'>Download</a></td>";
+$templates.="<tr><td>Word templates for abstracts</td><td><a href='../docs/nasi_template.doc'>Download</a></td>";
+$templates.="<tr><td>PDF templates for abstracts</td><td><a href='../docs/nasi_template.pdf'>Download</a></td>";
+//$templates.="<tr><td>Latex templates for abstracts</td><td><a href='../docs/latex_template.zip'>Download</a></td>";
+//$templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/pdflatex_template.zip'>Download</a></td>";
 
 $templates.="</table></h3></div></div>";
 return $templates;

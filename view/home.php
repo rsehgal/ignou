@@ -83,9 +83,13 @@ $('.sympFormSubmit').on('submit',function(event){
 $('.nasiMenu,.menuCommon').on('click',function(event){
 	//alert("Nasi Menu clicked.......");
 	event.preventDefault();
+	$("#nasifooter").hide();
 	var funcName="";
 	var data={};
 	var funcName=$(this).attr("id");
+	if(funcName=="Home"){
+	$("#nasifooter").show();
+	}
 	//alert(funcName);
 	data['function_name']=funcName;
 	console.log(data);
