@@ -287,7 +287,7 @@ echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
     <!-- Slides -->
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../images/header.png" class="d-block w-100" alt="Slide 1">
+        <img src="../images/headerNew.png" class="d-block w-100" alt="Slide 1">
       </div>
        <!-- Add here more blocks to start slide show --> 
      </div>
