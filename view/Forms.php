@@ -601,11 +601,14 @@ public function Register($fieldNames){
 
 	public function Contact(){
 	$tableName='contactus';
-	$obj = new DB();
+	//$obj = new DB();
         //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         //$obj->Connect();
 	$result = "<h2><br/>Contact Us<br/></h2>";
-        return $result.$obj->GetTableData($tableName);
+	$result.="<h3 class='text-primary'>In case of difficulties, kindly send us an email on <raman class='text-danger font-italic font-weight-bold'><mark class='bg-yellow'> nasi.barc2023@gmail.com</mark></raman></h3>";
+
+	return $result;
+        //return $result.$obj->GetTableData($tableName);
 
 	/*return '<div class="container">
 		<div class="w-50 p-3" style="background-color: #eee;">
