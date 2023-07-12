@@ -215,7 +215,7 @@ function ServeSignup(){
 			return Message("Email : $email already registered.","alert-danger");
 
 
-		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email',NOW())";
+		$query = "insert into user_credentials values('$username','$password','$firstname','$lastname','$email',NOW(),'No')";
 //return $query;
 		//echo $query."<br/>";
 		$obj->GetQueryResult($query);
