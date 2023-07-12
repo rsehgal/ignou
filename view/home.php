@@ -101,7 +101,7 @@ $('.nasiMenu,.menuCommon').on('click',function(event){
 	    $("#result").hide();
 	    //$("#result").delay(1000).fadeIn();
 	    $("#result").html(response);
-	    $("#result").fadeIn(1000);
+	    $("#result").fadeIn(100);
 	    }
 	  });
 
