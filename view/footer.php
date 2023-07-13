@@ -11,6 +11,7 @@ $footerMsg.='<footer id="nasifooter" class="footer bg-dark text-light">
         <div class="col-md-4 text-center">
 	  <h5>Convener</h5>
           <p class="font-weight-bold">Dr. S. M. Yusuf</p>
+	 Director, Physics Group, BARC
 
         </div>
 

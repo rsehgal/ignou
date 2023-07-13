@@ -42,6 +42,14 @@ flex-basis: auto;
 <script>
 $(document).ready(function(){
 	//This block control the hover color of drop down menus
+	$(".nasiMenu,.menuCommon").hover(function(){
+		//alert("Hello");
+		$(".nasiMenu").each(function(){
+                        $(this).css("background-color","273746");
+                });
+		$(this).css("background-color","b03a2e");
+	});
+
 	$(".dropdown-item").hover(function(){
 		$(".dropdown-item").each(function(){
 			$(this).css("background-color","273746");

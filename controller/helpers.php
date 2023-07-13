@@ -129,14 +129,14 @@ This year the theme of the session is <raman class='text-primary font-weight-bol
 The scientific papers are presented by selected researchers / scientists in scientific sessions, for which prior submission of the Abstract(s) / Paper(s) is necessary.
 <br/>
 <br/>
-Kindly <a href='#' class='nasiMenu text-danger' id='Signup'><u>signup</u></a> for account creation and <a href='#' class='nasiMenu text-danger' id='Login'><u>login</u></a> for abstracts submission.
+Kindly <a href='#' class='linkFromHome text-danger' id='Signup'><u>signup</u></a> for account creation and <a href='#' class='linkFromHome text-danger' id='Login'><u>login</u></a> for abstracts submission.
 </h3>
 </div></div>
 ";
 
 $associatedJS='<script>
 		$(function(){
-		$(".nasiMenu").on("click",function(event){
+		$(".linkFromHome").on("click",function(event){
         //alert("Nasi Menu clicked.......");
         event.preventDefault();
         $("#nasifooter").hide();
