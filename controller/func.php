@@ -236,7 +236,7 @@ Your can use these credentials to do the registration and to upload your paper."
                //return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 		return Message("User account creation successful.","alert-success");
 }
-function AuthorLogin(){
+function Author_Login(){
 //return EnableMenuItem("AuthorLogin");
 if(!EnableMenuItem("AuthorLogin"))
 return Message("Will be available soon.","alert-warning");
@@ -245,20 +245,20 @@ return Message("Will be available soon.","alert-warning");
 	return Login();		
 }
 
-function RefereeLogin(){
+function Referee_Login(){
 if(!EnableMenuItem("RefereeLogin"))
 return Message("Will be available soon.","alert-warning");
 
 	return Login("Referee");
 }
 
-function AdminLogin(){
+function Admin_Login(){
 if(!EnableMenuItem("AdminLogin"))
 return Message("Will be available soon.","alert-warning");
 
 	return Login("Admin");
 }
-function CoordinatorLogin(){
+function Coordinator_Login(){
 if(!EnableMenuItem("CoordinatorLogin"))
 return Message("Will be available soon.","alert-warning");
 
