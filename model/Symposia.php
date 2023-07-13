@@ -191,9 +191,10 @@ $result.=$js;
    $result.='<div id="loginstatus"> </div>';
 	}
 
+      //<ul class="nav navbar-nav navbar-center ml-auto justify-content-center">'.
 $result.='
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">'.
+      <ul class="nav navbar-nav">'.
         $this->AddMenuEntry("Home").
         $this->AddMenuEntry("Poster").
 	$this->AddMenuEntry("About").

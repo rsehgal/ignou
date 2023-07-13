@@ -18,6 +18,14 @@ The National Academy of Sciences, India, NASI-2023.
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+
+/*Style to center align the top navigation menubar*/
+.navbar-collapse {
+display: flex!important;
+justify-content: space-around;
+flex-basis: auto;
+}
+
 .btn-custom {
   font-size: 24px;
 }
