@@ -115,17 +115,57 @@ function GetScore(){
 
 function HomeNASI(){
 
-return "<hr/><br/><div class='align-items-center justify-content-center'>
+$homeMsg="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 <h3>The <raman class='text-primary font-weight-bold'>National Academy of Sciences, India </raman> (initially called “The Academy of Sciences of United Provinces of Agra and Oudh”) was founded in the year 1930, with the objectives to provide a national forum for the publication of research work carried out by Indian scientists and to provide opportunities for exchange of views among them. 
-<br/><br/><p><raman class='text-primary font-weight-bold'>93<sup>rd</sup></raman> Annual Session  along with the scientific sessions on Physical and Biological sciences will be held from <raman class='text-primary font-weight-bold'>03 Dec. to 05 Dec 2023</raman> at  
+<br/><br/><p><raman class='text-primary font-weight-bold'>93<sup>rd</sup></raman> Annual Session  along with the scientific sessions on Physical and Biological sciences will be held from <raman class='text-primary font-weight-bold'>03 December to 05 December 2023</raman> at  
 <raman class='font-weight-bold'>DAE Convention Centre, Bhabha Atomic Research Centre, Mumbai.</raman>
 <br/>
 <br/>
-The Scientific Sessions will be held in two sections. The scientific papers are presented by selected researchers/scientists in scientific sessions, for which prior submission of the Abstract(s)/Paper(s) is necessary .
+This year the theme of the session is <raman class='text-primary font-weight-bold'>India Secure @ 75</raman>.
+<br/>
+<br/>
+
+The scientific papers are presented by selected researchers / scientists in scientific sessions, for which prior submission of the Abstract(s) / Paper(s) is necessary.
+<br/>
+<br/>
+Kindly <a href='#' class='nasiMenu text-danger' id='Signup'><u>signup</u></a> for account creation and <a href='#' class='nasiMenu text-danger' id='Login'><u>login</u></a> for abstracts submission.
 </h3>
 </div></div>
 ";
+
+$associatedJS='<script>
+		$(function(){
+		$(".nasiMenu").on("click",function(event){
+        //alert("Nasi Menu clicked.......");
+        event.preventDefault();
+        $("#nasifooter").hide();
+        var funcName="";
+        var data={};
+        var funcName=$(this).attr("id");
+        if(funcName=="Home"){
+        $("#nasifooter").show();
+        }
+        //alert(funcName);
+        data["function_name"]=funcName;
+        console.log(data);
+        $.ajax({
+            url: "../controller/func.php",
+            method: "POST",
+            data : data,
+            success: function(response) {
+            $("#result").hide();
+            //$("#result").delay(1000).fadeIn();
+            $("#result").html(response);
+            $("#result").fadeIn(100);
+            }
+          });
+
+	});
+});
+		</script>';
+
+return $homeMsg.$associatedJS;
 }
 
 
