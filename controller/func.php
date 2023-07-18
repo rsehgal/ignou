@@ -2047,7 +2047,25 @@ return $templates;
 }
 
 function BankDetails(){
+//return "Bank Details...";
+$obj=new DB();
+$query="select * from bankdetails";
+$result = $obj->GetQueryResult($query);
+$row = $result->fetch_assoc();
+$bankdetailsMsg='<div class="row">
+		 	<div class="col"></div>
+		 	<div class="col">
+				<table class="table table-bordered table-striped">
+				<tr class="text-center"><td class="font-weight-bold">Bank Name</td><td>'.$row["bankname"].'</td></tr>
+				<tr class="text-center"><td class="font-weight-bold">Branch Name</td><td>'.$row["branch"].'</td></tr>
+				<tr class="text-center"><td class="font-weight-bold">Account Name</td><td>'.$row["accountname"].'</td></tr>
+				<tr class="text-center"><td class="font-weight-bold">Account Number</td><td>'.$row["accountnum"].'</td></tr>
+				<tr class="text-center"><td class="font-weight-bold">IFSC</td><td>'.$row["ifsc"].'</td></tr></table>
+			</div>
+		 	<div class="col"></div>
+		 </div>';
 
+return Message("Bank Details","alert-info").$bankdetailsMsg;
 }
 
 if (isset($_POST['function_name'])) {

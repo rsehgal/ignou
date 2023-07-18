@@ -138,7 +138,7 @@ Panel Discussions & Poster Presentations by Young Scientists & Researchers<br/>
 Visit to Bhabha Atomic Research Centre, Mumbai, for limited delegates.
 <br/>
 <br/>
-The registration fees for the conference is Rs. 500, which needs to be deposited online. Here are the <a href='#' id='BankDetails' class='text-danger'><u>Bank Details</u></a>.
+The registration fees for the conference is Rs. 500, which needs to be deposited online. Here are the <a href='#' id='BankDetails' class='text-danger linkFromHome'><u>Bank Details</u></a>.
 <br/>
 <br/>
 
