@@ -1361,8 +1361,20 @@ return Message("Will be available soon.","alert-warning");
 $details='<table class="table table-striped table-bordered">
 <tr>
 <td>Distance</td>			<td>~11.6 km from the Venue (DAECC)</td></tr>
-<tr>
-<td>Travel time</td> 			<td>~20 minutes, under normal traffic</td></tr>
+<tr><td>Travel time</td> <td>~20 minutes, under normal traffic</td></tr>
+<tr><td></td> <td></td></tr>
+<tr><td class="text-primary font-weight-bold">Standard</td> <td></td></tr>
+<tr><td>Tariff</td> <td>Rs. 3572/- +12% tax, per night, for Single Occupancy</td></tr>
+<tr><td>Tariff</td> <td>Rs. 4018/- +12% tax, per night, for Double Occupancy</td></tr>
+
+<tr><td></td> <td></td></tr>
+<tr><td class="text-primary font-weight-bold">Superior</td> <td></td></tr>
+<tr><td>Tariff</td> <td>Rs. 4018/- +12% tax, per night, for Single Occupancy</td></tr>
+<tr><td>Tariff</td> <td>Rs. 4464/- +12% tax, per night, for Double Occupancy</td></tr>
+
+<tr><td></td> <td></td></tr>
+<tr><td>Checkout time</td> <td>12:00 noon</td></tr>
+
 </table><br/>';
 
 $images='<div class="container">
@@ -2032,6 +2044,10 @@ $templates.="<tr><td><h3>PDF templates for abstracts</h3></td><td><a href='../do
 
 $templates.="</table></h3></div></div>";
 return $templates;
+}
+
+function BankDetails(){
+
 }
 
 if (isset($_POST['function_name'])) {
