@@ -1478,7 +1478,7 @@ return Message("Login credentials sent to email : ".$email,"alert-info");
 
 function Important_Dates(){
 
-if(!EnableMenuItem("ImportantDates"))
+if(!EnableMenuItem("Important_Dates"))
 return Message("Will be available soon.","alert-warning");
 
 //return Message("Dates available","alert-danger");
@@ -1489,6 +1489,9 @@ if($result===false)
                                 return Message("Query execution fails","alert-danger");
 
 $retVal = Message("Important Dates","alert-info");
+$retVal.='<div class="row"> 
+	  <div class="col"></div>
+	  <div class="col">';
 $retVal .= '<table class="table table-striped table-bordered">';
 
 $row=$result->fetch_assoc();
@@ -1498,6 +1501,10 @@ $retVal.='<tr><td>Last date of Registration</td><td>'.$regDate."</td></tr>";
 $contribDate = date("d F Y", strtotime($row["contrib_end_date"]));
 $retVal.='<tr><td>Last date of Abstract submission</td><td>'.$contribDate.'</td></tr>';
 $retVal.='</table>';
+
+$retVal.='</div>
+	  <div class="col"></div>
+	  </div>';
 $result->free();
 return $retVal;
 
