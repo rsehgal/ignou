@@ -197,7 +197,9 @@ $result.='
       <ul class="nav navbar-nav">'.
         $this->AddMenuEntry("Home").
         $this->AddMenuEntry("Poster").
-	$this->AddMenuEntry("About").
+	$this->AddMenuEntry("Topic").
+	$this->AddMenuEntry("Important_Dates").
+	//$this->AddMenuEntry("About").
 	$this->AddMenuEntry("Committees");
 
 	if(isset($_SESSION["logged"]))

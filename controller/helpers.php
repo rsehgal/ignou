@@ -125,11 +125,28 @@ $homeMsg="<hr/><br/><div class='align-items-center justify-content-center'>
 This year the theme of the session is <raman class='text-primary font-weight-bold'>India Secure @ 75</raman>.
 <br/>
 <br/>
+Contributory papers in Physical & Biological Sciences can be submitted online as per the specified format, to be presented as poster.
+<br/>
+<br/>
 
-The scientific papers are presented by selected researchers / scientists in scientific sessions, for which prior submission of the Abstract(s) / Paper(s) is necessary.
+Popular Scientific Lectures by Eminent Scientists: Theme “India Secure@75”<br/>
+<br/>
+
+Panel Discussions & Poster Presentations by Young Scientists & Researchers<br/>
+<br/>
+
+Visit to Bhabha Atomic Research Centre, Mumbai, for limited delegates.
+<br/>
+<br/>
+The registration fees for the conference is Rs. 500, which needs to be deposited online. Here are the <a href='#' id='BankDetails' class='text-danger'><u>Bank Details</u></a>.
+<br/>
+<br/>
+
+The scientific papers are presented by researchers / scientists in scientific sessions, for which prior submission of the Abstract(s) / Paper(s) is necessary.
 <br/>
 <br/>
 Kindly <a href='#' class='linkFromHome text-danger' id='Signup'><u>signup</u></a> for account creation and <a href='#' class='linkFromHome text-danger' id='Login'><u>login</u></a> for abstracts submission.
+
 </h3>
 </div></div>
 ";

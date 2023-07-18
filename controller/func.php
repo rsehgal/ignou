@@ -685,7 +685,8 @@ if($result===false)
 			<th>Update Status</th>
 			</tr>';
 	$decArray=array();
-	$decArray["Decision"]=array("Oral","Poster","Rejected");
+	//$decArray["Decision"]=array("Oral","Poster","Rejected");
+	$decArray["Decision"]=array("Poster","Rejected");
 	while($row = $result->fetch_assoc()){
 		$retTable.='<tr>';
 		//$retValue.=$row["Topic"]." : ".$row["Category"]."<br/>";
@@ -1343,6 +1344,39 @@ $images='<div class="container">
  <div class="row px-3">
     <div class="col-md-12 py-3">
 	<img src="../images/jc3.png" class="img-fluid"/>
+    </div>
+    </div>';
+
+$retVal.=$details.$images;
+return $retVal;
+
+
+}
+function Abbott(){
+if(!EnableMenuItem("Abbott"))
+return Message("Will be available soon.","alert-warning");
+//return "JewelOfChembur....";
+//$retVal = Message("The Jewel of Chembur : 20 Rooms","alert-success");
+
+$details='<table class="table table-striped table-bordered">
+<tr>
+<td>Distance</td>			<td>~11.6 km from the Venue (DAECC)</td></tr>
+<tr>
+<td>Travel time</td> 			<td>~20 minutes, under normal traffic</td></tr>
+</table><br/>';
+
+$images='<div class="container">
+  <div class="row py-3" >
+    <div class="col-md-6 px-3">
+	<img src="../images/abbott1.png" class="img-fluid"/>
+    </div>
+    <div class="col-md-6 px-3">
+	<img src="../images/abbott2.png"  class="img-fluid"/>
+    </div>
+    </div>
+ <div class="row px-3">
+    <div class="col-md-12 py-3">
+	<img src="../images/abbott3.png" class="img-fluid"/>
     </div>
     </div>';
 
