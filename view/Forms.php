@@ -401,18 +401,20 @@ public function Register($fieldNames){
                 <form method="POST" id="newsubmisson" enctype="multipart/form-data" class="">';
 		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName"){
+			if($fieldNames[$i]=="uname" || $fieldNames[$i]=="status" || $fieldNames[$i]=="AuthorNamesList" ||$fieldNames[$i]=="AuthorEmailsList" || $fieldNames[$i]=="remarks" || $fieldNames[$i]=="refereeName" || $fieldNames[$i]=="Category"){
 			}else{
 			$formContent.='<div class="form-group">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
 			if($fieldNames[$i]=="Topic"){
+			//if($fieldNames[$i]=="Paper_Type"){
 				$formContent.=GetDropDown("topics","Topic");
+				//$formContent.=GetDropDown("topics","Paper_Type");
 				$formContent.='<input type="text" id="topicText" class="form-control" required/>';
 			}
-			elseif($fieldNames[$i]=="Category"){
+			/*elseif($fieldNames[$i]=="Category"){
 				$formContent.='<div id="Category"></div>';
 				$formContent.='<input type="text" id="categoryText" class="form-control" required/>';
-			}
+			}*/
 			elseif($fieldNames[$i]=="Filename"){
 
    $fileComponent='<div class="custom-file mb-3">

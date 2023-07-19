@@ -67,7 +67,8 @@ function Upload(){
 	//return;
 	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
-			$categoryId = $_POST['categoryid'];
+			//$categoryId = $_POST['categoryid'];
+			$categoryId="R";
 			$topicId = $_POST['topicid'];
 			$authorNamesList=$_POST['authornameslist'];
 			$authorEmailsList=$_POST['authoremailslist'];
@@ -124,7 +125,7 @@ function ResubmitUpload(){
 	//return;
 	if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
 		        $targetDirectory = $_POST['loc']; // Specify the target directory where the file will be saved
-			$categoryId = $_POST['categoryid'];
+			$categoryId = "R";//$_POST['categoryid'];
 			$topicId = $_POST['topicid'];
 			$authorNamesList=$_POST['authornameslist'];
 			$authorEmailsList=$_POST['authoremailslist'];
@@ -1048,8 +1049,8 @@ $formContent='<br/><div class="container">
 for($i=0 ; $i<count($fieldNames) ; $i++){
 $formContent.='<div class="form-group">
                                 <label for="'.$fieldNames[$i].'">'.$fieldNames[$i].':</label>';
-
-	if($fieldNames[$i]=="Filename"){
+	if($fieldNames[$i]=="Category"){
+	}elseif($fieldNames[$i]=="Filename"){
 		$fileComponent='<div class="custom-file mb-3">
 	      <input type="file" class="custom-file-input uploadFile" id="uploadFile" loc="../'.$loc.'" name="uploadFile" required>
       		<label class="custom-file-label" for="uploadFile">Choose file</label>
@@ -1068,7 +1069,8 @@ $formContent.='<div class="form-group">
 		$value=$selectedCategory;
 
 
-		if($fieldNames[$i]=="Topic" || $fieldNames[$i]=="Category"){
+		//if($fieldNames[$i]=="Topic" || $fieldNames[$i]=="Category"){
+		if($fieldNames[$i]=="Topic"){
 			
 			$formContent.='
                                 <input type="text" class="form-control" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$value.'" code="'.$code.'" required readonly>
