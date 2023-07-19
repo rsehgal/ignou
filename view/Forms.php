@@ -224,7 +224,9 @@ public function Register($fieldNames){
                 <form method="POST" id="register" enctype="multipart/form-data" class="">';
 		
 		for($i=0 ; $i<count($fieldNames) ; $i++){
-			if($fieldNames[$i]=="uname"){
+			if($fieldNames[$i]=="Status"){
+			}
+			elseif($fieldNames[$i]=="uname"){
 				$formContent.='<input type="hidden" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" value="'.$_SESSION["username"].'" readonly >';
 			}else{
 				
@@ -260,7 +262,7 @@ public function Register($fieldNames){
 				elseif($fieldNames[$i]=="Mobile")
 				$formContent.='<input type="tel" class="form-control registration" placeholder="10 digit mobile number" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'"  pattern="[0-9]{10}" value="'.$row[$fieldNames[$i]].'" required></div>';
 				//elseif($fieldNames[$i]=="Checkin_Date" || $fieldNames[$i]=="Checkout_Date")
-				elseif($fieldNames[$i]=="Arrival_Date" || $fieldNames[$i]=="Departure_Date"){
+				elseif($fieldNames[$i]=="Arrival_Date" || $fieldNames[$i]=="Departure_Date" || $fieldNames[$i]=="Date_Of_Transaction"){
 					if($counter==0)
 					$formContent.='<input type="date" class="form-control registration" id="'.$fieldNames[$i].'" name="'.$fieldNames[$i].'" required> </div>';	
 					else

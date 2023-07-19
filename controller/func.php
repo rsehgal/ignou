@@ -1929,6 +1929,12 @@ function UpdateRegistration(){
 	$checkinDate=trim($_POST["Arrival_Date"]);
 	$checkoutDate=trim($_POST["Departure_Date"]);
 
+	$bankName=trim($_POST["Bank_Name"]);
+	$dateOfTrans=trim($_POST["Date_Of_Transaction"]);
+	$refNum=trim($_POST["Payment_Reference_Number"]);
+	$amount=trim($_POST["Amount_Paid"]);
+	$status="Submitted";//trim($_POST["Status"]);
+
 
 	$obj = new DB();
 
@@ -1944,9 +1950,9 @@ function UpdateRegistration(){
 		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
 	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
 	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
-			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,bankname,dateoftrans,refnum,amount) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
 			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
-			,"'.$checkinDate.'","'.$checkoutDate.'")';
+			,"'.$checkinDate.'","'.$checkoutDate.'","'.$bankName.'","'.$dateOfTrans.'","'.$refNum.'",'.$amount.',"'.$status.'")';
 			//return $query;
 	}
 
@@ -1964,7 +1970,13 @@ function UpdateRegistration(){
 				 ",Accommodation_Preference="'.$accommPref.'
 				 ",Accommodation_Type="'.$accommType.'
 				 ",Arrival_Date="'.$checkinDate.'
-				 ",Departure_Date="'.$checkoutDate.'" where uname="'.$_SESSION["username"].'"';
+				 ",Departure_Date="'.$checkoutDate.'
+				 ",Bank_Name="'.$bankName.'
+				 ",Date_Of_Transaction="'.$dateOfTrans.'
+				 ",Payment_Reference_Number="'.$refNum.'
+				 ",Amount_Paid='.$amount.'
+				 ,Status="'.$status.'" 
+				 where uname="'.$_SESSION["username"].'"';
 //return $query;
 
 		$obj->GetQueryResult($query);
