@@ -1400,6 +1400,57 @@ return $retVal;
 
 }
 
+function Yogi(){
+if(!EnableMenuItem("Yogi"))
+return Message("Will be available soon.","alert-warning");
+//return "JewelOfChembur....";
+//$retVal = Message("The Jewel of Chembur : 20 Rooms","alert-success");
+
+$details='<table class="table table-striped table-bordered">
+<tr>
+<tr><td >Premium Room</td> <td>Rs. 6000</td></tr>
+<tr><td >Designer Room</td> <td>Rs. 7000</td></tr>
+<tr><td >Club Room</td> <td>Rs. 7500</td></tr>
+<tr><td>Checkin time</td> <td>12:00 noon</td></tr>
+
+</table><br/>';
+
+$images='<div class="container">
+  <div class="row py-3" >
+	<div class="col">
+	    <div><h3 class="font-weight-bold text-center text-dark">Premium Room</h3></div>
+	    <div>
+		<img src="../images/yogi1.png" class="img-fluid"/>
+	    </div>
+        </div>
+  </div>
+
+
+
+  <div class="row py-3" >
+	<div class="col">
+	    <div><h3 class="font-weight-bold text-center text-dark">Designer Room</h3></div>
+    	    <div>
+		<img src="../images/yogi2.png"  class="img-fluid"/>
+    	    </div>
+	</div>
+  </div>
+
+ <div class="row px-3">
+	<div class="col">
+	     <div><h3 class="font-weight-bold text-center text-dark">Club Room</h3></div>
+	     <div>
+		<img src="../images/yogi3.png" class="img-fluid"/>
+    	     </div>
+	</div>
+</div>';
+
+$retVal.=$details.$images;
+return $retVal;
+
+
+}
+
 function HowToReach(){
 	//return "How to reach....";
 	$query='select How_To_Reach from HowToReach';
