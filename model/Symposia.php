@@ -207,7 +207,7 @@ $result.='
 	$result.=
 	$this->AddMenuEntry("Signup").
 	$this->AddMenuEntry("Login");//.
-	$result.=$this->AddMenuEntry("YourTasks");//.
+	//$result.=$this->AddMenuEntry("YourTasks");//.
  	$result.=$this->AddMenuEntry("Register");
 	$result.=$this->AddMenuEntry("Submissions");
 	$result.=$this->AddMenuEntry("Accommodation").
