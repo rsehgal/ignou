@@ -280,7 +280,7 @@ public function Register($fieldNames){
 					$formContent.=$selAccReq;
 				}
 				elseif($fieldNames[$i]=="Accommodation_Preference"){
-					$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','Hotel: The Regenza by Tunga','The Jewel Of Chembur'); // The available options
+					$options = array('None', 'DAECC Guest House', 'Postgraduate Hostel','The Jewel Of Chembur','Abbott Hotel','Hotel Yogi Executive'); // The available options
 					$selectedOption=trim($row[$fieldNames[$i]]);
 					$selAccReq= '<select class="form-control  accommodation registration" id="Accommodation_Preference" >';
 					foreach ($options as $option) {
