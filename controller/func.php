@@ -2031,7 +2031,7 @@ function UpdateRegistration(){
 				 ",Amount_Paid='.$amount.'
 				 ,Status="'.$status.'" 
 				 where uname="'.$_SESSION["username"].'"';
-return $query;
+//return $query;
 
 		$obj->GetQueryResult($query);
 
