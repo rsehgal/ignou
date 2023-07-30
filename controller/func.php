@@ -1986,7 +1986,7 @@ function UpdateRegistration(){
 	$dateOfTrans=trim($_POST["Date_Of_Transaction"]);
 	$refNum=trim($_POST["Payment_Reference_Number"]);
 	$amount=trim($_POST["Amount_Paid"]);
-	$status="Submitted";//trim($_POST["Status"]);
+	$status=trim($_POST["Status"]);
 
 
 	$obj = new DB();
@@ -2000,10 +2000,11 @@ function UpdateRegistration(){
 	//return $counter;
 
 	if($counter==0){
+		$status="Submitted";
 		//$query = 'insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile) values("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'","'.$gender.'","'.$email.'
 	//","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'")';
 	$query='insert into registration (uname,Initials,FirstName,LastName,Gender,Email,Affiliation,Designation,Nationality,Mobile,Accommodation_Required,
-			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,bankname,dateoftrans,refnum,amount) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
+			Accommodation_Preference,Accommodation_Type,Arrival_Date,Departure_Date,Bank_Name,Date_Of_Transaction,Payment_Reference_Number,Amount_Paid,Status) values ("'.$uname.'","'.$initials.'","'.$firstname.'","'.$lastname.'"
 			,"'.$gender.'","'.$email.'","'.$affil.'","'.$desig.'","'.$nationality.'","'.$mobile.'","'.$accommReq.'","'.$accommPref.'","'.$accommType.'"
 			,"'.$checkinDate.'","'.$checkoutDate.'","'.$bankName.'","'.$dateOfTrans.'","'.$refNum.'",'.$amount.',"'.$status.'")';
 			//return $query;
@@ -2044,8 +2045,8 @@ function Register(){
 	//ini_set('display_startup_errors', 1);
 	//error_reporting(E_ALL);
 
-	if(!EnableMenuItem("Register"))
-	return Message("Will be available soon.","alert-warning");
+	//if(!EnableMenuItem("Register"))
+	//return Message("Will be available soon.","alert-warning");
 
 	$obj = new DB();
 	$query = "select reg_start_date,reg_end_date from symposium";
