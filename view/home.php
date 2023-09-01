@@ -18,6 +18,9 @@ The National Academy of Sciences, India, NASI-2023.
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+.highlight {
+      background-color: yellow;
+}
 
 /*Style to center align the top navigation menubar*/
 .navbar-collapse {
@@ -322,6 +325,7 @@ echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
 ';
 
 echo $objSympo->Menu();
+echo "<marquee class='font-weight-bold'><mark class='highlight text-danger'>Last date of paper submission has been extended upto 07 September 2023</i></mark></marquee>";
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
 
