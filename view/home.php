@@ -325,7 +325,7 @@ echo '<div id="mySlider" class="carousel slide" data-ride="carousel">
 ';
 
 echo $objSympo->Menu();
-echo "<marquee class='font-weight-bold'><mark class='highlight text-danger'>Last date of paper submission has been extended upto 30 September 2023</i></mark></marquee>";
+//echo "<marquee class='font-weight-bold'><mark class='highlight text-danger'>Last date of paper submission has been extended upto 30 September 2023</i></mark></marquee>";
 echo "<div id='container'>";
 echo "<div id='refereeUpdateStatus'class='alert alert-dismissible fade show' ></div>";
 
