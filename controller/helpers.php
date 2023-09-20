@@ -115,74 +115,36 @@ function GetScore(){
 
 function HomeNASI(){
 
-$homeMsg="<hr/><br/><div class='align-items-center justify-content-center'>
-<div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
-<h3>The <raman class='text-primary font-weight-bold'>National Academy of Sciences, India </raman> (initially called “The Academy of Sciences of United Provinces of Agra and Oudh”) was founded in the year 1930, with the objectives to provide a national forum for the publication of research work carried out by Indian scientists and to provide opportunities for exchange of views among them. 
-<br/><br/><p><raman class='text-primary font-weight-bold'>93<sup>rd</sup></raman> Annual Session  along with the scientific sessions on Physical and Biological sciences will be held from <raman class='text-primary font-weight-bold'>03 December to 05 December 2023</raman> at  
-<raman class='font-weight-bold'>DAE Convention Centre, Bhabha Atomic Research Centre, Mumbai.</raman>
-<br/>
-<br/>
-This year the theme of the session is <raman class='text-primary font-weight-bold'>India Secure @ 75</raman>.
-<br/>
-<br/>
-Contributory papers in Physical & Biological Sciences can be submitted online as per the specified format, to be presented as poster.
-<br/>
+$homeMsg="<h2><b class='text-danger'>Welcome</b> to <b class='text-primary'>[Conference Name]</b></h2>
+
 <br/>
 
-Popular Scientific Lectures by Eminent Scientists: Theme “India Secure@75”<br/>
-<br/>
+<h3><b class='text-info'>About [Conference Name]</b></h3>
+<h4><b class='text-dark'>[Conference Name]</b> is an annual gathering of professionals, experts, and enthusiasts from various fields who come together to share knowledge, collaborate, and inspire innovation. Our conference is a platform for thought leaders and visionaries to discuss the latest trends, research findings, and industry insights.
+<br/><br/>
+<b class='text-info'>Why Attend [Conference Name]?</b>
 
-Panel Discussions & Poster Presentations by Young Scientists & Researchers<br/>
-<br/>
+<br/><br/>
+    <b>Networking:</b> Connect with like-minded individuals, industry peers, and potential collaborators.
+    Knowledge Sharing: Gain insights from leading experts through keynote speeches, panel discussions, and workshops.
+    Professional Development: Enhance your skills and stay up-to-date with the latest advancements in your field.
+    Inspiration: Be inspired by success stories and visionary leaders.
+    Exposure: Showcase your work, research, or products to a diverse audience.
 
-Visit to Bhabha Atomic Research Centre, Mumbai, for limited delegates.
-<br/>
-<br/>
-The registration fees for the conference is Rs. 500, which needs to be deposited online. Here are the <a href='#' id='BankDetails' class='text-danger linkFromHome'><u>Bank Details</u></a>.
-<br/>
-<br/>
+<br/><br/>
+<b class='text-info'>Key Features</b>
 
-The scientific papers are presented by researchers / scientists in scientific sessions, for which prior submission of the Abstract(s) / Paper(s) is necessary.
-<br/>
-<br/>
-Kindly <a href='#' class='linkFromHome text-danger' id='Signup'><u>signup</u></a> for account creation and <a href='#' class='linkFromHome text-danger' id='Login'><u>login</u></a> for abstracts submission.
-
-</h3>
-</div></div>
+<br/><br/>
+    <b>Diverse Topics:</b> Our conference covers a wide range of topics, ensuring there's something for everyone.
+    World-Class Speakers: Learn from renowned experts and thought leaders.
+    Interactive Workshops: Participate in hands-on workshops and gain practical skills.
+    Networking Opportunities: Connect with professionals in your field and expand your network.
+    Exhibition Area: Explore the latest innovations and products from industry leaders.
+    Social Events: Enjoy social gatherings, receptions, and entertainment.
+</h4>
 ";
 
-$associatedJS='<script>
-		$(function(){
-		$(".linkFromHome").on("click",function(event){
-        //alert("Nasi Menu clicked.......");
-        event.preventDefault();
-        $("#nasifooter").hide();
-        var funcName="";
-        var data={};
-        var funcName=$(this).attr("id");
-        if(funcName=="Home"){
-        $("#nasifooter").show();
-        }
-        //alert(funcName);
-        data["function_name"]=funcName;
-        console.log(data);
-        $.ajax({
-            url: "../controller/func.php",
-            method: "POST",
-            data : data,
-            success: function(response) {
-            $("#result").hide();
-            //$("#result").delay(1000).fadeIn();
-            $("#result").html(response);
-            $("#result").fadeIn(100);
-            }
-          });
-
-	});
-});
-		</script>';
-
-return $homeMsg.$associatedJS;
+return $homeMsg;
 }
 
 

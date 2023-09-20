@@ -36,7 +36,7 @@ function AddMenuEntry($entry){
 	}elseif($entry=="Committees"){
 	$menuEntry= '<li class="nav-item dropdown">
           <a class="nav-link nasiMenu text-light" id="'.$entry.'" name="'.$entry.'"data-toggle="dropdown" href="?function='.$entry.'"><h3>'.$entry.'</h3></a>';
-        $subentries=array("Council_Officers","Council_Members","Organizing_Committee");
+        $subentries=array("Advisory_Committee","Organizing_Committee");
         $menuEntry.=$this->AddSubEntries($subentries,$entry);
 	}elseif($entry=="Submissions"){
 	$menuEntry= '<li class="nav-item dropdown">

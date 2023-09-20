@@ -609,7 +609,7 @@ public function Register($fieldNames){
         //$obj->Set('127.0.0.1','sympadmin','sympadmin','symposia');
         //$obj->Connect();
 	$result = "<h2><br/>Contact Us<br/></h2>";
-	$result.="<h3 class='text-primary'>In case of difficulties, kindly send us an email on <raman class='text-danger font-italic font-weight-bold'><mark class='bg-yellow'> nasi.barc2023@gmail.com</mark></raman></h3>";
+	$result.="<h3 class='text-primary'>In case of difficulties, kindly send us an email on <raman class='text-danger font-italic font-weight-bold'><mark class='bg-yellow'> contact-conference@myconf.com</mark></raman></h3>";
 
 	return $result;
         //return $result.$obj->GetTableData($tableName);

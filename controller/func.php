@@ -395,7 +395,26 @@ function Council_Members(){
 }
 function Organizing_Committee(){
 	//return "Council Officers...";
-	return "<h3 class='display text-primary'>Organizing Committee</h3><br/><table class='table table-striped table-bordered'>".ShowCommittee("OrgMem")."</table>";
+	return "<h3 class='display text-primary'>Organizing Committee</h3><br/>".ReturnComm("CommOrg");
+}
+function Advisory_Committee(){
+	//return "Council Officers...";
+	return "<h3 class='display text-primary'>Organizing Committee</h3><br/>".ReturnComm("CommAdv");
+}
+
+function ReturnComm($table){
+	$obj = new DB();
+	$query = "select name,affil from $table";
+	$result = $obj->GetQueryResult($query);
+	$table="<table class='table table-striped table-bordered table-dark'>
+                <tr class='bg-warning text-dark'><th>Name</th><th>Affiliation</th></tr>";
+
+	while($row=$result->fetch_assoc()){
+		$table.="<tr><td>".$row["name"]."</td><td>".$row["affil"]."</td></tr>";
+	} 
+	$table.="</table>";
+	return $table;
+
 }
 
 function ShowCommittee($comm){
