@@ -1,137 +1,196 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.34, for Linux (x86_64)
 --
--- Host: localhost:3306
--- Generation Time: Jun 09, 2023 at 07:39 PM
--- Server version: 5.7.42
--- PHP Version: 8.1.16
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: symposia
+-- ------------------------------------------------------
+-- Server version	8.0.34-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `symposia`
+-- Table structure for table `CommAdv`
 --
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `CommAdv`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CommAdv` (
+  `name` varchar(255) DEFAULT NULL,
+  `affil` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CommAdv`
+--
+
+LOCK TABLES `CommAdv` WRITE;
+/*!40000 ALTER TABLE `CommAdv` DISABLE KEYS */;
+INSERT INTO `CommAdv` VALUES ('Mr. Advisor','Basic institure of Technology'),('Dr. Curious','Neurological institure of Technology');
+/*!40000 ALTER TABLE `CommAdv` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CommOrg`
+--
+
+DROP TABLE IF EXISTS `CommOrg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CommOrg` (
+  `name` varchar(255) DEFAULT NULL,
+  `affil` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CommOrg`
+--
+
+LOCK TABLES `CommOrg` WRITE;
+/*!40000 ALTER TABLE `CommOrg` DISABLE KEYS */;
+INSERT INTO `CommOrg` VALUES ('Dr. ABC DEF','Institute of JKL LMNO'),('Dr. Cap holder','Qwerty University'),('Mr. Organizer','XYZ institure of Technology'),('Mr. Super researcher','OPQR research institute');
+/*!40000 ALTER TABLE `CommOrg` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `accommodation`
 --
 
 DROP TABLE IF EXISTS `accommodation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accommodation` (
   `uname` varchar(100) DEFAULT NULL,
   `Name` varchar(255) DEFAULT NULL,
   `FunctionName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `accommodation`
 --
 
-INSERT INTO `accommodation` (`uname`, `Name`, `FunctionName`) VALUES
-('admin', 'DAECC Guest House', 'DAECC'),
-('admin', 'Postgraduate Hostel', 'PGHostel'),
-('admin', 'Hotel : The Regenza by Tunga', 'Tunga'),
-('admin', 'Hotel : The Jewel of Chembur', 'JewelOfChembur');
-
--- --------------------------------------------------------
+LOCK TABLES `accommodation` WRITE;
+/*!40000 ALTER TABLE `accommodation` DISABLE KEYS */;
+INSERT INTO `accommodation` VALUES ('admin','Hotel : The Regenza by Tunga','Tunga'),('admin','Abbott Hotel','Abbott'),('admin','Yogi Executive','Yogi');
+/*!40000 ALTER TABLE `accommodation` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `admin_credentials`
 --
 
 DROP TABLE IF EXISTS `admin_credentials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin_credentials` (
   `uname` varchar(4) NOT NULL,
   `passwd` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `admin_credentials`
 --
 
-INSERT INTO `admin_credentials` (`uname`, `passwd`, `email`, `name`) VALUES
-('ADM', 'admin@nasi2023', 'sc.ramansehgal@gmail.com', 'Raman Sehgal');
-
--- --------------------------------------------------------
+LOCK TABLES `admin_credentials` WRITE;
+/*!40000 ALTER TABLE `admin_credentials` DISABLE KEYS */;
+INSERT INTO `admin_credentials` VALUES ('ADM','admin@nasi2023','sc.ramansehgal@gmail.com','Raman Sehgal');
+/*!40000 ALTER TABLE `admin_credentials` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `assoc_array`
 --
 
 DROP TABLE IF EXISTS `assoc_array`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `assoc_array` (
-  `id` int(11) NOT NULL,
-  `array` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
+  `id` int NOT NULL AUTO_INCREMENT,
+  `array` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `Biology`
+-- Dumping data for table `assoc_array`
 --
 
-DROP TABLE IF EXISTS `Biology`;
-CREATE TABLE `Biology` (
+LOCK TABLES `assoc_array` WRITE;
+/*!40000 ALTER TABLE `assoc_array` DISABLE KEYS */;
+/*!40000 ALTER TABLE `assoc_array` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bankdetails`
+--
+
+DROP TABLE IF EXISTS `bankdetails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bankdetails` (
+  `bankname` varchar(150) DEFAULT NULL,
+  `branch` varchar(150) DEFAULT NULL,
+  `accountname` varchar(150) DEFAULT NULL,
+  `accountnum` varchar(50) DEFAULT NULL,
+  `ifsc` varchar(20) DEFAULT NULL,
+  `swiftcode` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bankdetails`
+--
+
+LOCK TABLES `bankdetails` WRITE;
+/*!40000 ALTER TABLE `bankdetails` DISABLE KEYS */;
+INSERT INTO `bankdetails` VALUES ('STATE BANK OF INDIA','BARC BRANCH','ANNUAL SESSION OF NASI-2023','41994119191','SBIN0001268','SBININBB508');
+/*!40000 ALTER TABLE `bankdetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
   `uname` varchar(100) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `code` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Biology`
+-- Dumping data for table `categories`
 --
 
-INSERT INTO `Biology` (`uname`, `category`, `code`) VALUES
-('admin', 'Anatomy', 'a'),
-('admin', 'Respiration', 'b'),
-('admin', 'Pathology', 'c'),
-('admin', 'Ortho', 'd'),
-('admin', 'Dental', 'e'),
-('admin', 'Cardiology', 'f'),
-('admin', 'Neurology', 'g');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Chemistry`
---
-
-DROP TABLE IF EXISTS `Chemistry`;
-CREATE TABLE `Chemistry` (
-  `uname` varchar(100) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Chemistry`
---
-
-INSERT INTO `Chemistry` (`uname`, `category`, `code`) VALUES
-('admin', 'Organic Chemistry', 'a'),
-('admin', 'Inorganic Chemistry', 'b'),
-('admin', 'Quantum Chemistry', 'c');
-
--- --------------------------------------------------------
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES ('admin','Agriculture & Food Security','A'),('admin','Drug-Pharmacy & Bio-applications for Security','B'),('admin','Forest, Climate & Environmental Security','C'),('admin','Energy Security','D'),('admin','Electronics & Cyber Security','E'),('admin','Space Security','F'),('admin','Medical & Health Security','G');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `committees`
 --
 
 DROP TABLE IF EXISTS `committees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `committees` (
   `uname` varchar(50) DEFAULT NULL,
   `CounOffName` varchar(100) DEFAULT NULL,
@@ -140,62 +199,52 @@ CREATE TABLE `committees` (
   `CounMemAffil` varchar(255) DEFAULT NULL,
   `OrgMemName` varchar(100) DEFAULT NULL,
   `OrgMemAffil` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `committees`
 --
 
-INSERT INTO `committees` (`uname`, `CounOffName`, `CounOffAffil`, `CounMemName`, `CounMemAffil`, `OrgMemName`, `OrgMemAffil`) VALUES
-('admin', 'Prof. Balram Bhargava', 'New Delhi', 'Prof. Anil Bhardwaj', 'Ahmedabad', 'S. M. Yusuf', 'BARC, Mumbai'),
-('admin', 'Prof. Ajoy Kumar Ghatak', 'New Delhi', 'Prof. Dhrubajyoti Chattopadhyay', 'Kolkata', 'L. M. Pant', 'BARC, Mumbai'),
-('admin', 'Prof. Manju Sharma ', 'New Delhi', 'Prof. Srinivasa Rao Cherukumalli', 'Telangana', 'D. V. Udupa', 'BARC, Mumbai'),
-('admin', 'Prof. Madhu Dikshit', 'Lucknow', 'Prof. Pramod Kumar Garg', 'New Delhi', 'A. K. Gupta', 'BARC, Mumbai'),
-('admin', 'Prof. U.C. Srivastava', 'Prayagraj', 'Prof. Anup Kumar Ghosh ', 'New Delhi', 'K. K. Yadav', 'BARC, Mumbai'),
-('admin', 'Prof. Vinod Kumar Singh', 'Kanpur', 'Prof. Vimal Kumar Jain', 'Mumbai', 'T. Sakuntala ', 'BARC, Mumbai'),
-('admin', 'Prof. Jayesh R. Bellare', 'Mumbai', 'Prof. Arun Kumar Pandey ', 'Bhopal', '', ''),
-('admin', 'Prof. Madhoolika Agrawal', 'Varanasi', 'Prof. Anirban Pathak', 'Noida', '', ''),
-('admin', '', '', 'Prof. Sheo Mohan Prasad', 'Prayagraj', '', ''),
-('admin', '', '', 'Prof. Latha Rangan', 'Guwahati', '', ''),
-('admin', '', '', 'Prof. Vijayalakshmi Ravindranath', 'Bangalore', '', ''),
-('admin', '', '', 'Prof. Rohit Srivastava', 'Mumbai', '', ''),
-('admin', '', '', 'Prof. Nikhil Tandon', 'New Delhi', '', ''),
-('admin', '', '', 'Prof. S. M. Yusuf', 'Mumbai', '', '');
-
--- --------------------------------------------------------
+LOCK TABLES `committees` WRITE;
+/*!40000 ALTER TABLE `committees` DISABLE KEYS */;
+INSERT INTO `committees` VALUES ('admin','Prof. Balram Bhargava','New Delhi','Prof. Anil Bhardwaj','Ahmedabad','S. M. Yusuf','BARC, Mumbai'),('admin','Prof. Ajoy Kumar Ghatak','New Delhi','Prof. Dhrubajyoti Chattopadhyay','Kolkata','L. M. Pant','BARC, Mumbai'),('admin','Prof. Manju Sharma ','New Delhi','Prof. Srinivasa Rao Cherukumalli','Telangana','D. V. Udupa','BARC, Mumbai'),('admin','Prof. Madhu Dikshit','Lucknow','Prof. Pramod Kumar Garg','New Delhi','A. K. Gupta','BARC, Mumbai'),('admin','Prof. U.C. Srivastava','Prayagraj','Prof. Anup Kumar Ghosh ','New Delhi','K. K. Yadav','BARC, Mumbai'),('admin','Prof. Vinod Kumar Singh','Kanpur','Prof. Vimal Kumar Jain','Mumbai','T. Sakuntala ','BARC, Mumbai'),('admin','Prof. Jayesh R. Bellare','Mumbai','Prof. Arun Kumar Pandey ','Bhopal','',''),('admin','Prof. Madhoolika Agrawal','Varanasi','Prof. Anirban Pathak','Noida','',''),('admin','','','Prof. Sheo Mohan Prasad','Prayagraj','',''),('admin','','','Prof. Latha Rangan','Guwahati','',''),('admin','','','Prof. Vijayalakshmi Ravindranath','Bangalore','',''),('admin','','','Prof. Rohit Srivastava','Mumbai','',''),('admin','','','Prof. Nikhil Tandon','New Delhi','',''),('admin','','','Prof. S. M. Yusuf','Mumbai','','');
+/*!40000 ALTER TABLE `committees` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `contactus`
 --
 
 DROP TABLE IF EXISTS `contactus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contactus` (
   `uname` varchar(20) DEFAULT NULL,
   `Post` varchar(255) DEFAULT NULL,
   `Name` varchar(255) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
   `ContactNumber` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `contactus`
 --
 
-INSERT INTO `contactus` (`uname`, `Post`, `Name`, `Email`, `ContactNumber`) VALUES
-('admin', 'Convener', 'S. M. Yusuf', 'smyusuf@barc.gov.in', ''),
-('admin', 'Member', 'L. M. Pant', 'lmpant@barc.gov.in', ''),
-('admin', 'Member', 'D. V. Udupa', 'dudupa@barc.gov.in', ''),
-('admin', 'Member', 'A. K. Gupta', 'anit@barc.gov.in', ''),
-('admin', 'Member', 'K. K. Yadav', 'kkyadav@barc.gov.in', ''),
-('admin', 'Member', 'T Sakuntala', 'sakuntl@barc.gov.in', '');
-
--- --------------------------------------------------------
+LOCK TABLES `contactus` WRITE;
+/*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
+INSERT INTO `contactus` VALUES ('admin','Convener','S. M. Yusuf','smyusuf@barc.gov.in',''),('admin','Member','L. M. Pant','lmpant@barc.gov.in',''),('admin','Member','D. V. Udupa','dudupa@barc.gov.in',''),('admin','Member','A. K. Gupta','anit@barc.gov.in',''),('admin','Member','K. K. Yadav','kkyadav@barc.gov.in',''),('admin','Member','T Sakuntala','sakuntl@barc.gov.in','');
+/*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `contributions`
 --
 
 DROP TABLE IF EXISTS `contributions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contributions` (
   `uname` varchar(100) DEFAULT NULL,
   `Topic` varchar(255) DEFAULT NULL,
@@ -207,246 +256,169 @@ CREATE TABLE `contributions` (
   `AuthorEmailsList` varchar(1000) DEFAULT NULL,
   `refereeName` varchar(4) DEFAULT NULL,
   `remarks` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `contributions`
 --
 
-INSERT INTO `contributions` (`uname`, `Topic`, `Category`, `Title`, `Filename`, `status`, `AuthorNamesList`, `AuthorEmailsList`, `refereeName`, `remarks`) VALUES
-('rsehgal', 'B', 'b', 'Modified Again: Title modified : Hello from chem', 'rsehgal_paper_B_b_1.pdf', '', 'Raman Sehgal', 'raman.sehgal@gmail.com', 'RSE', ''),
-('rsehgal', 'D', 'g', 'A thesis on Neurology in Biology', 'rsehgal_paper_D_g_1.pdf', '', 'Raman Sehgal,Ayush Sehgal,Aryan Sehgal', 'raman.sehgal@gmail.com,ayush.sehgal@gmail.com,aryan.sehgal@gmail.com', 'AYH', ''),
-('rsehgal', 'A', 'b', 'Tryn to RESUBMIT with new file : Hello to fix upload location', 'rsehgal_paper_A_b_1.pdf', '', 'Raman Sehgal,Nandini,Ayush Sehgal', 'raman.sehgal@gmail.com,nandini.bhola@gmail.com,ayush.sehgal@gmail.com', 'AYH', ''),
-('toro', 'A', 'b', 'SEcond paper in atomic physics', 'toro_paper_A_b_2.pdf', '', 'abc def', 'abc.def@gmail.com', 'RSE', ''),
-('rsehgal', 'A', 'b', 'Third paper in A_b category', 'rsehgal_paper_A_b_3.pdf', '', 'Raman Sehgal', 'raman.sehgal@efg.com', '', ''),
-('rsehgal', 'B', 'c', 'REverting back to previous version', 'rsehgal_paper_B_c_1.pdf', '', 'Raman Sehgal', 'raman.sehgal@rrr.com', '', ''),
-('rsehgal', 'C', 'b', 'fdfdsfdsfdsf', 'rsehgal_paper_C_b_1.pdf', '', '', '', '', ''),
-('rsehgal', 'D', 'd', 'RESUBMISSION TEST : Welcom to ortho in bio', 'rsehgal_paper_D_d_1.pdf', '', 'Raman HHHHAAA', 'hhhaa.raman@vaaa.com', '', ''),
-('rsehgal', 'C', 'd', 'test mensuration', 'rsehgal_paper_C_d_1.pdf', '', 'Raman Sehgal,Reena Bhola,Aryan Sehgal,Shachi Sehgal,Ayush Sehgal,Nandini Bhola', 'sc.ramansehgal@gmail.com,reena.bhola@gmail.com,aryan.sehgal,shachi.sehgal,ayush.sehgal@gmail.com,nandini.bhola@gmail.com', '', ''),
-('rsehgal', 'C', 'b', 'Hello from Trigno in maths', 'rsehgal_paper_C_b_2.pdf', '', 'Raman Sehgal', 'sc.ramansehgal@gmail.com', '', ''),
-('rsehgal', 'C', 'b', 'Modified Again from Trigno in maths', 'rsehgal_paper_C_b_3.pdf', '', 'Raman Sehgal', 'raman.sehgal@gmail.com', '', ''),
-('rsehgal', 'C', 'b', 'Modified Again from Trigno in maths', 'rsehgal_paper_C_b_4.pdf', '', 'Raman Sehgal', 'raman.sehgal@gmail.com', '', ''),
-('rsehgal', 'C', 'b', 'Tryinbg again ', 'rsehgal_paper_C_b_5.pdf', '', 'Raman Sehgal', 'raman.sehgal', '', ''),
-('rsehgal', 'C', 'b', 'Submitted again in C_b category', 'rsehgal_paper_C_b_6.pdf', '', 'Raman Sehgal', 'raman.sehgal@gmail.com', '', ''),
-('rsehgal', 'C', 'b', 'One more in C_b', 'rsehgal_paper_C_b_7.pdf', '', 'Raman Sehgal', 'raman.sehgal', '', ''),
-('rsehgal', 'C', 'b', 'C_b', 'rsehgal_paper_C_b_8.pdf', '', 'Raman Sehgal', 'raman.sehgal', '', ''),
-('rsehgal', 'C', 'b', 'again', 'rsehgal_paper_C_b_9.pdf', '', 'raman', 'ranmndsrrr', '', ''),
-('rsehgal', 'C', 'b', 'kjlkjlkjlk', 'rsehgal_paper_C_b_10.pdf', '', 'bbkjhkj', 'hkjhkj@fsdfs', '', ''),
-('rsehgal', 'C', 'b', 'jjjjjjjjjjjjjjjjjjjjjjjjjj', 'rsehgal_paper_C_b_11.pdf', '', 'raman sehgal', 'raman.sehgal', '', ''),
-('rsehgal', 'C', 'b', 'ddasdasdsad', 'rsehgal_paper_C_b_12.pdf', '', 'raman sehgal', 'raman.sehgal', '', ''),
-('rsehgal', 'C', 'b', 'fdsfdsfdsf', 'rsehgal_paper_C_b_13.pdf', '', 'fdfdsfdsf', 'fdsfdsfdsf', '', ''),
-('rsehgal', 'C', 'b', 'fdfdfdsfdsfdsfsfsdfsdfdsfsdfdsfdsfdsfdsfdsfdsfdsfsd', 'rsehgal_paper_C_b_14.pdf', '', 'raman sehgal', 'raman.sehgal', '', ''),
-('rsehgal', 'D', 'c', 'RESUBMITTED : Patho in bio', 'rsehgal_paper_D_c_1.pdf', '', 'Raman Sehgal', 'Raman.sehgal', '', ''),
-('PCRout', 'A', 'a', 'text', 'PCRout_paper_A_a_1.pdf', 'submitted', 'P C Rout', 'pcrout2002@gmail.com', '', '');
-
--- --------------------------------------------------------
+LOCK TABLES `contributions` WRITE;
+/*!40000 ALTER TABLE `contributions` DISABLE KEYS */;
+INSERT INTO `contributions` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `contributions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `coordinatorList`
 --
 
 DROP TABLE IF EXISTS `coordinatorList`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `coordinatorList` (
   `uname` varchar(4) DEFAULT NULL,
   `passwd` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `coordinatorList`
 --
 
-INSERT INTO `coordinatorList` (`uname`, `passwd`, `email`, `name`) VALUES
-('RSE', 'admin@nasi2023', 'sc.ramansehgal@gmail.com', 'Raman Sehgal'),
-('AYH', 'admin@nasi2023', 'ayush.sehgal@gmail.com', 'Ayush Sehgal');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `HowToReach`
---
-
-DROP TABLE IF EXISTS `HowToReach`;
-CREATE TABLE `HowToReach` (
-  `id` int(11) DEFAULT NULL,
-  `How_To_Reach` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `HowToReach`
---
-
-INSERT INTO `HowToReach` (`id`, `How_To_Reach`) VALUES
-(1, '<h2 class=\"text-danger\"><b>Airports in Mumbai<br/> (15 km from the Venue / Accommodation)</b></h2>'),
-(11, '<h3 class=\"text-primary\">Chhatrapati Shivaji Maharaj International Airport, Sahar (Terminal 2 : Domestic and International Flights) </h3>'),
-(12, '<h3 class=\"text-primary\">Mumbai Domestic Airport, Santa Cruz (Terminal 1 : Only Domestic Flights) </h3>'),
-(NULL, NULL),
-(NULL, NULL),
-(2, '<h2 class=\"text-danger\"><b>Main Railway Stations in Mumbai<br/> (from 7 km to 13 km from the Venue/Accommodation) </b></h2>'),
-(21, '<h3 class=\"text-primary\">Chhatrapati Shivaji Terminus, Station code: CST </h3>'),
-(22, '<h3 class=\"text-primary\">Dadar Railway Station, Station code: DR, DDR </h3>'),
-(23, '<h3 class=\"text-primary\">Lokmanya Tilak Terminus, Station code: LTT </h3>'),
-(24, '<h3 class=\"text-primary\">Mumbai Central Railway Station, Station Code : MMTC </h3>'),
-(25, '<h3 class=\"text-primary\">Panvel Railway Station, Station Code: PL (suburban)/PNVL (mainline) </h3>'),
-(10000, ''),
-(10000, ''),
-(3, '<h3 class=\"text-dark\"><b>The nearest local train station to Anushaktinagar is Mankhurd, on the harbour line </b></h3>'),
-(NULL, NULL),
-(NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Mathematics`
---
-
-DROP TABLE IF EXISTS `Mathematics`;
-CREATE TABLE `Mathematics` (
-  `uname` varchar(100) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Mathematics`
---
-
-INSERT INTO `Mathematics` (`uname`, `category`, `code`) VALUES
-('admin', 'Geometry', 'a'),
-('admin', 'Trigonometry', 'b'),
-('admin', 'Calculus', 'c'),
-('admin', 'Mensuration', 'd');
-
--- --------------------------------------------------------
+LOCK TABLES `coordinatorList` WRITE;
+/*!40000 ALTER TABLE `coordinatorList` DISABLE KEYS */;
+INSERT INTO `coordinatorList` VALUES ('RSE','admin@nasi2023','sc.ramansehgal@gmail.com','Raman Sehgal'),('AYH','admin@nasi2023','ayush.sehgal@gmail.com','Ayush Sehgal');
+/*!40000 ALTER TABLE `coordinatorList` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `menuitems`
 --
 
 DROP TABLE IF EXISTS `menuitems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `menuitems` (
   `item` varchar(255) DEFAULT NULL,
   `value` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `menuitems`
 --
 
-INSERT INTO `menuitems` (`item`, `value`) VALUES
-('Home', 1),
-('About', 1),
-('Committees', 1),
-('Signup', 1),
-('Login', 1),
-('Submissions', 1),
-('Accommodation', 1),
-('Contact', 1),
-('Upload_Contribution', 1),
-('Resubmit_Contribution', 0),
-('View_Contribution', 1),
-('DAECC', 1),
-('Tunga', 1),
-('JewelOfChembur', 1),
-('PGHostel', 1),
-('AuthorLogin', 1),
-('RefereeLogin', 1),
-('Topic', 0),
-('Venue', 1),
-('Poster', 1),
-('ImportantDates', 0),
-('CoordinatorLogin', 1),
-('AdminLogin', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Physics`
---
-
-DROP TABLE IF EXISTS `Physics`;
-CREATE TABLE `Physics` (
-  `uname` varchar(100) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Physics`
---
-
-INSERT INTO `Physics` (`uname`, `category`, `code`) VALUES
-('admin', 'Nuclear Physics', 'a'),
-('admin', 'Atomic Physics', 'b'),
-('admin', 'Solid State Physics', 'c'),
-('admin', 'Particle Physics', 'd');
-
--- --------------------------------------------------------
+LOCK TABLES `menuitems` WRITE;
+/*!40000 ALTER TABLE `menuitems` DISABLE KEYS */;
+INSERT INTO `menuitems` VALUES ('Home',1),('About',1),('Committees',1),('Signup',1),('Login',1),('Submissions',1),('Accommodation',1),('Contact',1),('Upload_Contribution',1),('Resubmit_Contribution',0),('View_Contribution',1),('DAECC',1),('Tunga',1),('JewelOfChembur',1),('PGHostel',1),('AuthorLogin',1),('RefereeLogin',1),('Topic',1),('Venue',1),('Poster',1),('ImportantDates',0),('CoordinatorLogin',1),('AdminLogin',1),('Register',1),('Submission_Guidelines',1),('Templates',1),('Abbott',1),('Important_Dates',1),('Yogi',1);
+/*!40000 ALTER TABLE `menuitems` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `refereeAllotment`
 --
 
 DROP TABLE IF EXISTS `refereeAllotment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `refereeAllotment` (
   `Filename` varchar(255) DEFAULT NULL,
   `refereeName` varchar(4) DEFAULT NULL,
   `refnum` varchar(10) DEFAULT NULL,
-  `marks` int(11) DEFAULT '0',
+  `marks` int DEFAULT '0',
   `remarks` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `refereeAllotment`
 --
 
-INSERT INTO `refereeAllotment` (`Filename`, `refereeName`, `refnum`, `marks`, `remarks`) VALUES
-('rsehgal_paper_D_g_1.pdf', 'SLV', 'ref1', 4, 'More work needs to be done. Please resubmit it, otherwise it will be rejected'),
-('rsehgal_paper_D_g_1.pdf', 'RSE', 'ref2', 6, 'hMMMKM SEE due to non concrete result. Please resubmit it'),
-('rsehgal_paper_D_g_1.pdf', 'ASE', 'ref3', 2, 'Bad work REJECTED'),
-('rsehgal_paper_A_b_1.pdf', 'ASE', 'ref1', 8, 'Excellent job, go on doing like this'),
-('rsehgal_paper_A_b_1.pdf', 'BRB', 'ref2', 5, 'Great, one should work mire'),
-('rsehgal_paper_A_b_1.pdf', 'SLV', 'ref3', 9, 'Perfect work. Excellent JOB. ORAL'),
-('rsehgal_paper_D_g_1.pdf', 'SSE', 'ref4', 0, ''),
-('rsehgal_paper_A_b_1.pdf', 'SSE', 'ref4', 1, 'Dont understand what is he trying to do. REJECTED from my side');
-
--- --------------------------------------------------------
+LOCK TABLES `refereeAllotment` WRITE;
+/*!40000 ALTER TABLE `refereeAllotment` DISABLE KEYS */;
+INSERT INTO `refereeAllotment` VALUES ('rsehgal_paper_D_g_1.pdf','SLV','ref1',4,'More work needs to be done. Please resubmit it, otherwise it will be rejected'),('rsehgal_paper_D_g_1.pdf','RSE','ref2',8,'Need to do some more work'),('rsehgal_paper_D_g_1.pdf','ASE','ref3',2,'Bad work REJECTED'),('rsehgal_paper_A_b_1.pdf','ASE','ref1',8,'Excellent job, go on doing like this'),('rsehgal_paper_A_b_1.pdf','BRB','ref2',5,'Great, one should work mire'),('rsehgal_paper_A_b_1.pdf','SLV','ref3',9,'Perfect work. Excellent JOB. ORAL'),('rsehgal_paper_D_g_1.pdf','SSE','ref4',0,''),('rsehgal_paper_A_b_1.pdf','SSE','ref4',1,'Dont understand what is he trying to do. REJECTED from my side'),('toro_paper_A_b_2.pdf','RSE','ref1',0,NULL),('toro_paper_A_b_2.pdf','ASE','ref2',0,NULL),('toro_paper_A_b_2.pdf','SSE','ref3',0,NULL),('toro_paper_A_b_2.pdf','SLV','ref4',0,NULL),('rsehgal_paper_B_b_1.pdf','ASE','ref1',0,NULL);
+/*!40000 ALTER TABLE `refereeAllotment` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `refereeList`
 --
 
 DROP TABLE IF EXISTS `refereeList`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `refereeList` (
   `uname` varchar(4) DEFAULT NULL,
   `passwd` varchar(255) DEFAULT NULL,
   `refereeEmail` varchar(255) DEFAULT NULL,
   `refereeName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `refereeList`
 --
 
-INSERT INTO `refereeList` (`uname`, `passwd`, `refereeEmail`, `refereeName`) VALUES
-('RSE', 'ramansehgal', 'sc.ramansehgal@gmail.com', 'Raman Sehgal'),
-('ASE', 'ayushsehgal', 'ayush.sehgal@gmail.com', 'Ayush Sehgal'),
-('SSE', 'shachisehgal', 'shachi.sehgal@gmail.com', 'Shachi Sehgal'),
-('SLV', 'admin@nasi2023', 'slv@nasi2023.in', 'Sunder Lal'),
-('BRB', 'admin@nasi2023', 'brb@nasi2023.in', 'Bunder Lal'),
-('ABE', 'admin@nasi2023', 'abe@nasi2023.in', 'Ander Lal');
+LOCK TABLES `refereeList` WRITE;
+/*!40000 ALTER TABLE `refereeList` DISABLE KEYS */;
+INSERT INTO `refereeList` VALUES ('RSE','ramansehgal','sc.ramansehgal@gmail.com','Raman Sehgal'),('ASE','ayushsehgal','ayush.sehgal@gmail.com','Ayush Sehgal'),('SSE','shachisehgal','shachi.sehgal@gmail.com','Shachi Sehgal'),('SLV','admin@nasi2023','slv@nasi2023.in','Sunder Lal'),('BRB','admin@nasi2023','brb@nasi2023.in','Bunder Lal'),('ABE','admin@nasi2023','abe@nasi2023.in','Ander Lal');
+/*!40000 ALTER TABLE `refereeList` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- --------------------------------------------------------
+--
+-- Table structure for table `registration`
+--
+
+DROP TABLE IF EXISTS `registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `registration` (
+  `uname` varchar(255) DEFAULT NULL,
+  `Initials` varchar(15) DEFAULT NULL,
+  `FirstName` varchar(500) DEFAULT NULL,
+  `LastName` varchar(500) DEFAULT NULL,
+  `Gender` varchar(10) DEFAULT NULL,
+  `Email` varchar(500) DEFAULT NULL,
+  `Affiliation` varchar(1000) DEFAULT NULL,
+  `Designation` varchar(100) DEFAULT NULL,
+  `Nationality` varchar(500) DEFAULT NULL,
+  `Mobile` varchar(15) DEFAULT NULL,
+  `Accommodation_Required` varchar(15) DEFAULT NULL,
+  `Accommodation_Preference` varchar(100) DEFAULT NULL,
+  `Accommodation_Type` varchar(500) DEFAULT NULL,
+  `Arrival_Date` datetime DEFAULT NULL,
+  `Departure_Date` datetime DEFAULT NULL,
+  `Bank_Name` varchar(300) DEFAULT NULL,
+  `Date_Of_Transaction` varchar(50) DEFAULT NULL,
+  `Payment_Reference_Number` varchar(100) DEFAULT NULL,
+  `Amount_Paid` int DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `registration`
+--
+
+LOCK TABLES `registration` WRITE;
+/*!40000 ALTER TABLE `registration` DISABLE KEYS */;
+INSERT INTO `registration` VALUES ('admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('rsehgal','Dr.\n				 ','Raman\n				 ','Sehgal\n				 ','Male\n				 ','sc.ramansehgal@gmail.com\n				 ','BARC\n				 ','SOF\n				 ','Indian\n				 ','9870091358\n				','Yes\n				 ','DAECC Guest House\n				 ','Single Occupancy\n				 ','2023-06-28 00:00:00','2023-07-07 00:00:00','Punjab National Bank\n				 ','2023-07-14\n				 ','YJHu657OIK\n				 ',7896,'Submitted');
+/*!40000 ALTER TABLE `registration` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `symposium`
 --
 
 DROP TABLE IF EXISTS `symposium`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `symposium` (
   `uname` varchar(50) DEFAULT NULL,
-  `volume` int(11) DEFAULT NULL,
+  `volume` int DEFAULT NULL,
   `title` varchar(500) DEFAULT NULL,
   `venue` varchar(500) DEFAULT NULL,
   `datefrom` date DEFAULT NULL,
@@ -461,182 +433,82 @@ CREATE TABLE `symposium` (
   `state` varchar(150) DEFAULT NULL,
   `country` varchar(100) DEFAULT NULL,
   `about` longtext,
-  `UploadLocation` varchar(254) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `UploadLocation` varchar(254) DEFAULT NULL,
+  `acceptance_end_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `symposium`
 --
 
-INSERT INTO `symposium` (`uname`, `volume`, `title`, `venue`, `datefrom`, `dateto`, `reg_start_date`, `reg_end_date`, `contrib_start_date`, `contrib_end_date`, `finsup_start_date`, `finsup_end_date`, `city`, `state`, `country`, `about`, `UploadLocation`) VALUES
-('admin', 1, '\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>', 'DAE Convention Center, Anushaktinagar', '2023-12-03', '2023-12-05', '2023-10-01', '2023-10-10', '2023-09-01', '2023-09-10', '2023-09-01', '2023-09-10', 'Mumbai', 'Maharashtra', 'India', NULL, 'Uploads/');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testuser`
---
-
-DROP TABLE IF EXISTS `testuser`;
-CREATE TABLE `testuser` (
-  `id` int(11) DEFAULT NULL,
-  `FirstName` varchar(255) DEFAULT NULL,
-  `LastName` varchar(244) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `testuser`
---
-
-INSERT INTO `testuser` (`id`, `FirstName`, `LastName`) VALUES
-(1, 'Raman', 'Sehgal'),
-(2, 'Ayush', 'Sehgal'),
-(2, 'Shachi', 'Sehgal');
-
--- --------------------------------------------------------
+LOCK TABLES `symposium` WRITE;
+/*!40000 ALTER TABLE `symposium` DISABLE KEYS */;
+INSERT INTO `symposium` VALUES ('admin',1,'\'India Secure @75\'<br/>\r\n93<sup>rd</sup> Annual Session of National Academy of Sciences (NASI)<br/>\r\n<small class=\'text-light font-weight-bolder\'><u>An endeavour to celebrate and support \'Atma Nirbhar Bharat\'</u></small><br/>\r\n<h1><small class=\'text-danger font-weight-bolder\'>The National Academy of Sciences (NASI) & <br/> Bhabha Atomic Research Centre (BARC), Mumbai<br/>\r\nDAE Convention Centre, BARC, Mumbai<br/>\r\n3<sup>rd</sup>-5<sup>th</sup> December 2023</small></h1>','DAE Convention Center, Anushaktinagar','2023-12-03','2023-12-05','2023-06-01','2023-10-15','2023-06-12','2023-12-31','2023-09-01','2023-09-10','Mumbai','Maharashtra','India',NULL,'Uploads/','2023-09-30');
+/*!40000 ALTER TABLE `symposium` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `topics`
 --
 
 DROP TABLE IF EXISTS `topics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `topics` (
   `uname` varchar(100) DEFAULT NULL,
   `Topic` varchar(255) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `code` varchar(2) DEFAULT NULL,
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`uname`, `Topic`, `code`) VALUES
-('admin', 'Physics', 'A'),
-('admin', 'Chemistry', 'B'),
-('admin', 'Mathematics', 'C'),
-('admin', 'Biology', 'D');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `uname` varchar(20) NOT NULL,
-  `passwd` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `uname`, `passwd`) VALUES
-(1, 'rsehgal', 'Hsuya^123');
-
--- --------------------------------------------------------
+LOCK TABLES `topics` WRITE;
+/*!40000 ALTER TABLE `topics` DISABLE KEYS */;
+INSERT INTO `topics` VALUES ('admin','Contributory Paper','C'),('admin','Invited Talk','I');
+/*!40000 ALTER TABLE `topics` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user_credentials`
 --
 
 DROP TABLE IF EXISTS `user_credentials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_credentials` (
   `uname` varchar(20) NOT NULL,
   `passwd` varchar(150) DEFAULT NULL,
   `firstname` varchar(150) DEFAULT NULL,
   `lastname` varchar(150) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `email` varchar(150) DEFAULT NULL,
+  `creation_date` datetime DEFAULT NULL,
+  `Direct` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`uname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user_credentials`
 --
 
-INSERT INTO `user_credentials` (`uname`, `passwd`, `firstname`, `lastname`, `email`) VALUES
-('abcd', 'efgh', 'ABCD', 'EFGH', 'rsehgal@barc.gov.in'),
-('abcdefgh', 'abcdefgh', 'ABCD', 'EFGH', 'abcd.efgh@xyz.com'),
-('ayush', 'dfjskdjfksdjf', 'Ayush', 'Sehgal', 'ayush.sehgal@gmail.com'),
-('harry', 'potter', 'Harry', 'Potter', 'harry.potter@abcd.com'),
-('hellorsehgal', 'hellorsehgal', 'Raman', 'Sehgal', 'raman.sehgal@abcd.com'),
-('PCRout', 'PCRout~12345', 'Prakash Chandra ', 'Rout', 'pcrout2002@gmail.com'),
-('ppppqqqq', 'ppppqqqq', 'PPPP', 'QQQQ', 'pppp.qqqq@rrrr.com'),
-('rsehgal', 'ABCDEFGH', 'Raman', 'Sehgal', 'sc.ramansehgal@gmail.com'),
-('testuser', 'testuser', 'TESTUSER', 'HMMMM', 'testuser.hmm@abc.com'),
-('toro', 'toro', 'Toro', 'Sehgal', 'toro.sehgal@gmail.com');
+LOCK TABLES `user_credentials` WRITE;
+/*!40000 ALTER TABLE `user_credentials` DISABLE KEYS */;
+INSERT INTO `user_credentials` VALUES ('abcd','efgh','ABCD','EFGH','rsehgal@barc.gov.in',NULL,'No'),('abcdefgh','abcdefgh','ABCD','EFGH','abcd.efgh@xyz.com',NULL,'No'),('ayush','dfjskdjfksdjf','Ayush','Sehgal','ayush.sehgal@gmail.com',NULL,'No'),('harry','potter','Harry','Potter','harry.potter@abcd.com',NULL,'No'),('hellorsehgal','hellorsehgal','Raman','Sehgal','raman.sehgal@abcd.com',NULL,'No'),('PCRout','PCRout~12345','Prakash Chandra ','Rout','pcrout2002@gmail.com',NULL,'No'),('ppppqqqq','ppppqqqq','PPPP','QQQQ','pppp.qqqq@rrrr.com',NULL,'No'),('rarara','rarara','Raman','Sehgal','abc@def.com','2023-06-21 16:56:31','No'),('rsehgal','ABCDEFGH','Raman','Sehgal','sc.ramansehgal@gmail.com',NULL,'No'),('testuser','testuser','TESTUSER','HMMMM','testuser.hmm@abc.com',NULL,'No'),('toro','toro','Toro','Sehgal','toro.sehgal@gmail.com',NULL,'No');
+/*!40000 ALTER TABLE `user_credentials` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `assoc_array`
---
-ALTER TABLE `assoc_array`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `Biology`
---
-ALTER TABLE `Biology`
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indexes for table `Chemistry`
---
-ALTER TABLE `Chemistry`
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indexes for table `Mathematics`
---
-ALTER TABLE `Mathematics`
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indexes for table `Physics`
---
-ALTER TABLE `Physics`
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indexes for table `topics`
---
-ALTER TABLE `topics`
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`uname`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `user_credentials`
---
-ALTER TABLE `user_credentials`
-  ADD PRIMARY KEY (`uname`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `assoc_array`
---
-ALTER TABLE `assoc_array`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-09-20 15:34:35
