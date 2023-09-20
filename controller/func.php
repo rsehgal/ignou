@@ -399,7 +399,7 @@ function Organizing_Committee(){
 }
 function Advisory_Committee(){
 	//return "Council Officers...";
-	return "<h3 class='display text-primary'>Organizing Committee</h3><br/>".ReturnComm("CommAdv");
+	return "<h3 class='display text-primary'>Advisory Committee</h3><br/>".ReturnComm("CommAdv");
 }
 
 function ReturnComm($table){
@@ -1471,6 +1471,31 @@ return $retVal;
 }
 
 function HowToReach(){
+$howToReach='<center> <h2 class="text-danger"><b>Airports in Mumbai<br/> (15 km from the Venue / Accommodation)</b></h2>                              
+ <h3 class="text-primary">Chhatrapati Shivaji Maharaj International Airport, Sahar (Terminal 2 : Domestic and International Flights) </h3> 
+ <h3 class="text-primary">Mumbai Domestic Airport, Santa Cruz (Terminal 1 : Only Domestic Flights) </h3>                                   
+ <br/>                                                                                                                                     
+ <br/>                                                                                                                                     
+ <h2 class="text-danger"><b>Main Railway Stations in Mumbai<br/> (from 7 km to 13 km from the Venue/Accommodation) </b></h2>               
+ <h3 class="text-primary">Chhatrapati Shivaji Terminus, Station code: CST </h3>                                                            
+ <h3 class="text-primary">Dadar Railway Station, Station code: DR, DDR </h3>                                                               
+ <h3 class="text-primary">Lokmanya Tilak Terminus, Station code: LTT </h3>                                                                 
+ <h3 class="text-primary">Mumbai Central Railway Station, Station Code : MMTC </h3>                                                        
+ <h3 class="text-primary">Panvel Railway Station, Station Code: PL (suburban)/PNVL (mainline) </h3>                                        
+ 
+<br/>                                                                                                                                      
+                                                                                                                                           
+ <h3 class="text-dark"><b>The nearest local train station to Anushaktinagar is Mankhurd, on the harbour line </b></h3>                     
+ <br/>                                                                                                                                     
+ <br/>
+</center>
+';                                                                                                                                   
+
+return $howToReach;
+}
+
+
+function HowToReach_Old(){
 	//return "How to reach....";
 	$query='select How_To_Reach from HowToReach';
 	$result = GetQueryResult($query);
