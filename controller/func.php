@@ -2156,8 +2156,8 @@ $templates="<hr/><br/><div class='align-items-center justify-content-center'>
 <div class='w-75 p-3 bg-light bg-darken-sm mx-auto text-justify'>
 ";
 $templates.="<h2>Abstract Templates</h2> <br/><table class='table table-bordered table-striped'>";
-$templates.="<tr><td><h3>Word templates for abstracts</h3></td><td><a href='../docs/nasi_template.docx'><h3 class='text-primary'>Download</h3></a></td>";
-$templates.="<tr><td><h3>PDF templates for abstracts</h3></td><td><a href='../docs/nasi_template.pdf'><h3 class='text-primary'>Download</h3></a></td>";
+$templates.="<tr><td><h3>Word templates for abstracts</h3></td><td><a href='../docs/conf_template.docx'><h3 class='text-primary'>Download</h3></a></td>";
+$templates.="<tr><td><h3>PDF templates for abstracts</h3></td><td><a href='../docs/conf_template.pdf'><h3 class='text-primary'>Download</h3></a></td>";
 //$templates.="<tr><td>Latex templates for abstracts</td><td><a href='../docs/latex_template.zip'>Download</a></td>";
 //$templates.="<tr><td>PdfLatex templates for abstracts</td><td><a href='../docs/pdflatex_template.zip'>Download</a></td>";
 
