@@ -102,7 +102,7 @@ Your have successfully submitted your paper $renamedFileName
 You can view your paper in View_Contribution link.";
 
 
-                SendMail("submission",$_SESSION["Email"],"NASI 2023 : Contribution submitted",$body);
+                SendMail("submission",$_SESSION["Email"],"Conference 2023 : Contribution submitted",$body);
 
 				$result->free();
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
@@ -163,7 +163,7 @@ Your have successfully resubmitted your paper $renamedFileName
 You can view your updated paper in View_Contribution link.";
 
 
-		SendMail("resubmission",$_SESSION["Email"],"NASI 2023 : Contribution Resubmitted",$body);
+		SendMail("resubmission",$_SESSION["Email"],"Conference 2023 : Contribution Resubmitted",$body);
 
 				return Message("File uploaded successfully with name : $renamedFileName","alert-success");
 			} else {
@@ -232,7 +232,7 @@ password : $password
 
 Your can use these credentials to do the registration and to upload your paper.";
 		//SendMail($from,$to,$subject,$body);
-	 	SendMail("newaccount",$email,"NASI 2023 : Account Created",$body);	
+	 	SendMail("newaccount",$email,"Conference 2023 : Account Created",$body);	
 		//echo "$username : $password : $firstname : $lastname : $email";	
                //return "<div>ServeSignup function called..........</div><br/>".$_POST['firstname'];
 		return Message("User account creation successful.","alert-success");
@@ -1564,11 +1564,11 @@ username : '.$uname.'
 password : '.$passwd.'
 
 With Regards,
-NASI-2023
+CONFERENCE-2023
 ';
 
 //return $body;
-SendMail("admin",$email,"NASI 2023 : Credentials",$body);
+SendMail("admin",$email,"Conference 2023 : Credentials",$body);
 $result->free();
 return Message("Login credentials sent to email : ".$email,"alert-info");
 }
