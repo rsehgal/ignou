@@ -18,7 +18,7 @@ require_once "Mail.php";
 $host = "mail.codeandlearn.co.in";
 $username = $user."@codeandlearn.co.in";//"admin@nasi2023.in";
 $from=strtoupper($user)." <".$user."@codeandlearn.co.in>";
-$password = "nasi123by!#*";
+$password = "Hsuya^123";
 
 
  $headers = array ('From' => $from,
